@@ -1,0 +1,130 @@
+# Link
+
+Semantic element for navigation between pages.
+
+```jsx live=true
+<Link href="#">Sign up</Link>
+```
+
+## API Reference
+
+This component is based on the `a` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the link. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+
+```jsx live=true scroll=true
+<Flex direction="column" gap="3">
+	<Link href="#" size="1">
+		Sign up
+	</Link>
+	<Link href="#" size="2">
+		Sign up
+	</Link>
+	<Link href="#" size="3">
+		Sign up
+	</Link>
+	<Link href="#" size="4">
+		Sign up
+	</Link>
+	<Link href="#" size="5">
+		Sign up
+	</Link>
+	<Link href="#" size="6">
+		Sign up
+	</Link>
+	<Link href="#" size="7">
+		Sign up
+	</Link>
+	<Link href="#" size="8">
+		Sign up
+	</Link>
+	<Link href="#" size="9">
+		Sign up
+	</Link>
+</Flex>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+```jsx live="true"
+<Flex direction="column">
+	<Link href="#" weight="regular">
+		Sign up
+	</Link>
+	<Link href="#" weight="medium">
+		Sign up
+	</Link>
+	<Link href="#" weight="bold">
+		Sign up
+	</Link>
+</Flex>
+```
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="150px">
+	<Link href="#" truncate>
+		Sign up to the newsletter
+	</Link>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true scroll=true
+<Flex direction="column">
+	<Link href="#" color="indigo">
+		Sign up
+	</Link>
+	<Link href="#" color="cyan">
+		Sign up
+	</Link>
+	<Link href="#" color="orange">
+		Sign up
+	</Link>
+	<Link href="#" color="crimson">
+		Sign up
+	</Link>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true scroll=true
+<Flex direction="column">
+	<Link href="#" color="gray">
+		Sign up
+	</Link>
+	<Link href="#" color="gray" highContrast>
+		Sign up
+	</Link>
+</Flex>
+```
+
+### Underline
+
+Use the `underline` prop to manage the visibility of the underline affordance.
+
+```jsx live="true" scroll=true
+<Flex direction="column">
+	<Link href="#" underline="hover">
+		Sign up
+	</Link>
+	<Link href="#" underline="always">
+		Sign up
+	</Link>
+</Flex>
+```

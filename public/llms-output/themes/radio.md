@@ -1,0 +1,212 @@
+# Radio
+
+Standalone radio button that can be used in any layout.
+
+```jsx live=true
+<Flex align="start" direction="column" gap="1">
+	<Flex asChild gap="2">
+		<Text as="label" size="2">
+			<Radio name="example" value="1" defaultChecked />
+			Default
+		</Text>
+	</Flex>
+
+	<Flex asChild gap="2">
+		<Text as="label" size="2">
+			<Radio name="example" value="2" />
+			Comfortable
+		</Text>
+	</Flex>
+
+	<Flex asChild gap="2">
+		<Text as="label" size="2">
+			<Radio name="example" value="3" />
+			Compact
+		</Text>
+	</Flex>
+</Flex>
+```
+
+## API Reference
+
+This component inherits props from the [Radio Group primitive](/primitives/docs/components/radio-group) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Root
+
+Contains all the parts of a radio group.
+
+### Item
+
+An item in the group that can be checked.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the radio button size.
+
+```jsx live=true
+<Flex align="center" gap="4">
+	<Flex gap="2">
+		<Radio size="1" name="size-1" value="1" defaultChecked />
+		<Radio size="1" name="size-1" value="2" />
+	</Flex>
+
+	<Flex gap="2">
+		<Radio size="2" name="size-2" value="1" defaultChecked />
+		<Radio size="2" name="size-2" value="2" />
+	</Flex>
+
+	<Flex gap="2">
+		<Radio size="3" name="size-3" value="1" defaultChecked />
+		<Radio size="3" name="size-3" value="2" />
+	</Flex>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the radio buttons.
+
+```jsx live=true
+<Flex align="center" gap="4">
+	<Flex gap="2">
+		<Radio variant="surface" name="surface" value="1" defaultChecked />
+		<Radio variant="surface" name="surface" value="2" />
+	</Flex>
+
+	<Flex gap="2">
+		<Radio variant="classic" name="classic" value="1" defaultChecked />
+		<Radio variant="classic" name="classic" value="2" />
+	</Flex>
+
+	<Flex gap="2">
+		<Radio variant="soft" name="soft" value="1" defaultChecked />
+		<Radio variant="soft" name="soft" value="2" />
+	</Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex as="span" gap="2">
+	<Radio color="indigo" defaultChecked />
+	<Radio color="cyan" defaultChecked />
+	<Radio color="orange" defaultChecked />
+	<Radio color="crimson" defaultChecked />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Grid columns="5" display="inline-grid" gap="2">
+	<Radio color="indigo" defaultChecked />
+	<Radio color="cyan" defaultChecked />
+	<Radio color="orange" defaultChecked />
+	<Radio color="crimson" defaultChecked />
+	<Radio color="gray" defaultChecked />
+
+	<Radio color="indigo" defaultChecked highContrast />
+	<Radio color="cyan" defaultChecked highContrast />
+	<Radio color="orange" defaultChecked highContrast />
+	<Radio color="crimson" defaultChecked highContrast />
+	<Radio color="gray" defaultChecked highContrast />
+</Grid>
+```
+
+### Alignment
+
+Composing `Radio` within `Text` automatically centers it with the first line of text. It is automatically well-aligned with multi-line text too.
+
+```jsx live="true" line="3-8,18-23,33-38"
+<Flex direction="column" gap="3">
+	<Flex align="start" direction="column" gap="1">
+		<Flex asChild gap="2">
+			<Text as="label" size="2">
+				<Radio size="1" name="alignment-1" value="1" defaultChecked />
+				Default
+			</Text>
+		</Flex>
+		<Flex asChild gap="2">
+			<Text as="label" size="2">
+				<Radio size="1" name="alignment-1" value="2" />
+				Compact
+			</Text>
+		</Flex>
+	</Flex>
+
+	<Flex align="start" direction="column" gap="1">
+		<Flex asChild gap="2">
+			<Text as="label" size="3">
+				<Radio size="2" name="alignment-2" value="1" defaultChecked />
+				Default
+			</Text>
+		</Flex>
+		<Flex asChild gap="2">
+			<Text as="label" size="3">
+				<Radio size="2" name="alignment-2" value="2" />
+				Compact
+			</Text>
+		</Flex>
+	</Flex>
+
+	<Flex align="start" direction="column" gap="1">
+		<Flex asChild gap="2">
+			<Text as="label" size="4">
+				<Radio size="3" name="alignment-3" value="1" defaultChecked />
+				Default
+			</Text>
+		</Flex>
+		<Flex asChild gap="2">
+			<Text as="label" size="4">
+				<Radio size="3" name="alignment-3" value="2" />
+				Compact
+			</Text>
+		</Flex>
+	</Flex>
+</Flex>
+```
+
+### Disabled
+
+Use the native `disabled` attribute to create a disabled radio button.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+	<Flex align="start" direction="column" gap="1">
+		<Flex asChild gap="2">
+			<Text as="label" size="2">
+				<Radio name="enabled" value="1" defaultChecked />
+				On
+			</Text>
+		</Flex>
+		<Flex asChild gap="2">
+			<Text as="label" size="2">
+				<Radio name="enabled" value="2" />
+				Off
+			</Text>
+		</Flex>
+	</Flex>
+
+	<Flex align="start" direction="column" gap="1">
+		<Flex asChild gap="2">
+			<Text as="label" size="2" color="gray">
+				<Radio disabled name="disabled" value="1" defaultChecked />
+				On
+			</Text>
+		</Flex>
+		<Flex asChild gap="2">
+			<Text as="label" size="2" color="gray">
+				<Radio disabled name="disabled" value="2" />
+				Off
+			</Text>
+		</Flex>
+	</Flex>
+</Flex>
+```

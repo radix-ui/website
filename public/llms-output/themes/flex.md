@@ -1,0 +1,31 @@
+# Flex
+
+Component for creating flex layouts.
+
+```jsx live=true
+<Flex gap="3">
+	<Box width="64px" height="64px">
+		<DecorativeBox />
+	</Box>
+	<Box width="64px" height="64px">
+		<DecorativeBox />
+	</Box>
+	<Box width="64px" height="64px">
+		<DecorativeBox />
+	</Box>
+	<Box width="64px" height="64px">
+		<DecorativeBox />
+	</Box>
+	<Box width="64px" height="64px">
+		<DecorativeBox />
+	</Box>
+</Flex>
+```
+
+## API Reference
+
+This component is based on the `div` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+Use these props to create flex layouts.
+
+The following props are shared between [Box](./box), [Flex](./flex), [Grid](./grid), [Container](./container) and [Section](./section) components. Read more about layout components in [Layout](/themes/docs/overview/layout).

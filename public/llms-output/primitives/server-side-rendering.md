@@ -1,0 +1,22 @@
+# Server-side rendering
+
+Radix Primitives can be rendered on the server. However, Primitives in React versions less than 18 rely on hydration for ids.
+
+# Server-side rendering
+
+Radix Primitives can be rendered on the server. However, Primitives in React
+versions less than 18 rely on hydration for ids.
+
+## Overview
+
+Server-side rendering or `SSR`, is a technique used to render components to HTML on the server, as opposed to rendering them only on the client.
+
+Static rendering is another similar approach. Instead it pre-renders pages to HTML at build time rather than on each request.
+
+You should be able to use all of our primitives with both approaches, for example with [Next.js](https://nextjs.org/), [Remix](https://remix.run/), or [Gatsby](https://www.gatsbyjs.com/).
+
+## Gotcha
+
+Primitives in React versions less than 18 rely on hydration for ids (used in aria attributes) to avoid server/client mismatch errors.
+
+In other words, the equivalent of [Time to Interactive](https://web.dev/interactive/) for screen reader users will depend on the download speed of the JS bundle. If you'd like to generate ids server-side to improve this experience, we suggest upgrading to React 18.

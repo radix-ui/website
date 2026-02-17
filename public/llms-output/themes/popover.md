@@ -1,0 +1,157 @@
+# Popover
+
+Floating element for displaying rich content, triggered by a button.
+
+```jsx live=true
+<Popover.Root>
+	<Popover.Trigger>
+		<Button variant="soft">
+			<ChatBubbleIcon width="16" height="16" />
+			Comment
+		</Button>
+	</Popover.Trigger>
+	<Popover.Content width="360px">
+		<Flex gap="3">
+			<Avatar
+				size="2"
+				src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+				fallback="A"
+				radius="full"
+			/>
+			<Box flexGrow="1">
+				<TextArea placeholder="Write a comment…" style={{ height: 80 }} />
+				<Flex gap="3" mt="3" justify="between">
+					<Flex align="center" gap="2" asChild>
+						<Text as="label" size="2">
+							<Checkbox />
+							<Text>Send to group</Text>
+						</Text>
+					</Flex>
+
+					<Popover.Close>
+						<Button size="1">Comment</Button>
+					</Popover.Close>
+				</Flex>
+			</Box>
+		</Flex>
+	</Popover.Content>
+</Popover.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Popover primitive](/primitives/docs/components/popover).
+
+### Root
+
+Contains all the parts of a popover.
+
+### Trigger
+
+Wraps the control that will open the popover.
+
+### Content
+
+Contains content to be rendered in the open popover. This component is based on the `div` element.
+
+### Close
+
+Wraps the control that will close the popover.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control size of the popover. It will affect the `padding` and `border-radius` of the Content.
+Use it in conjunction with the `width`/`minWidth`/`maxWidth` and `height`/`minHeight`/`maxHeight` props to control the size of the popover.
+
+```jsx live=true line=6,17,28,39
+<Flex gap="4" align="center">
+	<Popover.Root>
+		<Popover.Trigger>
+			<Button variant="soft">Size 1</Button>
+		</Popover.Trigger>
+		<Popover.Content size="1" maxWidth="300px">
+			<Text as="p" trim="both" size="1">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</Popover.Content>
+	</Popover.Root>
+
+	<Popover.Root>
+		<Popover.Trigger>
+			<Button variant="soft">Size 2</Button>
+		</Popover.Trigger>
+		<Popover.Content size="2" maxWidth="400px">
+			<Text as="p" trim="both" size="2">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</Popover.Content>
+	</Popover.Root>
+
+	<Popover.Root>
+		<Popover.Trigger>
+			<Button variant="soft">Size 3</Button>
+		</Popover.Trigger>
+		<Popover.Content size="3" maxWidth="500px">
+			<Text as="p" trim="both" size="3">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</Popover.Content>
+	</Popover.Root>
+
+	<Popover.Root>
+		<Popover.Trigger>
+			<Button variant="soft">Size 4</Button>
+		</Popover.Trigger>
+		<Popover.Content size="4">
+			<Text as="p" trim="both" size="4">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</Popover.Content>
+	</Popover.Root>
+</Flex>
+```
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the popover.
+
+```jsx live=true
+<Popover.Root>
+	<Popover.Trigger>
+		<Button variant="soft">
+			<Share2Icon width="16" height="16" />
+			Share image
+		</Button>
+	</Popover.Trigger>
+	<Popover.Content width="360px">
+		<Grid columns="130px 1fr">
+			<Inset side="left" pr="current">
+				<img
+					src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?&auto=format&fit=crop&w=400&q=80"
+					style={{ objectFit: "cover", width: "100%", height: "100%" }}
+				/>
+			</Inset>
+
+			<div>
+				<Heading size="2" mb="1">
+					Share this image
+				</Heading>
+				<Text as="p" size="2" mb="4" color="gray">
+					Minimalistic 3D rendering wallpaper.
+				</Text>
+
+				<Flex direction="column" align="stretch">
+					<Popover.Close>
+						<Button size="1" variant="soft">
+							<Link1Icon width="16" height="16" />
+							Copy link
+						</Button>
+					</Popover.Close>
+				</Flex>
+			</div>
+		</Grid>
+	</Popover.Content>
+</Popover.Root>
+```

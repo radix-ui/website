@@ -1,0 +1,222 @@
+# Button
+
+Trigger an action or event, such as submitting a form or displaying a dialog.
+
+```jsx live=true
+<Button>
+	<BookmarkIcon /> Bookmark
+</Button>
+```
+
+## API Reference
+
+This component is based on the `button` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the button.
+
+```jsx live=true
+<Flex gap="3" align="center">
+	<Button size="1" variant="soft">
+		Edit profile
+	</Button>
+	<Button size="2" variant="soft">
+		Edit profile
+	</Button>
+	<Button size="3" variant="soft">
+		Edit profile
+	</Button>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the button.
+
+```jsx live=true scroll=true
+<Flex align="center" gap="3">
+	<Button variant="classic">Edit profile</Button>
+	<Button variant="solid">Edit profile</Button>
+	<Button variant="soft">Edit profile</Button>
+	<Button variant="surface">Edit profile</Button>
+	<Button variant="outline">Edit profile</Button>
+</Flex>
+```
+
+#### Ghost
+
+Use the `ghost` variant to display a button without chrome. Ghost buttons behave like text in layout, as they use a negative margin to optically align themselves against their siblings while maintaining the padding in active and hover states.
+
+```jsx live=true
+<Button variant="ghost">Edit profile</Button>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true scroll=true
+<Flex gap="3">
+	<Button color="indigo" variant="soft">
+		Edit profile
+	</Button>
+	<Button color="cyan" variant="soft">
+		Edit profile
+	</Button>
+	<Button color="orange" variant="soft">
+		Edit profile
+	</Button>
+	<Button color="crimson" variant="soft">
+		Edit profile
+	</Button>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true scroll=true
+<Flex direction="column" gap="3">
+	<Flex gap="3">
+		<Button color="gray" variant="classic">
+			Edit profile
+		</Button>
+		<Button color="gray" variant="solid">
+			Edit profile
+		</Button>
+		<Button color="gray" variant="soft">
+			Edit profile
+		</Button>
+		<Button color="gray" variant="surface">
+			Edit profile
+		</Button>
+		<Button color="gray" variant="outline">
+			Edit profile
+		</Button>
+	</Flex>
+	<Flex gap="3">
+		<Button color="gray" variant="classic" highContrast>
+			Edit profile
+		</Button>
+		<Button color="gray" variant="solid" highContrast>
+			Edit profile
+		</Button>
+		<Button color="gray" variant="soft" highContrast>
+			Edit profile
+		</Button>
+		<Button color="gray" variant="surface" highContrast>
+			Edit profile
+		</Button>
+		<Button color="gray" variant="outline" highContrast>
+			Edit profile
+		</Button>
+	</Flex>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+	<Button radius="none" variant="soft">
+		Edit profile
+	</Button>
+	<Button radius="large" variant="soft">
+		Edit profile
+	</Button>
+	<Button radius="full" variant="soft">
+		Edit profile
+	</Button>
+</Flex>
+```
+
+### With icons
+
+You can nest icons directly inside the button. An appropriate gap is provided automatically.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+	<Button variant="classic">
+		<BookmarkIcon /> Bookmark
+	</Button>
+	<Button variant="solid">
+		<BookmarkIcon /> Bookmark
+	</Button>
+	<Button variant="soft">
+		<BookmarkIcon /> Bookmark
+	</Button>
+	<Button variant="surface">
+		<BookmarkIcon /> Bookmark
+	</Button>
+	<Button variant="outline">
+		<BookmarkIcon /> Bookmark
+	</Button>
+</Flex>
+```
+
+### Loading
+
+Use the `loading` prop to display a loading spinner in place of button content, preserving the original size of the button in its normal state. The button will be disabled while loading.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+	<Button loading variant="classic">
+		Bookmark
+	</Button>
+	<Button loading variant="solid">
+		Bookmark
+	</Button>
+	<Button loading variant="soft">
+		Bookmark
+	</Button>
+	<Button loading variant="surface">
+		Bookmark
+	</Button>
+	<Button loading variant="outline">
+		Bookmark
+	</Button>
+</Flex>
+```
+
+If you have an icon inside the button, you can use the button’s `disabled` state and wrap the icon in a standalone [Spinner](/themes/docs/components/spinner) to achieve a more sophisticated design.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+	<Button disabled variant="classic">
+		<Spinner loading>
+			<BookmarkIcon />
+		</Spinner>
+		Bookmark
+	</Button>
+	<Button disabled variant="solid">
+		<Spinner loading>
+			<BookmarkIcon />
+		</Spinner>
+		Bookmark
+	</Button>
+	<Button disabled variant="soft">
+		<Spinner loading>
+			<BookmarkIcon />
+		</Spinner>
+		Bookmark
+	</Button>
+	<Button disabled variant="surface">
+		<Spinner loading>
+			<BookmarkIcon />
+		</Spinner>
+		Bookmark
+	</Button>
+	<Button disabled variant="outline">
+		<Spinner loading>
+			<BookmarkIcon />
+		</Spinner>
+		Bookmark
+	</Button>
+</Flex>
+```

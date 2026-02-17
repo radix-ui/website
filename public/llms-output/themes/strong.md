@@ -1,0 +1,29 @@
+# Strong
+
+Marks text to signify strong importance.
+
+```jsx live=true
+<Text>
+	The most important thing to remember is, <Strong>stay positive</Strong>.
+</Text>
+```
+
+## API Reference
+
+This component is based on the `strong` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+	<Strong truncate>
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Strong>
+</Flex>
+```

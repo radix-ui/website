@@ -1,0 +1,145 @@
+# Hover Card
+
+For sighted users to preview content available behind a link.
+
+```jsx live=true
+<Text>
+	Follow{" "}
+	<HoverCard.Root>
+		<HoverCard.Trigger>
+			<Link href="https://twitter.com/radix_ui" target="_blank">
+				@radix_ui
+			</Link>
+		</HoverCard.Trigger>
+		<HoverCard.Content maxWidth="300px">
+			<Flex gap="4">
+				<Avatar
+					size="3"
+					fallback="R"
+					radius="full"
+					src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
+				/>
+				<Box>
+					<Heading size="3" as="h3">
+						Radix
+					</Heading>
+					<Text as="div" size="2" color="gray" mb="2">
+						@radix_ui
+					</Text>
+					<Text as="div" size="2">
+						React components, icons, and colors for building high-quality,
+						accessible UI.
+					</Text>
+				</Box>
+			</Flex>
+		</HoverCard.Content>
+	</HoverCard.Root>{" "}
+	for updates.
+</Text>
+```
+
+## API Reference
+
+This component inherits props from the [Hover Card primitive](/primitives/docs/components/hover-card).
+
+### Root
+
+Contains all the parts of the hover card.
+
+### Trigger
+
+Wraps the link that will open the hover card.
+
+### Content
+
+Contains the content of the open hover card. This component is based on the `div` element.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="4">
+	<HoverCard.Root>
+		<HoverCard.Trigger>
+			<Link href="#">Size 1</Link>
+		</HoverCard.Trigger>
+		<HoverCard.Content size="1" maxWidth="240px">
+			<Text as="div" size="1" trim="both">
+				<Strong>Typography</Strong> is the art and technique of arranging type
+				to make written language legible, readable and appealing when displayed.
+			</Text>
+		</HoverCard.Content>
+	</HoverCard.Root>
+
+	<HoverCard.Root>
+		<HoverCard.Trigger>
+			<Link href="#">Size 2</Link>
+		</HoverCard.Trigger>
+		<HoverCard.Content size="2" maxWidth="280px">
+			<Text as="div" size="2" trim="both">
+				<Strong>Typography</Strong> is the art and technique of arranging type
+				to make written language legible, readable and appealing when displayed.
+			</Text>
+		</HoverCard.Content>
+	</HoverCard.Root>
+
+	<HoverCard.Root>
+		<HoverCard.Trigger>
+			<Link href="#">Size 3</Link>
+		</HoverCard.Trigger>
+		<HoverCard.Content size="3" maxWidth="320px">
+			<Text as="div" size="3" trim="both">
+				<Strong>Typography</Strong> is the art and technique of arranging type
+				to make written language legible, readable and appealing when displayed.
+			</Text>
+		</HoverCard.Content>
+	</HoverCard.Root>
+</Flex>
+```
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the hover card.
+
+```jsx live=true
+<Text>
+	Technology revolutionized{" "}
+	<HoverCard.Root>
+		<HoverCard.Trigger>
+			<Link href="#">typography</Link>
+		</HoverCard.Trigger>
+
+		<HoverCard.Content width="450px">
+			<Flex>
+				<Box asChild flexShrink="0">
+					<Inset side="left" pr="current">
+						<img
+							src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?&auto=format&fit=crop&w=300&q=90"
+							alt="Bold typography"
+							style={{
+								display: "block",
+								objectFit: "cover",
+								height: "100%",
+								width: 150,
+								backgroundColor: "var(--gray-5)",
+							}}
+						/>
+					</Inset>
+				</Box>
+
+				<Text size="2" as="p">
+					<Strong>Typography</Strong> is the art and technique of arranging type
+					to make written language legible, readable and appealing when
+					displayed. The arrangement of type involves selecting typefaces, point
+					sizes, line lengths, line-spacing (leading), and letter-spacing
+					(tracking)…
+				</Text>
+			</Flex>
+		</HoverCard.Content>
+	</HoverCard.Root>{" "}
+	in the latter twentieth century.
+</Text>
+```

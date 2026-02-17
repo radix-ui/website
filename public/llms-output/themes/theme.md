@@ -1,0 +1,137 @@
+# Theme
+
+Wraps all or part of a React tree to provide theme configuration.
+
+## API Reference
+
+For an overview of theming see the [overview page](/themes/docs/theme/overview).
+
+## Examples
+
+### Basic configuration
+
+Wrap a component tree in the `Theme` component to provide or modify configuration for all children.
+
+```jsx live=true
+<Box maxWidth="400px">
+	<Card size="2">
+		<Flex direction="column" gap="3">
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Flex asChild justify="between">
+				<label>
+					<Text color="gray" size="2">
+						Attach screenshot?
+					</Text>
+					<Switch size="1" defaultChecked />
+				</label>
+			</Flex>
+			<Grid columns="2" gap="2">
+				<Button variant="surface">Back</Button>
+				<Button>Send</Button>
+			</Grid>
+		</Flex>
+	</Card>
+</Box>
+```
+
+### Nesting
+
+Nest another theme to modify configuration for a specific subtree. Configuration is inherited from the parent.
+
+```jsx live=true scroll=true line=16,32
+<Card size="2">
+	<Flex gap="6">
+		<Flex direction="column" gap="3">
+			<Heading as="h5" size="2">
+				Global
+			</Heading>
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Button>Send</Button>
+		</Flex>
+
+		<Theme accentColor="cyan" radius="full">
+			<Card size="2">
+				<Flex gap="6">
+					<Flex direction="column" gap="3">
+						<Heading as="h5" size="2">
+							Child
+						</Heading>
+						<Grid gap="1">
+							<Text as="div" weight="bold" size="2" mb="1">
+								Feedback
+							</Text>
+							<TextArea placeholder="Write your feedback…" />
+						</Grid>
+						<Button>Send</Button>
+					</Flex>
+
+					<Theme accentColor="orange">
+						<Card size="2">
+							<Flex direction="column" gap="3">
+								<Heading as="h5" size="2">
+									Grandchild
+								</Heading>
+								<Grid gap="1">
+									<Text as="div" weight="bold" size="2" mb="1">
+										Feedback
+									</Text>
+									<TextArea placeholder="Write your feedback…" />
+								</Grid>
+								<Button>Send</Button>
+							</Flex>
+						</Card>
+					</Theme>
+				</Flex>
+			</Card>
+		</Theme>
+	</Flex>
+</Card>
+```
+
+### Component overrides
+
+Override configuration per component by passing any supported prop directly to that component.
+
+```jsx live=true line=15,20
+<Box maxWidth="400px">
+	<Card size="2">
+		<Flex direction="column" gap="3">
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Flex asChild justify="between">
+				<label>
+					<Text color="gray" size="2">
+						Attach screenshot?
+					</Text>
+					<Switch
+						size="1"
+						color="orange"
+						radius="full"
+						defaultChecked
+					/>
+				</label>
+			</Flex>
+			<Grid columns="2" gap="2">
+				<Button variant="surface">Back</Button>
+				<Button color="cyan" radius="full">
+					Send
+				</Button>
+			</Grid>
+		</Flex>
+	</Card>
+</Box>
+```

@@ -1,0 +1,27 @@
+# Breakpoints
+
+Built-in breakpoints allow you to easily build adapative layouts.
+
+# Breakpoints
+
+Built-in breakpoints allow you to easily build adaptive layouts.
+
+## Available sizes
+
+Each breakpoint matches a fixed screen width. Values are `min-width` based and apply when the screen width is equal or greater.
+
+## Usage
+
+Most component size and layout props will accept an additional `Responsive` object shape for modifying the given prop across breakpoints.
+
+Each size maps to a corresponding key, the value of each will be applied when the screen size is greater than or equal to the named breakpoint.
+
+```jsx
+<Heading
+	size={{
+		initial: "3",
+		md: "5",
+		xl: "7",
+	}}
+/>
+```

@@ -1,0 +1,141 @@
+# Tabs
+
+Set of content sections to be displayed one at a time.
+
+```jsx live=true
+<Tabs.Root defaultValue="account">
+	<Tabs.List>
+		<Tabs.Trigger value="account">Account</Tabs.Trigger>
+		<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+		<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+	</Tabs.List>
+
+	<Box pt="3">
+		<Tabs.Content value="account">
+			<Text size="2">Make changes to your account.</Text>
+		</Tabs.Content>
+
+		<Tabs.Content value="documents">
+			<Text size="2">Access and update your documents.</Text>
+		</Tabs.Content>
+
+		<Tabs.Content value="settings">
+			<Text size="2">Edit your profile or update contact information.</Text>
+		</Tabs.Content>
+	</Box>
+</Tabs.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Tabs primitive](/primitives/docs/components/tabs) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Root
+
+Contains all component parts.
+
+### List
+
+Contains the triggers that sit alongside the active content.
+
+### Trigger
+
+The button that activates its associated content.
+
+### Content
+
+Contains the content associated with each trigger.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the tab list.
+
+```jsx live=true line="3,11"
+<Flex direction="column" gap="4" pb="2">
+	<Tabs.Root defaultValue="account">
+		<Tabs.List size="1">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+
+	<Tabs.Root defaultValue="account">
+		<Tabs.List size="2">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color) to the tab list.
+
+```jsx live=true line="3,11,19,27"
+<Flex direction="column" gap="4" pb="2">
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="indigo">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="cyan">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="orange">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="crimson">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true line="11"
+<Flex direction="column" gap="4" pb="2">
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="gray">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="gray" highContrast>
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
+</Flex>
+```
+
+### Navigation
+
+Tabs should not be used for page navigation. Use [Tab Nav](/themes/docs/components/tab-nav) instead, which is designed for this purpose and has equivalent styles.

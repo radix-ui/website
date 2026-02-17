@@ -1,0 +1,175 @@
+# Icon Button
+
+Button designed specifically for usage with a single icon.
+
+```jsx live=true
+<IconButton>
+	<MagnifyingGlassIcon width="18" height="18" />
+</IconButton>
+```
+
+## API Reference
+
+This component is based on the `button` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the button.
+
+```jsx live=true
+<Flex align="center" gap="3">
+	<IconButton size="1" variant="soft">
+		<MagnifyingGlassIcon width="15" height="15" />
+	</IconButton>
+
+	<IconButton size="2" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+
+	<IconButton size="3" variant="soft">
+		<MagnifyingGlassIcon width="22" height="22" />
+	</IconButton>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the button.
+
+```jsx live=true
+<Flex gap="3">
+	<IconButton variant="classic">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton variant="solid">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton variant="surface">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton variant="outline">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+</Flex>
+```
+
+#### Ghost
+
+Use the `ghost` variant to display a button without chrome. Ghost buttons behave like text in layout, as they use a negative margin to optically align themselves against their siblings while maintaining the padding in active and hover states.
+
+```jsx live=true
+<IconButton variant="ghost">
+	<MagnifyingGlassIcon width="18" height="18" />
+</IconButton>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex gap="3">
+	<IconButton color="crimson" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton color="indigo" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton color="grass" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton color="orange" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Flex gap="3">
+		<IconButton color="gray" variant="classic">
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="solid">
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="soft">
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="surface">
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="outline">
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+	</Flex>
+	<Flex gap="3">
+		<IconButton color="gray" variant="classic" highContrast>
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="solid" highContrast>
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="soft" highContrast>
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="surface" highContrast>
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+		<IconButton color="gray" variant="outline" highContrast>
+			<MagnifyingGlassIcon width="18" height="18" />
+		</IconButton>
+	</Flex>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live=true
+<Flex gap="3">
+	<IconButton radius="none" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton radius="large" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton radius="full" variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+</Flex>
+```
+
+### Loading
+
+Use the `loading` prop to display a loading spinner in place of button content. The button will be disabled while loading.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+	<IconButton loading variant="classic">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton loading variant="solid">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton loading variant="soft">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton loading variant="surface">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+	<IconButton loading variant="outline">
+		<MagnifyingGlassIcon width="18" height="18" />
+	</IconButton>
+</Flex>
+```
