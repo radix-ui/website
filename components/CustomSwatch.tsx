@@ -247,13 +247,7 @@ export const CustomSwatch = ({
 								return otherTheme;
 							})()}
 						>
-							<Box
-								position="absolute"
-								m="2"
-								top="0"
-								right="0"
-								display={{ sm: "none" }}
-							>
+							<Box position="absolute" m="2" top="0" right="0">
 								<Dialog.Close>
 									<IconButton size="1" highContrast variant="ghost">
 										<Cross2Icon width="24" height="24" />
