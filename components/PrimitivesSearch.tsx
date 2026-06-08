@@ -1,5 +1,5 @@
 import * as React from "react";
-import algoliasearch from "algoliasearch/lite";
+import { liteClient } from "algoliasearch/lite";
 import { createAutocomplete } from "@algolia/autocomplete-core";
 import {
 	parseAlgoliaHitSnippet,
@@ -31,7 +31,7 @@ import type { Hit, SearchResponse } from "@algolia/client-search";
 const ALGOLIA_APP_ID = "VXVOLU3YVQ";
 const ALGOLIA_PUBLIC_API_KEY = "9d44395c1b7b172ac84b7e5ab80bf8c5";
 
-const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
+const searchClient = liteClient(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
 const SUPPORTED_LEVELS = ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4"] as const;
 type LevelContentType = (typeof SUPPORTED_LEVELS)[number];
@@ -98,13 +98,17 @@ function PrimitivesSearchRoot({
 					setSearchState(state);
 				},
 				getSources: ({ query, setStatus, state }) => {
-					if (!query) return [];
+					if (!query || !process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME) {
+						return [];
+					}
+
 					return searchClient
-						.search<SearchItem>([
-							{
-								indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME!,
-								query,
-								params: {
+						.search<SearchItem>({
+							requests: [
+								{
+									indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+									type: "default",
+									query,
 									hitsPerPage,
 									attributesToRetrieve: [
 										"type",
@@ -128,8 +132,8 @@ function PrimitivesSearchRoot({
 									highlightPreTag: "__aa-highlight__",
 									highlightPostTag: "__/aa-highlight__",
 								},
-							},
-						])
+							],
+						})
 						.catch((error) => {
 							// The Algolia `RetryError` happens when all the servers have
 							// failed, meaning that there's no chance the response comes
