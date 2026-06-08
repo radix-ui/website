@@ -170,8 +170,9 @@ const Code = React.forwardRef<HTMLElement, CodeProps>(function Code(
 });
 Code.displayName = "CodeBlock.Code";
 
-interface CopyButtonProps
-	extends React.ComponentPropsWithoutRef<typeof IconButton> {}
+interface CopyButtonProps extends React.ComponentPropsWithoutRef<
+	typeof IconButton
+> {}
 const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
 	({ className, ...props }, forwardedRef) => {
 		const [hasCopied, setHasCopied] = React.useState(false);

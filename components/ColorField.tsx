@@ -4,8 +4,9 @@ import { TextField } from "@radix-ui/themes";
 import styles from "./ColorField.module.css";
 import * as React from "react";
 
-interface ColorFieldProps
-	extends React.ComponentPropsWithoutRef<typeof TextField.Root> {
+interface ColorFieldProps extends React.ComponentPropsWithoutRef<
+	typeof TextField.Root
+> {
 	value?: string;
 	defaultValue?: string;
 	onValueChange?: (value: string) => void;

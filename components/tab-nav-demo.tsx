@@ -5,8 +5,9 @@ import NextLink from "next/link";
 import { useSearchParams } from "next/navigation";
 import { TabNav } from "@radix-ui/themes";
 
-interface TabNavDemoProps
-	extends React.ComponentPropsWithoutRef<typeof TabNav.Root> {
+interface TabNavDemoProps extends React.ComponentPropsWithoutRef<
+	typeof TabNav.Root
+> {
 	items?: string[];
 	baseUrl: string;
 }

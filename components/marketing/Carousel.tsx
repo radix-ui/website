@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useComposedRefs, useCallbackRef, Context } from "radix-ui/internal";
-import { composeEventHandlers } from "@radix-ui/primitive";
+import { composeEventHandlers } from "radix-ui/internal";
 import debounce from "lodash.debounce";
 import { useCallback, useEffect, useRef, useState } from "react";
 import smoothscroll from "smoothscroll-polyfill";
