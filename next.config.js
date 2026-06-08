@@ -1,15 +1,12 @@
-const path = require("path");
-const { globSync } = require("glob");
-const compareVersions = require("compare-versions");
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 
-module.exports = {
-	webpack: (config, options) => {
-		config.module.rules.push({
-			test: /\.mjs/,
-			include: /node_modules/,
-			type: "javascript/auto",
-		});
-		return config;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
+	// Pin the workspace root so Next doesn't infer it from a parent lockfile.
+	turbopack: {
+		root: __dirname,
 	},
 
 	// Next.js config

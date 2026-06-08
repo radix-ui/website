@@ -16,8 +16,8 @@ export default async function handler(
 		return res.status(405).json({ error: "Method not allowed" });
 	}
 
-	const pathSegments = req.query.path as string[];
-	if (!pathSegments || pathSegments.length === 0) {
+	const pathSegments = getPathSegments(req);
+	if (pathSegments.length === 0) {
 		return res.status(400).json({ error: "Invalid path" });
 	}
 
@@ -61,6 +61,27 @@ export default async function handler(
 			.status(500)
 			.json({ error: "Failed to convert page to markdown" });
 	}
+}
+
+// Resolve the requested page path. When this route is reached via a `proxy.ts`
+// rewrite (Accept: text/markdown), Next.js does not populate the `[...path]`
+// catch-all query param, so fall back to parsing the request URL. Stripping an
+// optional `/api/markdown` prefix makes this correct whether `req.url` is the
+// rewritten API path or the original page path.
+function getPathSegments(req: NextApiRequest): string[] {
+	const fromQuery = req.query.path;
+	if (Array.isArray(fromQuery) && fromQuery.length > 0) {
+		return fromQuery;
+	}
+	if (typeof fromQuery === "string" && fromQuery.length > 0) {
+		return [fromQuery];
+	}
+
+	const pathOnly = (req.url || "").split("?")[0];
+	const stripped = pathOnly
+		.replace(/^\/+/, "")
+		.replace(/^api\/markdown\/?/, "");
+	return stripped ? stripped.split("/").filter(Boolean) : [];
 }
 
 async function convertHtmlToMarkdown(html: string): Promise<string> {
