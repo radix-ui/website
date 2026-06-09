@@ -95,9 +95,10 @@ export function RootTheme({
 	children: React.ReactNode;
 	className?: string;
 }) {
-	const { accent } = useColorThemeContext();
+	const { accent, appearance } = useColorThemeContext();
 	return (
 		<RadixTheme
+			appearance={appearance}
 			accentColor={accent === "custom" ? undefined : accent}
 			grayColor="gray"
 			className={className}

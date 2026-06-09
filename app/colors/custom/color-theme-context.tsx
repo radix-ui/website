@@ -7,6 +7,7 @@ export const ColorThemeContext = React.createContext<{
 	result: ReturnType<typeof generateRadixColors>;
 	darkModeResult: ReturnType<typeof generateRadixColors>;
 	lightModeResult: ReturnType<typeof generateRadixColors>;
+	appearance: "light" | "dark";
 	accent: ReturnType<typeof getColorName>;
 	accentValue: string;
 	grayValue: string;

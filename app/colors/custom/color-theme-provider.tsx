@@ -91,9 +91,12 @@ export function ColorThemeProvider({
 		};
 	}, [isDark, palette]);
 
-	const accent = getColorName(
-		(isHydrated ? result : lightModeResult).accentScale[8],
-	);
+	// The accent name must match the one `getNewPreviewStyles` emits the scales
+	// under (always derived from the light palette). It feeds both
+	// `data-accent-color` and the swatch CSS variables (`var(--{accent}-N)`), so
+	// it has to stay theme-independent and identical on the server and client,
+	// otherwise the swatches point at variables the injected styles never define.
+	const accent = getColorName(lightModeResult.accentScale[8]);
 
 	return (
 		<ColorThemeContext
@@ -101,6 +104,7 @@ export function ColorThemeProvider({
 				result,
 				darkModeResult,
 				lightModeResult,
+				appearance: isDark ? "dark" : "light",
 				accent,
 				accentValue,
 				grayValue,
