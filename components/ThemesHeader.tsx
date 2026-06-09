@@ -1,6 +1,7 @@
 import { Link } from "@radix-ui/themes";
 import { Header, HeaderProps } from "./Header";
 import { useRouter } from "next/router";
+import NextLink from "next/link";
 
 export const ThemesHeader = (props: HeaderProps) => {
 	const router = useRouter();
@@ -10,18 +11,18 @@ export const ThemesHeader = (props: HeaderProps) => {
 			<Link
 				size="2"
 				color="gray"
-				href="/themes/docs/overview/getting-started"
 				highContrast={router.pathname.includes("/themes/docs")}
 			>
-				Documentation
+				<NextLink href="/themes/docs/overview/getting-started">
+					Documentation
+				</NextLink>
 			</Link>
 			<Link
 				size="2"
 				color="gray"
-				href="/themes/playground"
 				highContrast={router.pathname.includes("/themes/playground")}
 			>
-				Playground
+				<NextLink href="/themes/playground">Playground</NextLink>
 			</Link>
 		</Header>
 	);
