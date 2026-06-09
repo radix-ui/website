@@ -159,13 +159,14 @@ function PrimitivesSearchRoot({
 						});
 				},
 			}),
-		[],
+		[hitsPerPage, snippetLength],
 	);
 
+	const setIsOpen = autocomplete.setIsOpen;
 	// Clean up the open state on unmount
 	React.useEffect(() => {
-		return () => autocomplete.setIsOpen(false);
-	}, []);
+		return () => setIsOpen(false);
+	}, [setIsOpen]);
 
 	return (
 		<PrimitivesSearchProvider
@@ -305,7 +306,7 @@ type SearchResultsProps = {
 };
 
 const SearchResults = React.memo(
-	({ searchState, autocomplete }: SearchResultsProps) => {
+	function SearchResults({ searchState, autocomplete }: SearchResultsProps) {
 		const hasResults = searchState.collections.some(
 			(collection) => collection.items.length > 0,
 		);

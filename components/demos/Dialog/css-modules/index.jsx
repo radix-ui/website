@@ -13,7 +13,7 @@ const DialogDemo = () => (
 			<Dialog.Content className={styles.Content}>
 				<Dialog.Title className={styles.Title}>Edit profile</Dialog.Title>
 				<Dialog.Description className={styles.Description}>
-					Make changes to your profile here. Click save when you're done.
+					Make changes to your profile here. Click save when you&apos;re done.
 				</Dialog.Description>
 				<fieldset className={styles.Fieldset}>
 					<label className={styles.Label} htmlFor="name">

@@ -21,7 +21,7 @@ const AccordionDemo = () => (
 		<Accordion.Item className={styles.Item} value="item-2">
 			<AccordionTrigger>Is it unstyled?</AccordionTrigger>
 			<AccordionContent>
-				Yes. It's unstyled by default, giving you freedom over the look and
+				Yes. It&apos;s unstyled by default, giving you freedom over the look and
 				feel.
 			</AccordionContent>
 		</Accordion.Item>
@@ -35,8 +35,11 @@ const AccordionDemo = () => (
 	</Accordion.Root>
 );
 
-const AccordionTrigger = React.forwardRef(
-	({ children, className, ...props }, forwardedRef) => (
+const AccordionTrigger = React.forwardRef(function AccordionTrigger(
+	{ children, className, ...props },
+	forwardedRef,
+) {
+	return (
 		<Accordion.Header className={styles.Header}>
 			<Accordion.Trigger
 				className={classNames(styles.Trigger, className)}
@@ -47,11 +50,14 @@ const AccordionTrigger = React.forwardRef(
 				<ChevronDownIcon className={styles.Chevron} aria-hidden />
 			</Accordion.Trigger>
 		</Accordion.Header>
-	),
-);
+	);
+});
 
-const AccordionContent = React.forwardRef(
-	({ children, className, ...props }, forwardedRef) => (
+const AccordionContent = React.forwardRef(function AccordionContent(
+	{ children, className, ...props },
+	forwardedRef,
+) {
+	return (
 		<Accordion.Content
 			className={classNames(styles.Content, className)}
 			{...props}
@@ -59,7 +65,7 @@ const AccordionContent = React.forwardRef(
 		>
 			<div className={styles.ContentText}>{children}</div>
 		</Accordion.Content>
-	),
-);
+	);
+});
 
 export default AccordionDemo;

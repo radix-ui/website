@@ -13,7 +13,7 @@ import { useCopyToast } from "./CopyToast";
 import styles from "./AllIcons.module.css";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 
-export const AllIcons = React.memo(() => {
+export const AllIcons = React.memo(function AllIcons() {
 	return (
 		<TooltipPrimitive.Provider disableHoverableContent>
 			<Grid className={styles.IconsContainer}>

@@ -16,7 +16,7 @@ const DialogDemo = () => (
 					Edit profile
 				</Dialog.Title>
 				<Dialog.Description className="mb-5 mt-2.5 text-[15px] leading-normal text-mauve11">
-					Make changes to your profile here. Click save when you're done.
+					Make changes to your profile here. Click save when you&apos;re done.
 				</Dialog.Description>
 				<fieldset className="mb-[15px] flex items-center gap-5">
 					<label

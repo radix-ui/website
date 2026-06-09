@@ -1,9 +1,11 @@
+"use client";
 import * as React from "react";
-import { NavigationMenu } from "radix-ui";
+import { NavigationMenu, VisuallyHidden } from "radix-ui";
 import classNames from "classnames";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 
 const NavigationMenuDemo = () => {
+	const id = React.useId();
 	return (
 		<NavigationMenu.Root className="relative z-10 flex w-screen justify-center">
 			<NavigationMenu.List className="center m-0 flex list-none rounded-md bg-white p-1 shadow-[0_2px_10px] shadow-blackA4">
@@ -21,7 +23,8 @@ const NavigationMenuDemo = () => {
 								<NavigationMenu.Link asChild>
 									<a
 										className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-purple9 to-indigo9 p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px] focus:shadow-violet7"
-										href="/"
+										href="#"
+										aria-labelledby={`radix-primitives-link-${id}`}
 									>
 										<svg
 											aria-hidden
@@ -34,7 +37,10 @@ const NavigationMenuDemo = () => {
 											<path d="M12 0H4V8H12V0Z"></path>
 											<path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z"></path>
 										</svg>
-										<div className="mb-[7px] mt-4 text-[18px] font-medium leading-[1.2] text-white">
+										<div
+											className="mb-[7px] mt-4 text-[18px] font-medium leading-[1.2] text-white"
+											id={`radix-primitives-link-${id}`}
+										>
 											Radix Primitives
 										</div>
 										<p className="text-[14px] leading-[1.3] text-mauve4">
@@ -44,13 +50,34 @@ const NavigationMenuDemo = () => {
 								</NavigationMenu.Link>
 							</li>
 
-							<ListItem href="https://stitches.dev/" title="Stitches">
+							<ListItem
+								href="https://stitches.dev/"
+								title="Stitches"
+								aria-labelledby={`stitches-link-${id}`}
+							>
+								<VisuallyHidden id={`stitches-link-${id}`}>
+									Stitches{" "}
+								</VisuallyHidden>
 								CSS-in-JS with best-in-class developer experience.
 							</ListItem>
-							<ListItem href="/colors" title="Colors">
+							<ListItem
+								href="/colors"
+								title="Colors"
+								aria-labelledby={`colors-link-${id}`}
+							>
+								<VisuallyHidden id={`colors-link-${id}`}>
+									Radix Colors{" "}
+								</VisuallyHidden>
 								Beautiful, thought-out palettes with auto dark mode.
 							</ListItem>
-							<ListItem href="https://icons.radix-ui.com/" title="Icons">
+							<ListItem
+								href="https://icons.radix-ui.com/"
+								title="Icons"
+								aria-labelledby={`icons-link-${id}`}
+							>
+								<VisuallyHidden id={`icons-link-${id}`}>
+									Radix Icons{" "}
+								</VisuallyHidden>
 								A crisp set of 15x15 icons, balanced and consistent.
 							</ListItem>
 						</ul>
@@ -126,8 +153,11 @@ const NavigationMenuDemo = () => {
 	);
 };
 
-const ListItem = React.forwardRef(
-	({ className, children, title, ...props }, forwardedRef) => (
+const ListItem = React.forwardRef(function ListItem(
+	{ className, children, title, ...props },
+	forwardedRef,
+) {
+	return (
 		<li>
 			<NavigationMenu.Link asChild>
 				<a
@@ -145,7 +175,7 @@ const ListItem = React.forwardRef(
 				</a>
 			</NavigationMenu.Link>
 		</li>
-	),
-);
+	);
+});
 
 export default NavigationMenuDemo;

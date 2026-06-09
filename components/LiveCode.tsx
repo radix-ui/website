@@ -110,7 +110,7 @@ class ErrorBoundary extends React.Component<
 const evaluate = (code = "", scope: Record<string, unknown> = {}) => {
 	const scopeKeys = Object.keys(scope);
 	const scopeValues = scopeKeys.map((key) => scope[key]);
-	// eslint-disable-next-line @typescript-eslint/no-implied-eval
+	// oxlint-disable-next-line typescript/no-implied-eval
 	const fn = new Function("React", ...scopeKeys, code);
 	const result = fn(React, ...scopeValues);
 	return injectReactClassComponentPrototype(result, code);

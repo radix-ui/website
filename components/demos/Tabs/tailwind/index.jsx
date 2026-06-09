@@ -28,7 +28,7 @@ const TabsDemo = () => (
 			value="tab1"
 		>
 			<p className="mb-5 text-[15px] leading-normal text-mauve11">
-				Make changes to your account here. Click save when you're done.
+				Make changes to your account here. Click save when you&apos;re done.
 			</p>
 			<fieldset className="mb-[15px] flex w-full flex-col justify-start">
 				<label
@@ -67,7 +67,7 @@ const TabsDemo = () => (
 			value="tab2"
 		>
 			<p className="mb-5 text-[15px] leading-normal text-mauve11">
-				Change your password here. After saving, you'll be logged out.
+				Change your password here. After saving, you&apos;ll be logged out.
 			</p>
 			<fieldset className="mb-[15px] flex w-full flex-col justify-start">
 				<label

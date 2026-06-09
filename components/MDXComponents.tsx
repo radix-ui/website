@@ -49,15 +49,9 @@ export const components = {
 		const childText =
 			typeof children === "string" ? children : children.props.children;
 		return (
-			<Text
-				as="p"
-				size="4"
-				mt="2"
-				mb="7"
-				color="gray"
-				children={childText}
-				{...props}
-			/>
+			<Text as="p" size="4" mt="2" mb="7" color="gray" {...props}>
+				{childText}
+			</Text>
 		);
 	},
 	h2: ({ children, id, ...props }: any) => (
@@ -94,7 +88,7 @@ export const components = {
 	),
 	h4: ({ children, ...props }: any) => (
 		<Heading asChild size="4" mt="6" mb="3" {...props}>
-			<h4 children={children} style={{ scrollMarginTop: "var(--space-9)" }} />
+			<h4 style={{ scrollMarginTop: "var(--space-9)" }}>{children}</h4>
 		</Heading>
 	),
 	p: (props: any) => <Text mb="4" as="p" size="3" {...props} />,
@@ -135,6 +129,7 @@ export const components = {
 	strong: Strong,
 	img: ({ style, ...props }: any) => (
 		<Box my="6">
+			{/* oxlint-disable-next-line jsx-a11y/alt-text */}
 			<img
 				{...props}
 				style={{ maxWidth: "100%", verticalAlign: "middle", ...style }}
@@ -174,7 +169,7 @@ export const components = {
 	NextLink,
 	Note: ({ children, ...props }: any) => (
 		<Box className={styles.Note} asChild my="2" {...props}>
-			<aside children={children} />
+			<aside>{children}</aside>
 		</Box>
 	),
 	Highlights,

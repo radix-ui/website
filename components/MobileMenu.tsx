@@ -19,23 +19,22 @@ export const MobileMenuProvider = ({
 	const [open, setOpen] = React.useState(false);
 
 	const router = useRouter();
-
+	// `asPath` is the full path including the query string, so this key changes
+	// on any navigation (matching the previous `routeChangeComplete` behavior).
+	const navKey = router.asPath;
+	const navKeyRef = React.useRef(navKey);
 	React.useEffect(() => {
-		const handleRouteChangeComplete = () => {
+		const previousNavKey = navKeyRef.current;
+		navKeyRef.current = navKey;
+		if (previousNavKey !== navKey) {
 			// Dismiss mobile keyboard if focusing an input (e.g. when searching)
 			if (document.activeElement instanceof HTMLInputElement) {
 				document.activeElement.blur();
 			}
 
 			setOpen(false);
-		};
-
-		router.events.on("routeChangeComplete", handleRouteChangeComplete);
-
-		return () => {
-			router.events.off("routeChangeComplete", handleRouteChangeComplete);
-		};
-	}, []);
+		}
+	}, [navKey]);
 
 	React.useEffect(() => {
 		// Match @media (--md)

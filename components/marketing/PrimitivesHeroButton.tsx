@@ -5,7 +5,7 @@ import { classNames } from "@utils/classNames";
 export const PrimitivesHeroButton = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<"button"> & { variant?: "white" | "gray" }
->(function ({ variant = "white", ...props }, ref) {
+>(function PrimitivesHeroButton({ variant = "white", ...props }, ref) {
 	return (
 		<button
 			type="button"

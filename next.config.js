@@ -3,7 +3,7 @@ import path from "node:path";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export default {
+const config = {
 	// Pin the workspace root so Next doesn't infer it from a parent lockfile.
 	turbopack: {
 		root: __dirname,
@@ -99,3 +99,5 @@ export default {
 		];
 	},
 };
+
+export default config;

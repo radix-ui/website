@@ -4,7 +4,7 @@ import parse from "rehype-parse";
 
 const CALLOUT = /__(.*?)__/g;
 
-export default (code) => {
+export default function rehypeHighlightWord(code) {
 	const html = hastToHtml(code);
 	const result = html.replace(
 		CALLOUT,
@@ -14,4 +14,4 @@ export default (code) => {
 		.use(parse, { emitParseErrors: true, fragment: true })
 		.parse(result);
 	return hast.children;
-};
+}

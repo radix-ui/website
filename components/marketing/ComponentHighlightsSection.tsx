@@ -35,7 +35,7 @@ export const ComponentHighlightsSection = () => {
 					</Heading>
 					<Text align="center" as="p" size="3" style={{ maxWidth: 340 }}>
 						We agonise over API design, performance, and accessibility so you
-						don't need to.
+						don&apos;t need to.
 					</Text>
 				</Flex>
 
@@ -196,8 +196,8 @@ export const ComponentHighlightsSection = () => {
 									</Heading>
 								</Flex>
 								<Text as="p" color="gray" size="3" ml="6">
-									Implements correct semantics and behaviors, so it's accessible
-									to people using assistive technology.
+									Implements correct semantics and behaviors, so it&apos;s
+									accessible to people using assistive technology.
 								</Text>
 							</Box>
 

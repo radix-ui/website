@@ -13,30 +13,34 @@ const AccordionItem = (props: AccordionPrimitive.AccordionItemProps) => (
 const AccordionTrigger = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<typeof AccordionPrimitive.Trigger>
->(({ children, ...props }, forwardedRef) => (
-	<AccordionPrimitive.Header className={styles.Header}>
-		<AccordionPrimitive.Trigger
-			{...props}
-			className={styles.Trigger}
-			ref={forwardedRef}
-		>
-			{children}
-			<ChevronDownIcon className={styles.Chevron} aria-hidden />
-		</AccordionPrimitive.Trigger>
-	</AccordionPrimitive.Header>
-));
+>(function AccordionTrigger({ children, ...props }, forwardedRef) {
+	return (
+		<AccordionPrimitive.Header className={styles.Header}>
+			<AccordionPrimitive.Trigger
+				{...props}
+				className={styles.Trigger}
+				ref={forwardedRef}
+			>
+				{children}
+				<ChevronDownIcon className={styles.Chevron} aria-hidden />
+			</AccordionPrimitive.Trigger>
+		</AccordionPrimitive.Header>
+	);
+});
 const AccordionContent = React.forwardRef<
 	HTMLDivElement,
 	React.ComponentProps<typeof AccordionPrimitive.Content>
->(({ children, ...props }, forwardedRef) => (
-	<AccordionPrimitive.Content
-		{...props}
-		className={styles.Content}
-		ref={forwardedRef}
-	>
-		<div className={styles.ContentText}>{children}</div>
-	</AccordionPrimitive.Content>
-));
+>(function AccordionContent({ children, ...props }, forwardedRef) {
+	return (
+		<AccordionPrimitive.Content
+			{...props}
+			className={styles.Content}
+			ref={forwardedRef}
+		>
+			<div className={styles.ContentText}>{children}</div>
+		</AccordionPrimitive.Content>
+	);
+});
 
 export function PrimitivesHeroAccordion() {
 	return (

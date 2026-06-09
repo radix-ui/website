@@ -79,6 +79,7 @@ export const ExampleThemesMusicApp = ({
 												objectFit: "cover",
 												borderRadius: "var(--radius-2)",
 											}}
+											alt={`Album cover for ${song.album}`}
 										/>
 									</Box>
 									<Box flexGrow="1" width="0">
@@ -353,6 +354,7 @@ export const ExampleThemesMusicApp = ({
 								<Flex align="center" gap="3" key={song.name}>
 									<Box asChild width="48px" height="48px">
 										<img
+											alt={`Album cover for ${song.album}`}
 											src={song.cover}
 											style={{
 												objectFit: "cover",
@@ -690,6 +692,7 @@ export const ExampleThemesMusicApp = ({
 
 									<Flex align="center" gap="3">
 										<img
+											alt={`Album cover for ${songsHistory[6].album}`}
 											src={songsHistory[6].cover}
 											width="48"
 											height="48"
@@ -1203,6 +1206,7 @@ export const ExampleThemesMusicApp = ({
 							<Card size="3">
 								<Flex m="4" justify="center" position="relative">
 									<img
+										alt="Album cover for King Krule – The OOZ"
 										width="200"
 										height="200"
 										src="https://workos.imgix.net/images/e35b46dc-4384-43d1-932c-24fa44e212cd.png?auto=format&fit=clip&q=80"
@@ -1247,9 +1251,9 @@ export const ExampleThemesMusicApp = ({
 									</Heading>
 
 									<Text align="center" as="p" color="gray" size="2" mb="4">
-										A dark and introspective album that showcases King Krule’s
-										distinctive blend of genres, while delivering hauntingly raw
-										and poetic lyrics.
+										A dark and introspective album that showcases King
+										Krule&apos;s distinctive blend of genres, while delivering
+										hauntingly raw and poetic lyrics.
 									</Text>
 
 									<Flex justify="center" gap="3">
@@ -1346,7 +1350,7 @@ export const ExampleThemesMusicApp = ({
 													</HoverCard.Content>
 												</HoverCard.Root>
 												<Text>
-													Damn, that's Coca-Cola,{" "}
+													Damn, that&apos;s Coca-Cola,{" "}
 													<HoverCard.Root>
 														<HoverCard.Trigger>
 															<Link
@@ -1365,8 +1369,8 @@ export const ExampleThemesMusicApp = ({
 																	Games due to an ebola outbreak in the region.
 																	The line serves to set the scene by saying he
 																	is watching television, or at least its on,
-																	and news of the athletes' banning would be
-																	what’s being broadcast.
+																	and news of the athletes&apos; banning would
+																	be what’s being broadcast.
 																</Text>
 															</Flex>
 														</HoverCard.Content>
@@ -1437,8 +1441,8 @@ export const ExampleThemesMusicApp = ({
 
 											<Flex direction="column" align="start" gap="1">
 												<Text>
-													You're shallow waters, I’m the deep seabed And I’m the
-													reason you flow
+													You&apos;re shallow waters, I&apos;m the deep seabed
+													And I&apos;m the reason you flow
 												</Text>
 												I got more moons wrapped around my head and Jupiter
 												knows Whilst you orbit with some stupider hoes Only a
@@ -1498,6 +1502,7 @@ const AlbumCard = ({
 									height: "100%",
 									objectFit: "cover",
 								}}
+								alt={`Album cover for ${title}`}
 							/>
 						</AspectRatio>
 					</Inset>

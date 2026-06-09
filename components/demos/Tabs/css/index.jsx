@@ -14,7 +14,7 @@ const TabsDemo = () => (
 		</Tabs.List>
 		<Tabs.Content className="TabsContent" value="tab1">
 			<p className="Text">
-				Make changes to your account here. Click save when you're done.
+				Make changes to your account here. Click save when you&apos;re done.
 			</p>
 			<fieldset className="Fieldset">
 				<label className="Label" htmlFor="name">
@@ -36,7 +36,7 @@ const TabsDemo = () => (
 		</Tabs.Content>
 		<Tabs.Content className="TabsContent" value="tab2">
 			<p className="Text">
-				Change your password here. After saving, you'll be logged out.
+				Change your password here. After saving, you&apos;ll be logged out.
 			</p>
 			<fieldset className="Fieldset">
 				<label className="Label" htmlFor="currentPassword">

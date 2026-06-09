@@ -376,6 +376,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 									<img
 										className={styles.MagicCurtainControlsPreviewContentImage}
 										src={images[index]}
+										alt="Magic Curtain Preview"
 									/>
 								</NavigationMenu.Content>
 							)}
@@ -406,6 +407,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 
 const MagicCurtainMirrorControls = () => {
 	const context = useMagicCurtainContext("MagicCurtain");
+	const { setControlsPosition } = context;
 	const ref = React.useRef<HTMLDivElement | null>(null);
 
 	React.useEffect(() => {
@@ -416,7 +418,7 @@ const MagicCurtainMirrorControls = () => {
 					const top = rect.top + window.scrollY;
 					const left = rect.left + window.scrollX;
 
-					context.setControlsPosition((current) => {
+					setControlsPosition((current) => {
 						if (current.top === top && current.left === left) {
 							return current;
 						}
@@ -430,7 +432,7 @@ const MagicCurtainMirrorControls = () => {
 		positionControls();
 		addEventListener("resize", positionControls);
 		return () => removeEventListener("resize", positionControls);
-	}, [context.setControlsPosition]);
+	}, [setControlsPosition]);
 
 	return (
 		<div ref={ref} className={styles.MagicCurtainControlsRoot}>

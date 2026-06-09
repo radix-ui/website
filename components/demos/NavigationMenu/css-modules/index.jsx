@@ -16,7 +16,7 @@ const NavigationMenuDemo = () => {
 						<ul className={`${styles.List} one`}>
 							<li style={{ gridRow: "span 3" }}>
 								<NavigationMenu.Link asChild>
-									<a className={styles.Callout} href="/">
+									<a className={styles.Callout} href="#">
 										<svg
 											aria-hidden
 											width="38"
@@ -116,8 +116,11 @@ const NavigationMenuDemo = () => {
 	);
 };
 
-const ListItem = React.forwardRef(
-	({ className, children, title, ...props }, forwardedRef) => (
+const ListItem = React.forwardRef(function ListItem(
+	{ className, children, title, ...props },
+	forwardedRef,
+) {
+	return (
 		<li>
 			<NavigationMenu.Link asChild>
 				<a
@@ -130,7 +133,7 @@ const ListItem = React.forwardRef(
 				</a>
 			</NavigationMenu.Link>
 		</li>
-	),
-);
+	);
+});
 
 export default NavigationMenuDemo;

@@ -62,21 +62,22 @@ const SelectDemo = () => (
 	</Select.Root>
 );
 
-const SelectItem = React.forwardRef(
-	({ children, className, ...props }, forwardedRef) => {
-		return (
-			<Select.Item
-				className={classnames(styles.Item, className)}
-				{...props}
-				ref={forwardedRef}
-			>
-				<Select.ItemText>{children}</Select.ItemText>
-				<Select.ItemIndicator className={styles.ItemIndicator}>
-					<CheckIcon />
-				</Select.ItemIndicator>
-			</Select.Item>
-		);
-	},
-);
+const SelectItem = React.forwardRef(function SelectItem(
+	{ children, className, ...props },
+	forwardedRef,
+) {
+	return (
+		<Select.Item
+			className={classnames(styles.Item, className)}
+			{...props}
+			ref={forwardedRef}
+		>
+			<Select.ItemText>{children}</Select.ItemText>
+			<Select.ItemIndicator className={styles.ItemIndicator}>
+				<CheckIcon />
+			</Select.ItemIndicator>
+		</Select.Item>
+	);
+});
 
 export default SelectDemo;

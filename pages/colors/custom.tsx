@@ -126,7 +126,16 @@ export default function Page() {
 		}
 		// Refresh the timestamp
 		setTimestamp(Date.now());
-	}, [discardStoredValues]);
+	}, [
+		setLightAccentValue,
+		setLightGrayValue,
+		setLightBgValue,
+		setDarkAccentValue,
+		setDarkGrayValue,
+		setDarkBgValue,
+		setTimestamp,
+		discardStoredValues,
+	]);
 
 	const accentValue =
 		resolvedTheme === "dark" ? darkAccentValue : lightAccentValue;

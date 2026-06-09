@@ -458,7 +458,7 @@ export const PrimitivesHero = () => {
 											</Heading>
 											<Text as="p" size="2" color="gray">
 												Supports custom cross-browser styling while maintaining
-												the browser's native scroll behavior.
+												the browser&apos;s native scroll behavior.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>

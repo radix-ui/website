@@ -11,13 +11,14 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"prettier": "prettier --write .",
+		"format": "oxfmt --write .",
+		"format:check": "oxfmt --check",
+		"lint": "oxlint",
 		"typecheck": "tsc --noEmit",
 		"scraper:setup": "docker run -it --name radix_algolia --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.development.json | jq -r tostring)\" algolia/docsearch-scraper",
 		"scraper:reset": "docker rm radix_algolia && pnpm scraper:setup",
 		"scraper:run": "docker start radix_algolia",
-		"scraper:production": "docker run -it --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.json | jq -r tostring)\" algolia/docsearch-scraper",
-		"format": "prettier --write ."
+		"scraper:production": "docker run -it --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.json | jq -r tostring)\" algolia/docsearch-scraper"
 	},
 	"dependencies": {
 		"@algolia/autocomplete-core": "^1.19.8",
@@ -77,18 +78,9 @@
 		"@types/tinycolor2": "^1.4.6",
 		"@types/unist": "^3.0.3",
 		"autoprefixer": "^10.5.0",
-		"eslint": "^9.39.4",
-		"eslint-config-next": "^16.2.7",
-		"husky": "^9.1.7",
-		"oxfmt": "0.28.0",
-		"prettier": "^3.8.3",
-		"pretty-quick": "^4.2.2",
+		"oxfmt": "^0.54.0",
+		"oxlint": "^1.69.0",
 		"sucrase": "3.35.1",
 		"typescript": "^5.5.4"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
 	}
 }

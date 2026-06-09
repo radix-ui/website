@@ -76,6 +76,7 @@ export const ExampleThemesEcommerce = ({
 							width="280"
 							height="212"
 							style={{ borderRadius: "var(--radius-1)" }}
+							alt=""
 						/>
 					</Flex>
 
@@ -118,6 +119,7 @@ export const ExampleThemesEcommerce = ({
 							height="270"
 							src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=560&h=540&q=80"
 							style={{ borderRadius: "var(--radius-1)" }}
+							alt=""
 						/>
 
 						<Theme appearance="light" asChild>
@@ -400,6 +402,7 @@ export const ExampleThemesEcommerce = ({
 										style={{ borderRadius: "var(--radius-1)" }}
 										width="32"
 										height="32"
+										alt=""
 									/>
 									<Box>
 										<Text as="div" color="gray" trim="start">
@@ -476,6 +479,7 @@ export const ExampleThemesEcommerce = ({
 							height="270"
 							src="https://images.unsplash.com/photo-1577210897949-1f56f943bf82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=560&h=540&q=80&crop=bottom"
 							style={{ borderRadius: "var(--radius-1)" }}
+							alt=""
 						/>
 
 						<Theme appearance="light" asChild>
@@ -611,6 +615,7 @@ export const ExampleThemesEcommerce = ({
 							width="280"
 							height="212"
 							style={{ borderRadius: "var(--radius-1)" }}
+							alt=""
 						/>
 					</Flex>
 
@@ -687,6 +692,7 @@ export const ExampleThemesEcommerce = ({
 							height="218"
 							src="https://workos.imgix.net/images/bc04b345-f225-488d-8a46-1811096d0c3b.png?auto=format&fit=clip&q=90&w=840&h=654"
 							style={{ borderRadius: "var(--radius-1)" }}
+							alt=""
 						/>
 					</Flex>
 
@@ -753,6 +759,7 @@ export const ExampleThemesEcommerce = ({
 										style={{ borderRadius: "var(--radius-1)" }}
 										width="136"
 										height="136"
+										alt=""
 									/>
 								</Flex>
 
@@ -862,6 +869,7 @@ export const ExampleThemesEcommerce = ({
 										height: 121,
 										cursor: "zoom-in",
 									}}
+									alt=""
 								/>
 							</Flex>
 							<Flex>
@@ -876,6 +884,7 @@ export const ExampleThemesEcommerce = ({
 										height: 121,
 										cursor: "zoom-in",
 									}}
+									alt=""
 								/>
 							</Flex>
 							<Flex
@@ -1391,6 +1400,7 @@ export const ExampleThemesEcommerce = ({
 								<img
 									src="https://images.unsplash.com/photo-1514866747592-c2d279258a78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80"
 									style={{ width: "100%", height: "100%", objectFit: "cover" }}
+									alt=""
 								/>
 							</Box>
 
@@ -1473,6 +1483,7 @@ export const ExampleThemesEcommerce = ({
 								<img
 									src="https://plus.unsplash.com/premium_photo-1668485968648-f29fe5157463?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80"
 									style={{ width: "100%", height: "100%", objectFit: "cover" }}
+									alt=""
 								/>
 							</Box>
 
@@ -1492,6 +1503,7 @@ export const ExampleThemesEcommerce = ({
 								<img
 									src="https://images.unsplash.com/photo-1532660621034-fb55e2e59762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=700&q=80"
 									style={{ width: "100%", height: "100%", objectFit: "cover" }}
+									alt=""
 								/>
 							</Box>
 						</Grid>
@@ -1681,7 +1693,10 @@ type ToggleButtonsProps = (
 const ToggleButtons = React.forwardRef<
 	ToggleGroupRootElement,
 	ToggleButtonsProps
->(({ children, tabIndex, values, ...props }, forwardedRef) => {
+>(function ToggleButtons(
+	{ children, tabIndex, values, ...props },
+	forwardedRef,
+) {
 	const isActive = (value: string) =>
 		props.type === "single"
 			? props.value === value

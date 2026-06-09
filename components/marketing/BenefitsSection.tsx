@@ -36,7 +36,7 @@ export const BenefitsSection = () => {
 						</Heading>
 						<Text as="p" size="3" mr={{ sm: "5", md: "7", lg: "9" }}>
 							It takes <Em>a lot</Em> of time to develop and maintain a robust
-							set of UI components, and it's mostly undifferentiated work.
+							set of UI components, and it&apos;s mostly undifferentiated work.
 							Building on top of Radix components will save you time and money,
 							so you can ship a better product faster.
 						</Text>

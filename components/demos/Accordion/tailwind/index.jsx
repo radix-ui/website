@@ -20,7 +20,7 @@ const AccordionDemo = () => (
 		<AccordionItem value="item-2">
 			<AccordionTrigger>Is it unstyled?</AccordionTrigger>
 			<AccordionContent>
-				Yes. It's unstyled by default, giving you freedom over the look and
+				Yes. It&apos;s unstyled by default, giving you freedom over the look and
 				feel.
 			</AccordionContent>
 		</AccordionItem>
@@ -34,8 +34,11 @@ const AccordionDemo = () => (
 	</Accordion.Root>
 );
 
-const AccordionItem = React.forwardRef(
-	({ children, className, ...props }, forwardedRef) => (
+const AccordionItem = React.forwardRef(function AccordionItem(
+	{ children, className, ...props },
+	forwardedRef,
+) {
+	return (
 		<Accordion.Item
 			className={classNames(
 				"mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_2px] focus-within:shadow-mauve12",
@@ -46,11 +49,14 @@ const AccordionItem = React.forwardRef(
 		>
 			{children}
 		</Accordion.Item>
-	),
-);
+	);
+});
 
-const AccordionTrigger = React.forwardRef(
-	({ children, className, ...props }, forwardedRef) => (
+const AccordionTrigger = React.forwardRef(function AccordionTrigger(
+	{ children, className, ...props },
+	forwardedRef,
+) {
+	return (
 		<Accordion.Header className="flex">
 			<Accordion.Trigger
 				className={classNames(
@@ -67,11 +73,14 @@ const AccordionTrigger = React.forwardRef(
 				/>
 			</Accordion.Trigger>
 		</Accordion.Header>
-	),
-);
+	);
+});
 
-const AccordionContent = React.forwardRef(
-	({ children, className, ...props }, forwardedRef) => (
+const AccordionContent = React.forwardRef(function AccordionContent(
+	{ children, className, ...props },
+	forwardedRef,
+) {
+	return (
 		<Accordion.Content
 			className={classNames(
 				"overflow-hidden bg-mauve2 text-[15px] text-mauve11 data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown",
@@ -82,7 +91,7 @@ const AccordionContent = React.forwardRef(
 		>
 			<div className="px-5 py-[15px]">{children}</div>
 		</Accordion.Content>
-	),
-);
+	);
+});
 
 export default AccordionDemo;

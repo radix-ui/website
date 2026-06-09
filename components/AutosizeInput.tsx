@@ -314,12 +314,17 @@ function NewAutosizeInput({
 		}
 	}, []);
 
+	const onAutoSideRef = React.useRef(onAutosize);
+	React.useEffect(() => {
+		onAutoSideRef.current = onAutosize;
+	}, [onAutosize]);
+
 	const inputWidthRef = React.useRef(inputWidth);
 	React.useEffect(() => {
 		const prevInputWidth = inputWidthRef.current;
 		inputWidthRef.current = inputWidth;
-		if (prevInputWidth !== inputWidth && isFunction(onAutosize)) {
-			onAutosize(inputWidth!);
+		if (prevInputWidth !== inputWidth && isFunction(onAutoSideRef.current)) {
+			onAutoSideRef.current(inputWidth!);
 		}
 		updateInputWidth();
 

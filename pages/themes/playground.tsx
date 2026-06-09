@@ -133,7 +133,13 @@ export default function ComponentsPage() {
 			onScalingChange(themePropDefs.scaling.default);
 			onPanelBackgroundChange(themePropDefs.panelBackground.default);
 		};
-	}, []);
+	}, [
+		onAccentColorChange,
+		onGrayColorChange,
+		onRadiusChange,
+		onScalingChange,
+		onPanelBackgroundChange,
+	]);
 
 	return (
 		<MobileMenuProvider>

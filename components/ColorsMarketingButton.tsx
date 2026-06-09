@@ -5,12 +5,14 @@ import { Button } from "@radix-ui/themes";
 export const ColorsMarketingButton = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<typeof Button>
->((props, forwardedRef) => (
-	<Button
-		color="gray"
-		highContrast
-		{...props}
-		className={styles.ColorsMarketingButton}
-		ref={forwardedRef}
-	/>
-));
+>(function ColorsMarketingButton(props, forwardedRef) {
+	return (
+		<Button
+			color="gray"
+			highContrast
+			{...props}
+			className={styles.ColorsMarketingButton}
+			ref={forwardedRef}
+		/>
+	);
+});

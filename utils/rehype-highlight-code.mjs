@@ -7,7 +7,7 @@ import refractor from "refractor";
 import highlightLine from "./rehype-highlight-line.mjs";
 import highlightWord from "./rehype-highlight-word.mjs";
 
-export default (options = {}) => {
+export default function rehypeHighlightCode(options = {}) {
 	return (tree) => {
 		visit(tree, "element", visitor);
 	};
@@ -39,4 +39,4 @@ export default (options = {}) => {
 
 		node.children = result;
 	}
-};
+}
