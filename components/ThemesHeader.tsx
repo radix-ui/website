@@ -9,6 +9,7 @@ export const ThemesHeader = (props: HeaderProps) => {
 	return (
 		<Header gitHubLink="https://github.com/radix-ui/themes" {...props}>
 			<Link
+				asChild
 				size="2"
 				color="gray"
 				highContrast={router.pathname.includes("/themes/docs")}
@@ -18,6 +19,7 @@ export const ThemesHeader = (props: HeaderProps) => {
 				</NextLink>
 			</Link>
 			<Link
+				asChild
 				size="2"
 				color="gray"
 				highContrast={router.pathname.includes("/themes/playground")}
