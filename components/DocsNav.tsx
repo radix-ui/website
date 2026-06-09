@@ -127,8 +127,6 @@ const DocsNavItem = ({
 	}
 
 	return (
-		<NextLink passHref legacyBehavior href={`/${href}`}>
-			<a ref={ref} className={className} {...props} />
-		</NextLink>
+		<NextLink href={`/${href}`} ref={ref} className={className} {...props} />
 	);
 };

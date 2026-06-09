@@ -6031,10 +6031,8 @@ const PlaygroundSectionTitle = ({
 				{children}
 			</Link>
 		</Heading>
-		<NextLink passHref legacyBehavior href={`/themes/docs/components/${id}`}>
-			<Link className={styles.PlaygroundDocsLink} size="2">
-				View in docs
-			</Link>
-		</NextLink>
+		<Link className={styles.PlaygroundDocsLink} size="2" asChild>
+			<NextLink href={`/themes/docs/components/${id}`}>View in docs</NextLink>
+		</Link>
 	</Flex>
 );

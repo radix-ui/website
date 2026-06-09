@@ -28,13 +28,13 @@ export const Footer = () => {
 					className={styles.RadixLogo}
 					mb="5"
 				>
-					<NextLink href="/" passHref legacyBehavior>
-						<BoxLink>
+					<BoxLink asChild>
+						<NextLink href="/">
 							<AccessibleIcon label="Radix Homepage">
 								<RadixLogo />
 							</AccessibleIcon>
-						</BoxLink>
-					</NextLink>
+						</NextLink>
+					</BoxLink>
 					<Box pr="8" mt="5">
 						<Heading
 							as="h6"
@@ -60,30 +60,30 @@ export const Footer = () => {
 					<ul>
 						<li>
 							<Text as="p" size="2" mt="3">
-								<NextLink href="/" passHref legacyBehavior>
-									<Link color="gray">Themes</Link>
-								</NextLink>
+								<Link color="gray" asChild>
+									<NextLink href="/">Themes</NextLink>
+								</Link>
 							</Text>
 						</li>
 						<li>
 							<Text as="p" size="2" mt="3">
-								<NextLink href="/primitives" passHref legacyBehavior>
-									<Link color="gray">Primitives</Link>
-								</NextLink>
+								<Link color="gray" asChild>
+									<NextLink href="/primitives">Primitives</NextLink>
+								</Link>
 							</Text>
 						</li>
 						<li>
 							<Text as="p" size="2" mt="3">
-								<NextLink href="/colors" passHref legacyBehavior>
-									<Link color="gray">Colors</Link>
-								</NextLink>
+								<Link color="gray" asChild>
+									<NextLink href="/colors">Colors</NextLink>
+								</Link>
 							</Text>
 						</li>
 						<li>
 							<Text as="p" size="2" mt="3">
-								<NextLink href="/icons" passHref legacyBehavior>
-									<Link color="gray">Icons</Link>
-								</NextLink>
+								<Link color="gray" asChild>
+									<NextLink href="/icons">Icons</NextLink>
+								</Link>
 							</Text>
 						</li>
 					</ul>
@@ -96,46 +96,38 @@ export const Footer = () => {
 						<ul>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/primitives/docs/overview/introduction"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Introduction</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/primitives/docs/overview/introduction">
+											Introduction
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/primitives/docs/guides/styling"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Styling</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/primitives/docs/guides/styling">
+											Styling
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/primitives/docs/overview/accessibility"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Accessibility</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/primitives/docs/overview/accessibility">
+											Accessibility
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/primitives/docs/overview/releases"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Releases</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/primitives/docs/overview/releases">
+											Releases
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 						</ul>
@@ -149,46 +141,38 @@ export const Footer = () => {
 						<ul>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/colors/docs/overview/installation"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Installation</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/colors/docs/overview/installation">
+											Installation
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/colors/docs/palette-composition/scales"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Scales</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/colors/docs/palette-composition/scales">
+											Scales
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/colors/docs/palette-composition/composing-a-palette"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Palette composition</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/colors/docs/palette-composition/composing-a-palette">
+											Palette composition
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
-									<NextLink
-										href="/colors/docs/palette-composition/understanding-the-scale"
-										passHref
-										legacyBehavior
-									>
-										<Link color="gray">Understanding the scale</Link>
-									</NextLink>
+									<Link color="gray" asChild>
+										<NextLink href="/colors/docs/palette-composition/understanding-the-scale">
+											Understanding the scale
+										</NextLink>
+									</Link>
 								</Text>
 							</li>
 						</ul>

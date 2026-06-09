@@ -106,9 +106,9 @@ export const components = {
 			);
 		}
 		return (
-			<NextLink href={href} passHref legacyBehavior>
-				<Link {...props}>{children}</Link>
-			</NextLink>
+			<Link {...props} asChild>
+				<NextLink href={href}>{children}</NextLink>
+			</Link>
 		);
 	},
 	hr: (props: any) => (

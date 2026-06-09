@@ -89,13 +89,13 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 							pl="4"
 						>
 							{mobileMenu.open ? (
-								<NextLink href="/" passHref legacyBehavior>
-									<BoxLink>
+								<BoxLink asChild>
+									<NextLink href="/">
 										<AccessibleIcon label="Radix Homepage">
 											<RadixLogoIcon />
 										</AccessibleIcon>
-									</BoxLink>
-								</NextLink>
+									</NextLink>
+								</BoxLink>
 							) : (
 								<RadixByWorkOSLogoLink />
 							)}
@@ -227,27 +227,26 @@ const HeaderProductLink = ({
 	href = "",
 	...props
 }: React.ComponentPropsWithoutRef<"a"> & { active?: boolean }) => (
-	<NextLink href={href} passHref legacyBehavior>
-		<a
-			data-state={active ? "active" : "inactive"}
-			className={styles.HeaderProductLink}
-			{...props}
-		>
-			<span className={styles.HeaderProductLinkInner}>{children}</span>
-			<span className={styles.HeaderProductLinkInnerHidden}>{children}</span>
-		</a>
+	<NextLink
+		href={href}
+		data-state={active ? "active" : "inactive"}
+		className={styles.HeaderProductLink}
+		{...props}
+	>
+		<span className={styles.HeaderProductLinkInner}>{children}</span>
+		<span className={styles.HeaderProductLinkInnerHidden}>{children}</span>
 	</NextLink>
 );
 
 const RadixByWorkOSLogoLink = () => (
 	<Flex align="center" gap="3">
-		<NextLink href="/" passHref legacyBehavior>
-			<BoxLink>
+		<BoxLink asChild>
+			<NextLink href="/">
 				<AccessibleIcon label="Radix Homepage">
 					<RadixLogo />
 				</AccessibleIcon>
-			</BoxLink>
-		</NextLink>
+			</NextLink>
+		</BoxLink>
 
 		<div
 			style={{

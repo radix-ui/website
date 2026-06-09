@@ -28,13 +28,11 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
 			<div data-algolia-lvl0 style={{ display: "none" }}>
 				Components
 			</div>
-
 			<TitleAndMetaTags
 				title={`${frontmatter.metaTitle} – Radix Themes`}
 				description={frontmatter.metaDescription}
 				image="themes.png"
 			/>
-
 			<Heading
 				as="h1"
 				size="8"
@@ -43,7 +41,6 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
 			>
 				{frontmatter.metaTitle}
 			</Heading>
-
 			<Box mt="2" mb="7">
 				<Text size="4" color="gray" as="p">
 					{frontmatter.metaDescription}
@@ -87,21 +84,17 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
 					</Flex>
 
 					{hasPlaygroundExample(frontmatter.slug) && (
-						<NextLink
-							passHref
-							legacyBehavior
-							href={`/themes/playground#${frontmatter.slug}`}
-						>
-							<Link size="3">View in Playground</Link>
-						</NextLink>
+						<Link size="3" asChild>
+							<NextLink href={`/themes/playground#${frontmatter.slug}`}>
+								View in Playground
+							</NextLink>
+						</Link>
 					)}
 				</Flex>
 			</Box>
-
 			<MDXProvider frontmatter={frontmatter}>
 				<Component components={ThemesMDXComponents as any} />
 			</MDXProvider>
-
 			<QuickNav key={frontmatter.slug} />
 		</>
 	);

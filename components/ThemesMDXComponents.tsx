@@ -41,11 +41,9 @@ export const ThemesMDXComponents = {
 		);
 
 		return href ? (
-			<NextLink href={href} passHref legacyBehavior>
-				<Card size="2" asChild>
-					<a>{cardContent}</a>
-				</Card>
-			</NextLink>
+			<Card size="2" asChild>
+				<NextLink href={href}>{cardContent}</NextLink>
+			</Card>
 		) : (
 			<Card size="2">{cardContent}</Card>
 		);

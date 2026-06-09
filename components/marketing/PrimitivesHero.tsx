@@ -323,7 +323,6 @@ export const PrimitivesHero = () => {
 					</Button>
 				</Box>
 			</Container>
-
 			<Box position="relative">
 				<Carousel>
 					<Box asChild ml={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
@@ -588,25 +587,19 @@ export const PrimitivesHero = () => {
 													<Text size="2" color="gray">
 														See more components in the docs
 													</Text>
-													<NextLink
-														href="/primitives/docs/overview/getting-started"
-														passHref
-														legacyBehavior
+													<Flex
+														asChild
+														display="inline-flex"
+														align="center"
+														gap="1"
 													>
-														<Link
-															size="3"
-															highContrast
-															color="gray"
-															style={{
-																display: "inline-flex",
-																alignItems: "center",
-																gap: "var(--space-1)",
-															}}
-														>
-															View docs
-															<ArrowRightIcon />
+														<Link asChild size="3" highContrast color="gray">
+															<NextLink href="/primitives/docs/overview/getting-started">
+																View docs
+																<ArrowRightIcon />
+															</NextLink>
 														</Link>
-													</NextLink>
+													</Flex>
 												</Flex>
 											</DemoContainer>
 										</FocusArea>

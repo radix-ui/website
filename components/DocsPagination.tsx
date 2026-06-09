@@ -46,11 +46,11 @@ function DocsPaginationLink({
 			<Text size="2" color="gray">
 				{direction}
 			</Text>
-			<NextLink href={`/${route.slug}`} passHref legacyBehavior>
-				<Link>
+			<Link asChild>
+				<NextLink href={`/${route.slug}`}>
 					<Text size="4">{route.title}</Text>
-				</Link>
-			</NextLink>
+				</NextLink>
+			</Link>
 		</Flex>
 	);
 }

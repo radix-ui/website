@@ -59,10 +59,8 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 				description={frontmatter.metaDescription}
 				image="primitives.png"
 			/>
-
 			<PrimitivesHeader />
 			<PrimitivesMobileMenu />
-
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Section size={{ initial: "2", md: "4" }}>
 					<Grid
@@ -141,15 +139,11 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 										Next case study
 									</Text>
 
-									<NextLink
-										href={`/${frontmatter.nextCaseStudySlug}`}
-										passHref
-										legacyBehavior
-									>
-										<Link highContrast color="gray">
+									<Link highContrast color="gray" asChild>
+										<NextLink href={`/${frontmatter.nextCaseStudySlug}`}>
 											{frontmatter.nextCaseStudyTitle}
-										</Link>
-									</NextLink>
+										</NextLink>
+									</Link>
 								</Box>
 							</Box>
 						</Box>
