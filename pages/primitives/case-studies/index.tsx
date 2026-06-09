@@ -1,5 +1,4 @@
 import { Footer } from "@components/Footer";
-import { MobileMenuProvider } from "@components/MobileMenu";
 import { PrimitivesHeader } from "@components/PrimitivesHeader";
 import { PrimitivesMobileMenu } from "@components/PrimitivesMobileMenu";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
@@ -22,13 +21,13 @@ import NextLink from "next/link";
 
 export default function CaseStudy() {
 	return (
-		<MobileMenuProvider>
+		<>
 			<TitleAndMetaTags
 				title="Case studies – Radix Primitives"
 				description="An open-source React component library for building high-quality, accessible design systems and web apps."
 				image="primitives.png"
 			/>
-			<PrimitivesMobileMenu />
+			<PrimitivesMobileMenu legacyPagesRouter />
 			<PrimitivesHeader />
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Section size={{ initial: "2", md: "4" }}>
@@ -218,6 +217,6 @@ export default function CaseStudy() {
 
 				<Footer />
 			</Container>
-		</MobileMenuProvider>
+		</>
 	);
 }

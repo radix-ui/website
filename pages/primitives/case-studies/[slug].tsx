@@ -1,7 +1,6 @@
 import { BoxLink } from "@components/BoxLink";
 import { Footer } from "@components/Footer";
 import { MDXProvider, components } from "@components/MDXComponents";
-import { MobileMenuProvider } from "@components/MobileMenu";
 import { PrimitivesHeader } from "@components/PrimitivesHeader";
 import { PrimitivesMobileMenu } from "@components/PrimitivesMobileMenu";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
@@ -53,14 +52,14 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
 	return (
-		<MobileMenuProvider>
+		<>
 			<TitleAndMetaTags
 				title={`${frontmatter.metaTitle} – Case studies – Radix Primitives`}
 				description={frontmatter.metaDescription}
 				image="primitives.png"
 			/>
 			<PrimitivesHeader />
-			<PrimitivesMobileMenu />
+			<PrimitivesMobileMenu legacyPagesRouter />
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Section size={{ initial: "2", md: "4" }}>
 					<Grid
@@ -152,7 +151,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 
 				<Footer />
 			</Container>
-		</MobileMenuProvider>
+		</>
 	);
 }
 

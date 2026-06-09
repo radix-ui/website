@@ -1,17 +1,16 @@
 import { Link } from "@radix-ui/themes";
+import { useRouterContext } from "@utils/use-router-context";
 import { Header, HeaderProps } from "./Header";
-import { useRouter } from "next/router";
 import NextLink from "next/link";
 
 export const ColorsHeader = (props: HeaderProps) => {
-	const router = useRouter();
-
+	const { pathname } = useRouterContext();
 	return (
 		<Header gitHubLink="https://github.com/radix-ui/colors" {...props}>
 			<Link
 				size="2"
 				color="gray"
-				highContrast={router.pathname.includes("/colors/docs")}
+				highContrast={pathname?.includes("/colors/docs")}
 				asChild
 			>
 				<NextLink href="/colors/docs/overview/installation">
@@ -21,7 +20,7 @@ export const ColorsHeader = (props: HeaderProps) => {
 			<Link
 				size="2"
 				color="gray"
-				highContrast={router.pathname.includes("/colors/custom")}
+				highContrast={pathname?.includes("/colors/custom")}
 				asChild
 			>
 				<NextLink href="/colors/custom">Custom palette</NextLink>

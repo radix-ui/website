@@ -13,11 +13,11 @@ import { BoxLink } from "./BoxLink";
 import { ThemeToggle } from "./ThemeToggle";
 import { GitHubLogoIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
-import { useMobileMenuContext } from "./MobileMenu";
+import { useMobileMenuContext } from "./mobile-menu-context";
 import { classNames } from "@utils/classNames";
 import { RadixLogo, RadixLogoIcon } from "./RadixLogo";
 import { RemoveScroll } from "react-remove-scroll";
+import { useRouterContext } from "@utils/use-router-context";
 
 export interface HeaderProps {
 	children?: React.ReactNode;
@@ -29,7 +29,7 @@ type ScrollState = "at-top" | "scrolling-up" | "scrolling-down";
 
 export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 	const mobileMenu = useMobileMenuContext();
-	const router = useRouter();
+	const { pathname } = useRouterContext();
 
 	const [scrollState, setScrollState] = React.useState<ScrollState>("at-top");
 
@@ -116,28 +116,25 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 						<div className={styles.HeaderProductLinksContainer}>
 							<HeaderProductLink
 								href="/"
-								active={
-									router.pathname === "/" ||
-									router.pathname.startsWith("/themes")
-								}
+								active={pathname === "/" || pathname?.startsWith("/themes")}
 							>
 								Themes
 							</HeaderProductLink>
 							<HeaderProductLink
 								href="/primitives"
-								active={router.pathname.startsWith("/primitives")}
+								active={pathname?.startsWith("/primitives")}
 							>
 								Primitives
 							</HeaderProductLink>
 							<HeaderProductLink
 								href="/icons"
-								active={router.pathname.startsWith("/icons")}
+								active={pathname?.startsWith("/icons")}
 							>
 								Icons
 							</HeaderProductLink>
 							<HeaderProductLink
 								href="/colors"
-								active={router.pathname.startsWith("/colors")}
+								active={pathname?.startsWith("/colors")}
 							>
 								Colors
 							</HeaderProductLink>
@@ -159,7 +156,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 								size="2"
 								color="gray"
 								href="/blog"
-								highContrast={router.pathname.includes("/blog")}
+								highContrast={pathname?.includes("/blog")}
 							>
 								Blog
 							</Link>

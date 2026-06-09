@@ -1,9 +1,9 @@
-import { Box, Flex, ScrollArea } from "@radix-ui/themes";
+"use client";
+import { Box, Flex } from "@radix-ui/themes";
 import { DocsPagination } from "@components/DocsPagination";
 import { PrimitivesHeader } from "@components/PrimitivesHeader";
 import { allPrimitivesRoutes, primitivesRoutes } from "@utils/primitivesRoutes";
 import { DocsNav } from "./DocsNav";
-import { MobileMenuProvider } from "./MobileMenu";
 import { SideNav } from "./SideNav";
 import { PrimitivesSearchDesktop } from "./PrimitivesSearchDesktop";
 import { DocsPageWrapper } from "./DocsPageWrapper";
@@ -12,14 +12,15 @@ import { PrimitivesMobileMenu } from "./PrimitivesMobileMenu";
 
 export function PrimitivesDocsPage({
 	children,
+	legacyPagesRouter,
 }: {
+	legacyPagesRouter?: boolean;
 	children: React.ReactNode;
 }) {
 	return (
-		<MobileMenuProvider>
+		<>
 			<PrimitivesHeader />
-			<PrimitivesMobileMenu />
-
+			<PrimitivesMobileMenu legacyPagesRouter={legacyPagesRouter} />
 			<Flex>
 				<SideNav>
 					<Box pt="4" px="3" pb="9">
@@ -37,6 +38,6 @@ export function PrimitivesDocsPage({
 					<EditPageLink />
 				</DocsPageWrapper>
 			</Flex>
-		</MobileMenuProvider>
+		</>
 	);
 }

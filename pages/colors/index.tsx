@@ -15,7 +15,6 @@ import {
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { Footer } from "@components/Footer";
 import { ColorsHeader } from "@components/ColorsHeader";
-import { MobileMenuProvider } from "@components/MobileMenu";
 import { ColorsMarketingButton } from "@components/ColorsMarketingButton";
 import { SerifHeading } from "@components/SerifHeading";
 import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
@@ -35,9 +34,8 @@ import { ColorStepLabel } from "@components/ColorStepLabel";
 
 export default function ColorsHome() {
 	return (
-		<MobileMenuProvider>
-			<ColorsMobileMenu />
-
+		<>
+			<ColorsMobileMenu legacyPagesRouter />
 			<Head>
 				<style>
 					{`
@@ -319,6 +317,6 @@ export default function ColorsHome() {
 					<Footer />
 				</Section>
 			</Container>
-		</MobileMenuProvider>
+		</>
 	);
 }

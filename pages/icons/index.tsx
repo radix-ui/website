@@ -1,5 +1,5 @@
 import { IconsHeader } from "@components/IconsHeader";
-import { MobileMenu, MobileMenuProvider } from "@components/MobileMenu";
+import { MobileMenu } from "@components/mobile-menu";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { IconsHero } from "@components/icons/IconsHero";
 import { IconsPanel } from "@components/icons/IconsPanel";
@@ -11,8 +11,8 @@ import { ColorsHeader } from "@components/ColorsHeader";
 
 export default function Home() {
 	return (
-		<MobileMenuProvider>
-			<MobileMenu>
+		<>
+			<MobileMenu legacyPagesRouter>
 				<ColorsHeader />
 				<ScrollArea>
 					<Box pt="4" px="3" pb="9">
@@ -50,6 +50,6 @@ export default function Home() {
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }} pb="9">
 				<IconsPanel />
 			</Container>
-		</MobileMenuProvider>
+		</>
 	);
 }

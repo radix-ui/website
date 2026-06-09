@@ -1,5 +1,10 @@
 import { GTAG_URL, renderGtagSnippet } from "@utils/analytics";
 import localFont from "next/font/local";
+import { ThemeProvider } from "@components/ThemeProvider";
+import { CssLibPreferenceProvider } from "@components/CssLibPreference";
+import { Analytics } from "./analytics";
+import { RouterProvider } from "./router-provider";
+import { MobileMenuProvider } from "@components/mobile-menu";
 import "@radix-ui/themes/styles.css";
 import "../pages/styles.css";
 import "../pages/syntax-highlighting.css";
@@ -9,7 +14,7 @@ const adobeTextPro = localFont({
 	display: "swap",
 	src: [
 		{
-			path: "./fonts/AdobeTextPro-Regular.woff2",
+			path: "./_fonts/AdobeTextPro-Regular.woff2",
 			weight: "400",
 		},
 	],
@@ -20,7 +25,7 @@ const soehneMono = localFont({
 	display: "swap",
 	src: [
 		{
-			path: "./fonts/soehne-mono-web-buch.woff2",
+			path: "./_fonts/soehne-mono-web-buch.woff2",
 			weight: "normal",
 			style: "normal",
 		},
@@ -32,11 +37,11 @@ const untitledSans = localFont({
 	display: "swap",
 	src: [
 		{
-			path: "./fonts/untitled-sans-regular-v2.woff2",
+			path: "./_fonts/untitled-sans-regular-v2.woff2",
 			weight: "400",
 		},
 		{
-			path: "./fonts/untitled-sans-medium-v2.woff2",
+			path: "./_fonts/untitled-sans-medium-v2.woff2",
 			weight: "500",
 		},
 	],
@@ -61,7 +66,16 @@ export default function RootLayout({
 					</>
 				)}
 			</head>
-			<body>{children}</body>
+			<body>
+				<CssLibPreferenceProvider>
+					<ThemeProvider>
+						<RouterProvider>
+							<MobileMenuProvider>{children}</MobileMenuProvider>
+						</RouterProvider>
+					</ThemeProvider>
+				</CssLibPreferenceProvider>
+				<Analytics />
+			</body>
 		</html>
 	);
 }

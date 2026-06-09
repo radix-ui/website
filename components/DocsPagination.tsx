@@ -1,7 +1,7 @@
 import * as React from "react";
 import NextLink from "next/link";
 import { Box, Flex, Link, Text } from "@radix-ui/themes";
-import { useCurrentPageSlug } from "@utils/useCurrentPageSlug";
+import { useCurrentPageSlug } from "@utils/use-current-page-slug";
 
 export function DocsPagination({ allRoutes }: { allRoutes: Route[] }) {
 	const currentPageSlug = useCurrentPageSlug();

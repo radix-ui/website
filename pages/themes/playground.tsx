@@ -101,7 +101,7 @@ import {
 } from "@radix-ui/react-icons";
 import { getPeopleForColor } from "@utils/people";
 import styles from "./playground.module.css";
-import { MobileMenuProvider, MobileMenu } from "@components/MobileMenu";
+import { MobileMenu } from "@components/mobile-menu";
 import { ThemesHeader } from "@components/ThemesHeader";
 import { ThemesPanelBackgroundImage } from "@components/ThemesPanelBackgroundImage";
 import { useTheme } from "next-themes";
@@ -142,11 +142,10 @@ export default function ComponentsPage() {
 	]);
 
 	return (
-		<MobileMenuProvider>
+		<>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-
 			<TitleAndMetaTags
 				title="Playground – Radix Themes"
 				description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."
@@ -156,12 +155,12 @@ export default function ComponentsPage() {
 			<div className={styles.PlaygroundRoot}>
 				{/* Set default values for settings we don't want affecting the header */}
 				<Theme radius="medium" scaling="100%">
-					<MobileMenu>
+					<MobileMenu legacyPagesRouter>
 						<ThemesHeader />
 					</MobileMenu>
 
 					<ThemesHeader />
-					<ThemesMobileMenu />
+					<ThemesMobileMenu legacyPagesRouter />
 				</Theme>
 
 				<Box display={{ initial: "none", lg: "block" }}>
@@ -5711,7 +5710,7 @@ export default function ComponentsPage() {
 					</Flex>
 				</Section>
 			</div>
-		</MobileMenuProvider>
+		</>
 	);
 }
 

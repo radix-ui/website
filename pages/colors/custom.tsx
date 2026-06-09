@@ -2,7 +2,6 @@ import Color from "colorjs.io";
 import NextLink from "next/link";
 import { ColorsHeader } from "@components/ColorsHeader";
 import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
-import { MobileMenuProvider } from "@components/MobileMenu";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import {
 	BoxIcon,
@@ -192,7 +191,7 @@ export default function Page() {
 	});
 
 	return (
-		<MobileMenuProvider>
+		<>
 			<style
 				dangerouslySetInnerHTML={{
 					__html: getNewPreviewStyles({
@@ -220,7 +219,7 @@ export default function Page() {
 				/>
 
 				<ColorsHeader ghost />
-				<ColorsMobileMenu />
+				<ColorsMobileMenu legacyPagesRouter />
 
 				<TitleAndMetaTags
 					title="Create a custom palette – Radix Colors"
@@ -537,7 +536,7 @@ export default function Page() {
 					</Container>
 				</Section>
 			</Theme>
-		</MobileMenuProvider>
+		</>
 	);
 }
 

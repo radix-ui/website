@@ -1,13 +1,15 @@
 import * as React from "react";
-import { useRouter } from "next/router";
 import { Box, Link, Separator } from "@radix-ui/themes";
+import { useRouterContext } from "@utils/use-router-context";
 
 const DATA_FOLDER_PATH = "https://github.com/radix-ui/website/edit/main/data";
 
 export function EditPageLink() {
-	const router = useRouter();
-	const routerSlug = router.query.slug;
-	let filePath = `${DATA_FOLDER_PATH}/${router.pathname.replace("/", "")}`;
+	const { params, legacyPathname } = useRouterContext<{
+		slug: string | string[] | undefined;
+	}>();
+	const routerSlug = params?.slug;
+	let filePath = `${DATA_FOLDER_PATH}/${legacyPathname ? legacyPathname.replace("/", "") : ""}`;
 	if (Array.isArray(routerSlug)) {
 		filePath = filePath.replace("[...slug]", routerSlug.join("/"));
 	} else {

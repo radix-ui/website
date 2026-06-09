@@ -1,6 +1,5 @@
 import { ColorsHeader } from "@components/ColorsHeader";
 import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
-import { MobileMenuProvider } from "@components/MobileMenu";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { transposeProgressionStart } from "@components/generateRadixColors";
 import { Section, Container, Heading, Box, Flex, Text } from "@radix-ui/themes";
@@ -9,10 +8,9 @@ import * as React from "react";
 
 export default function Page() {
 	return (
-		<MobileMenuProvider>
+		<>
 			<ColorsHeader ghost />
-			<ColorsMobileMenu />
-
+			<ColorsMobileMenu legacyPagesRouter />
 			<TitleAndMetaTags
 				title="Create your Radix palette – Radix Colors"
 				description="An open-source color system for designing beautiful, accessible websites and apps."
@@ -102,7 +100,7 @@ export default function Page() {
 					</Flex>
 				</Container>
 			</Section>
-		</MobileMenuProvider>
+		</>
 	);
 }
 

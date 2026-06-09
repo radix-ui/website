@@ -10,14 +10,14 @@ import {
 	AccessibleIcon,
 } from "@radix-ui/themes";
 import { RadixLogo } from "./RadixLogo";
-import { useRouter } from "next/router";
+import { useRouterContext } from "@utils/use-router-context";
 import { BoxLink } from "./BoxLink";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import styles from "./Footer.module.css";
 
 export const Footer = () => {
-	const router = useRouter();
-	const isColors = router.pathname.includes("/colors");
+	const { pathname } = useRouterContext();
+	const isColors = pathname?.includes("/colors") || false;
 
 	return (
 		<Grid asChild pb="9" gapX="7" gapY="3" className={styles.Footer}>

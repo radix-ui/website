@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Container, Section } from "@radix-ui/themes";
 import { Footer } from "@components/Footer";
-import { MobileMenuProvider } from "@components/MobileMenu";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { AccessibilitySection } from "@components/marketing/AccessibilitySection";
 import { AdoptionSection } from "@components/marketing/AdoptionSection";
@@ -19,9 +18,8 @@ import { PrimitivesMobileMenu } from "@components/PrimitivesMobileMenu";
 
 export default function PrimitivesHome() {
 	return (
-		<MobileMenuProvider>
-			<PrimitivesMobileMenu />
-
+		<>
+			<PrimitivesMobileMenu legacyPagesRouter />
 			<TitleAndMetaTags
 				title="Radix Primitives"
 				description="Unstyled, accessible, open source React primitives for high-quality web apps and design systems."
@@ -59,6 +57,6 @@ export default function PrimitivesHome() {
 					<Footer />
 				</Section>
 			</Container>
-		</MobileMenuProvider>
+		</>
 	);
 }

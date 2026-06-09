@@ -15,7 +15,6 @@ import { ExampleThemesDashboard } from "@components/ExampleThemesDashboard";
 import * as MagicCurtain from "@components/MagicCurtain";
 import { ExampleThemesEcommerce } from "@components/ExampleThemesEcommerce";
 import { ExampleThemesMusicApp } from "@components/ExampleThemesMusicApp";
-import { MobileMenuProvider } from "@components/MobileMenu";
 import { useTheme } from "next-themes";
 import { SerifHeading } from "@components/SerifHeading";
 import { ThemesHeroLayout } from "@components/ThemesHeroLayout";
@@ -29,14 +28,14 @@ export default function ThemesHome() {
 	const inverted = resolvedTheme === "dark" ? "light" : "dark";
 
 	return (
-		<MobileMenuProvider>
+		<>
 			<TitleAndMetaTags
 				title="Radix UI"
 				description="Components, icons, and colors for building high‑quality, accessible UI. Free and open-source."
 				image="themes.png"
 			/>
 
-			<ThemesMobileMenu />
+			<ThemesMobileMenu legacyPagesRouter />
 
 			<MagicCurtain.Root>
 				<MagicCurtain.Item defaultVisibility="visible">
@@ -227,7 +226,7 @@ export default function ThemesHome() {
 					/>
 				</Theme>
 			</MagicCurtain.Root>
-		</MobileMenuProvider>
+		</>
 	);
 }
 

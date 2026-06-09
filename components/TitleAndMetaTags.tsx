@@ -19,13 +19,12 @@ export function TitleAndMetaTags({
 	pathname,
 }: TitleAndMetaTagsProps) {
 	const router = useRouter();
-
 	const imageUrl = image
 		? image.startsWith("http")
 			? image
 			: `${url}/social/${image}`
 		: null;
-	const path = pathname || router.pathname;
+	const path = pathname || router.asPath.split("?")[0] || "";
 
 	return (
 		<Head>

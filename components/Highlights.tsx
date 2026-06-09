@@ -14,12 +14,12 @@ import {
 	CheckIcon,
 	FileTextIcon,
 } from "@radix-ui/react-icons";
-import { useRouter } from "next/router";
+import { useRouterContext } from "@utils/use-router-context";
 import { VisuallyHidden } from "radix-ui";
 import { FrontmatterContext } from "./MDXComponents";
 
 export function Highlights({ features }: { features: React.ReactNode[] }) {
-	const router = useRouter();
+	const { pathname } = useRouterContext();
 	const frontmatter = React.useContext(FrontmatterContext);
 
 	const publishedName = frontmatter.publishedName || frontmatter.name;
@@ -174,7 +174,7 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 								position="relative"
 								gap="1"
 							>
-								<Link size="2" href={`${router.asPath}.md`}>
+								<Link size="2" href={`${pathname}.md`}>
 									View as Markdown
 								</Link>
 							</Flex>
