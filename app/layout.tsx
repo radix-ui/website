@@ -1,4 +1,5 @@
 import { GTAG_URL, renderGtagSnippet } from "@utils/analytics";
+import * as React from "react";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@components/ThemeProvider";
 import { CssLibPreferenceProvider } from "@components/CssLibPreference";
@@ -75,7 +76,9 @@ export default function RootLayout({
 						</RouterProvider>
 					</ThemeProvider>
 				</CssLibPreferenceProvider>
-				<Analytics />
+				<React.Suspense fallback={null}>
+					<Analytics />
+				</React.Suspense>
 			</body>
 		</html>
 	);
