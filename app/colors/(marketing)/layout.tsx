@@ -1,3 +1,4 @@
+import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
 import { Favicon } from "@components/Favicon";
 import { Theme } from "@radix-ui/themes";
 
@@ -13,6 +14,7 @@ export default function ColorsLayout({
 			className="radix-themes-custom-fonts"
 		>
 			<Favicon />
+			<ColorsMobileMenu />
 			{children}
 		</Theme>
 	);

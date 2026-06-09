@@ -1,3 +1,4 @@
+"use client";
 import { colorsRoutes } from "@utils/colorsRoutes";
 import { Box, ScrollArea } from "@radix-ui/themes";
 import { ColorsHeader } from "./ColorsHeader";

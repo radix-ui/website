@@ -1,8 +1,14 @@
-import Color from "colorjs.io";
-import NextLink from "next/link";
-import { ColorsHeader } from "@components/ColorsHeader";
-import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
-import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
+"use client";
+import * as React from "react";
+import { ColorField } from "@components/ColorField";
+import { useColorThemeContext } from "./color-theme-context";
+import {
+	type GeneratedColors,
+	getBackgroundColorCss,
+	getColorName,
+	getColorScaleCss,
+	getNewPreviewStyles,
+} from "./utils";
 import {
 	BoxIcon,
 	GridIcon,
@@ -26,7 +32,6 @@ import {
 	GitHubLogoIcon,
 	CopyIcon,
 	FigmaLogoIcon,
-	ArrowLeftIcon,
 	SunIcon,
 	MoonIcon,
 } from "@radix-ui/react-icons";
@@ -39,7 +44,6 @@ import {
 	Callout,
 	Card,
 	Checkbox,
-	Container,
 	DropdownMenu,
 	Flex,
 	Grid,
@@ -49,7 +53,6 @@ import {
 	Inset,
 	Link,
 	Reset,
-	Section,
 	SegmentedControl,
 	Separator,
 	Strong,
@@ -57,117 +60,131 @@ import {
 	Tabs,
 	Text,
 	TextField,
-	Theme,
+	Theme as RadixTheme,
 	Tooltip,
 } from "@radix-ui/themes";
-import * as React from "react";
-import styles from "./custom.module.css";
-import { getPeopleForColor } from "@utils/people";
-import { ThemesPanelBackgroundImage } from "@components/ThemesPanelBackgroundImage";
-import { AvatarIconFallback } from "@components/AvatarIconFallback";
-import { ColorField } from "@components/ColorField";
-import { generateRadixColors } from "@components/generateRadixColors";
-import { useLocalStorage } from "../../utils/use-local-storage";
-import { useLayoutEffect } from "../../utils/use-layout-effect";
-import { useIsHydrated } from "../../utils/use-is-hydrated";
+import { copy } from "@utils/clipboard";
 import { useTheme } from "next-themes";
-import { ToggleGroup } from "radix-ui";
-import { copy } from "../../utils/clipboard";
 import { CustomSwatch } from "@components/CustomSwatch";
-import { ColorUsageRange } from "@components/ColorUsageRange";
-import { ColorStepLabel } from "@components/ColorStepLabel";
+import { AvatarIconFallback } from "@components/AvatarIconFallback";
+import { ThemesPanelBackgroundImage } from "@components/ThemesPanelBackgroundImage";
+import { getPeopleForColor } from "@utils/people";
+import { ToggleGroup } from "radix-ui";
+import styles from "./page.module.css";
+import { useIsHydrated } from "@utils/use-is-hydrated";
+import { Appearance } from "./palette-cookie";
 
-export default function Page() {
+export function ColorStyles() {
+	const { lightModeResult, darkModeResult } = useColorThemeContext();
+	return (
+		<style
+			dangerouslySetInnerHTML={{
+				__html: getNewPreviewStyles({
+					lightColors: lightModeResult,
+					darkColors: darkModeResult,
+				}),
+			}}
+		/>
+	);
+}
+
+export function RootTheme({
+	children,
+	className,
+}: {
+	children: React.ReactNode;
+	className?: string;
+}) {
+	const { accent } = useColorThemeContext();
+	return (
+		<RadixTheme
+			accentColor={accent === "custom" ? undefined : accent}
+			grayColor="gray"
+			className={className}
+		>
+			{children}
+		</RadixTheme>
+	);
+}
+
+export function AccentColorField({ id }: { id: string }) {
+	const { accentValue, setAccentValue } = useColorThemeContext();
+	return (
+		<ColorField id={id} value={accentValue} onValueChange={setAccentValue} />
+	);
+}
+
+export function GrayColorField({ id }: { id: string }) {
+	const { grayValue, setGrayValue } = useColorThemeContext();
+	return <ColorField id={id} value={grayValue} onValueChange={setGrayValue} />;
+}
+
+export function BackgroundColorField({ id }: { id: string }) {
+	const { bgValue, setBgValue } = useColorThemeContext();
+	return <ColorField id={id} value={bgValue} onValueChange={setBgValue} />;
+}
+
+export function ThemeSwitcher({
+	initialAppearance,
+	...props
+}: Omit<
+	React.ComponentPropsWithoutRef<typeof SegmentedControl.Root>,
+	"value" | "onValueChange" | "children"
+> & {
+	initialAppearance?: Appearance;
+}) {
 	const { resolvedTheme, setTheme } = useTheme();
+	const isHydrated = useIsHydrated();
+	if (!isHydrated) {
+		return (
+			<SegmentedControl.Root
+				disabled={!initialAppearance}
+				value={initialAppearance}
+				onValueChange={() => void 0}
+				{...props}
+			>
+				<SegmentedControl.Item value="light">
+					<Flex as="span" align="center" gap="2" ml="-1">
+						<SunIcon />
+						Light
+					</Flex>
+				</SegmentedControl.Item>
+				<SegmentedControl.Item value="dark">
+					<Flex as="span" align="center" gap="2" ml="-1">
+						<MoonIcon />
+						Dark
+					</Flex>
+				</SegmentedControl.Item>
+			</SegmentedControl.Root>
+		);
+	}
 
-	const [lightAccentValue, setLightAccentValue] = useLocalStorage(
-		"colors/light/accent",
-		"#3D63DD",
+	return (
+		<SegmentedControl.Root
+			value={resolvedTheme === "dark" ? "dark" : "light"}
+			onValueChange={setTheme}
+			{...props}
+		>
+			<SegmentedControl.Item value="light">
+				<Flex as="span" align="center" gap="2" ml="-1">
+					<SunIcon />
+					Light
+				</Flex>
+			</SegmentedControl.Item>
+			<SegmentedControl.Item value="dark">
+				<Flex as="span" align="center" gap="2" ml="-1">
+					<MoonIcon />
+					Dark
+				</Flex>
+			</SegmentedControl.Item>
+		</SegmentedControl.Root>
 	);
-	const [lightGrayValue, setLightGrayValue] = useLocalStorage(
-		"colors/light/gray",
-		"#8B8D98",
-	);
-	const [lightBgValue, setLightBgValue] = useLocalStorage(
-		"colors/light/background",
-		"#FFFFFF",
-	);
+}
 
-	const [darkAccentValue, setDarkAccentValue] = useLocalStorage(
-		"colors/dark/accent",
-		"#3D63DD",
-	);
-	const [darkGrayValue, setDarkGrayValue] = useLocalStorage(
-		"colors/dark/gray",
-		"#8B8D98",
-	);
-	const [darkBgValue, setDarkBgValue] = useLocalStorage(
-		"colors/dark/background",
-		"#111111",
-	);
-
-	// Discard local storage values that are older than 2 hours
-	const [timestamp, setTimestamp] = useLocalStorage(
-		"colors/timestamp",
-		Date.now(),
-	);
-	const [discardStoredValues] = React.useState(
-		Date.now() - timestamp > 1000 * 60 * 2,
-	);
-	useLayoutEffect(() => {
-		if (discardStoredValues) {
-			setLightAccentValue("#3D63DD");
-			setLightGrayValue("#8B8D98");
-			setLightBgValue("#FFFFFF");
-			setDarkAccentValue("#3D63DD");
-			setDarkGrayValue("#8B8D98");
-			setDarkBgValue("#111111");
-		}
-		// Refresh the timestamp
-		setTimestamp(Date.now());
-	}, [
-		setLightAccentValue,
-		setLightGrayValue,
-		setLightBgValue,
-		setDarkAccentValue,
-		setDarkGrayValue,
-		setDarkBgValue,
-		setTimestamp,
-		discardStoredValues,
-	]);
-
-	const accentValue =
-		resolvedTheme === "dark" ? darkAccentValue : lightAccentValue;
-	const grayValue = resolvedTheme === "dark" ? darkGrayValue : lightGrayValue;
-	const bgValue = resolvedTheme === "dark" ? darkBgValue : lightBgValue;
-
-	const setAccentValue =
-		resolvedTheme === "dark" ? setDarkAccentValue : setLightAccentValue;
-	const setGrayValue =
-		resolvedTheme === "dark" ? setDarkGrayValue : setLightGrayValue;
-	const setBgValue =
-		resolvedTheme === "dark" ? setDarkBgValue : setLightBgValue;
-
-	const lightModeResult = generateRadixColors({
-		appearance: "light",
-		accent: lightAccentValue,
-		gray: lightGrayValue,
-		background: lightBgValue,
-	});
-
-	const darkModeResult = generateRadixColors({
-		appearance: "dark",
-		accent: darkAccentValue,
-		gray: darkGrayValue,
-		background: darkBgValue,
-	});
-
-	const result = resolvedTheme === "dark" ? darkModeResult : lightModeResult;
-
+export function CopyButton() {
 	const [copied, setCopied] = React.useState("");
 	const copiedTimeoutRef = React.useRef<number | null>(null);
 	const COPIED_TIMEOUT = 1500;
-
 	const setCopiedMessage = React.useCallback(
 		(message: string) => {
 			setCopied(message);
@@ -179,371 +196,147 @@ export default function Page() {
 		[setCopied],
 	);
 
-	const isHydrated = useIsHydrated();
-	if (!isHydrated) {
-		return null;
-	}
-
-	const accent = getColorName(result.accentScale[8]);
-	getNewPreviewStyles({
-		lightColors: lightModeResult,
-		darkColors: darkModeResult,
-	});
-
+	const { resolvedTheme } = useTheme();
+	const { result, accentValue } = useColorThemeContext();
 	return (
-		<>
-			<style
-				dangerouslySetInnerHTML={{
-					__html: getNewPreviewStyles({
-						lightColors: lightModeResult,
-						darkColors: darkModeResult,
-					}),
-				}}
-			/>
-
-			<Theme
-				accentColor={
-					accent as React.ComponentPropsWithoutRef<typeof Theme>["accentColor"]
-				}
-			>
-				<Box
-					style={{
-						position: "absolute",
-						left: 0,
-						right: 0,
-						height: 480,
-						opacity: 0.6,
-						background:
-							"linear-gradient(to bottom, var(--accent-4), transparent)",
-					}}
-				/>
-
-				<ColorsHeader ghost />
-				<ColorsMobileMenu legacyPagesRouter />
-
-				<TitleAndMetaTags
-					title="Create a custom palette – Radix Colors"
-					description="An open-source color system for designing beautiful, accessible websites and apps."
-					image="colors.png"
-				/>
-
-				<Section
-					px={{ initial: "5", xs: "6", sm: "7", md: "9" }}
-					size={{ initial: "2", md: "3" }}
-				>
-					<Container position="relative">
-						<Flex direction="column" align="center" mb="7">
-							<Flex asChild align="center" gap="1" mb="3">
-								<Link asChild size="2" color="gray" ml="-2">
-									<NextLink href="/colors">
-										<ArrowLeftIcon />
-										Radix Colors
-									</NextLink>
-								</Link>
-							</Flex>
-							<Heading as="h1" align="center" size="8">
-								Create a custom palette
-							</Heading>
-
-							<SegmentedControl.Root
-								value={resolvedTheme === "dark" ? "dark" : "light"}
-								onValueChange={setTheme}
-								style={{ backgroundColor: "transparent" }}
-								mt="5"
-							>
-								<SegmentedControl.Item value="light">
-									<Flex as="span" align="center" gap="2" ml="-1">
-										<SunIcon />
-										Light
-									</Flex>
-								</SegmentedControl.Item>
-								<SegmentedControl.Item value="dark">
-									<Flex as="span" align="center" gap="2" ml="-1">
-										<MoonIcon />
-										Dark
-									</Flex>
-								</SegmentedControl.Item>
-							</SegmentedControl.Root>
+		<DropdownMenu.Root>
+			<DropdownMenu.Trigger>
+				<Button highContrast={!!copied}>
+					<Flex
+						as="span"
+						align="center"
+						gap="2"
+						style={{ visibility: copied ? "hidden" : undefined }}
+					>
+						Copy
+						<DropdownMenu.TriggerIcon />
+					</Flex>
+					{copied && <Box position="absolute">Copied</Box>}
+				</Button>
+			</DropdownMenu.Trigger>
+			<DropdownMenu.Content>
+				<DropdownMenu.Sub>
+					<DropdownMenu.SubTrigger>
+						<Flex align="center" gap="2">
+							<Box asChild ml="-1">
+								<CopyIcon />
+							</Box>
+							Copy CSS code
 						</Flex>
+					</DropdownMenu.SubTrigger>
 
-						<Box mb="9">
-							<Grid
-								columns={{ initial: "1fr", sm: "180px 180px 180px auto" }}
-								maxWidth={{ initial: "400px", sm: "none" }}
-								mx="auto"
-								gap="4"
-								justify="center"
-								align="end"
-							>
-								<Flex direction="column">
-									<Flex mb="1">
-										<Text as="label" htmlFor="accent" size="1" color="gray">
-											Accent
-										</Text>
-									</Flex>
-									<ColorField
-										id="accent"
-										value={accentValue}
-										onValueChange={setAccentValue}
-									/>
-								</Flex>
+					<DropdownMenu.SubContent>
+						<DropdownMenu.Item
+							onSelect={async () => {
+								const css = getColorScaleCss({
+									isDarkMode: resolvedTheme === "dark",
+									name: getColorName(accentValue),
+									contrast: result.accentContrast,
+									scale: result.accentScale,
+									scaleWideGamut: result.accentScaleWideGamut,
+									scaleAlpha: result.accentScaleAlpha,
+									scaleAlphaWideGamut: result.accentScaleAlphaWideGamut,
+									surface: result.accentSurface,
+									surfaceWideGamut: result.accentSurfaceWideGamut,
+								});
 
-								<Flex direction="column">
-									<Flex justify="between" mb="1">
-										<Text as="label" htmlFor="gray" size="1" color="gray">
-											Gray
-										</Text>
-									</Flex>
-									<ColorField
-										id="gray"
-										value={grayValue}
-										onValueChange={setGrayValue}
-									/>
-								</Flex>
-
-								<Flex direction="column">
-									<Flex mb="1">
-										<Text as="label" htmlFor="bg" size="1" color="gray">
-											Background
-										</Text>
-									</Flex>
-									<ColorField
-										id="bg"
-										value={bgValue}
-										onValueChange={setBgValue}
-									/>
-								</Flex>
-
-								<Flex
-									gap="3"
-									align={{ sm: "center" }}
-									direction={{ initial: "column", sm: "row" }}
-									mt={{ initial: "2", sm: "0" }}
-								>
-									<DropdownMenu.Root>
-										<DropdownMenu.Trigger>
-											<Button highContrast={!!copied}>
-												<Flex
-													as="span"
-													align="center"
-													gap="2"
-													style={{ visibility: copied ? "hidden" : undefined }}
-												>
-													Copy
-													<DropdownMenu.TriggerIcon />
-												</Flex>
-												{copied && <Box position="absolute">Copied</Box>}
-											</Button>
-										</DropdownMenu.Trigger>
-										<DropdownMenu.Content>
-											<DropdownMenu.Sub>
-												<DropdownMenu.SubTrigger>
-													<Flex align="center" gap="2">
-														<Box asChild ml="-1">
-															<CopyIcon />
-														</Box>
-														Copy CSS code
-													</Flex>
-												</DropdownMenu.SubTrigger>
-
-												<DropdownMenu.SubContent>
-													<DropdownMenu.Item
-														onSelect={async () => {
-															const css = getColorScaleCss({
-																isDarkMode: resolvedTheme === "dark",
-																name: getColorName(accentValue),
-																contrast: result.accentContrast,
-																scale: result.accentScale,
-																scaleWideGamut: result.accentScaleWideGamut,
-																scaleAlpha: result.accentScaleAlpha,
-																scaleAlphaWideGamut:
-																	result.accentScaleAlphaWideGamut,
-																surface: result.accentSurface,
-																surfaceWideGamut: result.accentSurfaceWideGamut,
-															});
-
-															await copy(css);
-															setCopiedMessage("accents");
-														}}
-													>
-														Copy accent scale
-													</DropdownMenu.Item>
-
-													<DropdownMenu.Item
-														onSelect={() => {
-															const css = getColorScaleCss({
-																isDarkMode: resolvedTheme === "dark",
-																name: "gray",
-																contrast: "#FFFFFF",
-																scale: result.grayScale,
-																scaleWideGamut: result.grayScaleWideGamut,
-																scaleAlpha: result.grayScaleAlpha,
-																scaleAlphaWideGamut:
-																	result.grayScaleAlphaWideGamut,
-																surface: result.graySurface,
-																surfaceWideGamut: result.graySurfaceWideGamut,
-															});
-
-															copy(css);
-															setCopiedMessage("grays");
-														}}
-													>
-														Copy gray scale
-													</DropdownMenu.Item>
-
-													<DropdownMenu.Item
-														onSelect={() => {
-															const css = getBackgroundColorCss({
-																isDarkMode: resolvedTheme === "dark",
-																background: result.background,
-															});
-
-															copy(css);
-															setCopiedMessage("background");
-														}}
-													>
-														Copy background color
-													</DropdownMenu.Item>
-												</DropdownMenu.SubContent>
-											</DropdownMenu.Sub>
-											<DropdownMenu.Item
-												onSelect={() => {
-													const svg = getSvg(result);
-													copy(svg);
-													setCopiedMessage("SVG");
-												}}
-											>
-												<Flex align="center" gap="2">
-													<Box asChild ml="-1">
-														<FigmaLogoIcon />
-													</Box>
-													Copy SVG object
-												</Flex>
-											</DropdownMenu.Item>
-										</DropdownMenu.Content>
-									</DropdownMenu.Root>
-								</Flex>
-							</Grid>
-						</Box>
-
-						<Grid
-							mb="9"
-							flow={{ initial: "column", sm: "row" }}
-							columns={{ initial: "2", sm: "12" }}
-							rows={{ initial: "12", sm: "auto" }}
-							gap={{ initial: "2px", md: "1" }}
-							mx={{ initial: "-5", xs: "-6", sm: "0" }}
-							px={{ initial: "2px", sm: "0" }}
+								await copy(css);
+								setCopiedMessage("accents");
+							}}
 						>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="1 / 3"
-							>
-								Backgrounds
-							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="3 / 6"
-							>
-								Interactive components
-							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="6 / 9"
-							>
-								Borders and separators
-							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="9 / 11"
-							>
-								Solid colors
-							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="11 / 13"
-							>
-								Accessible text
-							</ColorUsageRange>
+							Copy accent scale
+						</DropdownMenu.Item>
+						<DropdownMenu.Item
+							onSelect={() => {
+								const css = getColorScaleCss({
+									isDarkMode: resolvedTheme === "dark",
+									name: "gray",
+									contrast: "#FFFFFF",
+									scale: result.grayScale,
+									scaleWideGamut: result.grayScaleWideGamut,
+									scaleAlpha: result.grayScaleAlpha,
+									scaleAlphaWideGamut: result.grayScaleAlphaWideGamut,
+									surface: result.graySurface,
+									surfaceWideGamut: result.graySurfaceWideGamut,
+								});
 
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								1
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								2
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								3
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								4
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								5
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								6
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								7
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								8
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								9
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								10
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								11
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								12
-							</ColorStepLabel>
+								copy(css);
+								setCopiedMessage("grays");
+							}}
+						>
+							Copy gray scale
+						</DropdownMenu.Item>
 
-							{Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
-								<CustomSwatch
-									key={step}
-									scale={accent === "custom" ? "accent" : accent}
-									step={step.toString()}
-									cssVariable={`var(--${accent}-${step})`}
-									hex={result.accentScale[i].toUpperCase()}
-									hexA={result.accentScaleAlpha[i].toUpperCase()}
-									p3={result.accentScaleWideGamut[i]}
-									p3A={result.accentScaleAlphaWideGamut[i]}
-								/>
-							))}
+						<DropdownMenu.Item
+							onSelect={() => {
+								const css = getBackgroundColorCss({
+									isDarkMode: resolvedTheme === "dark",
+									background: result.background,
+								});
 
-							{Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
-								<CustomSwatch
-									key={step}
-									scale="gray"
-									step={step.toString()}
-									cssVariable={`var(--gray-${step})`}
-									hex={result.grayScale[i].toUpperCase()}
-									hexA={result.grayScaleAlpha[i].toUpperCase()}
-									p3={result.grayScaleWideGamut[i]}
-									p3A={result.grayScaleAlphaWideGamut[i]}
-								/>
-							))}
-						</Grid>
-
-						<Theme className="radix-themes-default-fonts">
-							<Preview />
-						</Theme>
-					</Container>
-				</Section>
-			</Theme>
-		</>
+								copy(css);
+								setCopiedMessage("background");
+							}}
+						>
+							Copy background color
+						</DropdownMenu.Item>
+					</DropdownMenu.SubContent>
+				</DropdownMenu.Sub>
+				<DropdownMenu.Item
+					onSelect={() => {
+						const svg = getSvg(result);
+						copy(svg);
+						setCopiedMessage("SVG");
+					}}
+				>
+					<Flex align="center" gap="2">
+						<Box asChild ml="-1">
+							<FigmaLogoIcon />
+						</Box>
+						Copy SVG object
+					</Flex>
+				</DropdownMenu.Item>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	);
 }
 
-export const Preview = ({
+export function Swatch({
+	scale,
+	step,
+	type,
+}: {
+	scale: number;
+	step: number;
+	type: "accent" | "gray";
+}) {
+	const { result, accent } = useColorThemeContext();
+	const scaleResult = type === "gray" ? result.grayScale : result.accentScale;
+	const scaleAlphaResult =
+		type === "gray" ? result.grayScaleAlpha : result.accentScaleAlpha;
+	const scaleWideGamutResult =
+		type === "gray" ? result.grayScaleWideGamut : result.accentScaleWideGamut;
+	const scaleAlphaWideGamutResult =
+		type === "gray"
+			? result.grayScaleAlphaWideGamut
+			: result.accentScaleAlphaWideGamut;
+	return (
+		<CustomSwatch
+			scale={type === "gray" ? "gray" : accent === "custom" ? "accent" : accent}
+			step={step.toString()}
+			cssVariable={`var(--${type === "gray" ? "gray" : accent}-${step})`}
+			hex={scaleResult[scale].toUpperCase()}
+			hexA={scaleAlphaResult[scale].toUpperCase()}
+			p3={scaleWideGamutResult[scale]}
+			p3A={scaleAlphaWideGamutResult[scale]}
+		/>
+	);
+}
+
+export function Preview({
 	children,
 	...props
-}: React.ComponentPropsWithoutRef<typeof Grid>) => {
+}: React.ComponentPropsWithoutRef<typeof Grid>) {
 	const [state, setState] = React.useState({
 		todo: [
 			{ id: "a", completed: false },
@@ -564,7 +357,16 @@ export const Preview = ({
 			<Flex gap="5" direction="column" width="100%" maxWidth="400px" mx="auto">
 				<Flex gap="2">
 					<Box flexGrow="1" flexShrink="0">
-						<TextField.Root placeholder="Search" type="text" name="_">
+						<TextField.Root
+							placeholder="Search"
+							type="text"
+							name="_"
+							autoComplete="off"
+							data-1p-ignore
+							data-lpignore
+							data-protonpass
+							data-bwignore
+						>
 							<TextField.Slot>
 								<MagnifyingGlassIcon />
 							</TextField.Slot>
@@ -995,6 +797,11 @@ export const Preview = ({
 										<TextField.Root
 											id="example-name"
 											placeholder="Enter your name"
+											autoComplete="off"
+											data-1p-ignore
+											data-lpignore
+											data-protonpass
+											data-bwignore
 										/>
 									</Flex>
 
@@ -1013,6 +820,11 @@ export const Preview = ({
 										<TextField.Root
 											id="example-email"
 											placeholder="Enter your email address"
+											autoComplete="off"
+											data-1p-ignore
+											data-lpignore
+											data-protonpass
+											data-bwignore
 										/>
 									</Flex>
 
@@ -1031,6 +843,11 @@ export const Preview = ({
 										<TextField.Root
 											id="example-password"
 											placeholder="Enter your password"
+											autoComplete="off"
+											data-1p-ignore
+											data-lpignore
+											data-protonpass
+											data-bwignore
 										/>
 									</Flex>
 
@@ -1062,530 +879,10 @@ export const Preview = ({
 			</Flex>
 		</Grid>
 	);
-};
-
-interface ToDoItem {
-	id: string;
-	completed: boolean;
 }
 
-interface ToDoList {
-	items: ToDoItem[];
-	onItemsChange: (items: ToDoItem[]) => void;
-}
-
-const ToDoList = ({ items, onItemsChange }: ToDoList) => {
-	return (
-		<Flex gap="2" direction="column">
-			{items.map((item) => (
-				<Text as="label" size="2" key={item.id}>
-					<Flex gap="2">
-						<Checkbox
-							checked={item.completed}
-							onCheckedChange={(checked) => {
-								const newItems = items.slice();
-								const newItem = newItems.find(
-									(candidate) => candidate.id === item.id,
-								)!;
-								newItem.completed = !!checked;
-								onItemsChange(newItems);
-							}}
-						/>
-						<Text
-							color={item.completed ? "gray" : undefined}
-							style={
-								{
-									textDecoration: item.completed ? "line-through" : undefined,
-									"--accent-12": "var(--accent-11)",
-								} as React.CSSProperties
-							}
-						>
-							{itemsContent[item.id]}
-						</Text>
-					</Flex>
-				</Text>
-			))}
-		</Flex>
-	);
-};
-
-const itemsContent: Record<string, React.ReactElement> = {
-	a: (
-		<span>
-			Respond to comment{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
-				#384
-			</Link>{" "}
-			from Travis
-		</span>
-	),
-	b: (
-		<span>
-			Invite{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
-				Acme Co.
-			</Link>{" "}
-			team to Slack
-		</span>
-	),
-	c: (
-		<span>
-			Create a report{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
-				requested
-			</Link>{" "}
-			by Danilo
-		</span>
-	),
-	d: <span>Close Q2 finances</span>,
-	e: (
-		<span>
-			Review invoice{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
-				#3456
-			</Link>
-		</span>
-	),
-};
-
-const LinksExample = ({ highContrast = false }) => (
-	<Blockquote>
-		Susan Kare is an American{" "}
-		<HoverCard.Root>
-			<HoverCard.Trigger>
-				<Link
-					underline="hover"
-					highContrast={highContrast}
-					target="_blank"
-					href="https://en.wikipedia.org/wiki/Graphic_design"
-				>
-					graphic designer
-				</Link>
-			</HoverCard.Trigger>
-			<HoverCard.Content>
-				<Flex>
-					<Inset side="left" pr="current">
-						<img
-							src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&h=480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-							alt="Graphic design"
-							style={{
-								display: "block",
-								objectFit: "cover",
-								height: 160,
-								width: 160,
-								backgroundColor: "var(--gray-5)",
-								filter: "contrast(1.05) brightness(1.05)",
-							}}
-						/>
-					</Inset>
-					<Text as="p" size="2" style={{ maxWidth: 250 }}>
-						<Strong>Graphic design</Strong> is a profession and applied art
-						whose activity consists in projecting visual communications intended
-						to transmit specific messages to people.
-					</Text>
-				</Flex>
-			</HoverCard.Content>
-		</HoverCard.Root>{" "}
-		and artist, who contributed{" "}
-		<HoverCard.Root>
-			<HoverCard.Trigger>
-				<Link
-					underline="hover"
-					highContrast={highContrast}
-					target="_blank"
-					href="https://en.wikipedia.org/wiki/User_interface"
-				>
-					interface
-				</Link>
-			</HoverCard.Trigger>
-			<HoverCard.Content>
-				<Flex>
-					<Inset side="left" pr="current">
-						<img
-							src="https://images.unsplash.com/photo-1602576666092-bf6447a729fc?q=80&h=480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-							alt="A graphical user interface"
-							style={{
-								display: "block",
-								objectFit: "cover",
-								objectPosition: "right",
-								height: 160,
-								width: 160,
-								backgroundColor: "var(--gray-5)",
-								filter: "contrast(1.05) brightness(1.05)",
-							}}
-						/>
-					</Inset>
-					<Text as="p" size="2" style={{ maxWidth: 250 }}>
-						In the industrial design field of human–computer interaction, a{" "}
-						<Strong>user interface</Strong> is the space where interactions
-						between humans and machines occur.
-					</Text>
-				</Flex>
-			</HoverCard.Content>
-		</HoverCard.Root>{" "}
-		elements and{" "}
-		<HoverCard.Root>
-			<HoverCard.Trigger>
-				<Link
-					underline="hover"
-					highContrast={highContrast}
-					target="_blank"
-					href="https://en.wikipedia.org/wiki/Typeface"
-				>
-					typefaces
-				</Link>
-			</HoverCard.Trigger>
-			<HoverCard.Content>
-				<Flex>
-					<Inset side="left" pr="current">
-						<img
-							src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&h=540&q=80"
-							alt="A graphical user interface"
-							style={{
-								display: "block",
-								objectFit: "cover",
-								height: 160,
-								width: 160,
-								backgroundColor: "var(--gray-5)",
-							}}
-						/>
-					</Inset>
-					<Text as="p" size="2" style={{ maxWidth: 250 }}>
-						A <Strong>typeface</Strong> or <Strong>font family</Strong> is a
-						design of letters, numbers and other symbols, to be used in printing
-						or for electronic display. There are thousands of different
-						typefaces in existence, with new ones being developed constantly.
-					</Text>
-				</Flex>
-			</HoverCard.Content>
-		</HoverCard.Root>{" "}
-		for the first{" "}
-		<HoverCard.Root>
-			<HoverCard.Trigger>
-				<Link
-					underline="hover"
-					highContrast={highContrast}
-					target="_blank"
-					href="https://en.wikipedia.org/wiki/Typeface"
-				>
-					Apple Macintosh
-				</Link>
-			</HoverCard.Trigger>
-			<HoverCard.Content>
-				<Flex>
-					<Inset side="left" pr="current">
-						<img
-							src="https://images.unsplash.com/photo-1553469945-2adfe230284d?q=80&h=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-							alt="A graphical user interface"
-							style={{
-								display: "block",
-								objectFit: "cover",
-								objectPosition: "80%",
-								height: 160,
-								width: 160,
-								backgroundColor: "var(--gray-5)",
-								filter: "grayscale(100%)",
-							}}
-						/>
-					</Inset>
-					<Text as="p" size="2" style={{ maxWidth: 250 }}>
-						The <Strong>Apple Macintosh</Strong>—later rebranded as the{" "}
-						<Strong>Macintosh 128K</Strong>—was the first successful mass-market
-						all-in-one desktop personal computer with a graphical user
-						interface, built-in screen, and mouse.
-					</Text>
-				</Flex>
-			</HoverCard.Content>
-		</HoverCard.Root>{" "}
-		personal computer from 1983 to 1986.
-	</Blockquote>
-);
-
-const LayersRoot = ({
-	type = "single",
-	...props
-}: Extract<
-	React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>,
-	{ type: "single" }
->) => (
-	<ToggleGroup.Root
-		type={type}
-		defaultValue="1"
-		className={styles.LayersRoot}
-		{...props}
-	/>
-);
-
-const LayersItem = (
-	props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Item>,
-) => (
-	<Reset>
-		<ToggleGroup.Item
-			className={styles.LayersItem}
-			onMouseDown={(event) => event.button === 0 && event.currentTarget.click()}
-			onClick={(event) => {
-				if (event.currentTarget.getAttribute("data-state") === "on") {
-					event.preventDefault();
-				}
-			}}
-			{...props}
-		/>
-	</Reset>
-);
-
-type GeneratedColors = ReturnType<typeof generateRadixColors>;
-
-interface GetColorScaleCssParams {
-	isDarkMode: boolean;
-	name: string;
-	scale: GeneratedColors["accentScale"];
-	scaleWideGamut: GeneratedColors["accentScaleWideGamut"];
-	scaleAlpha: GeneratedColors["accentScaleAlpha"];
-	scaleAlphaWideGamut: GeneratedColors["accentScaleAlphaWideGamut"];
-	contrast: GeneratedColors["accentContrast"];
-	surface: GeneratedColors["accentSurface"];
-	surfaceWideGamut: GeneratedColors["accentSurfaceWideGamut"];
-}
-
-const getColorScaleCss = ({
-	isDarkMode,
-	name,
-	scale,
-	scaleWideGamut,
-	scaleAlpha,
-	scaleAlphaWideGamut,
-	contrast,
-	surface,
-	surfaceWideGamut,
-}: GetColorScaleCssParams) => {
-	const selector = isDarkMode
-		? ".dark, .dark-theme"
-		: ":root, .light, .light-theme";
-
-	return `
-${selector} {
-  ${scale.map((value, index) => `--${name}-${index + 1}: ${value};`).join("\n  ")}
-
-  ${scaleAlpha.map((value, index) => `--${name}-a${index + 1}: ${value};`).join("\n  ")}
-
-  --${name}-contrast: ${contrast};
-  --${name}-surface: ${surface};
-  --${name}-indicator: ${scale[8]};
-  --${name}-track: ${scale[8]};
-}
-
-@supports (color: color(display-p3 1 1 1)) {
-  @media (color-gamut: p3) {
-    ${selector} {
-      ${scaleWideGamut.map((value, index) => `--${name}-${index + 1}: ${value};`).join("\n      ")}
-
-      ${scaleAlphaWideGamut
-				.map((value, index) => `--${name}-a${index + 1}: ${value};`)
-				.join("\n      ")}
-
-      --${name}-contrast: ${contrast};
-      --${name}-surface: ${surfaceWideGamut};
-      --${name}-indicator: ${scaleWideGamut[8]};
-      --${name}-track: ${scaleWideGamut[8]};
-    }
-  }
-}
-  `.trim();
-};
-
-const getBackgroundColorCss = ({
-	isDarkMode,
-	background,
-}: {
-	isDarkMode: boolean;
-	background: string;
-}) => {
-	if (isDarkMode) {
-		return `
-.dark, .dark-theme, :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --color-background: ${background};
-}
-    `.trim();
-	}
-
-	return `
-:root, .light, .light-theme, .radix-themes {
-  --color-background: ${background};
-}
-  `.trim();
-};
-
-interface GetNewPreviewStylesParams {
-	selector?: string;
-	lightColors: GeneratedColors;
-	darkColors: GeneratedColors;
-}
-
-const getNewPreviewStyles = ({
-	lightColors,
-	darkColors,
-}: GetNewPreviewStylesParams) => {
-	const lightAccentColorsCss = getColorScaleCss({
-		isDarkMode: false,
-		name: getColorName(lightColors.accentScale[8]),
-		contrast: lightColors.accentContrast,
-		scale: lightColors.accentScale,
-		scaleWideGamut: lightColors.accentScaleWideGamut,
-		scaleAlpha: lightColors.accentScaleAlpha,
-		scaleAlphaWideGamut: lightColors.accentScaleAlphaWideGamut,
-		surface: lightColors.accentSurface,
-		surfaceWideGamut: lightColors.accentSurfaceWideGamut,
-	});
-
-	const lightGrayColorsCss = getColorScaleCss({
-		isDarkMode: false,
-		name: "gray",
-		contrast: "#fff",
-		scale: lightColors.grayScale,
-		scaleWideGamut: lightColors.grayScaleWideGamut,
-		scaleAlpha: lightColors.grayScaleAlpha,
-		scaleAlphaWideGamut: lightColors.grayScaleAlphaWideGamut,
-		surface: lightColors.graySurface,
-		surfaceWideGamut: lightColors.graySurfaceWideGamut,
-	});
-
-	const darkAccentColorsCss = getColorScaleCss({
-		isDarkMode: true,
-		name: getColorName(darkColors.accentScale[8]),
-		contrast: darkColors.accentContrast,
-		scale: darkColors.accentScale,
-		scaleWideGamut: darkColors.accentScaleWideGamut,
-		scaleAlpha: darkColors.accentScaleAlpha,
-		scaleAlphaWideGamut: darkColors.accentScaleAlphaWideGamut,
-		surface: darkColors.accentSurface,
-		surfaceWideGamut: darkColors.accentSurfaceWideGamut,
-	});
-
-	const darkGrayColorsCss = getColorScaleCss({
-		isDarkMode: true,
-		name: "gray",
-		contrast: "#fff",
-		scale: darkColors.grayScale,
-		scaleWideGamut: darkColors.grayScaleWideGamut,
-		scaleAlpha: darkColors.grayScaleAlpha,
-		scaleAlphaWideGamut: darkColors.grayScaleAlphaWideGamut,
-		surface: darkColors.graySurface,
-		surfaceWideGamut: darkColors.graySurfaceWideGamut,
-	});
-
-	const lightBackgroundCss = getBackgroundColorCss({
-		isDarkMode: false,
-		background: lightColors.background,
-	});
-
-	const darkBackgroundCss = getBackgroundColorCss({
-		isDarkMode: true,
-		background: darkColors.background,
-	});
-
-	return `
-[data-accent-color='custom'] {
-  --accent-1: var(--custom-1);
-  --accent-2: var(--custom-2);
-  --accent-3: var(--custom-3);
-  --accent-4: var(--custom-4);
-  --accent-5: var(--custom-5);
-  --accent-6: var(--custom-6);
-  --accent-7: var(--custom-7);
-  --accent-8: var(--custom-8);
-  --accent-9: var(--custom-9);
-  --accent-10: var(--custom-10);
-  --accent-11: var(--custom-11);
-  --accent-12: var(--custom-12);
-
-  --accent-a1: var(--custom-a1);
-  --accent-a2: var(--custom-a2);
-  --accent-a3: var(--custom-a3);
-  --accent-a4: var(--custom-a4);
-  --accent-a5: var(--custom-a5);
-  --accent-a6: var(--custom-a6);
-  --accent-a7: var(--custom-a7);
-  --accent-a8: var(--custom-a8);
-  --accent-a9: var(--custom-a9);
-  --accent-a10: var(--custom-a10);
-  --accent-a11: var(--custom-a11);
-  --accent-a12: var(--custom-a12);
-
-  --accent-contrast: var(--custom-contrast);
-  --accent-surface: var(--custom-surface);
-  --accent-indicator: var(--custom-indicator);
-  --accent-track: var(--custom-track);
-}
-
-${lightBackgroundCss}
-${lightAccentColorsCss}
-${lightGrayColorsCss}
-${darkBackgroundCss}
-${darkAccentColorsCss}
-${darkGrayColorsCss}
-  `.trim();
-};
-
-const getColorName = (value: string) => {
-	// @ts-ignore
-	const color = new Color(value).to("hsl");
-
-	if (color.coords[1] < 25) {
-		return "custom";
-	}
-	if (color.coords[0] >= 0 && color.coords[0] < 20) {
-		return "red";
-	}
-	if (color.coords[0] >= 20 && color.coords[0] < 40) {
-		return "orange";
-	}
-	if (color.coords[0] >= 40 && color.coords[0] < 65) {
-		return "yellow";
-	}
-	if (color.coords[0] >= 65 && color.coords[0] < 100) {
-		return "lime";
-	}
-	if (color.coords[0] >= 100 && color.coords[0] < 165) {
-		return "green";
-	}
-	if (color.coords[0] >= 165 && color.coords[0] < 190) {
-		return "teal";
-	}
-	if (color.coords[0] >= 190 && color.coords[0] < 240) {
-		return "blue";
-	}
-	if (color.coords[0] >= 240 && color.coords[0] < 270) {
-		return "violet";
-	}
-	if (color.coords[0] >= 270 && color.coords[0] < 320) {
-		return "purple";
-	}
-	if (color.coords[0] >= 320 && color.coords[0] < 340) {
-		return "pink";
-	}
-
-	return "red";
-};
-
-const getSvg = (colors: GeneratedColors) => {
+function getSvg(colors: GeneratedColors) {
 	const background = colors.background;
-
 	const accent1 = colors.accentScale[0];
 	const accent2 = colors.accentScale[1];
 	const accent3 = colors.accentScale[2];
@@ -1864,4 +1161,298 @@ const getSvg = (colors: GeneratedColors) => {
   </defs>
 </svg>
 `.trim();
+}
+
+function LinksExample({ highContrast = false }) {
+	return (
+		<Blockquote>
+			Susan Kare is an American{" "}
+			<HoverCard.Root>
+				<HoverCard.Trigger>
+					<Link
+						underline="hover"
+						highContrast={highContrast}
+						target="_blank"
+						href="https://en.wikipedia.org/wiki/Graphic_design"
+					>
+						graphic designer
+					</Link>
+				</HoverCard.Trigger>
+				<HoverCard.Content>
+					<Flex>
+						<Inset side="left" pr="current">
+							<img
+								src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&h=480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+								alt="Graphic design"
+								style={{
+									display: "block",
+									objectFit: "cover",
+									height: 160,
+									width: 160,
+									backgroundColor: "var(--gray-5)",
+									filter: "contrast(1.05) brightness(1.05)",
+								}}
+							/>
+						</Inset>
+						<Text as="p" size="2" style={{ maxWidth: 250 }}>
+							<Strong>Graphic design</Strong> is a profession and applied art
+							whose activity consists in projecting visual communications
+							intended to transmit specific messages to people.
+						</Text>
+					</Flex>
+				</HoverCard.Content>
+			</HoverCard.Root>{" "}
+			and artist, who contributed{" "}
+			<HoverCard.Root>
+				<HoverCard.Trigger>
+					<Link
+						underline="hover"
+						highContrast={highContrast}
+						target="_blank"
+						href="https://en.wikipedia.org/wiki/User_interface"
+					>
+						interface
+					</Link>
+				</HoverCard.Trigger>
+				<HoverCard.Content>
+					<Flex>
+						<Inset side="left" pr="current">
+							<img
+								src="https://images.unsplash.com/photo-1602576666092-bf6447a729fc?q=80&h=480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+								alt="A graphical user interface"
+								style={{
+									display: "block",
+									objectFit: "cover",
+									objectPosition: "right",
+									height: 160,
+									width: 160,
+									backgroundColor: "var(--gray-5)",
+									filter: "contrast(1.05) brightness(1.05)",
+								}}
+							/>
+						</Inset>
+						<Text as="p" size="2" style={{ maxWidth: 250 }}>
+							In the industrial design field of human–computer interaction, a{" "}
+							<Strong>user interface</Strong> is the space where interactions
+							between humans and machines occur.
+						</Text>
+					</Flex>
+				</HoverCard.Content>
+			</HoverCard.Root>{" "}
+			elements and{" "}
+			<HoverCard.Root>
+				<HoverCard.Trigger>
+					<Link
+						underline="hover"
+						highContrast={highContrast}
+						target="_blank"
+						href="https://en.wikipedia.org/wiki/Typeface"
+					>
+						typefaces
+					</Link>
+				</HoverCard.Trigger>
+				<HoverCard.Content>
+					<Flex>
+						<Inset side="left" pr="current">
+							<img
+								src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&h=540&q=80"
+								alt="A graphical user interface"
+								style={{
+									display: "block",
+									objectFit: "cover",
+									height: 160,
+									width: 160,
+									backgroundColor: "var(--gray-5)",
+								}}
+							/>
+						</Inset>
+						<Text as="p" size="2" style={{ maxWidth: 250 }}>
+							A <Strong>typeface</Strong> or <Strong>font family</Strong> is a
+							design of letters, numbers and other symbols, to be used in
+							printing or for electronic display. There are thousands of
+							different typefaces in existence, with new ones being developed
+							constantly.
+						</Text>
+					</Flex>
+				</HoverCard.Content>
+			</HoverCard.Root>{" "}
+			for the first{" "}
+			<HoverCard.Root>
+				<HoverCard.Trigger>
+					<Link
+						underline="hover"
+						highContrast={highContrast}
+						target="_blank"
+						href="https://en.wikipedia.org/wiki/Typeface"
+					>
+						Apple Macintosh
+					</Link>
+				</HoverCard.Trigger>
+				<HoverCard.Content>
+					<Flex>
+						<Inset side="left" pr="current">
+							<img
+								src="https://images.unsplash.com/photo-1553469945-2adfe230284d?q=80&h=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+								alt="A graphical user interface"
+								style={{
+									display: "block",
+									objectFit: "cover",
+									objectPosition: "80%",
+									height: 160,
+									width: 160,
+									backgroundColor: "var(--gray-5)",
+									filter: "grayscale(100%)",
+								}}
+							/>
+						</Inset>
+						<Text as="p" size="2" style={{ maxWidth: 250 }}>
+							The <Strong>Apple Macintosh</Strong>—later rebranded as the{" "}
+							<Strong>Macintosh 128K</Strong>—was the first successful
+							mass-market all-in-one desktop personal computer with a graphical
+							user interface, built-in screen, and mouse.
+						</Text>
+					</Flex>
+				</HoverCard.Content>
+			</HoverCard.Root>{" "}
+			personal computer from 1983 to 1986.
+		</Blockquote>
+	);
+}
+
+function LayersRoot({
+	type = "single",
+	...props
+}: Extract<
+	React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>,
+	{ type: "single" }
+>) {
+	return (
+		<ToggleGroup.Root
+			type={type}
+			defaultValue="1"
+			className={styles.LayersRoot}
+			{...props}
+		/>
+	);
+}
+
+function LayersItem(
+	props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Item>,
+) {
+	return (
+		<Reset>
+			<ToggleGroup.Item
+				className={styles.LayersItem}
+				onMouseDown={(event) =>
+					event.button === 0 && event.currentTarget.click()
+				}
+				onClick={(event) => {
+					if (event.currentTarget.getAttribute("data-state") === "on") {
+						event.preventDefault();
+					}
+				}}
+				{...props}
+			/>
+		</Reset>
+	);
+}
+
+interface ToDoItem {
+	id: string;
+	completed: boolean;
+}
+
+interface ToDoList {
+	items: ToDoItem[];
+	onItemsChange: (items: ToDoItem[]) => void;
+}
+
+const itemsContent: Record<string, React.ReactElement> = {
+	a: (
+		<span>
+			Respond to comment{" "}
+			<Link
+				href="#"
+				underline="hover"
+				onClick={(event) => event.preventDefault()}
+			>
+				#384
+			</Link>{" "}
+			from Travis
+		</span>
+	),
+	b: (
+		<span>
+			Invite{" "}
+			<Link
+				href="#"
+				underline="hover"
+				onClick={(event) => event.preventDefault()}
+			>
+				Acme Co.
+			</Link>{" "}
+			team to Slack
+		</span>
+	),
+	c: (
+		<span>
+			Create a report{" "}
+			<Link
+				href="#"
+				underline="hover"
+				onClick={(event) => event.preventDefault()}
+			>
+				requested
+			</Link>{" "}
+			by Danilo
+		</span>
+	),
+	d: <span>Close Q2 finances</span>,
+	e: (
+		<span>
+			Review invoice{" "}
+			<Link
+				href="#"
+				underline="hover"
+				onClick={(event) => event.preventDefault()}
+			>
+				#3456
+			</Link>
+		</span>
+	),
 };
+
+function ToDoList({ items, onItemsChange }: ToDoList) {
+	return (
+		<Flex gap="2" direction="column">
+			{items.map((item) => (
+				<Text as="label" size="2" key={item.id}>
+					<Flex gap="2">
+						<Checkbox
+							checked={item.completed}
+							onCheckedChange={(checked) => {
+								const newItems = items.slice();
+								const newItem = newItems.find(
+									(candidate) => candidate.id === item.id,
+								)!;
+								newItem.completed = !!checked;
+								onItemsChange(newItems);
+							}}
+						/>
+						<Text
+							color={item.completed ? "gray" : undefined}
+							style={
+								{
+									textDecoration: item.completed ? "line-through" : undefined,
+									"--accent-12": "var(--accent-11)",
+								} as React.CSSProperties
+							}
+						>
+							{itemsContent[item.id]}
+						</Text>
+					</Flex>
+				</Text>
+			))}
+		</Flex>
+	);
+}

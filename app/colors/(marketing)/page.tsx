@@ -12,12 +12,10 @@ import {
 	ScrollArea,
 	Button,
 } from "@radix-ui/themes";
-import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { Footer } from "@components/Footer";
 import { ColorsHeader } from "@components/ColorsHeader";
 import { ColorsMarketingButton } from "@components/ColorsMarketingButton";
 import { SerifHeading } from "@components/SerifHeading";
-import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
 import {
 	DesktopIcon,
 	EyeOpenIcon,
@@ -27,26 +25,32 @@ import {
 	TransparencyGridIcon,
 } from "@radix-ui/react-icons";
 import { Swatch } from "@components/Swatch";
-import Head from "next/head";
-import styles from "./index.module.css";
 import { ColorUsageRange } from "@components/ColorUsageRange";
 import { ColorStepLabel } from "@components/ColorStepLabel";
+import { baseMetadata } from "@utils/metadata";
+import { Metadata } from "next";
+import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "Radix Colors",
+	description:
+		"An open-source color system for designing beautiful, accessible websites and apps.",
+};
 
 export default function ColorsHome() {
 	return (
 		<>
-			<ColorsMobileMenu legacyPagesRouter />
-			<Head>
-				<style>
-					{`
+			<style
+				dangerouslySetInnerHTML={{
+					__html: `
             :is(.dark, .dark-theme) :is(body, .radix-themes) {
               --color-background: #0b0b0b;
               --color-panel-solid: var(--gray-1);
             }
-          `}
-				</style>
-			</Head>
-
+          `,
+				}}
+			/>
 			<Box
 				style={{
 					position: "absolute",
@@ -58,15 +62,8 @@ export default function ColorsHome() {
 						"linear-gradient(to bottom, var(--crimson-4), var(--amber-2), transparent)",
 				}}
 			/>
-
 			<ColorsHeader ghost />
-
 			<Box mx={{ initial: "5", xs: "6", sm: "7", md: "9" }} position="relative">
-				<TitleAndMetaTags
-					title="Radix Colors"
-					description="An open-source color system for designing beautiful, accessible websites and apps."
-					image="colors.png"
-				/>
 				<Section size={{ initial: "2", md: "4" }}>
 					<Container>
 						<SerifHeading mb="3" style={{ maxWidth: 720 }}>

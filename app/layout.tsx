@@ -56,6 +56,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
+			suppressHydrationWarning
 			className={`${adobeTextPro.variable} ${soehneMono.variable} ${untitledSans.variable}`}
 		>
 			<head>
