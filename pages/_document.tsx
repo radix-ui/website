@@ -24,14 +24,14 @@ export default class Document extends NextDocument {
 					/>
 					<link
 						rel="preload"
-						href="https://cdn.workos.com/fonts/untitled-sans-regular-v2.woff2"
+						href="/fonts/untitled-sans-regular-v2.woff2"
 						as="font"
 						type="font/woff2"
 						crossOrigin="anonymous"
 					/>
 					<link
 						rel="preload"
-						href="https://cdn.workos.com/fonts/untitled-sans-medium-v2.woff2"
+						href="/fonts/untitled-sans-medium-v2.woff2"
 						as="font"
 						type="font/woff2"
 						crossOrigin="anonymous"
@@ -43,28 +43,28 @@ export default class Document extends NextDocument {
   font-family: 'Adobe Text Pro';
   font-weight: 400;
   font-display: swap;
-  src: url(/fonts/AdobeTextPro-Regular.woff2) format('woff2');
+  src: url('/fonts/AdobeTextPro-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 400;
   font-display: swap;
-  src: url('https://cdn.workos.com/fonts/untitled-sans-regular-v2.woff2') format('woff2');
+  src: url('/fonts/untitled-sans-regular-v2.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 500;
   font-display: swap;
-  src: url('https://cdn.workos.com/fonts/untitled-sans-medium-v2.woff2') format('woff2');
+  src: url('/fonts/untitled-sans-medium-v2.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 700;
   font-display: swap;
-  src: url('https://cdn.workos.com/fonts/untitled-sans-medium-v2.woff2') format('woff2');
+  src: url('/fonts/untitled-sans-medium-v2.woff2') format('woff2');
 }
 
 @font-face {

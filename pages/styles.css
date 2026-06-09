@@ -50,7 +50,7 @@ body {
 
 	/* Provide a default family for portalled elements not using themes (e.g. Primitives examples) */
 	font-family:
-		"Untitled Sans",
+		var(--font-untitled-sans, "Untitled Sans"),
 		-apple-system,
 		BlinkMacSystemFont,
 		"Segoe UI",
@@ -79,8 +79,9 @@ pre {
 .radix-themes.radix-themes-custom-fonts,
 .radix-themes-custom-fonts .radix-themes:not(.radix-themes-default-fonts) {
 	--default-font-family:
-		"Untitled Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+		var(--font-untitled-sans, "Untitled Sans"), -apple-system,
+		BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji";
 	--code-font-family:
 		"Söhne Mono", "Menlo", monospace, "Apple Color Emoji", "Segoe UI Emoji";
 	--font-weight-medium: 700;

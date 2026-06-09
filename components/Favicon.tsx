@@ -1,10 +1,10 @@
+"use client";
 import * as React from "react";
 import Head from "next/head";
 import { useTheme } from "next-themes";
 
 export function Favicon() {
 	const { systemTheme } = useTheme();
-
 	return (
 		<Head>
 			<link rel="icon" href="/favicon.png" />
