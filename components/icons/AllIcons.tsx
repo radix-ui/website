@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import * as Icons from "@radix-ui/react-icons";
 import {
