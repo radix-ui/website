@@ -11,6 +11,6 @@ export type Frontmatter = {
 	publishedName?: string;
 	slug: string;
 	by?: "colm" | "stephen" | "pedro";
-	gzip?: number;
+	gzip?: string;
 	sourcePath?: string;
 };

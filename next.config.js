@@ -9,6 +9,11 @@ const config = {
 		root: __dirname,
 	},
 
+	// Keep these out of the server bundle. They rely on dynamic/optional
+	// imports (e.g. oxfmt's prettier plugins, mdx-bundler's esbuild) that the
+	// bundler can't statically resolve and that should be required at runtime.
+	serverExternalPackages: ["oxfmt", "mdx-bundler"],
+
 	// Next.js config
 	async rewrites() {
 		return [
