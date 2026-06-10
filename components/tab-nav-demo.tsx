@@ -29,9 +29,9 @@ function TabNavDemoImpl({
 					active={tab === item.toLowerCase() || (i === 0 && tab === null)}
 				>
 					<NextLink
-						shallow
 						href={{ query: { "tab-nav": item.toLowerCase() } }}
 						scroll={false}
+						replace
 					>
 						{item}
 					</NextLink>
