@@ -1,7 +1,6 @@
 import { Footer } from "@components/Footer";
 import { PrimitivesHeader } from "@components/PrimitivesHeader";
 import { PrimitivesMobileMenu } from "@components/PrimitivesMobileMenu";
-import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { CaseStudyLogo } from "@components/marketing/CaseStudyLogo";
 import { LogoLink } from "@components/marketing/LogoLink";
 import { AccessibleIcon } from "radix-ui";
@@ -18,16 +17,20 @@ import {
 	Text,
 } from "@radix-ui/themes";
 import NextLink from "next/link";
+import { baseMetadata } from "@utils/metadata";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "Case studies – Radix Primitives",
+	description:
+		"An open-source React component library for building high-quality, accessible design systems and web apps.",
+};
 
 export default function CaseStudy() {
 	return (
 		<>
-			<TitleAndMetaTags
-				title="Case studies – Radix Primitives"
-				description="An open-source React component library for building high-quality, accessible design systems and web apps."
-				image="primitives.png"
-			/>
-			<PrimitivesMobileMenu legacyPagesRouter />
+			<PrimitivesMobileMenu />
 			<PrimitivesHeader />
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Section size={{ initial: "2", md: "4" }}>

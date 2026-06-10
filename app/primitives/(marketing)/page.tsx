@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Container, Section } from "@radix-ui/themes";
 import { Footer } from "@components/Footer";
-import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { AccessibilitySection } from "@components/marketing/AccessibilitySection";
 import { AdoptionSection } from "@components/marketing/AdoptionSection";
 import { BenefitsSection } from "@components/marketing/BenefitsSection";
@@ -15,16 +14,20 @@ import { StatsSection } from "@components/marketing/StatsSection";
 import { Box, Separator } from "@radix-ui/themes";
 import { PrimitivesHeader } from "@components/PrimitivesHeader";
 import { PrimitivesMobileMenu } from "@components/PrimitivesMobileMenu";
+import { baseMetadata } from "@utils/metadata";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "Radix Primitives",
+	description:
+		"Unstyled, accessible, open source React primitives for high-quality web apps and design systems.",
+};
 
 export default function PrimitivesHome() {
 	return (
 		<>
-			<PrimitivesMobileMenu legacyPagesRouter />
-			<TitleAndMetaTags
-				title="Radix Primitives"
-				description="Unstyled, accessible, open source React primitives for high-quality web apps and design systems."
-				image="primitives.png"
-			/>
+			<PrimitivesMobileMenu />
 			<Box style={{ height: 0 }}>
 				<PrimitivesHeader ghost />
 			</Box>
