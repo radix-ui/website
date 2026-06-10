@@ -1,3 +1,4 @@
+"use client";
 import {
 	Box,
 	Flex,
@@ -5,7 +6,6 @@ import {
 	Text,
 	Button,
 	Section,
-	Link,
 	Badge,
 } from "@radix-ui/themes";
 import * as React from "react";
@@ -20,7 +20,6 @@ import { SerifHeading } from "@components/SerifHeading";
 import { ThemesHeroLayout } from "@components/ThemesHeroLayout";
 import { ThemesMobileMenu } from "@components/ThemesMobileMenu";
 import { ArrowRightIcon, GridIcon } from "@radix-ui/react-icons";
-import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { CodeBlock } from "@components/CodeBlock";
 
 export default function ThemesHome() {
@@ -29,13 +28,7 @@ export default function ThemesHome() {
 
 	return (
 		<>
-			<TitleAndMetaTags
-				title="Radix UI"
-				description="Components, icons, and colors for building high‑quality, accessible UI. Free and open-source."
-				image="themes.png"
-			/>
-
-			<ThemesMobileMenu legacyPagesRouter />
+			<ThemesMobileMenu />
 
 			<MagicCurtain.Root>
 				<MagicCurtain.Item defaultVisibility="visible">
