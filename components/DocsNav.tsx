@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import NextLink from "next/link";
+import type { Route } from "next";
 import { Text, Heading, Box, Badge, Flex } from "@radix-ui/themes";
 import { classNames } from "@utils/classNames";
 import styles from "./DocsNav.module.css";
@@ -128,6 +129,11 @@ const DocsNavItem = ({
 	}
 
 	return (
-		<NextLink href={`/${href}`} ref={ref} className={className} {...props} />
+		<NextLink
+			href={`/${href}` as Route}
+			ref={ref}
+			className={className}
+			{...props}
+		/>
 	);
 };

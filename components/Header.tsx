@@ -13,6 +13,7 @@ import { BoxLink } from "./BoxLink";
 import { ThemeToggle } from "./ThemeToggle";
 import { GitHubLogoIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import NextLink from "next/link";
+import type { Route } from "next";
 import { useMobileMenuContext } from "./mobile-menu-context";
 import { classNames } from "@utils/classNames";
 import { RadixLogo, RadixLogoIcon } from "./RadixLogo";
@@ -218,12 +219,15 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 	);
 };
 
-const HeaderProductLink = ({
+const HeaderProductLink = <T extends string>({
 	active,
 	children,
-	href = "",
+	href,
 	...props
-}: React.ComponentPropsWithoutRef<"a"> & { active?: boolean }) => (
+}: Omit<React.ComponentPropsWithoutRef<"a">, "href"> & {
+	active?: boolean;
+	href: Route<T>;
+}) => (
 	<NextLink
 		href={href}
 		data-state={active ? "active" : "inactive"}

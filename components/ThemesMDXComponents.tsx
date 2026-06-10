@@ -7,6 +7,7 @@ import { ThemesUnofficialFigmaLibrary } from "./ThemesUnofficialFigmaLibrary";
 import { ThemesUnofficialTailwindPlugin } from "./ThemesUnofficialTailwindPlugin";
 import { Box, Text, Card } from "@radix-ui/themes";
 import NextLink from "next/link";
+import type { Route } from "next";
 
 export const ThemesMDXComponents = {
 	...components,
@@ -20,14 +21,14 @@ export const ThemesMDXComponents = {
 			<ThemesPropsTable {...props} />
 		</Box>
 	),
-	ThemesLinkCard: ({
+	ThemesLinkCard: <T extends string>({
 		title,
 		desc,
 		href,
 	}: {
 		title: string;
 		desc: string;
-		href: string;
+		href: Route<T>;
 	}) => {
 		const cardContent = (
 			<>

@@ -17,7 +17,7 @@ import NextLink from "next/link";
 import { CommunitySection } from "@components/marketing/CommunitySection";
 import { Footer } from "@components/Footer";
 import { baseMetadata } from "@utils/metadata";
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 
 const description =
 	"Stay in the loop with the latest Radix news, straight from the team.";
@@ -57,7 +57,7 @@ export default function RadixBlog() {
 								publishedAt,
 							}) => (
 								<Card size="3" variant="classic" asChild key={slug}>
-									<NextLink href={`/${slug}`}>
+									<NextLink href={`/${slug}` as Route}>
 										<Grid columns={{ initial: "1", sm: "2" }} width="100%">
 											<Inset
 												clip="padding-box"

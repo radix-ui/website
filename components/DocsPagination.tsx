@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import NextLink from "next/link";
+import type { Route as NextRoute } from "next";
 import { Box, Flex, Link, Text } from "@radix-ui/themes";
 import { useCurrentPageSlug } from "@utils/use-current-page-slug";
 
@@ -48,7 +49,7 @@ function DocsPaginationLink({
 				{direction}
 			</Text>
 			<Link asChild>
-				<NextLink href={`/${route.slug}`}>
+				<NextLink href={`/${route.slug}` as NextRoute}>
 					<Text size="4">{route.title}</Text>
 				</NextLink>
 			</Link>

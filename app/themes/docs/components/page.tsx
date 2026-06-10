@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import { Heading, Text, Box, Flex, Link } from "@radix-ui/themes";
 import { getAllFrontmatter } from "@utils/mdx";
 import { baseMetadata } from "@utils/metadata";
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 
 const description =
 	"A comprehensive library of React components for building beautiful, accessible user interfaces.";
@@ -42,7 +42,7 @@ export default function ComponentsIndex() {
 						<Box key={component.slug} asChild>
 							<li>
 								<Link size="3" weight="medium" asChild>
-									<NextLink href={`/${component.slug}`}>
+									<NextLink href={`/${component.slug}` as Route}>
 										{component.title}
 									</NextLink>
 								</Link>

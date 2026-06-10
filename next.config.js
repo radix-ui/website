@@ -4,6 +4,7 @@ import path from "node:path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config = {
+	typedRoutes: true,
 	// Pin the workspace root so Next doesn't infer it from a parent lockfile.
 	turbopack: {
 		root: __dirname,

@@ -7,22 +7,18 @@ import {
 	LinkProps as DSLinkProps,
 } from "@radix-ui/themes";
 import NextLink from "next/link";
+import type { Route } from "next";
 import { ExternalLink } from "./ExternalLink";
 
-const Link = ({ href = "", children, ...props }: DSLinkProps) => {
-	if (href.startsWith("http")) {
-		return (
-			<DSLink {...props} href={href} target="_blank" rel="noopener">
-				{children}
-			</DSLink>
-		);
-	}
-	return (
-		<DSLink {...props} asChild>
-			<NextLink href={href}>{children}</NextLink>
-		</DSLink>
-	);
-};
+const Link = <T extends string>({
+	href,
+	children,
+	...props
+}: Omit<DSLinkProps, "href"> & { href: Route<T> }) => (
+	<DSLink {...props} asChild>
+		<NextLink href={href}>{children}</NextLink>
+	</DSLink>
+);
 
 const {
 	// values

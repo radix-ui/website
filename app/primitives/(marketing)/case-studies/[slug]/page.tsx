@@ -26,7 +26,7 @@ import {
 } from "@radix-ui/themes";
 import NextLink from "next/link";
 import { baseMetadata } from "@utils/metadata";
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 import type { Frontmatter } from "types/frontmatter";
 
 interface Doc {
@@ -165,7 +165,7 @@ export default async function CaseStudy({ params }: PageProps) {
 
 									<Link highContrast color="gray" asChild>
 										<NextLink
-											href={`/${extendedFrontmatter.nextCaseStudySlug}`}
+											href={`/${extendedFrontmatter.nextCaseStudySlug}` as Route}
 										>
 											{extendedFrontmatter.nextCaseStudyTitle}
 										</NextLink>
