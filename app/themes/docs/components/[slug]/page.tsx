@@ -9,11 +9,6 @@ import { baseMetadata } from "@utils/metadata";
 import type { Frontmatter } from "types/frontmatter";
 import type { Metadata } from "next";
 
-interface Doc {
-	frontmatter: Frontmatter;
-	code: string;
-}
-
 interface PageProps {
 	params: Promise<{ slug: string }>;
 }
@@ -22,7 +17,7 @@ export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
-	const { frontmatter } = await getMdx(slug);
+	const { frontmatter } = await getMdxBySlug(DOCS_BASE, slug);
 	return {
 		...baseMetadata,
 		title: `${frontmatter.metaTitle} – Radix Themes`,
@@ -32,7 +27,7 @@ export async function generateMetadata({
 
 export default async function ComponentsDoc({ params }: PageProps) {
 	const { slug } = await params;
-	const { frontmatter, code } = await getMdx(slug);
+	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
 	const componentName = frontmatter.metaTitle.replace(/\s+/g, "");
 
 	return (
@@ -133,9 +128,4 @@ export function generateStaticParams() {
 	return frontmatters.map((frontmatter) => ({
 		slug: frontmatter.slug.replace(`${DOCS_BASE}/`, ""),
 	}));
-}
-
-async function getMdx(slug: string) {
-	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
-	return { frontmatter, code } satisfies Doc;
 }

@@ -2,14 +2,8 @@ import { getAllFrontmatter } from "@utils/mdx";
 import { getMdxBySlug } from "@utils/mdx";
 import { MdxContent } from "@components/MdxContent";
 import { QuickNav } from "@components/QuickNav";
-import type { Frontmatter } from "types/frontmatter";
 import { baseMetadata } from "@utils/metadata";
 import type { Metadata } from "next";
-
-interface Doc {
-	frontmatter: Frontmatter;
-	code: string;
-}
 
 interface PageProps {
 	params: Promise<{ slug: string }>;
@@ -19,7 +13,7 @@ export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
-	const { frontmatter } = await getMdx(slug);
+	const { frontmatter } = await getMdxBySlug(DOCS_BASE, slug);
 	return {
 		...baseMetadata,
 		title: `${frontmatter.metaTitle} – Radix Themes`,
@@ -29,7 +23,7 @@ export async function generateMetadata({
 
 export default async function ThemesDoc({ params }: PageProps) {
 	const { slug } = await params;
-	const { frontmatter, code } = await getMdx(slug);
+	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
 	return (
 		<>
 			<div data-algolia-lvl0 style={{ display: "none" }}>
@@ -52,9 +46,4 @@ export function generateStaticParams() {
 	return frontmatters.map((frontmatter) => ({
 		slug: frontmatter.slug.replace("themes/docs/theme/", ""),
 	}));
-}
-
-async function getMdx(slug: string) {
-	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
-	return { frontmatter, code } satisfies Doc;
 }

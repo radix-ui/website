@@ -27,12 +27,6 @@ import {
 import NextLink from "next/link";
 import { baseMetadata } from "@utils/metadata";
 import type { Metadata, Route } from "next";
-import type { Frontmatter } from "types/frontmatter";
-
-interface Doc {
-	frontmatter: Frontmatter;
-	code: string;
-}
 
 interface PageProps {
 	params: Promise<{ slug: string }>;
@@ -42,7 +36,7 @@ export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
-	const { frontmatter } = await getMdx(slug);
+	const { frontmatter } = await getMdxBySlug(DOCS_BASE, slug);
 	return {
 		...baseMetadata,
 		title: `${frontmatter.metaTitle} – Case studies – Radix Primitives`,
@@ -52,7 +46,7 @@ export async function generateMetadata({
 
 export default async function CaseStudy({ params }: PageProps) {
 	const { slug } = await params;
-	const { frontmatter, code } = await getMdx(slug);
+	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
 
 	const frontmatters = getAllFrontmatter(DOCS_BASE);
 	const thisIndex = frontmatters.findIndex((data) =>
@@ -165,7 +159,9 @@ export default async function CaseStudy({ params }: PageProps) {
 
 									<Link highContrast color="gray" asChild>
 										<NextLink
-											href={`/${extendedFrontmatter.nextCaseStudySlug}` as Route}
+											href={
+												`/${extendedFrontmatter.nextCaseStudySlug}` as Route
+											}
 										>
 											{extendedFrontmatter.nextCaseStudyTitle}
 										</NextLink>
@@ -191,9 +187,4 @@ export function generateStaticParams() {
 	return frontmatters.map((frontmatter) => ({
 		slug: frontmatter.slug.replace(`${DOCS_BASE}/`, ""),
 	}));
-}
-
-async function getMdx(slug: string) {
-	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
-	return { frontmatter, code } satisfies Doc;
 }
