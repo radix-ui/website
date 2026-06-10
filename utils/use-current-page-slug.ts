@@ -1,6 +1,6 @@
-import { useRouterContext } from "./use-router-context";
+import { usePathname } from "next/navigation";
 
 export function useCurrentPageSlug() {
-	const { pathname } = useRouterContext();
+	const pathname = usePathname();
 	return pathname?.substring(1) ?? "";
 }

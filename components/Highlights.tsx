@@ -14,12 +14,12 @@ import {
 	CheckIcon,
 	FileTextIcon,
 } from "@radix-ui/react-icons";
-import { useRouterContext } from "@utils/use-router-context";
+import { usePathname } from "next/navigation";
 import { VisuallyHidden } from "radix-ui";
 import { FrontmatterContext } from "./MDXComponents";
 
 export function Highlights({ features }: { features: React.ReactNode[] }) {
-	const { pathname } = useRouterContext();
+	const pathname = usePathname();
 	const frontmatter = React.useContext(FrontmatterContext);
 
 	const publishedName = frontmatter.publishedName || frontmatter.name;

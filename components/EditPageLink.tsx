@@ -1,22 +1,12 @@
 "use client";
-import * as React from "react";
 import { Box, Link, Separator } from "@radix-ui/themes";
-import { useRouterContext } from "@utils/use-router-context";
+import { usePathname } from "next/navigation";
 
 const DATA_FOLDER_PATH = "https://github.com/radix-ui/website/edit/main/data";
 
 export function EditPageLink() {
-	const { params, legacyPathname } = useRouterContext<{
-		slug: string | string[] | undefined;
-	}>();
-	const routerSlug = params?.slug;
-	let filePath = `${DATA_FOLDER_PATH}/${legacyPathname ? legacyPathname.replace("/", "") : ""}`;
-	if (Array.isArray(routerSlug)) {
-		filePath = filePath.replace("[...slug]", routerSlug.join("/"));
-	} else {
-		filePath = filePath.replace("[slug]", routerSlug ?? "");
-	}
-	const editUrl = `${filePath}.mdx`;
+	const pathname = usePathname();
+	const editUrl = `${DATA_FOLDER_PATH}${pathname}.mdx`;
 
 	return (
 		<Box>

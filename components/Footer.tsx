@@ -11,13 +11,13 @@ import {
 	AccessibleIcon,
 } from "@radix-ui/themes";
 import { RadixLogo } from "./RadixLogo";
-import { useRouterContext } from "@utils/use-router-context";
+import { usePathname } from "next/navigation";
 import { BoxLink } from "./BoxLink";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import styles from "./Footer.module.css";
 
 export const Footer = () => {
-	const { pathname } = useRouterContext();
+	const pathname = usePathname();
 	const isColors = pathname?.includes("/colors") || false;
 
 	return (

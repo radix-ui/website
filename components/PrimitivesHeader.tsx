@@ -1,10 +1,10 @@
 "use client";
 import { Link } from "@radix-ui/themes";
 import { Header, HeaderProps } from "./Header";
-import { useRouterContext } from "@utils/use-router-context";
+import { usePathname } from "next/navigation";
 
 export const PrimitivesHeader = (props: HeaderProps) => {
-	const { pathname } = useRouterContext();
+	const pathname = usePathname();
 	return (
 		<Header gitHubLink="https://github.com/radix-ui/primitives" {...props}>
 			<Link

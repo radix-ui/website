@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@components/ThemeProvider";
 import { CssLibPreferenceProvider } from "@components/CssLibPreference";
 import { Analytics } from "./analytics";
-import { RouterProvider } from "./router-provider";
 import { MobileMenuProvider } from "@components/mobile-menu";
 import "@radix-ui/themes/styles.css";
 import "../pages/styles.css";
@@ -71,9 +70,7 @@ export default function RootLayout({
 			<body>
 				<CssLibPreferenceProvider>
 					<ThemeProvider>
-						<RouterProvider>
-							<MobileMenuProvider>{children}</MobileMenuProvider>
-						</RouterProvider>
+						<MobileMenuProvider>{children}</MobileMenuProvider>
 					</ThemeProvider>
 				</CssLibPreferenceProvider>
 				<React.Suspense fallback={null}>

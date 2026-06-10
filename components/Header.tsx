@@ -17,7 +17,7 @@ import { useMobileMenuContext } from "./mobile-menu-context";
 import { classNames } from "@utils/classNames";
 import { RadixLogo, RadixLogoIcon } from "./RadixLogo";
 import { RemoveScroll } from "react-remove-scroll";
-import { useRouterContext } from "@utils/use-router-context";
+import { usePathname } from "next/navigation";
 
 export interface HeaderProps {
 	children?: React.ReactNode;
@@ -29,7 +29,7 @@ type ScrollState = "at-top" | "scrolling-up" | "scrolling-down";
 
 export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 	const mobileMenu = useMobileMenuContext();
-	const { pathname } = useRouterContext();
+	const pathname = usePathname();
 
 	const [scrollState, setScrollState] = React.useState<ScrollState>("at-top");
 

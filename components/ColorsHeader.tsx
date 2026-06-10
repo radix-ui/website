@@ -1,11 +1,11 @@
 "use client";
 import { Link } from "@radix-ui/themes";
-import { useRouterContext } from "@utils/use-router-context";
+import { usePathname } from "next/navigation";
 import { Header, HeaderProps } from "./Header";
 import NextLink from "next/link";
 
 export const ColorsHeader = (props: HeaderProps) => {
-	const { pathname } = useRouterContext();
+	const pathname = usePathname();
 	return (
 		<Header gitHubLink="https://github.com/radix-ui/colors" {...props}>
 			<Link
