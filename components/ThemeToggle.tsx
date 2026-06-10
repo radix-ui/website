@@ -3,7 +3,6 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { IconButton, Tooltip } from "@radix-ui/themes";
-import Head from "next/head";
 
 export const ThemeToggle = ({
 	children,
@@ -13,8 +12,9 @@ export const ThemeToggle = ({
 
 	return (
 		<>
-			<Head>
-				<style>{`
+			<style
+				dangerouslySetInnerHTML={{
+					__html: `
         :root, .light, .light-theme {
           --theme-toggle-sun-icon-display: block;
           --theme-toggle-moon-icon-display: none;
@@ -23,9 +23,9 @@ export const ThemeToggle = ({
           --theme-toggle-sun-icon-display: none;
           --theme-toggle-moon-icon-display: block;
         }
-      `}</style>
-			</Head>
-
+      `,
+				}}
+			/>
 			<Tooltip className="radix-themes-custom-fonts" content="Toggle theme">
 				<IconButton
 					size="3"

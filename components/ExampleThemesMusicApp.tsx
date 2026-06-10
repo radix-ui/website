@@ -22,7 +22,6 @@ import {
 import { Hover } from "./Hover";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { allPeople } from "./people";
-import Head from "next/head";
 
 type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 	focusable?: boolean;
@@ -37,20 +36,19 @@ export const ExampleThemesMusicApp = ({
 
 	return (
 		<>
-			<Head>
-				{/* Add a custom color variable that changes between light and dark mode */}
-				<style>
-					{`
+			<style
+				dangerouslySetInnerHTML={{
+					// Add a custom color variable that changes between light and dark mode
+					__html: `
           :root, .light, .light-theme {
             --color-floating-panel: rgba(239, 247, 255, 0.615);
           }
           .dark, .dark-theme {
             --color-floating-panel: rgba(0, 14, 24, 0.593);
           }
-        `}
-				</style>
-			</Head>
-
+        `,
+				}}
+			/>
 			<Flex align="center" gap="6" {...props}>
 				<Flex flexShrink="0" gap="6" direction="column" width="416px">
 					<Card size="3">
