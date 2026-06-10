@@ -148,18 +148,20 @@ function PrimitivesSearchRoot({
 						.then(({ results }) => {
 							// Uncategorized the hitquery
 							const { hits } = results[0] as SearchResponse<SearchItem>;
-							const sources = groupBy(hits, (hit) => hit.hierarchy?.lvl0 || "Uncategorized");
+							const sources = groupBy(
+								hits,
+								(hit) => hit.hierarchy?.lvl0 || "Uncategorized",
+							);
 							return Object.entries(sources)
 								.sort(sortSources)
 								.map(([lvl0, items]) => ({
-								onSelect: (params) => {
-									params.setIsOpen(false);
-								},
-								sourceId: lvl0 || "Uncategorized",
-								getItemUrl: ({ item }) => item.url,
-								getItems: () => items,
-							}));
-
+									onSelect: (params) => {
+										params.setIsOpen(false);
+									},
+									sourceId: lvl0 || "Uncategorized",
+									getItemUrl: ({ item }) => item.url,
+									getItems: () => items,
+								}));
 						});
 				},
 			}),
@@ -442,50 +444,49 @@ function ItemTitle(props: ItemTitleProps) {
 }
 
 function ItemBreadcrumb({
-  item,
-  levels,
+	item,
+	levels,
 }: {
-  item: SearchItem;
-  levels: typeof SUPPORTED_LEVELS;
+	item: SearchItem;
+	levels: typeof SUPPORTED_LEVELS;
 }) {
-  if (!item.hierarchy || typeof item.hierarchy !== "object") {
-    
-    const fallbackText = item.title || item.content || "No title available";
-    return (
-      <Text size="2" color="gray" as="p">
-        {fallbackText}
-      </Text>
-    );
-  }
+	if (!item.hierarchy || typeof item.hierarchy !== "object") {
+		const fallbackText = item.title || item.content || "No title available";
+		return (
+			<Text size="2" color="gray" as="p">
+				{fallbackText}
+			</Text>
+		);
+	}
 
-  const itemLevelIndex =
-    item.type === "content" ? levels.length - 1 : levels.indexOf(item.type);
-  const breadcrumbLevels = levels.slice(0, itemLevelIndex);
+	const itemLevelIndex =
+		item.type === "content" ? levels.length - 1 : levels.indexOf(item.type);
+	const breadcrumbLevels = levels.slice(0, itemLevelIndex);
 
-  return (
-    <Text size="2" color="gray" as="p">
-      {breadcrumbLevels.map((level, index) => {
-        const heading = item.hierarchy[level];
-        if (!heading) return null;
+	return (
+		<Text size="2" color="gray" as="p">
+			{breadcrumbLevels.map((level, index) => {
+				const heading = item.hierarchy[level];
+				if (!heading) return null;
 
-        return (
-          <React.Fragment key={index}>
-            {index > 0 && (
-              <Box
-                as="span"
-                display="inline"
-                style={{ color: "var(--gray-a11)" }}
-              >
-                <CaretRightIcon style={{ display: "inline-block" }} />
-                <VisuallyHidden.Root>, </VisuallyHidden.Root>
-              </Box>
-            )}
-            <Highlight hit={item} attribute={["hierarchy", level]} />
-          </React.Fragment>
-        );
-      })}
-    </Text>
-  );
+				return (
+					<React.Fragment key={index}>
+						{index > 0 && (
+							<Box
+								as="span"
+								display="inline"
+								style={{ color: "var(--gray-a11)" }}
+							>
+								<CaretRightIcon style={{ display: "inline-block" }} />
+								<VisuallyHidden.Root>, </VisuallyHidden.Root>
+							</Box>
+						)}
+						<Highlight hit={item} attribute={["hierarchy", level]} />
+					</React.Fragment>
+				);
+			})}
+		</Text>
+	);
 }
 
 function Highlight<THit extends SnippetedHit<unknown>>({
