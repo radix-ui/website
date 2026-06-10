@@ -11,9 +11,6 @@ importers:
       '@algolia/autocomplete-core':
         specifier: ^1.19.8
         version: 1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)(search-insights@2.17.2)
-      '@algolia/autocomplete-js':
-        specifier: ^1.19.2
-        version: 1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)(search-insights@2.17.2)
       '@algolia/autocomplete-preset-algolia':
         specifier: ^1.19.8
         version: 1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)
@@ -198,12 +195,6 @@ packages:
 
   '@algolia/autocomplete-core@1.19.8':
     resolution: {integrity: sha512-3YEorYg44niXcm7gkft3nXYItHd44e8tmh4D33CTszPgP0QWkaLEaFywiNyJBo7UL/mqObA/G9RYuU7R8tN1IA==}
-
-  '@algolia/autocomplete-js@1.19.8':
-    resolution: {integrity: sha512-9Sfr9Un3vObdtnj6IqzxoD9XisjFJxA9WAyVxmOkwTD9aVluyNwDeEWeGLy12xhRyILjA5C7byto159cZcdEEA==}
-    peerDependencies:
-      '@algolia/client-search': '>= 4.5.1 < 6'
-      algoliasearch: '>= 4.9.1 < 6'
 
   '@algolia/autocomplete-plugin-algolia-insights@1.19.8':
     resolution: {integrity: sha512-ZvJWO8ZZJDpc1LNM2TTBdmQsZBLMR4rU5iNR2OYvEeFBiaf/0ESnRSSLQbryarJY4SVxtoz6A2ZtDMNM+iQEAA==}
@@ -2405,9 +2396,6 @@ packages:
   hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
 
-  htm@3.1.1:
-    resolution: {integrity: sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==}
-
   html-void-elements@1.0.5:
     resolution: {integrity: sha512-uE/TxKuyNIcx44cIWnjr/rfIATDH7ZaOMmstu0CwhFG1Dunhlp4OC6/NMbhiwoq5BpW0ubi303qnEk/PZj614w==}
 
@@ -3087,9 +3075,6 @@ packages:
   postcss@8.5.15:
     resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
     engines: {node: ^10 || ^12 || >=14}
-
-  preact@10.29.2:
-    resolution: {integrity: sha512-7tNmwg/7mzzAoB/8kSg6Hl37JraAZw3Z3A0JSY7VXlZwo82Xn0G7wKbNNs2qoF4ZEEsQGTwDAroNdqKs1ofJxQ==}
 
   prepend-http@1.0.4:
     resolution: {integrity: sha512-PhmXi5XmoyKw1Un4E+opM2KcsJInDvKyuOumcjjw3waw86ZNjHwVUOOWLc4bCzLdcKNaWBH9e99sbWzDQsVaYg==}
@@ -3808,18 +3793,6 @@ snapshots:
     transitivePeerDependencies:
       - '@algolia/client-search'
       - algoliasearch
-      - search-insights
-
-  '@algolia/autocomplete-js@1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)(search-insights@2.17.2)':
-    dependencies:
-      '@algolia/autocomplete-core': 1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)(search-insights@2.17.2)
-      '@algolia/autocomplete-preset-algolia': 1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)
-      '@algolia/autocomplete-shared': 1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)
-      '@algolia/client-search': 5.53.0
-      algoliasearch: 5.53.0
-      htm: 3.1.1
-      preact: 10.29.2
-    transitivePeerDependencies:
       - search-insights
 
   '@algolia/autocomplete-plugin-algolia-insights@1.19.8(@algolia/client-search@5.53.0)(algoliasearch@5.53.0)(search-insights@2.17.2)':
@@ -6081,8 +6054,6 @@ snapshots:
 
   hosted-git-info@2.8.9: {}
 
-  htm@3.1.1: {}
-
   html-void-elements@1.0.5: {}
 
   html-void-elements@3.0.0: {}
@@ -7115,8 +7086,6 @@ snapshots:
       nanoid: 3.3.12
       picocolors: 1.1.1
       source-map-js: 1.2.1
-
-  preact@10.29.2: {}
 
   prepend-http@1.0.4: {}
 
