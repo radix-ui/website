@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const baseMetadata: Metadata = {
+	metadataBase: new URL("https://radix-ui.com"),
 	title: "Radix UI",
 	description:
 		"Everything you need to build a design system, website or web app.",
