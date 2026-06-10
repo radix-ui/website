@@ -37,13 +37,9 @@ export const MobileMenuProvider = ({
 
 export interface MobileMenuProps {
 	children: React.ReactNode;
-	legacyPagesRouter?: boolean;
 }
 
-export const MobileMenu = ({
-	children,
-	legacyPagesRouter = false,
-}: MobileMenuProps) => {
+export const MobileMenu = ({ children }: MobileMenuProps) => {
 	const { open: mobileMenuOpen, menuRootRef } = useMobileMenuContext();
 	if (!mobileMenuOpen) {
 		return null;
@@ -68,13 +64,9 @@ export const MobileMenu = ({
 					</Box>
 				</RemoveScroll>
 			</Theme>
-			{legacyPagesRouter ? (
-				<MobileMenuCloserPages />
-			) : (
-				<React.Suspense fallback={null}>
-					<MobileMenuCloserApp />
-				</React.Suspense>
-			)}
+			<React.Suspense fallback={null}>
+				<MobileMenuCloserApp />
+			</React.Suspense>
 		</Portal>
 	);
 };

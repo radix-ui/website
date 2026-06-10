@@ -10,17 +10,11 @@ import { DocsPageWrapper } from "./DocsPageWrapper";
 import { EditPageLink } from "./EditPageLink";
 import { ThemesMobileMenu } from "./ThemesMobileMenu";
 
-export function ThemesDocsPage({
-	children,
-	legacyPagesRouter,
-}: {
-	children: React.ReactNode;
-	legacyPagesRouter?: boolean;
-}) {
+export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<ThemesHeader />
-			<ThemesMobileMenu legacyPagesRouter={legacyPagesRouter} />
+			<ThemesMobileMenu />
 			<Flex>
 				<SideNav>
 					<Box pt="4" px="3" pb="9">

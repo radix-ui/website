@@ -144,12 +144,12 @@ export default function ComponentsPage() {
 			<div className={styles.PlaygroundRoot}>
 				{/* Set default values for settings we don't want affecting the header */}
 				<Theme radius="medium" scaling="100%">
-					<MobileMenu legacyPagesRouter>
+					<MobileMenu>
 						<ThemesHeader />
 					</MobileMenu>
 
 					<ThemesHeader />
-					<ThemesMobileMenu legacyPagesRouter />
+					<ThemesMobileMenu />
 				</Theme>
 
 				<Box display={{ initial: "none", lg: "block" }}>

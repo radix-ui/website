@@ -10,17 +10,11 @@ import { DocsPageWrapper } from "./DocsPageWrapper";
 import { EditPageLink } from "./EditPageLink";
 import { ColorsMobileMenu } from "./ColorsMobileMenu";
 
-export function ColorsDocsPage({
-	children,
-	legacyPagesRouter,
-}: {
-	children: React.ReactNode;
-	legacyPagesRouter?: boolean;
-}) {
+export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<ColorsHeader />
-			<ColorsMobileMenu legacyPagesRouter={legacyPagesRouter} />
+			<ColorsMobileMenu />
 			<Flex>
 				<SideNav>
 					<Box pt="4" px="3" pb="9">

@@ -12,15 +12,13 @@ import { PrimitivesMobileMenu } from "./PrimitivesMobileMenu";
 
 export function PrimitivesDocsPage({
 	children,
-	legacyPagesRouter,
 }: {
-	legacyPagesRouter?: boolean;
 	children: React.ReactNode;
 }) {
 	return (
 		<>
 			<PrimitivesHeader />
-			<PrimitivesMobileMenu legacyPagesRouter={legacyPagesRouter} />
+			<PrimitivesMobileMenu />
 			<Flex>
 				<SideNav>
 					<Box pt="4" px="3" pb="9">
