@@ -4,8 +4,9 @@
 	"stop_urls": ["https://www.radix-ui.com/primitives/docs/overview/releases"],
 	"selectors": {
 		"lvl0": {
-			"selector": "[data-algolia-lvl0]",
-			"global": true
+			"selector": "[data-algolia-lvl0], [data-algolia-page-scope] h1",
+			"global": true,
+			"default_value": "Documentation"
 		},
 		"lvl1": "[data-algolia-page-scope] h1",
 		"lvl2": "[data-algolia-page-scope] h2",

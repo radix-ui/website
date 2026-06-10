@@ -27,12 +27,17 @@ import type {
 	AutocompleteState as InternalAutocompleteState,
 	AutocompleteApi as InternalAutocompleteApi,
 } from "@algolia/autocomplete-core";
-import type { Hit, SearchResponse } from "@algolia/client-search";
+import type { SearchResponse } from "@algolia/client-search";
 
-const ALGOLIA_APP_ID = "VXVOLU3YVQ";
-const ALGOLIA_PUBLIC_API_KEY = "9d44395c1b7b172ac84b7e5ab80bf8c5";
+const ALGOLIA_APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
+const ALGOLIA_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY;
+const ALGOLIA_INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME;
 
-const searchClient = liteClient(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
+export const isPrimitivesSearchEnabled = !!(
+	ALGOLIA_APP_ID &&
+	ALGOLIA_PUBLIC_API_KEY &&
+	ALGOLIA_INDEX_NAME
+);
 
 const SUPPORTED_LEVELS = ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4"] as const;
 type LevelContentType = (typeof SUPPORTED_LEVELS)[number];
@@ -41,7 +46,8 @@ type SearchItem = SnippetedHit<{
 	objectID: string;
 	type: ContentType;
 	url: string;
-	hierarchy: {
+	title?: string;
+	hierarchy?: {
 		lvl0: string;
 		lvl1: string;
 		lvl2: string | null;
@@ -79,6 +85,12 @@ function PrimitivesSearchRoot({
 		status: "idle",
 	});
 
+	const [searchClient] = React.useState(() =>
+		isPrimitivesSearchEnabled
+			? liteClient(ALGOLIA_APP_ID!, ALGOLIA_PUBLIC_API_KEY!)
+			: null,
+	);
+
 	const autocomplete = React.useMemo(
 		() =>
 			createAutocomplete<
@@ -99,7 +111,7 @@ function PrimitivesSearchRoot({
 					setSearchState(state);
 				},
 				getSources: ({ query, setStatus, state }) => {
-					if (!query || !process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME) {
+					if (!query || !searchClient || !ALGOLIA_INDEX_NAME) {
 						return [];
 					}
 
@@ -107,7 +119,7 @@ function PrimitivesSearchRoot({
 						.search<SearchItem>({
 							requests: [
 								{
-									indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+									indexName: ALGOLIA_INDEX_NAME,
 									type: "default",
 									query,
 									hitsPerPage,
@@ -120,6 +132,7 @@ function PrimitivesSearchRoot({
 										"hierarchy.lvl3",
 										"hierarchy.lvl4",
 										"content",
+										"title",
 									],
 									attributesToSnippet: [
 										`hierarchy.lvl0:${snippetLength}`,
@@ -146,7 +159,10 @@ function PrimitivesSearchRoot({
 						.then(({ results }) => {
 							// we only have 1 query, so we  grab the hits from the first result
 							const { hits } = results[0] as SearchResponse<SearchItem>;
-							const sources = groupBy(hits, (hit) => hit.hierarchy.lvl0);
+							const sources = groupBy(
+								hits,
+								(hit) => hit.hierarchy?.lvl0 || "Uncategorized",
+							);
 							return Object.entries(sources)
 								.sort(sortSources)
 								.map(([lvl0, items]) => ({
@@ -160,7 +176,7 @@ function PrimitivesSearchRoot({
 						});
 				},
 			}),
-		[hitsPerPage, snippetLength],
+		[hitsPerPage, snippetLength, searchClient],
 	);
 
 	const setIsOpen = autocomplete.setIsOpen;
@@ -404,7 +420,18 @@ const SearchResults = React.memo(
 	},
 );
 
+function getItemFallbackText(item: SearchItem) {
+	return item.title || item.content || "No title available";
+}
+
+function hasHierarchy(item: SearchItem): item is SearchItem & {
+	hierarchy: NonNullable<SearchItem["hierarchy"]>;
+} {
+	return !!item.hierarchy && typeof item.hierarchy === "object";
+}
+
 function ItemLink({ item }: { item: SearchItem }) {
+	const useFallbackTitle = item.type !== "content" && !hasHierarchy(item);
 	return (
 		<Box
 			asChild
@@ -414,12 +441,16 @@ function ItemLink({ item }: { item: SearchItem }) {
 		>
 			<a href={item.url}>
 				<ItemTitle mb="1" mt="-1">
-					<Highlight
-						hit={item}
-						attribute={
-							item.type === "content" ? "content" : ["hierarchy", item.type]
-						}
-					/>
+					{useFallbackTitle ? (
+						getItemFallbackText(item)
+					) : (
+						<Highlight
+							hit={item}
+							attribute={
+								item.type === "content" ? "content" : ["hierarchy", item.type]
+							}
+						/>
+					)}
 				</ItemTitle>
 				{/* Adding a semi-colon to insert a break in the speech flow */}
 				<VisuallyHidden.Root>; </VisuallyHidden.Root>
@@ -445,6 +476,14 @@ function ItemBreadcrumb({
 	item: SearchItem;
 	levels: typeof SUPPORTED_LEVELS;
 }) {
+	if (!hasHierarchy(item)) {
+		return (
+			<Text size="2" color="gray" as="p">
+				{getItemFallbackText(item)}
+			</Text>
+		);
+	}
+
 	const itemLevelIndex =
 		item.type === "content" ? levels.length - 1 : levels.indexOf(item.type);
 	const breadcrumbLevels = levels.slice(0, itemLevelIndex);
@@ -453,22 +492,23 @@ function ItemBreadcrumb({
 		<Text size="2" color="gray" as="p">
 			{breadcrumbLevels.map((level, index) => {
 				const heading = item.hierarchy[level];
-				return heading ? (
+				if (!heading) return null;
+
+				return (
 					<React.Fragment key={index}>
-						{index > 0 ? (
+						{index > 0 && (
 							<Box
 								as="span"
 								display="inline"
 								style={{ color: "var(--gray-a11)" }}
 							>
 								<CaretRightIcon style={{ display: "inline-block" }} />
-								{/* Adding a comma to insert a natural break in the speech flow */}
 								<VisuallyHidden.Root>, </VisuallyHidden.Root>
 							</Box>
-						) : null}
+						)}
 						<Highlight hit={item} attribute={["hierarchy", level]} />
 					</React.Fragment>
-				) : null;
+				);
 			})}
 		</Text>
 	);
