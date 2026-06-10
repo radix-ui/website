@@ -35,6 +35,15 @@ import {
 	parseAppearanceCookie,
 	parsePaletteCookie,
 } from "./palette-cookie";
+import { baseMetadata } from "@utils/metadata";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "Create a custom palette – Radix Colors",
+	description:
+		"An open-source color system for designing beautiful, accessible websites and apps.",
+};
 
 export default async function CustomColorsPage() {
 	const cookieStore = await cookies();

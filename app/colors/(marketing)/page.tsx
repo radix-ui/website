@@ -27,16 +27,7 @@ import {
 import { Swatch } from "@components/Swatch";
 import { ColorUsageRange } from "@components/ColorUsageRange";
 import { ColorStepLabel } from "@components/ColorStepLabel";
-import { baseMetadata } from "@utils/metadata";
-import { Metadata } from "next";
 import styles from "./page.module.css";
-
-export const metadata: Metadata = {
-	...baseMetadata,
-	title: "Radix Colors",
-	description:
-		"An open-source color system for designing beautiful, accessible websites and apps.",
-};
 
 export default function ColorsHome() {
 	return (
