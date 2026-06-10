@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { primitivesRoutes } from "@utils/primitivesRoutes";
 import { Box, ScrollArea } from "@radix-ui/themes";

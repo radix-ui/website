@@ -1,3 +1,4 @@
+"use client";
 import { Link } from "@radix-ui/themes";
 import { useRouterContext } from "@utils/use-router-context";
 import { Header, HeaderProps } from "./Header";

@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import NextLink from "next/link";
 import { Box, Text, Link, Flex, Container, Heading } from "@radix-ui/themes";

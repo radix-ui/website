@@ -502,13 +502,7 @@ export const ExampleThemesMusicApp = ({
 									Your favorites
 								</Heading>
 
-								<Link
-									href="#"
-									onClick={(e) => e.preventDefault()}
-									tabIndex={tabIndex}
-									size="2"
-									weight="medium"
-								>
+								<Link href="#" tabIndex={tabIndex} size="2" weight="medium">
 									Show all
 								</Link>
 							</Flex>
@@ -533,13 +527,7 @@ export const ExampleThemesMusicApp = ({
 									Made for you
 								</Heading>
 
-								<Link
-									href="#"
-									onClick={(e) => e.preventDefault()}
-									tabIndex={tabIndex}
-									size="2"
-									weight="medium"
-								>
+								<Link href="#" tabIndex={tabIndex} size="2" weight="medium">
 									Show all
 								</Link>
 							</Flex>
@@ -563,13 +551,7 @@ export const ExampleThemesMusicApp = ({
 									Your friends listen
 								</Heading>
 
-								<Link
-									href="#"
-									onClick={(e) => e.preventDefault()}
-									tabIndex={tabIndex}
-									size="2"
-									weight="medium"
-								>
+								<Link href="#" tabIndex={tabIndex} size="2" weight="medium">
 									Show all
 								</Link>
 							</Flex>
@@ -1012,11 +994,7 @@ export const ExampleThemesMusicApp = ({
 									</Text>
 
 									<Text size="2" as="p">
-										<Link
-											href="#"
-											onClick={(e) => e.preventDefault()}
-											tabIndex={tabIndex}
-										>
+										<Link href="#" tabIndex={tabIndex}>
 											Cancel subscription
 										</Link>
 									</Text>
@@ -1108,20 +1086,10 @@ export const ExampleThemesMusicApp = ({
 											Danger zone
 										</Text>
 										<Flex align="start" direction="column" gap="2">
-											<Link
-												href="#"
-												onClick={(e) => e.preventDefault()}
-												tabIndex={tabIndex}
-												size="2"
-											>
+											<Link href="#" tabIndex={tabIndex} size="2">
 												Reset recommendations
 											</Link>
-											<Link
-												href="#"
-												onClick={(e) => e.preventDefault()}
-												tabIndex={tabIndex}
-												size="2"
-											>
+											<Link href="#" tabIndex={tabIndex} size="2">
 												Delete profile
 											</Link>
 										</Flex>
@@ -1285,11 +1253,7 @@ export const ExampleThemesMusicApp = ({
 											<Flex direction="column" align="start" gap="1">
 												<HoverCard.Root>
 													<HoverCard.Trigger>
-														<Link
-															href="#"
-															onClick={(e) => e.preventDefault()}
-															tabIndex={tabIndex}
-														>
+														<Link href="#" tabIndex={tabIndex}>
 															I seem to sink lower, gazing in the rays of the
 															solar
 														</Link>
@@ -1330,11 +1294,7 @@ export const ExampleThemesMusicApp = ({
 
 												<HoverCard.Root>
 													<HoverCard.Trigger>
-														<Link
-															href="#"
-															onClick={(e) => e.preventDefault()}
-															tabIndex={tabIndex}
-														>
+														<Link href="#" tabIndex={tabIndex}>
 															Red on white but he sipped on KA soda
 														</Link>
 													</HoverCard.Trigger>
@@ -1353,11 +1313,7 @@ export const ExampleThemesMusicApp = ({
 													Damn, that&apos;s Coca-Cola,{" "}
 													<HoverCard.Root>
 														<HoverCard.Trigger>
-															<Link
-																href="#"
-																onClick={(e) => e.preventDefault()}
-																tabIndex={tabIndex}
-															>
+															<Link href="#" tabIndex={tabIndex}>
 																as TV sports the Olympic ebola
 															</Link>
 														</HoverCard.Trigger>
@@ -1383,11 +1339,7 @@ export const ExampleThemesMusicApp = ({
 
 												<HoverCard.Root>
 													<HoverCard.Trigger>
-														<Link
-															href="#"
-															onClick={(e) => e.preventDefault()}
-															tabIndex={tabIndex}
-														>
+														<Link href="#" tabIndex={tabIndex}>
 															He left the crime scene without the Motorola
 														</Link>
 													</HoverCard.Trigger>
@@ -1417,11 +1369,7 @@ export const ExampleThemesMusicApp = ({
 												<Text>I seem to sink lower</Text>
 												<HoverCard.Root>
 													<HoverCard.Trigger>
-														<Link
-															href="#"
-															onClick={(e) => e.preventDefault()}
-															tabIndex={tabIndex}
-														>
+														<Link href="#" tabIndex={tabIndex}>
 															In biscuit town, in biscuit town
 														</Link>
 													</HoverCard.Trigger>
@@ -1529,7 +1477,6 @@ const AlbumCard = ({
 			<Flex direction="column" position="relative" align="start">
 				<Link
 					href="#"
-					onClick={(e) => e.preventDefault()}
 					tabIndex={focusable ? undefined : -1}
 					size="2"
 					weight="medium"

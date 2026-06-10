@@ -1,3 +1,4 @@
+"use client";
 import {
 	Avatar,
 	Badge,
@@ -1690,7 +1691,6 @@ export function ThemesBlogPostExampleTabNav() {
 	return (
 		<ThemesBlogPostExampleArea>
 			<TabNavDemo
-				baseUrl="/blog/themes-3"
 				items={["Account", "Documents", "Workspace"]}
 				size={{ initial: "1", xs: "2" }}
 			/>

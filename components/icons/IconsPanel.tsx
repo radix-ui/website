@@ -1,17 +1,15 @@
+"use client";
 import {
 	CubeIcon,
 	DownloadIcon,
 	FigmaLogoIcon,
 	GitHubLogoIcon,
-	SketchLogoIcon,
 } from "@radix-ui/react-icons";
 import { Box, Flex, Heading, Link, Separator, Text } from "@radix-ui/themes";
-import * as React from "react";
 import { CopyToastProvider } from "./CopyToast";
 import { MainContent } from "./MainContent";
-
-import styles from "./IconsPanel.module.css";
 import { CodeBlock } from "@components/CodeBlock";
+import styles from "./IconsPanel.module.css";
 
 export const IconsPanel = () => {
 	return (

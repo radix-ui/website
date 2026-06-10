@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Box, Link, Separator } from "@radix-ui/themes";
 import { useRouterContext } from "@utils/use-router-context";

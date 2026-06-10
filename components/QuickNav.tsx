@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Box, Link, Heading, ScrollArea } from "@radix-ui/themes";
 import { RemoveScroll } from "react-remove-scroll";

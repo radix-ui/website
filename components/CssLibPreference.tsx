@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import { useLayoutEffect } from "radix-ui/internal";
 import { DEFAULT_CSS_LIB, SUPPORTED_CSS_LIBS } from "@utils/constants";
 import type { CssLib } from "@utils/constants";
 
@@ -30,7 +29,7 @@ const CssLibPreferenceProvider: React.FC<{ children?: React.ReactNode }> = ({
 		}
 	}, []);
 
-	useLayoutEffect(() => {
+	React.useLayoutEffect(() => {
 		const localStorageCssLib = window.localStorage.getItem(LOCAL_STORAGE_KEY);
 		savePreferredCssLib(localStorageCssLib);
 	}, [savePreferredCssLib]);

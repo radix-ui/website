@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import NextLink from "next/link";
 import { ExternalLinkIcon, Link2Icon } from "@radix-ui/react-icons";

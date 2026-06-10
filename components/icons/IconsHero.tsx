@@ -1,17 +1,8 @@
-import * as React from "react";
+"use client";
 import { ArrowLeftIcon, FigmaLogoIcon } from "@radix-ui/react-icons";
-import {
-	Box,
-	Button,
-	Code,
-	Container,
-	Flex,
-	Section,
-	Text,
-} from "@radix-ui/themes";
-
-import styles from "./IconsHero.module.css";
+import { Box, Button, Container, Flex, Section } from "@radix-ui/themes";
 import { SerifHeading } from "@components/SerifHeading";
+import styles from "./IconsHero.module.css";
 
 export const IconsHero = () => {
 	return (

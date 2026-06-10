@@ -6,7 +6,7 @@ import {
 } from "@components/router-context";
 
 export function useRouterContext<Params extends RouterParams = RouterParams>() {
-	const context = React.useContext(RouterContext);
+	const context = React.use(RouterContext);
 	if (!context) {
 		throw new Error(
 			"useRouterContext must be used within a RouterContextProvider",
