@@ -1,11 +1,11 @@
 import { Box, ScrollArea } from "@radix-ui/themes";
 import { DocsNav } from "./DocsNav";
-import { MobileMenu } from "./MobileMenu";
+import { MobileMenu, type MobileMenuProps } from "./mobile-menu";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { BlogHeader } from "./BlogHeader";
 
-export const BlogMobileMenu = () => (
-	<MobileMenu>
+export const BlogMobileMenu = (props: Omit<MobileMenuProps, "children">) => (
+	<MobileMenu {...props}>
 		<BlogHeader />
 		<ScrollArea>
 			<Box pt="4" px="3" pb="9">

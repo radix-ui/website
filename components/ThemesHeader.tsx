@@ -1,18 +1,18 @@
+"use client";
 import { Link } from "@radix-ui/themes";
+import { usePathname } from "next/navigation";
 import { Header, HeaderProps } from "./Header";
-import { useRouter } from "next/router";
 import NextLink from "next/link";
 
 export const ThemesHeader = (props: HeaderProps) => {
-	const router = useRouter();
-
+	const pathname = usePathname();
 	return (
 		<Header gitHubLink="https://github.com/radix-ui/themes" {...props}>
 			<Link
 				asChild
 				size="2"
 				color="gray"
-				highContrast={router.pathname.includes("/themes/docs")}
+				highContrast={pathname?.includes("/themes/docs")}
 			>
 				<NextLink href="/themes/docs/overview/getting-started">
 					Documentation
@@ -22,7 +22,7 @@ export const ThemesHeader = (props: HeaderProps) => {
 				asChild
 				size="2"
 				color="gray"
-				highContrast={router.pathname.includes("/themes/playground")}
+				highContrast={pathname?.includes("/themes/playground")}
 			>
 				<NextLink href="/themes/playground">Playground</NextLink>
 			</Link>

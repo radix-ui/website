@@ -36,3 +36,5 @@ tsconfig.tsbuildinfo
 # Editor-specific
 .vscode
 .idea
+
+next-env.d.ts

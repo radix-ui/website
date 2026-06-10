@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import {
 	Box,
@@ -13,7 +14,6 @@ import { Container, Theme } from "@radix-ui/themes";
 import { HiddenScroll } from "./HiddenScroll";
 import { CodeBlock } from "@components/CodeBlock";
 import rangeParser from "parse-numeric-range";
-import { useIsomorphicLayoutEffect } from "@utils/useIsomorphicLayoutEffect";
 
 enum Highlights {
 	Unstyled = "1-18",
@@ -28,7 +28,7 @@ export const DeveloperExperienceSection = () => {
 	);
 	const preRef = React.useRef<HTMLPreElement>(null);
 
-	useIsomorphicLayoutEffect(() => {
+	React.useLayoutEffect(() => {
 		const pre = preRef.current;
 		if (!pre) {
 			return;

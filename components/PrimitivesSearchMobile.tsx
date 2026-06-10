@@ -1,3 +1,4 @@
+"use client";
 import { Cross2Icon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Flex, IconButton } from "@radix-ui/themes";
 import { PrimitivesSearch } from "./PrimitivesSearch";

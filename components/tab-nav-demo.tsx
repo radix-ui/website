@@ -1,25 +1,27 @@
 "use client";
-
 import * as React from "react";
 import NextLink from "next/link";
-import { useSearchParams } from "next/navigation";
+import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import { TabNav } from "@radix-ui/themes";
 
-interface TabNavDemoProps extends React.ComponentPropsWithoutRef<
+interface TabNavDemoProps extends React.ComponentPropsWithRef<
 	typeof TabNav.Root
 > {
 	items?: string[];
-	baseUrl: string;
 }
 
-const TabNavDemo = React.forwardRef<
-	React.ElementRef<typeof TabNav.Root>,
-	TabNavDemoProps
->(({ baseUrl, items = ["Account", "Documents"], ...props }, forwardedRef) => {
-	const params = useSearchParams();
+interface TabNavDemoImplProps extends TabNavDemoProps {
+	params?: ReadonlyURLSearchParams | null;
+}
+
+function TabNavDemoImpl({
+	items = ["Account", "Documents"],
+	params = null,
+	...props
+}: TabNavDemoImplProps) {
 	const tab = params?.get("tab-nav");
 	return (
-		<TabNav.Root {...props} ref={forwardedRef}>
+		<TabNav.Root {...props}>
 			{items.map((item, i) => (
 				<TabNav.Link
 					asChild
@@ -27,8 +29,9 @@ const TabNavDemo = React.forwardRef<
 					active={tab === item.toLowerCase() || (i === 0 && tab === null)}
 				>
 					<NextLink
-						href={`${baseUrl}/?tab-nav=${item.toLowerCase()}`}
+						href={{ query: { "tab-nav": item.toLowerCase() } }}
 						scroll={false}
+						replace
 					>
 						{item}
 					</NextLink>
@@ -36,8 +39,19 @@ const TabNavDemo = React.forwardRef<
 			))}
 		</TabNav.Root>
 	);
-});
-TabNavDemo.displayName = "TabNavDemo";
+}
 
-export { TabNavDemo };
-export default TabNavDemo;
+function TabNavDemo(props: TabNavDemoProps) {
+	const params = useSearchParams();
+	return <TabNavDemoImpl {...props} params={params} />;
+}
+
+function TabNavDemoSuspended(props: TabNavDemoProps) {
+	return (
+		<React.Suspense fallback={<TabNavDemoImpl {...props} />}>
+			<TabNavDemo {...props} />
+		</React.Suspense>
+	);
+}
+
+export { TabNavDemoSuspended as TabNavDemo };

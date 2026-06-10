@@ -13,11 +13,12 @@ import { BoxLink } from "./BoxLink";
 import { ThemeToggle } from "./ThemeToggle";
 import { GitHubLogoIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
-import { useMobileMenuContext } from "./MobileMenu";
+import type { Route } from "next";
+import { useMobileMenuContext } from "./mobile-menu-context";
 import { classNames } from "@utils/classNames";
 import { RadixLogo, RadixLogoIcon } from "./RadixLogo";
 import { RemoveScroll } from "react-remove-scroll";
+import { usePathname } from "next/navigation";
 
 export interface HeaderProps {
 	children?: React.ReactNode;
@@ -29,7 +30,7 @@ type ScrollState = "at-top" | "scrolling-up" | "scrolling-down";
 
 export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 	const mobileMenu = useMobileMenuContext();
-	const router = useRouter();
+	const pathname = usePathname();
 
 	const [scrollState, setScrollState] = React.useState<ScrollState>("at-top");
 
@@ -89,13 +90,13 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 							pl="4"
 						>
 							{mobileMenu.open ? (
-								<NextLink href="/" passHref legacyBehavior>
-									<BoxLink>
+								<BoxLink asChild>
+									<NextLink href="/">
 										<AccessibleIcon label="Radix Homepage">
 											<RadixLogoIcon />
 										</AccessibleIcon>
-									</BoxLink>
-								</NextLink>
+									</NextLink>
+								</BoxLink>
 							) : (
 								<RadixByWorkOSLogoLink />
 							)}
@@ -116,28 +117,25 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 						<div className={styles.HeaderProductLinksContainer}>
 							<HeaderProductLink
 								href="/"
-								active={
-									router.pathname === "/" ||
-									router.pathname.startsWith("/themes")
-								}
+								active={pathname === "/" || pathname?.startsWith("/themes")}
 							>
 								Themes
 							</HeaderProductLink>
 							<HeaderProductLink
 								href="/primitives"
-								active={router.pathname.startsWith("/primitives")}
+								active={pathname?.startsWith("/primitives")}
 							>
 								Primitives
 							</HeaderProductLink>
 							<HeaderProductLink
 								href="/icons"
-								active={router.pathname.startsWith("/icons")}
+								active={pathname?.startsWith("/icons")}
 							>
 								Icons
 							</HeaderProductLink>
 							<HeaderProductLink
 								href="/colors"
-								active={router.pathname.startsWith("/colors")}
+								active={pathname?.startsWith("/colors")}
 							>
 								Colors
 							</HeaderProductLink>
@@ -159,7 +157,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 								size="2"
 								color="gray"
 								href="/blog"
-								highContrast={router.pathname.includes("/blog")}
+								highContrast={pathname?.includes("/blog")}
 							>
 								Blog
 							</Link>
@@ -221,33 +219,35 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 	);
 };
 
-const HeaderProductLink = ({
+const HeaderProductLink = <T extends string>({
 	active,
 	children,
-	href = "",
+	href,
 	...props
-}: React.ComponentPropsWithoutRef<"a"> & { active?: boolean }) => (
-	<NextLink href={href} passHref legacyBehavior>
-		<a
-			data-state={active ? "active" : "inactive"}
-			className={styles.HeaderProductLink}
-			{...props}
-		>
-			<span className={styles.HeaderProductLinkInner}>{children}</span>
-			<span className={styles.HeaderProductLinkInnerHidden}>{children}</span>
-		</a>
+}: Omit<React.ComponentPropsWithoutRef<"a">, "href"> & {
+	active?: boolean;
+	href: Route<T>;
+}) => (
+	<NextLink
+		href={href}
+		data-state={active ? "active" : "inactive"}
+		className={styles.HeaderProductLink}
+		{...props}
+	>
+		<span className={styles.HeaderProductLinkInner}>{children}</span>
+		<span className={styles.HeaderProductLinkInnerHidden}>{children}</span>
 	</NextLink>
 );
 
 const RadixByWorkOSLogoLink = () => (
 	<Flex align="center" gap="3">
-		<NextLink href="/" passHref legacyBehavior>
-			<BoxLink>
+		<BoxLink asChild>
+			<NextLink href="/">
 				<AccessibleIcon label="Radix Homepage">
 					<RadixLogo />
 				</AccessibleIcon>
-			</BoxLink>
-		</NextLink>
+			</NextLink>
+		</BoxLink>
 
 		<div
 			style={{

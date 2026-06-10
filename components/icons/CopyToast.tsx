@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Text, Theme, Flex } from "@radix-ui/themes";
 import { Toast } from "radix-ui";

@@ -11,37 +11,37 @@
 	}
 }
 
-@media (min-width: 350px) and (max-width: 449px) {
+@media (min-width: 350px) {
 	.GroupGrid {
 		grid-template-columns: repeat(7, 15px);
 	}
 }
 
-@media (min-width: 450px) and (max-width: 549px) {
+@media (min-width: 450px) {
 	.GroupGrid {
 		grid-template-columns: repeat(9, 15px);
 	}
 }
 
-@media (min-width: 550px) and (max-width: 649px) {
+@media (min-width: 550px) {
 	.GroupGrid {
 		grid-template-columns: repeat(10, 15px);
 	}
 }
 
-@media (min-width: 650px) and (max-width: 749px) {
+@media (min-width: 650px) {
 	.GroupGrid {
 		grid-template-columns: repeat(12, 15px);
 	}
 }
 
-@media (min-width: 750px) and (max-width: 899px) {
+@media (min-width: 750px) {
 	.GroupGrid {
 		grid-template-columns: repeat(4, 15px);
 	}
 }
 
-@media (min-width: 900px) and (max-width: 1049px) {
+@media (min-width: 900px) {
 	.GroupGrid {
 		grid-template-columns: repeat(5, 15px);
 	}

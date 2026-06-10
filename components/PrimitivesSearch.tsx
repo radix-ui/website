@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { liteClient } from "algoliasearch/lite";
 import { createAutocomplete } from "@algolia/autocomplete-core";

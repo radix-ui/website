@@ -1,12 +1,13 @@
+"use client";
 import { colorsRoutes } from "@utils/colorsRoutes";
 import { Box, ScrollArea } from "@radix-ui/themes";
 import { ColorsHeader } from "./ColorsHeader";
 import { DocsNav } from "./DocsNav";
-import { MobileMenu } from "./MobileMenu";
+import { MobileMenu, type MobileMenuProps } from "./mobile-menu";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-export const ColorsMobileMenu = () => (
-	<MobileMenu>
+export const ColorsMobileMenu = (props: Omit<MobileMenuProps, "children">) => (
+	<MobileMenu {...props}>
 		<ColorsHeader />
 		<ScrollArea>
 			<Box pt="4" px="3" pb="9">

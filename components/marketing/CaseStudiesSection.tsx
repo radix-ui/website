@@ -30,91 +30,80 @@ export const CaseStudiesSection = () => {
 				</Box>
 
 				<Grid columns={{ sm: "2" }} gap="5" mb="6">
-					<NextLink
-						passHref
-						legacyBehavior
-						href="/primitives/case-studies/nodejs"
-					>
-						<Card asChild size="3">
-							<a>
-								<Box mb="5" height="24px">
-									<AccessibleIcon label="Node.js case study">
-										<Box asChild position="relative" top="-10px">
-											<CaseStudyLogo variant="Node.js" />
-										</Box>
-									</AccessibleIcon>
-								</Box>
-								<Text as="p" size="3" mb="4" style={{ textIndent: "-0.5em" }}>
-									“Radix Primitives are crucial for the Node.js website and are
-									a significant part of Node’s Web Design System. It allows our
-									engineers to focus on what matters and create delightful
-									experiences for the community.”
+					<Card asChild size="3">
+						<NextLink href="/primitives/case-studies/nodejs">
+							<Box mb="5" height="24px">
+								<AccessibleIcon label="Node.js case study">
+									<Box asChild position="relative" top="-10px">
+										<CaseStudyLogo variant="Node.js" />
+									</Box>
+								</AccessibleIcon>
+							</Box>
+							<Text as="p" size="3" mb="4" style={{ textIndent: "-0.5em" }}>
+								“Radix Primitives are crucial for the Node.js website and are a
+								significant part of Node’s Web Design System. It allows our
+								engineers to focus on what matters and create delightful
+								experiences for the community.”
+							</Text>
+							<Flex align="center" gap="3">
+								<Avatar
+									size="3"
+									fallback="R"
+									radius="full"
+									src="/marketing/avatar-claudio-wunder.jpg"
+									aria-labelledby="person1"
+								/>
+								<Text color="gray" size="3" id="person1">
+									Claudio Wunder, Node.js Core Collaborator
 								</Text>
-								<Flex align="center" gap="3">
-									<Avatar
-										size="3"
-										fallback="R"
-										radius="full"
-										src="/marketing/avatar-claudio-wunder.jpg"
-										aria-labelledby="person1"
-									/>
-									<Text color="gray" size="3" id="person1">
-										Claudio Wunder, Node.js Core Collaborator
-									</Text>
-								</Flex>
-							</a>
-						</Card>
-					</NextLink>
-					<NextLink
-						passHref
-						legacyBehavior
-						href="/primitives/case-studies/vercel"
-					>
-						<Card asChild size="3">
-							<a>
-								<Box mb="5" height="24px">
-									<AccessibleIcon label="Vercel case study">
-										<CaseStudyLogo variant="Vercel" />
-									</AccessibleIcon>
-								</Box>
-								<Text as="p" size="3" mb="4" style={{ textIndent: "-0.5em" }}>
-									“We’ve been able to focus on building solid user experiences
-									on top of Radix Primitives. With UI components, there are just
-									too many angles and rabbit holes to cover for product teams
-									that wish to move quickly.”
+							</Flex>
+						</NextLink>
+					</Card>
+					<Card asChild size="3">
+						<NextLink href="/primitives/case-studies/vercel">
+							<Box mb="5" height="24px">
+								<AccessibleIcon label="Vercel case study">
+									<CaseStudyLogo variant="Vercel" />
+								</AccessibleIcon>
+							</Box>
+							<Text as="p" size="3" mb="4" style={{ textIndent: "-0.5em" }}>
+								“We’ve been able to focus on building solid user experiences on
+								top of Radix Primitives. With UI components, there are just too
+								many angles and rabbit holes to cover for product teams that
+								wish to move quickly.”
+							</Text>
+							<Flex align="center" gap="3">
+								<Avatar
+									size="3"
+									fallback="R"
+									radius="full"
+									src="/marketing/avatar-rauno-freiberg.jpg"
+									aria-labelledby="person2"
+								/>
+								<Text color="gray" size="3" id="person2">
+									Rauno Freiberg, UI Engineer at Vercel
 								</Text>
-								<Flex align="center" gap="3">
-									<Avatar
-										size="3"
-										fallback="R"
-										radius="full"
-										src="/marketing/avatar-rauno-freiberg.jpg"
-										aria-labelledby="person2"
-									/>
-									<Text color="gray" size="3" id="person2">
-										Rauno Freiberg, UI Engineer at Vercel
-									</Text>
-								</Flex>
-							</a>
-						</Card>
-					</NextLink>
+							</Flex>
+						</NextLink>
+					</Card>
 				</Grid>
 
-				<NextLink href="/primitives/case-studies" passHref legacyBehavior>
-					<Link
-						size="2"
-						color="gray"
-						mb="4"
-						style={{
-							display: "inline-flex",
-							alignItems: "center",
-							gap: "var(--space-1)",
-						}}
-					>
+				<Link
+					asChild
+					size="2"
+					color="gray"
+					mb="4"
+					style={{
+						display: "inline-flex",
+						alignItems: "center",
+						gap: "var(--space-1)",
+					}}
+				>
+					<NextLink href="/primitives/case-studies">
 						And dozens more companies
 						<ArrowRightIcon style={{ marginBottom: -2 }} />
-					</Link>
-				</NextLink>
+					</NextLink>
+				</Link>
 
 				<HiddenScroll
 					position="relative"
@@ -132,92 +121,64 @@ export const CaseStudiesSection = () => {
 						justify="start"
 						gap="6"
 					>
-						<NextLink
-							href="/primitives/case-studies/basedash"
-							passHref
-							legacyBehavior
-						>
-							<LogoLink>
+						<LogoLink asChild>
+							<NextLink href="/primitives/case-studies/basedash">
 								<AccessibleIcon label="Basedash case study">
 									<CaseStudyLogo variant="Basedash" width="135" />
 								</AccessibleIcon>
-							</LogoLink>
-						</NextLink>
+							</NextLink>
+						</LogoLink>
 
-						<NextLink
-							href="/primitives/case-studies/basement-studio"
-							passHref
-							legacyBehavior
-						>
-							<LogoLink style={{ marginBottom: -6 }}>
+						<LogoLink style={{ marginBottom: -6 }} asChild>
+							<NextLink href="/primitives/case-studies/basement-studio">
 								<AccessibleIcon label="basement.studio case study">
 									<CaseStudyLogo variant="basement.studio" width="120" />
 								</AccessibleIcon>
-							</LogoLink>
-						</NextLink>
+							</NextLink>
+						</LogoLink>
 
-						<NextLink
-							href="/primitives/case-studies/codesandbox"
-							passHref
-							legacyBehavior
-						>
-							<LogoLink style={{ marginBottom: -4 }}>
+						<LogoLink style={{ marginBottom: -4 }} asChild>
+							<NextLink href="/primitives/case-studies/codesandbox">
 								<AccessibleIcon label="CodeSandbox case study">
 									<CaseStudyLogo variant="CodeSandbox" width="160" />
 								</AccessibleIcon>
-							</LogoLink>
-						</NextLink>
+							</NextLink>
+						</LogoLink>
 
-						<NextLink
-							href="/primitives/case-studies/linear"
-							passHref
-							legacyBehavior
-						>
-							<LogoLink>
+						<LogoLink asChild>
+							<NextLink href="/primitives/case-studies/linear">
 								<AccessibleIcon label="Linear case study">
 									<CaseStudyLogo variant="Linear" width="105" />
 								</AccessibleIcon>
-							</LogoLink>
-						</NextLink>
+							</NextLink>
+						</LogoLink>
 
-						<NextLink
-							href="/primitives/case-studies/liveblocks"
-							passHref
-							legacyBehavior
-						>
-							<LogoLink style={{ marginBottom: -3 }}>
+						<LogoLink style={{ marginBottom: -3 }} asChild>
+							<NextLink href="/primitives/case-studies/liveblocks">
 								<AccessibleIcon label="Liveblocks case study">
 									<CaseStudyLogo variant="Liveblocks" width="135" />
 								</AccessibleIcon>
-							</LogoLink>
-						</NextLink>
+							</NextLink>
+						</LogoLink>
 
-						<NextLink
-							href="/primitives/case-studies/supabase"
-							passHref
-							legacyBehavior
-						>
-							<LogoLink style={{ marginBottom: -2 }}>
+						<LogoLink style={{ marginBottom: -2 }} asChild>
+							<NextLink href="/primitives/case-studies/supabase">
 								<AccessibleIcon label="Supabase case study">
 									<CaseStudyLogo variant="Supabase" width="140" />
 								</AccessibleIcon>
-							</LogoLink>
-						</NextLink>
+							</NextLink>
+						</LogoLink>
 
-						<NextLink
-							href="/primitives/case-studies/university-of-amsterdam"
-							passHref
-							legacyBehavior
-						>
-							<LogoLink style={{ marginTop: 2 }}>
+						<LogoLink style={{ marginTop: 2 }} asChild>
+							<NextLink href="/primitives/case-studies/university-of-amsterdam">
 								<AccessibleIcon label="University of Amsterdam case study">
 									<CaseStudyLogo
 										variant="University of Amsterdam"
 										width="152"
 									/>
 								</AccessibleIcon>
-							</LogoLink>
-						</NextLink>
+							</NextLink>
+						</LogoLink>
 
 						{/* Horizontal scroll spacer */}
 						<div style={{ width: 1, height: 1 }} />

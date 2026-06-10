@@ -5,7 +5,6 @@ import styles from "./MagicCurtain.module.css";
 import { Context } from "radix-ui/internal";
 import { NavigationMenu } from "radix-ui";
 import debounce from "lodash.debounce";
-import { useIsomorphicLayoutEffect } from "@utils/useIsomorphicLayoutEffect";
 
 type Visibility = "hidden" | "animating-out" | "visible";
 type ForceReducedMotion = "always" | "if-hi-res" | "never";
@@ -89,11 +88,12 @@ const MagicCurtainItem = ({
 	const ref = React.useRef<HTMLDivElement | null>(null);
 	const [visibility, setVisibility] =
 		React.useState<Visibility>(defaultVisibility);
+	const { setItems } = context;
 
-	useIsomorphicLayoutEffect(() => {
+	React.useLayoutEffect(() => {
 		const item: MagicCurtainItem = { ref, visibility, setVisibility };
 
-		context.setItems((items) =>
+		setItems((items) =>
 			[...items, item].sort((a, b) => {
 				// Sort items according to their order in the DOM
 				return a.ref.current!.compareDocumentPosition(b.ref.current!) & 4
@@ -103,11 +103,11 @@ const MagicCurtainItem = ({
 		);
 
 		return () => {
-			context.setItems((items) => {
+			setItems((items) => {
 				return [...items.filter((value) => value.ref !== item.ref)];
 			});
 		};
-	}, [visibility]);
+	}, [visibility, setItems]);
 
 	return (
 		<div
@@ -138,7 +138,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 	const upcomingAnimationCallback = React.useRef<(() => void) | null>(null);
 
 	// Clear offset on viewport removal
-	useIsomorphicLayoutEffect(() => {
+	React.useLayoutEffect(() => {
 		const observer = new MutationObserver((mutationList) => {
 			for (const mutation of mutationList) {
 				if (mutation.type === "childList") {

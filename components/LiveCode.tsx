@@ -1,6 +1,6 @@
+"use client";
 import * as React from "react";
 import { transform as sucraseTransform } from "sucrase";
-import { useIsomorphicLayoutEffect } from "@utils/useIsomorphicLayoutEffect";
 
 interface LiveCodeProps {
 	/** Code string to evaluate */
@@ -27,7 +27,7 @@ export const LiveCode = ({
 
 	// Update error handler with current error state after the render
 	// Using layout effect so handler can react with own DOM changes without flicker
-	useIsomorphicLayoutEffect(() => {
+	React.useLayoutEffect(() => {
 		onRender(currentError.current);
 	});
 

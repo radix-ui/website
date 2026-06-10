@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import {
 	Box,
@@ -12,7 +13,7 @@ import {
 } from "@radix-ui/themes";
 import { Collapsible } from "radix-ui";
 import { getParameters } from "codesandbox/lib/api/define";
-import { CodeSandboxLogoIcon, CopyIcon } from "@radix-ui/react-icons";
+import { CodeSandboxLogoIcon } from "@radix-ui/react-icons";
 import { isValidCssLib, useCssLibPreference } from "./CssLibPreference";
 import { FrontmatterContext } from "./MDXComponents";
 import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from "@utils/constants";

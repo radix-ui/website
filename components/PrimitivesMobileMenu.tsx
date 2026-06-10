@@ -1,17 +1,19 @@
+"use client";
 import * as React from "react";
 import { primitivesRoutes } from "@utils/primitivesRoutes";
 import { Box, ScrollArea } from "@radix-ui/themes";
 import { DocsNav } from "./DocsNav";
-import { MobileMenu } from "./MobileMenu";
+import { MobileMenu, type MobileMenuProps } from "./mobile-menu";
 import { PrimitivesHeader } from "./PrimitivesHeader";
 import { PrimitivesSearchMobile } from "./PrimitivesSearchMobile";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-export const PrimitivesMobileMenu = () => {
+export const PrimitivesMobileMenu = (
+	props: Omit<MobileMenuProps, "children">,
+) => {
 	const [mobileSearchOpen, setMobileSearchOpen] = React.useState(false);
-
 	return (
-		<MobileMenu>
+		<MobileMenu {...props}>
 			<PrimitivesHeader />
 			<ScrollArea scrollbars="vertical">
 				<Box pt="4" px="3" pb="9" style={{ maxWidth: "100vw" }}>

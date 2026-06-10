@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import NextLink from "next/link";
 import { ExternalLinkIcon, Link2Icon } from "@radix-ui/react-icons";
@@ -106,9 +107,9 @@ export const components = {
 			);
 		}
 		return (
-			<NextLink href={href} passHref legacyBehavior>
-				<Link {...props}>{children}</Link>
-			</NextLink>
+			<Link {...props} asChild>
+				<NextLink href={href}>{children}</NextLink>
+			</Link>
 		);
 	},
 	hr: (props: any) => (

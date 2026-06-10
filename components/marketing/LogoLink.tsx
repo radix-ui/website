@@ -1,3 +1,5 @@
+"use client";
+import { Slot } from "radix-ui";
 import * as React from "react";
 import styles from "./LogoLink.module.css";
 
@@ -5,10 +7,12 @@ export const LogoLink = React.forwardRef<
 	HTMLAnchorElement,
 	React.ComponentProps<"a"> & {
 		variant?: "normal" | "box";
+		asChild?: boolean;
 	}
->(function LogoLink({ variant = "normal", ...props }, forwardedRef) {
+>(function LogoLink({ variant = "normal", asChild, ...props }, forwardedRef) {
+	const Comp = asChild ? Slot.Root : "a";
 	return (
-		<a
+		<Comp
 			{...props}
 			data-variant={variant}
 			ref={forwardedRef}

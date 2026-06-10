@@ -1,6 +1,6 @@
 import { Box } from "@radix-ui/themes";
 import styles from "./HiddenScroll.module.css";
-import * as React from "react";
+import type * as React from "react";
 
 export const HiddenScroll = ({
 	className,

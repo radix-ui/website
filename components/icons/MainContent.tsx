@@ -1,3 +1,4 @@
+"use client";
 import { Box } from "@radix-ui/themes";
 import * as React from "react";
 import { AllIcons } from "./AllIcons";

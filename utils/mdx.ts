@@ -1,3 +1,4 @@
+import { cache } from "react";
 import fs from "fs";
 import path from "path";
 import { globSync } from "glob";
@@ -35,7 +36,7 @@ export const getAllFrontmatter = (fromPath: string) => {
 		);
 };
 
-export const getMdxBySlug = async (basePath: string, slug: string) => {
+export const getMdxBySlug = cache(async (basePath: string, slug: string) => {
 	const source = fs.readFileSync(
 		path.join(DATA_PATH, basePath, `${slug}.mdx`),
 		"utf8",
@@ -62,7 +63,7 @@ export const getMdxBySlug = async (basePath: string, slug: string) => {
 		} as Frontmatter,
 		code,
 	};
-};
+});
 
 export function getAllVersionsFromPath(fromPath: string) {
 	const PATH = path.join(DATA_PATH, fromPath);

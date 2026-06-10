@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { useComposedRefs, useCallbackRef, Context } from "radix-ui/internal";
 import { composeEventHandlers } from "radix-ui/internal";

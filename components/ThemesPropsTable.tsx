@@ -1,20 +1,24 @@
 import * as React from "react";
 import { PropsTable } from "./PropsTable";
 import * as props from "@utils/themes/props";
-import { Code, Link as DSLink } from "@radix-ui/themes";
+import {
+	Code,
+	Link as DSLink,
+	LinkProps as DSLinkProps,
+} from "@radix-ui/themes";
 import NextLink from "next/link";
+import type { Route } from "next";
 import { ExternalLink } from "./ExternalLink";
 
-const Link = ({ href = "", ...props }) => {
-	if (href.startsWith("http")) {
-		return <DSLink {...props} href={href} target="_blank" rel="noopener" />;
-	}
-	return (
-		<NextLink href={href} passHref legacyBehavior>
-			<DSLink {...props} />
-		</NextLink>
-	);
-};
+const Link = <T extends string>({
+	href,
+	children,
+	...props
+}: Omit<DSLinkProps, "href"> & { href: Route<T> }) => (
+	<DSLink {...props} asChild>
+		<NextLink href={href}>{children}</NextLink>
+	</DSLink>
+);
 
 const {
 	// values

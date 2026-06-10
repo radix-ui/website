@@ -1,3 +1,4 @@
+"use client";
 import * as Icons from "@radix-ui/react-icons";
 import { Button, Flex, Grid, Text } from "@radix-ui/themes";
 import * as React from "react";

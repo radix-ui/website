@@ -1,9 +1,11 @@
+"use client";
 import * as React from "react";
 import NextLink from "next/link";
+import type { Route } from "next";
 import { Text, Heading, Box, Badge, Flex } from "@radix-ui/themes";
 import { classNames } from "@utils/classNames";
 import styles from "./DocsNav.module.css";
-import { useCurrentPageSlug } from "@utils/useCurrentPageSlug";
+import { useCurrentPageSlug } from "@utils/use-current-page-slug";
 import scrollIntoView from "scroll-into-view-if-needed";
 
 interface DocsNavProps {
@@ -127,8 +129,11 @@ const DocsNavItem = ({
 	}
 
 	return (
-		<NextLink passHref legacyBehavior href={`/${href}`}>
-			<a ref={ref} className={className} {...props} />
-		</NextLink>
+		<NextLink
+			href={`/${href}` as Route}
+			ref={ref}
+			className={className}
+			{...props}
+		/>
 	);
 };

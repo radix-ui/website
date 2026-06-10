@@ -5,7 +5,7 @@
 	"type": "module",
 	"packageManager": "pnpm@10.2.0",
 	"engines": {
-		"node": ">=20.9.0"
+		"node": "24.x"
 	},
 	"scripts": {
 		"dev": "next dev",
