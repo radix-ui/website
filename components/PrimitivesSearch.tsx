@@ -29,10 +29,15 @@ import type {
 } from "@algolia/autocomplete-core";
 import type { SearchResponse } from "@algolia/client-search";
 
-const ALGOLIA_APP_ID = "VXVOLU3YVQ";
-const ALGOLIA_PUBLIC_API_KEY = "9d44395c1b7b172ac84b7e5ab80bf8c5";
+const ALGOLIA_APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
+const ALGOLIA_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY;
+const ALGOLIA_INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME;
 
-const searchClient = liteClient(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
+export const isPrimitivesSearchEnabled = !!(
+	ALGOLIA_APP_ID &&
+	ALGOLIA_PUBLIC_API_KEY &&
+	ALGOLIA_INDEX_NAME
+);
 
 const SUPPORTED_LEVELS = ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4"] as const;
 type LevelContentType = (typeof SUPPORTED_LEVELS)[number];
@@ -80,6 +85,12 @@ function PrimitivesSearchRoot({
 		status: "idle",
 	});
 
+	const [searchClient] = React.useState(() =>
+		isPrimitivesSearchEnabled
+			? liteClient(ALGOLIA_APP_ID!, ALGOLIA_PUBLIC_API_KEY!)
+			: null,
+	);
+
 	const autocomplete = React.useMemo(
 		() =>
 			createAutocomplete<
@@ -100,7 +111,7 @@ function PrimitivesSearchRoot({
 					setSearchState(state);
 				},
 				getSources: ({ query, setStatus, state }) => {
-					if (!query || !process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME) {
+					if (!query || !searchClient || !ALGOLIA_INDEX_NAME) {
 						return [];
 					}
 
@@ -108,7 +119,7 @@ function PrimitivesSearchRoot({
 						.search<SearchItem>({
 							requests: [
 								{
-									indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+									indexName: ALGOLIA_INDEX_NAME,
 									type: "default",
 									query,
 									hitsPerPage,
@@ -165,7 +176,7 @@ function PrimitivesSearchRoot({
 						});
 				},
 			}),
-		[hitsPerPage, snippetLength],
+		[hitsPerPage, snippetLength, searchClient],
 	);
 
 	const setIsOpen = autocomplete.setIsOpen;
