@@ -41,8 +41,8 @@ type SearchItem = SnippetedHit<{
 	objectID: string;
 	type: ContentType;
 	url: string;
-	title: string;
-	hierarchy: {
+	title?: string;
+	hierarchy?: {
 		lvl0: string;
 		lvl1: string;
 		lvl2: string | null;
@@ -158,7 +158,7 @@ function PrimitivesSearchRoot({
 									onSelect: (params) => {
 										params.setIsOpen(false);
 									},
-									sourceId: lvl0 || "Uncategorized",
+									sourceId: lvl0,
 									getItemUrl: ({ item }) => item.url,
 									getItems: () => items,
 								}));
@@ -409,7 +409,18 @@ const SearchResults = React.memo(
 	},
 );
 
+function getItemFallbackText(item: SearchItem) {
+	return item.title || item.content || "No title available";
+}
+
+function hasHierarchy(item: SearchItem): item is SearchItem & {
+	hierarchy: NonNullable<SearchItem["hierarchy"]>;
+} {
+	return !!item.hierarchy && typeof item.hierarchy === "object";
+}
+
 function ItemLink({ item }: { item: SearchItem }) {
+	const useFallbackTitle = item.type !== "content" && !hasHierarchy(item);
 	return (
 		<Box
 			asChild
@@ -419,12 +430,16 @@ function ItemLink({ item }: { item: SearchItem }) {
 		>
 			<a href={item.url}>
 				<ItemTitle mb="1" mt="-1">
-					<Highlight
-						hit={item}
-						attribute={
-							item.type === "content" ? "content" : ["hierarchy", item.type]
-						}
-					/>
+					{useFallbackTitle ? (
+						getItemFallbackText(item)
+					) : (
+						<Highlight
+							hit={item}
+							attribute={
+								item.type === "content" ? "content" : ["hierarchy", item.type]
+							}
+						/>
+					)}
 				</ItemTitle>
 				{/* Adding a semi-colon to insert a break in the speech flow */}
 				<VisuallyHidden.Root>; </VisuallyHidden.Root>
@@ -450,11 +465,10 @@ function ItemBreadcrumb({
 	item: SearchItem;
 	levels: typeof SUPPORTED_LEVELS;
 }) {
-	if (!item.hierarchy || typeof item.hierarchy !== "object") {
-		const fallbackText = item.title || item.content || "No title available";
+	if (!hasHierarchy(item)) {
 		return (
 			<Text size="2" color="gray" as="p">
-				{fallbackText}
+				{getItemFallbackText(item)}
 			</Text>
 		);
 	}
