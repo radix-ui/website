@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import NextLink from "next/link";
 import {
@@ -100,21 +101,18 @@ import {
 	VercelLogoIcon,
 } from "@radix-ui/react-icons";
 import { getPeopleForColor } from "@utils/people";
-import styles from "./playground.module.css";
+import styles from "./page.module.css";
 import { MobileMenu } from "@components/mobile-menu";
 import { ThemesHeader } from "@components/ThemesHeader";
 import { ThemesPanelBackgroundImage } from "@components/ThemesPanelBackgroundImage";
 import { useTheme } from "next-themes";
-import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
-import Head from "next/head";
 import { ThemesMobileMenu } from "@components/ThemesMobileMenu";
 import { AvatarIconFallback } from "@components/AvatarIconFallback";
 import { RemoveScroll } from "react-remove-scroll";
-import TabNavDemo from "@components/tab-nav-demo";
+import { TabNavDemo } from "@components/tab-nav-demo";
 
 export default function ComponentsPage() {
 	const { systemTheme, setTheme } = useTheme();
-
 	const {
 		onAccentColorChange,
 		onGrayColorChange,
@@ -143,15 +141,6 @@ export default function ComponentsPage() {
 
 	return (
 		<>
-			<Head>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-			</Head>
-			<TitleAndMetaTags
-				title="Playground – Radix Themes"
-				description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."
-				image="themes.png"
-			/>
-
 			<div className={styles.PlaygroundRoot}>
 				{/* Set default values for settings we don't want affecting the header */}
 				<Theme radius="medium" scaling="100%">
@@ -4894,24 +4883,16 @@ export default function ComponentsPage() {
 												<Text color="gray" size="1" mb="2">
 													Accent
 												</Text>
-												<TabNavDemo baseUrl="/themes/playground" mb="5" />
-												<TabNavDemo baseUrl="/themes/playground" highContrast />
+												<TabNavDemo mb="5" />
+												<TabNavDemo highContrast />
 											</Flex>
 
 											<Flex align="center" direction="column">
 												<Text color="gray" size="1" mb="2">
 													Gray
 												</Text>
-												<TabNavDemo
-													baseUrl="/themes/playground"
-													color="gray"
-													mb="5"
-												/>
-												<TabNavDemo
-													baseUrl="/themes/playground"
-													color="gray"
-													highContrast
-												/>
+												<TabNavDemo color="gray" mb="5" />
+												<TabNavDemo color="gray" highContrast />
 											</Flex>
 										</Flex>
 									</Box>
@@ -4927,15 +4908,8 @@ export default function ComponentsPage() {
 															{upperFirst(color)}
 														</Text>
 													</Box>
-													<TabNavDemo
-														baseUrl="/themes/playground"
-														color={color}
-													/>
-													<TabNavDemo
-														baseUrl="/themes/playground"
-														color={color}
-														highContrast
-													/>
+													<TabNavDemo color={color} />
+													<TabNavDemo color={color} highContrast />
 												</Flex>
 											))}
 										</Flex>
@@ -4952,10 +4926,7 @@ export default function ComponentsPage() {
 															Size {size}
 														</Text>
 													</Box>
-													<TabNavDemo
-														baseUrl="/themes/playground"
-														size={size}
-													/>
+													<TabNavDemo size={size} />
 												</Flex>
 											))}
 										</Flex>
