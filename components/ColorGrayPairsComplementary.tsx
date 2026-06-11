@@ -28,6 +28,10 @@ const darkBgColors = ["sky", "mint", "lime", "yellow", "amber"];
 export function ColorGrayPairsComplementary() {
 	return (
 		<Box>
+			<Text as="p" mb="3">
+				Scales designed for white foreground text:
+			</Text>
+
 			<Grid
 				align="center"
 				my="5"
