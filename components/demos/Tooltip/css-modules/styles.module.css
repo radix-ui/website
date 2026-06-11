@@ -27,7 +27,7 @@
 }
 
 .Arrow {
-	fill: var(--color-background);
+	fill: white;
 }
 
 .IconButton {
