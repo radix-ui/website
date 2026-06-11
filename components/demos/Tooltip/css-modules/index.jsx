@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 const TooltipDemo = () => {
 	return (
 		<Tooltip.Provider>
-			<Tooltip.Root open>
+			<Tooltip.Root>
 				<Tooltip.Trigger asChild>
 					<button className={styles.IconButton}>
 						<PlusIcon />
