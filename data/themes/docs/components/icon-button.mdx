@@ -21,15 +21,30 @@ This component is based on the `button` element and supports [common margin prop
 {
 
 <Callout.Root my="5" color="gray">
-  <Callout.Icon>
-    <InfoCircledIcon />
-  </Callout.Icon>
-  <Callout.Text>
-    It's strongly recommended to include
-    an <Code>aria-label</Code> prop on <Code>IconButton</Code> components since
-    they don't contain visible text.
-    Screen readers rely on this label to announce the button's purpose to users.
-  </Callout.Text>
+	<Callout.Icon>
+		<InfoCircledIcon />
+	</Callout.Icon>
+	<Callout.Text>
+		It&apos;s strongly recommended to include an{" "}
+		<Link
+			target="_blank"
+			rel="noopener noreferrer"
+			href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label"
+		>
+			<Code>aria-label</Code>
+		</Link>{" "}
+		or{" "}
+		<Link
+			target="_blank"
+			rel="noopener noreferrer"
+			href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby"
+		>
+			<Code>aria-labelledby</Code>
+		</Link>{" "}
+		prop on Icon Button components since they don&apos;t contain visible text.
+		Screen readers rely on this label to announce the button&apos;s purpose to
+		users.
+	</Callout.Text>
 </Callout.Root>
 
 }
