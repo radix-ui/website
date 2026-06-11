@@ -31,7 +31,7 @@ module.exports = {
 					to: { opacity: "0", transform: "translateX(-200px)" },
 				},
 				scaleIn: {
-					from: { opacity: "0", transform: "rotateX(-10deg) scale(0.9)" },
+					from: { opacity: "0", transform: "rotateX(-30deg) scale(0.9)" },
 					to: { opacity: "1", transform: "rotateX(0deg) scale(1)" },
 				},
 				scaleOut: {
