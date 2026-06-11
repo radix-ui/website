@@ -646,9 +646,19 @@ export const AccessibilitySection = () => {
 	);
 };
 
-const screenReaderItems: { state: MockDropdownState; label: string; suffix: string; prefix?: string }[] = [
+const screenReaderItems: {
+	state: MockDropdownState;
+	label: string;
+	suffix: string;
+	prefix?: string;
+}[] = [
 	{ state: "closed", label: "Navigation,", suffix: "pop-up, button" },
-	{ state: "item1", label: "Show Minimap,", suffix: "menu item", prefix: "ticked, " },
+	{
+		state: "item1",
+		label: "Show Minimap,",
+		suffix: "menu item",
+		prefix: "ticked, ",
+	},
 	{ state: "item2", label: "Go to Symbol,", suffix: "menu item" },
 	{ state: "item3", label: "Go to Definition,", suffix: "menu item" },
 	{ state: "item4", label: "Go to References,", suffix: "menu item" },
@@ -661,7 +671,10 @@ const ScreenReaderOutput = ({
 }) => (
 	<>
 		{screenReaderItems.map(({ state, label, suffix, prefix }) => (
-			<span key={state} style={dropdownState !== state ? { display: "none" } : undefined}>
+			<span
+				key={state}
+				style={dropdownState !== state ? { display: "none" } : undefined}
+			>
 				{label}
 				<br />
 				{prefix}
