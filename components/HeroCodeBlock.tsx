@@ -11,7 +11,6 @@ import {
 	Theme,
 	Grid,
 } from "@radix-ui/themes";
-import { Collapsible } from "radix-ui";
 import { getParameters } from "codesandbox/lib/api/define";
 import { CodeSandboxLogoIcon } from "@radix-ui/react-icons";
 import { isValidCssLib, useCssLibPreference } from "./CssLibPreference";
@@ -20,6 +19,7 @@ import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from "@utils/constants";
 import type { CssLib } from "@utils/constants";
 import styles from "./HeroCodeBlock.module.css";
 import { CodeBlock } from "./CodeBlock";
+import { flushSync } from "react-dom";
 
 export const HeroCodeBlock = ({
 	children,
@@ -48,6 +48,7 @@ export const HeroCodeBlock = ({
 		})
 		.filter((v): v is NonNullable<typeof v> => !!v);
 
+	const contentRef = React.useRef<HTMLDivElement>(null);
 	const availableCssLibs = snippets
 		.map(({ cssLib }) => cssLib)
 		.filter(onlyUnique);
@@ -75,163 +76,176 @@ export const HeroCodeBlock = ({
 			data-search-exclude
 			position="relative"
 		>
-			<Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
-				<Flex
-					display="inline-flex"
-					position="absolute"
-					align="center"
-					justify="end"
-					gap="1"
-					top="0"
-					right="0"
-					mt="-7"
-					mr="2"
+			<Flex
+				display="inline-flex"
+				position="absolute"
+				align="center"
+				justify="end"
+				gap="1"
+				top="0"
+				right="0"
+				mt="-7"
+				mr="2"
+			>
+				<form
+					action="https://codesandbox.io/api/v1/sandboxes/define"
+					method="POST"
+					target="_blank"
 				>
-					<form
-						action="https://codesandbox.io/api/v1/sandboxes/define"
-						method="POST"
-						target="_blank"
+					<input type="hidden" name="query" value="file=/App.jsx" />
+					<input type="hidden" name="environment" value="server" />
+					<input type="hidden" name="hidedevtools" value="1" />
+					<input
+						type="hidden"
+						name="parameters"
+						value={makeCodeSandboxParams(
+							frontmatter.name!,
+							sources,
+							usedCssLib,
+						)}
+					/>
+					<Tooltip
+						className="radix-themes-custom-fonts"
+						content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}
 					>
-						<input type="hidden" name="query" value="file=/App.jsx" />
-						<input type="hidden" name="environment" value="server" />
-						<input type="hidden" name="hidedevtools" value="1" />
-						<input
-							type="hidden"
-							name="parameters"
-							value={makeCodeSandboxParams(
-								frontmatter.name!,
-								sources,
-								usedCssLib,
-							)}
-						/>
-						<Tooltip
-							className="radix-themes-custom-fonts"
-							content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}
-						>
-							<Theme appearance="dark" hasBackground={false}>
-								<IconButton
-									className={styles.SandboxButton}
-									variant="soft"
-									type="submit"
-									color="gray"
-									highContrast
-								>
-									<CodeSandboxLogoIcon />
-								</IconButton>
-							</Theme>
-						</Tooltip>
-					</form>
-				</Flex>
+						<Theme appearance="dark" hasBackground={false}>
+							<IconButton
+								className={styles.SandboxButton}
+								variant="soft"
+								type="submit"
+								color="gray"
+								highContrast
+							>
+								<CodeSandboxLogoIcon />
+							</IconButton>
+						</Theme>
+					</Tooltip>
+				</form>
+			</Flex>
 
-				<Collapsible.Content asChild forceMount>
-					<Box
-						data-code-block-content
-						position="relative"
+			<Box
+				data-code-block-content
+				position="relative"
+				style={{
+					border: "1px solid var(--gray-a5)",
+					borderBottomLeftRadius: "var(--radius-4)",
+					borderBottomRightRadius: "var(--radius-4)",
+					borderTop: "none",
+				}}
+			>
+				<Tabs.Root
+					value={currentTabValue}
+					onValueChange={(value) => {
+						setCurrentTabValue(value);
+						setIsCodeExpanded(true);
+					}}
+				>
+					<Tabs.List
 						style={{
-							border: "1px solid var(--gray-a5)",
-							borderBottomLeftRadius: "var(--radius-4)",
-							borderBottomRightRadius: "var(--radius-4)",
-							borderTop: "none",
+							position: "relative",
+							backgroundColor: "var(--color-panel-solid)",
+							marginBottom: -1,
 						}}
 					>
-						<Tabs.Root
-							value={currentTabValue}
-							onValueChange={(value) => {
-								setCurrentTabValue(value);
-								setIsCodeExpanded(true);
-							}}
-						>
-							<Tabs.List
-								style={{
-									position: "relative",
-									backgroundColor: "var(--color-panel-solid)",
-									marginBottom: -1,
-								}}
+						{currentTabs.map((tab) => (
+							<Tabs.Trigger key={tab.id} value={tab.id}>
+								{tab.title}
+							</Tabs.Trigger>
+						))}
+
+						<Flex ml="auto" my="auto" gap="2">
+							<CodeBlock.CopyButton size="1" />
+
+							{cssLibProp === undefined && availableCssLibs.length > 1 ? (
+								<Select.Root
+									aria-label="Choose a styling solution"
+									size="1"
+									value={preferredCssLib}
+									onValueChange={(lib) => {
+										if (isValidCssLib(lib)) setPreferredCssLib(lib);
+									}}
+								>
+									<Select.Trigger
+										variant="soft"
+										color="gray"
+										mr="2"
+										style={{ minWidth: 115 }}
+									/>
+									<Select.Content className="radix-themes-custom-fonts">
+										{availableCssLibs.map((lib) => (
+											<Select.Item key={lib} value={lib}>
+												{CSS_LIB_NAMES[lib]}
+											</Select.Item>
+										))}
+									</Select.Content>
+								</Select.Root>
+							) : null}
+						</Flex>
+					</Tabs.List>
+
+					{currentTabs.map((tab) => (
+						<Tabs.Content key={tab.id} value={tab.id} asChild>
+							<CodeBlock.Content
+								id="code-block-content"
+								ref={contentRef}
+								tabIndex={-1}
 							>
-								{currentTabs.map((tab) => (
-									<Tabs.Trigger key={tab.id} value={tab.id}>
-										{tab.title}
-									</Tabs.Trigger>
-								))}
+								<Grid
+									position="relative"
+									width="100%"
+									rows={isCodeExpanded ? "1fr" : "150px"}
+									maxHeight="70vh"
+									minHeight="150px"
+								>
+									<CodeBlock.Pre
+										overflow={isCodeExpanded ? "scroll" : "hidden"}
+									>
+										<code>{tab.children}</code>
 
-								<Flex ml="auto" my="auto" gap="2">
-									<CodeBlock.CopyButton size="1" />
-
-									{cssLibProp === undefined && availableCssLibs.length > 1 ? (
-										<Select.Root
-											aria-label="Choose a styling solution"
-											size="1"
-											value={preferredCssLib}
-											onValueChange={(lib) => {
-												if (isValidCssLib(lib)) setPreferredCssLib(lib);
-											}}
+										<Box height="64px" />
+										<Flex
+											align="end"
+											justify="center"
+											className={styles.CollapsibleGradient}
 										>
-											<Select.Trigger
-												variant="soft"
-												color="gray"
-												mr="2"
-												style={{ minWidth: 115 }}
-											/>
-											<Select.Content className="radix-themes-custom-fonts">
-												{availableCssLibs.map((lib) => (
-													<Select.Item key={lib} value={lib}>
-														{CSS_LIB_NAMES[lib]}
-													</Select.Item>
-												))}
-											</Select.Content>
-										</Select.Root>
-									) : null}
-								</Flex>
-							</Tabs.List>
-
-							{currentTabs.map((tab) => (
-								<Tabs.Content key={tab.id} value={tab.id} asChild>
-									<CodeBlock.Content>
-										<Grid
-											position="relative"
-											width="100%"
-											rows={isCodeExpanded ? "1fr" : "150px"}
-											maxHeight="70vh"
-											minHeight="150px"
-										>
-											<CodeBlock.Pre
-												overflow={isCodeExpanded ? "scroll" : "hidden"}
+											<Box
+												position="relative"
+												style={{
+													backgroundColor: "var(--color-panel-solid)",
+												}}
 											>
-												<code>{tab.children}</code>
-
-												<Box height="64px" />
-												<Flex
-													align="end"
-													justify="center"
-													className={styles.CollapsibleGradient}
+												<Button
+													aria-controls="code-block-content"
+													aria-expanded={isCodeExpanded}
+													type="button"
+													size="1"
+													variant="soft"
+													highContrast
+													color="gray"
+													onClick={() => {
+														let isExpanded = false;
+														flushSync(() => {
+															setIsCodeExpanded((isCodeExpanded) => {
+																isExpanded = !isCodeExpanded;
+																return isExpanded;
+															});
+														});
+														if (isExpanded) {
+															contentRef.current?.focus();
+														}
+													}}
 												>
-													<Collapsible.Trigger asChild>
-														<Box
-															position="relative"
-															style={{
-																backgroundColor: "var(--color-panel-solid)",
-															}}
-														>
-															<Button
-																size="1"
-																variant="soft"
-																highContrast
-																color="gray"
-															>
-																{isCodeExpanded ? "Collapse" : "Expand"} code
-															</Button>
-														</Box>
-													</Collapsible.Trigger>
-												</Flex>
-											</CodeBlock.Pre>
-										</Grid>
-									</CodeBlock.Content>
-								</Tabs.Content>
-							))}
-						</Tabs.Root>
-					</Box>
-				</Collapsible.Content>
-			</Collapsible.Root>
+													{isCodeExpanded ? "Collapse" : "Expand"} code
+												</Button>
+											</Box>
+										</Flex>
+									</CodeBlock.Pre>
+								</Grid>
+							</CodeBlock.Content>
+						</Tabs.Content>
+					))}
+				</Tabs.Root>
+			</Box>
 		</Box>
 	);
 };
