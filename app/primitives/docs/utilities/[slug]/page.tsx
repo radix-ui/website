@@ -41,7 +41,7 @@ export default async function UtilitiesDoc({ params }: PageProps) {
 
 	return (
 		<>
-			<div data-algolia-lvl0 style={{ display: "none" }}>
+			<div data-search-lvl0 style={{ display: "none" }}>
 				Utilities
 			</div>
 

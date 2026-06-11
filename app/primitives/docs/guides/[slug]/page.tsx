@@ -27,7 +27,7 @@ export default async function GuidesDoc({ params }: PageProps) {
 
 	return (
 		<>
-			<div data-algolia-lvl0 style={{ display: "none" }}>
+			<div data-search-lvl0 style={{ display: "none" }}>
 				Guides
 			</div>
 

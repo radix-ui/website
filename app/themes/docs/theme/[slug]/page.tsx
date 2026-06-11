@@ -26,7 +26,7 @@ export default async function ThemesDoc({ params }: PageProps) {
 	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
 	return (
 		<>
-			<div data-algolia-lvl0 style={{ display: "none" }}>
+			<div data-search-lvl0 style={{ display: "none" }}>
 				Guides
 			</div>
 

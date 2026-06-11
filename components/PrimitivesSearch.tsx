@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { liteClient } from "algoliasearch/lite";
+import MiniSearch, { type SearchResult } from "minisearch";
 import { createAutocomplete } from "@algolia/autocomplete-core";
 import {
 	parseAlgoliaHitSnippet,
@@ -27,17 +27,8 @@ import type {
 	AutocompleteState as InternalAutocompleteState,
 	AutocompleteApi as InternalAutocompleteApi,
 } from "@algolia/autocomplete-core";
-import type { SearchResponse } from "@algolia/client-search";
 
-const ALGOLIA_APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
-const ALGOLIA_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY;
-const ALGOLIA_INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME;
-
-export const isPrimitivesSearchEnabled = !!(
-	ALGOLIA_APP_ID &&
-	ALGOLIA_PUBLIC_API_KEY &&
-	ALGOLIA_INDEX_NAME
-);
+const SEARCH_INDEX_URL = "/search-index.json";
 
 const SUPPORTED_LEVELS = ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4"] as const;
 type LevelContentType = (typeof SUPPORTED_LEVELS)[number];
@@ -64,6 +55,207 @@ type AutocompleteApi = InternalAutocompleteApi<
 	React.KeyboardEvent
 >;
 
+// A record as stored in the generated `search-index.json` – the same shape as
+// `SearchItem` but without the `_snippetResult` we synthesize at query time.
+interface SearchRecord {
+	objectID: string;
+	type: ContentType;
+	url: string;
+	title?: string;
+	hierarchy?: {
+		lvl0: string;
+		lvl1: string;
+		lvl2: string | null;
+		lvl3: string | null;
+		lvl4: string | null;
+	};
+	content: string | null;
+}
+
+const SEARCHABLE_FIELDS = ["lvl1", "lvl2", "lvl3", "lvl4", "content"] as const;
+const HIGHLIGHT_PRE_TAG = "__aa-highlight__";
+const HIGHLIGHT_POST_TAG = "__/aa-highlight__";
+
+let searchIndexPromise: Promise<MiniSearch<SearchRecord>> | null = null;
+const recordsById = new Map<string, SearchRecord>();
+
+function loadSearchIndex(): Promise<MiniSearch<SearchRecord>> {
+	if (!searchIndexPromise) {
+		searchIndexPromise = fetch(SEARCH_INDEX_URL)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`Failed to load search index (${response.status})`);
+				}
+				return response.json() as Promise<SearchRecord[]>;
+			})
+			.then((records) => {
+				const miniSearch = new MiniSearch<SearchRecord>({
+					idField: "objectID",
+					fields: [...SEARCHABLE_FIELDS],
+					extractField: (record, field) => {
+						if (field === "objectID") return record.objectID;
+						if (field === "content") return record.content ?? "";
+						return record.hierarchy?.[field as LevelContentType] ?? "";
+					},
+					searchOptions: {
+						prefix: true,
+						fuzzy: 0.2,
+						combineWith: "AND",
+						boost: { lvl1: 8, lvl2: 6, lvl3: 4, lvl4: 3, content: 1 },
+					},
+				});
+				for (const record of records) {
+					recordsById.set(record.objectID, record);
+				}
+				miniSearch.addAll(records);
+				return miniSearch;
+			})
+			.catch((error) => {
+				searchIndexPromise = null;
+				throw error;
+			});
+	}
+	return searchIndexPromise;
+}
+
+function getQueryTokens(query: string): string[] {
+	return query.toLowerCase().split(/\s+/).filter(Boolean);
+}
+
+function stripPunctuation(token: string): string {
+	return token.replace(/[^\p{L}\p{N}]/gu, "");
+}
+
+function isTokenMatch(
+	token: string,
+	queryTokens: string[],
+	matchedTerms: string[],
+): boolean {
+	const lower = token.toLowerCase();
+	if (!lower) return false;
+	return (
+		queryTokens.some((queryToken) => lower.startsWith(queryToken)) ||
+		matchedTerms.some((term) => lower === term || lower.startsWith(term))
+	);
+}
+
+/**
+ * Wraps matched words in the same markers Algolia used, so the existing
+ * `parseAlgoliaHitSnippet` render path keeps working unchanged.
+ */
+function highlightText(
+	text: string,
+	queryTokens: string[],
+	matchedTerms: string[],
+): string {
+	return text
+		.split(/(\s+)/)
+		.map((part) => {
+			if (part === "" || /^\s+$/.test(part)) return part;
+			const segments = part.match(/^([^\p{L}\p{N}]*)(.*?)([^\p{L}\p{N}]*)$/u);
+			if (!segments) return part;
+			const [, pre, core, post] = segments;
+			if (core && isTokenMatch(core, queryTokens, matchedTerms)) {
+				return `${pre}${HIGHLIGHT_PRE_TAG}${core}${HIGHLIGHT_POST_TAG}${post}`;
+			}
+			return part;
+		})
+		.join("");
+}
+
+/**
+ * Produces a snippet window of roughly `snippetLength` words centered on the
+ * first match, mirroring Algolia's `attributesToSnippet` behavior.
+ */
+function snippetText(
+	text: string,
+	queryTokens: string[],
+	matchedTerms: string[],
+	snippetLength: number,
+): string {
+	const words = text.split(/\s+/).filter(Boolean);
+	if (words.length <= snippetLength) {
+		return highlightText(text, queryTokens, matchedTerms);
+	}
+	const matchIndex = words.findIndex((word) =>
+		isTokenMatch(stripPunctuation(word), queryTokens, matchedTerms),
+	);
+	const center = matchIndex === -1 ? 0 : matchIndex;
+	const start = Math.max(0, center - Math.floor(snippetLength / 2));
+	const end = Math.min(words.length, start + snippetLength);
+	const slice = words.slice(start, end).join(" ");
+	return `${start > 0 ? "…" : ""}${highlightText(
+		slice,
+		queryTokens,
+		matchedTerms,
+	)}${end < words.length ? "…" : ""}`;
+}
+
+function toSearchItem(
+	record: SearchRecord,
+	queryTokens: string[],
+	matchedTerms: string[],
+	snippetLength: number,
+): SearchItem {
+	const hierarchySnippet: Record<
+		string,
+		{ value: string; matchLevel: "none" }
+	> = {};
+	if (record.hierarchy) {
+		for (const level of SUPPORTED_LEVELS) {
+			const value = record.hierarchy[level];
+			if (value != null) {
+				hierarchySnippet[level] = {
+					value: highlightText(value, queryTokens, matchedTerms),
+					matchLevel: "none",
+				};
+			}
+		}
+	}
+	return {
+		...record,
+		_snippetResult: {
+			...(record.hierarchy ? { hierarchy: hierarchySnippet } : {}),
+			content: {
+				value:
+					record.content != null
+						? snippetText(
+								record.content,
+								queryTokens,
+								matchedTerms,
+								snippetLength,
+							)
+						: "",
+				matchLevel: "none",
+			},
+		},
+	} as unknown as SearchItem;
+}
+
+/**
+ * Scores how strongly a query matches a page's title. Only the canonical page
+ * row (`type: "lvl1"`) is eligible, so a component's title match is promoted
+ * above its own sections and above content hits on other pages. Higher is
+ * better; 0 means "not a title match".
+ */
+function titleMatchTier(
+	record: SearchRecord,
+	normalizedQuery: string,
+	queryTokens: string[],
+): number {
+	if (record.type !== "lvl1") return 0;
+	const title = (record.hierarchy?.lvl1 ?? "").toLowerCase();
+	if (!title) return 0;
+	if (title === normalizedQuery) return 4; // exact title ("accordion")
+	if (title.startsWith(normalizedQuery)) return 3; // title prefix ("accord")
+	if (normalizedQuery.startsWith(title)) return 2; // "accordion item"
+	const titleWords = title.split(/\s+/);
+	const wordPrefix = titleWords.some((word) =>
+		queryTokens.some((token) => word.startsWith(token)),
+	);
+	return wordPrefix ? 1 : 0; // e.g. "menu" → "Dropdown Menu"
+}
+
 type PrimitivesSearchProps = {
 	children?: React.ReactNode;
 	snippetLength?: number;
@@ -85,12 +277,6 @@ function PrimitivesSearchRoot({
 		status: "idle",
 	});
 
-	const [searchClient] = React.useState(() =>
-		isPrimitivesSearchEnabled
-			? liteClient(ALGOLIA_APP_ID!, ALGOLIA_PUBLIC_API_KEY!)
-			: null,
-	);
-
 	const autocomplete = React.useMemo(
 		() =>
 			createAutocomplete<
@@ -110,73 +296,92 @@ function PrimitivesSearchRoot({
 				onStateChange: ({ state }) => {
 					setSearchState(state);
 				},
-				getSources: ({ query, setStatus, state }) => {
-					if (!query || !searchClient || !ALGOLIA_INDEX_NAME) {
+				getSources: async ({ query, setStatus }) => {
+					const trimmedQuery = query.trim();
+					if (!trimmedQuery) {
 						return [];
 					}
 
-					return searchClient
-						.search<SearchItem>({
-							requests: [
+					let miniSearch: MiniSearch<SearchRecord>;
+					try {
+						miniSearch = await loadSearchIndex();
+					} catch {
+						setStatus("error");
+						return [];
+					}
+
+					const queryTokens = getQueryTokens(trimmedQuery);
+					const normalizedQuery = trimmedQuery.toLowerCase();
+					const results: SearchResult[] = miniSearch.search(trimmedQuery);
+
+					// Re-rank so an exact/prefix component-title match (the `lvl1`
+					// page row) wins over its own deeper sections and over content
+					// matches elsewhere. MiniSearch sums per-field scores, so a
+					// sub-row matching both the page title and its body would
+					// otherwise outrank the page row itself. Crucially, this sort
+					// runs over the *full* result set before truncating: component
+					// page rows all share an identical title score, so MiniSearch
+					// scatters them deep among content hits — slicing first would
+					// drop most of them before the tier could surface them.
+					const ranked = results
+						.flatMap((result) => {
+							const record = recordsById.get(result.id as string);
+							if (!record) return [];
+							return [
 								{
-									indexName: ALGOLIA_INDEX_NAME,
-									type: "default",
-									query,
-									hitsPerPage,
-									attributesToRetrieve: [
-										"type",
-										"url",
-										"hierarchy.lvl0",
-										"hierarchy.lvl1",
-										"hierarchy.lvl2",
-										"hierarchy.lvl3",
-										"hierarchy.lvl4",
-										"content",
-										"title",
-									],
-									attributesToSnippet: [
-										`hierarchy.lvl0:${snippetLength}`,
-										`hierarchy.lvl1:${snippetLength}`,
-										`hierarchy.lvl2:${snippetLength}`,
-										`hierarchy.lvl3:${snippetLength}`,
-										`hierarchy.lvl4:${snippetLength}`,
-										`content:${snippetLength}`,
-									],
-									snippetEllipsisText: "…",
-									highlightPreTag: "__aa-highlight__",
-									highlightPostTag: "__/aa-highlight__",
+									record,
+									terms: result.terms,
+									titleTier: titleMatchTier(
+										record,
+										normalizedQuery,
+										queryTokens,
+									),
+									score: result.score,
 								},
-							],
+							];
 						})
-						.catch((error) => {
-							// The Algolia `RetryError` happens when all the servers have
-							// failed, meaning that there's no chance the response comes
-							// back. This is the right time to display an error.
-							// See https://github.com/algolia/algoliasearch-client-javascript/blob/2ffddf59bc765cd1b664ee0346b28f00229d6e12/packages/transporter/src/errors/createRetryError.ts#L5
-							if (error.name === "RetryError") setStatus("error");
-							throw error;
+						.sort((a, b) => b.titleTier - a.titleTier || b.score - a.score)
+						.slice(0, hitsPerPage)
+						.map((entry) => ({
+							item: toSearchItem(
+								entry.record,
+								queryTokens,
+								entry.terms,
+								snippetLength,
+							),
+							titleTier: entry.titleTier,
+							score: entry.score,
+						}));
+
+					const groups = new Map<string, typeof ranked>();
+					for (const entry of ranked) {
+						const key = entry.item.hierarchy?.lvl0 || "Uncategorized";
+						const group = groups.get(key);
+						if (group) group.push(entry);
+						else groups.set(key, [entry]);
+					}
+
+					// Order groups by their best hit (the first entry, since the list
+					// is already globally sorted), falling back to the editorial
+					// section order for ties.
+					return [...groups.entries()]
+						.sort(([lvlA, a], [lvlB, b]) => {
+							const byBestHit =
+								b[0].titleTier - a[0].titleTier || b[0].score - a[0].score;
+							if (byBestHit !== 0) return byBestHit;
+							return SOURCES_ORDER.indexOf(lvlA) - SOURCES_ORDER.indexOf(lvlB);
 						})
-						.then(({ results }) => {
-							// we only have 1 query, so we  grab the hits from the first result
-							const { hits } = results[0] as SearchResponse<SearchItem>;
-							const sources = groupBy(
-								hits,
-								(hit) => hit.hierarchy?.lvl0 || "Uncategorized",
-							);
-							return Object.entries(sources)
-								.sort(sortSources)
-								.map(([lvl0, items]) => ({
-									onSelect: (params) => {
-										params.setIsOpen(false);
-									},
-									sourceId: lvl0,
-									getItemUrl: ({ item }) => item.url,
-									getItems: () => items,
-								}));
-						});
+						.map(([lvl0, entries]) => ({
+							onSelect: (params) => {
+								params.setIsOpen(false);
+							},
+							sourceId: lvl0,
+							getItemUrl: ({ item }) => item.url,
+							getItems: () => entries.map((entry) => entry.item),
+						}));
 				},
 			}),
-		[hitsPerPage, snippetLength, searchClient],
+		[hitsPerPage, snippetLength],
 	);
 
 	const setIsOpen = autocomplete.setIsOpen;
@@ -187,8 +392,8 @@ function PrimitivesSearchRoot({
 
 	return (
 		<PrimitivesSearchProvider
-			autocomplete={{ ...autocomplete }}
-			searchState={{ ...searchState }}
+			autocomplete={autocomplete}
+			searchState={searchState}
 		>
 			<Box {...autocomplete.getRootProps({})} position="relative">
 				{children}
@@ -539,20 +744,4 @@ function Mark({ children }: { children: React.ReactNode }) {
 	);
 }
 
-function groupBy<TValue extends Record<string, unknown>>(
-	values: TValue[],
-	predicate: (value: TValue) => string,
-): Record<string, TValue[]> {
-	return values.reduce<Record<string, TValue[]>>((acc, item) => {
-		const key = predicate(item);
-		if (!acc.hasOwnProperty(key)) acc[key] = [];
-		acc[key].push(item);
-		return acc;
-	}, {});
-}
-
-const SOURCES_ORDER = ["Overview", "Components", "Utilities"];
-type SourceEntry = [string, SearchItem[]];
-function sortSources([lvl0_a]: SourceEntry, [lvl0_b]: SourceEntry) {
-	return SOURCES_ORDER.indexOf(lvl0_b) < SOURCES_ORDER.indexOf(lvl0_a) ? 1 : -1;
-}
+const SOURCES_ORDER = ["Overview", "Components", "Utilities", "Guides"];

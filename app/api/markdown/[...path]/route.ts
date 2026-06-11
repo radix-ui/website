@@ -106,8 +106,8 @@ async function convertHtmlToMarkdown(html: string): Promise<string> {
  */
 function extractMainContent() {
 	return (tree: Root) => {
-		// Try to find the main content area marked with data-algolia-page-scope
-		const mainContent = select("[data-algolia-page-scope]", tree) as
+		// Try to find the main content area marked with data-search-page-scope
+		const mainContent = select("[data-search-page-scope]", tree) as
 			| Element
 			| undefined;
 
@@ -132,13 +132,13 @@ function extractMainContent() {
 function cleanupHtml() {
 	return (tree: Root) => {
 		// Remove elements marked as excluded from indexing
-		const excluded = selectAll("[data-algolia-exclude]", tree);
+		const excluded = selectAll("[data-search-exclude]", tree);
 		for (const node of excluded) {
 			removeNode(tree, node);
 		}
 
 		// Remove hidden category labels (e.g., "Components", "Guides")
-		const hiddenLabels = selectAll("[data-algolia-lvl0]", tree);
+		const hiddenLabels = selectAll("[data-search-lvl0]", tree);
 		for (const node of hiddenLabels) {
 			removeNode(tree, node);
 		}

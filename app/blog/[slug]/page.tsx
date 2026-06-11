@@ -35,7 +35,7 @@ export default async function BlogPost({ params }: PageProps) {
 			<Flex>
 				<Box width="250px" />
 				<DocsPageWrapper>
-					<Box data-algolia-page-scope>
+					<Box data-search-page-scope>
 						<Text color="gray" size="3" mb="3" as="div" trim="start">
 							{frontmatter.publishedAt}
 						</Text>

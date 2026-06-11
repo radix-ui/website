@@ -27,7 +27,7 @@ export default async function OverviewDoc({ params }: PageProps) {
 
 	return (
 		<>
-			<div data-algolia-lvl0 style={{ display: "none" }}>
+			<div data-search-lvl0 style={{ display: "none" }}>
 				Overview
 			</div>
 

@@ -23,7 +23,7 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
 				</SideNav>
 
 				<DocsPageWrapper>
-					<Box data-algolia-page-scope>{children}</Box>
+					<Box data-search-page-scope>{children}</Box>
 					<DocsPagination allRoutes={allThemesRoutes} />
 					<EditPageLink />
 				</DocsPageWrapper>

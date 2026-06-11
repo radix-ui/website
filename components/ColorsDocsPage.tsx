@@ -22,7 +22,7 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
 					</Box>
 				</SideNav>
 				<DocsPageWrapper>
-					<Box data-algolia-page-scope>{children}</Box>
+					<Box data-search-page-scope>{children}</Box>
 					<DocsPagination allRoutes={allColorsRoutes} />
 					<EditPageLink />
 				</DocsPageWrapper>

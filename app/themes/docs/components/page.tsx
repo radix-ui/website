@@ -25,7 +25,7 @@ export default function ComponentsIndex() {
 
 	return (
 		<>
-			<div data-algolia-lvl0 style={{ display: "none" }}>
+			<div data-search-lvl0 style={{ display: "none" }}>
 				Components
 			</div>
 			<Heading as="h1" size="8" mb="2">
