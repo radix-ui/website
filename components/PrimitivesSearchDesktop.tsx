@@ -12,10 +12,7 @@ import {
 	Tooltip,
 } from "@radix-ui/themes";
 import { Dialog as DialogPrimitive } from "radix-ui";
-import {
-	PrimitivesSearch,
-	isPrimitivesSearchEnabled,
-} from "./PrimitivesSearch";
+import { PrimitivesSearch } from "./PrimitivesSearch";
 
 export const PrimitivesSearchDesktop = () => {
 	const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -24,10 +21,6 @@ export const PrimitivesSearchDesktop = () => {
 	const clearButtonRef = React.useRef<HTMLButtonElement>(null);
 
 	React.useEffect(() => {
-		if (!isPrimitivesSearchEnabled) {
-			return;
-		}
-
 		const isEditingContent = (event: KeyboardEvent) => {
 			const element = event.target as HTMLElement;
 			const tagName = element.tagName;
@@ -50,10 +43,6 @@ export const PrimitivesSearchDesktop = () => {
 		document.addEventListener("keydown", handleKeyDown);
 		return () => document.removeEventListener("keydown", handleKeyDown);
 	}, []);
-
-	if (!isPrimitivesSearchEnabled) {
-		return null;
-	}
 
 	return (
 		<DialogPrimitive.Root open={dialogOpen} onOpenChange={setDialogOpen}>

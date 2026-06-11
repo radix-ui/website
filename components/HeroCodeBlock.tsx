@@ -72,7 +72,7 @@ export const HeroCodeBlock = ({
 	return (
 		<Box
 			className={styles.DemoContainer}
-			data-algolia-exclude
+			data-search-exclude
 			position="relative"
 		>
 			<Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>

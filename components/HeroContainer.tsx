@@ -55,7 +55,7 @@ export function HeroContainer({
 	return (
 		<Flex
 			ref={ref}
-			data-algolia-exclude
+			data-search-exclude
 			// In case any semantic content sneaks through in a hero, let's hide it
 			// from the a11y tree since this is a presentational component.
 			role="presentation"

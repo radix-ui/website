@@ -72,7 +72,7 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 				style={{ width: "fit-content" }}
 				asChild
 				aria-labelledby="site-component-info-heading"
-				data-algolia-exclude
+				data-search-exclude
 			>
 				<nav>
 					<VisuallyHidden.Root asChild>

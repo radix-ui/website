@@ -1,10 +1,7 @@
 "use client";
 import { Cross2Icon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Flex, IconButton } from "@radix-ui/themes";
-import {
-	PrimitivesSearch,
-	isPrimitivesSearchEnabled,
-} from "./PrimitivesSearch";
+import { PrimitivesSearch } from "./PrimitivesSearch";
 import styles from "./PrimitivesSearchMobile.module.css";
 import * as React from "react";
 
@@ -21,10 +18,6 @@ export const PrimitivesSearchMobile = ({
 
 	// Dismiss mobile keyboard when scrolling
 	React.useEffect(() => {
-		if (!isPrimitivesSearchEnabled) {
-			return;
-		}
-
 		const onTouchMove = (event: TouchEvent) => {
 			const input = inputRef.current;
 
@@ -36,10 +29,6 @@ export const PrimitivesSearchMobile = ({
 		window.addEventListener("touchmove", onTouchMove);
 		return () => window.removeEventListener("touchmove", onTouchMove);
 	}, []);
-
-	if (!isPrimitivesSearchEnabled) {
-		return null;
-	}
 
 	return (
 		<PrimitivesSearch.Root snippetLength={7} hitsPerPage={20}>

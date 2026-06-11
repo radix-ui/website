@@ -23,7 +23,7 @@ export function QuickNav({ title = "Quick nav" }: { title?: string }) {
 	return (
 		<Box
 			asChild
-			data-algolia-exclude
+			data-search-exclude
 			// Components that hide the scrollbar (like Dialog) add padding to
 			// account for the scrollbar gap to avoid layout jank. This does not
 			// work for position: fixed elements. Since we use react-remove-scroll

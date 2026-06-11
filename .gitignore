@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# generated search index (built by `pnpm build:search`)
+/public/search-index.json
+
 # production
 /build
 
