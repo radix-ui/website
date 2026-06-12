@@ -569,12 +569,7 @@ export const AccessibilitySection = () => {
 				</Box>
 
 				<Grid columns={{ initial: "1", xs: "2", md: "4" }} gap="3">
-					<Card
-						style={{
-							WebkitBackdropFilter: "blur(8px)",
-							backdropFilter: "blur(8px)",
-						}}
-					>
+					<Card>
 						<Box mb="3">
 							<CheckCircledIcon width="30" height="30" />
 						</Box>
@@ -587,12 +582,7 @@ export const AccessibilitySection = () => {
 						</Text>
 					</Card>
 
-					<Card
-						style={{
-							WebkitBackdropFilter: "blur(8px)",
-							backdropFilter: "blur(8px)",
-						}}
-					>
+					<Card>
 						<Box mb="3">
 							<KeyboardIcon width="30" height="30" />
 						</Box>
@@ -605,12 +595,7 @@ export const AccessibilitySection = () => {
 						</Text>
 					</Card>
 
-					<Card
-						style={{
-							WebkitBackdropFilter: "blur(8px)",
-							backdropFilter: "blur(8px)",
-						}}
-					>
+					<Card>
 						<Box mb="3">
 							<InputIcon width="30" height="30" />
 						</Box>
@@ -623,12 +608,7 @@ export const AccessibilitySection = () => {
 						</Text>
 					</Card>
 
-					<Card
-						style={{
-							WebkitBackdropFilter: "blur(8px)",
-							backdropFilter: "blur(8px)",
-						}}
-					>
+					<Card>
 						<Box mb="3">
 							<EyeClosedIcon width="30" height="30" />
 						</Box>
