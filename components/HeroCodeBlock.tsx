@@ -11,15 +11,18 @@ import {
 	Theme,
 	Grid,
 } from "@radix-ui/themes";
-import { getParameters } from "codesandbox/lib/api/define";
-import { CodeSandboxLogoIcon } from "@radix-ui/react-icons";
+import sdk from "@stackblitz/sdk";
+import { LightningBoltIcon } from "@radix-ui/react-icons";
+import { flushSync } from "react-dom";
+import camelCase from "lodash.camelcase";
+import kebabCase from "lodash.kebabcase";
+import upperFirst from "lodash.upperfirst";
 import { isValidCssLib, useCssLibPreference } from "./CssLibPreference";
 import { FrontmatterContext } from "./MDXComponents";
 import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from "@utils/constants";
 import type { CssLib } from "@utils/constants";
 import styles from "./HeroCodeBlock.module.css";
 import { CodeBlock } from "./CodeBlock";
-import { flushSync } from "react-dom";
 
 export const HeroCodeBlock = ({
 	children,
@@ -87,40 +90,25 @@ export const HeroCodeBlock = ({
 				mt="-7"
 				mr="2"
 			>
-				<form
-					action="https://codesandbox.io/api/v1/sandboxes/define"
-					method="POST"
-					target="_blank"
+				<Tooltip
+					className="radix-themes-custom-fonts"
+					content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in StackBlitz`}
 				>
-					<input type="hidden" name="query" value="file=/App.jsx" />
-					<input type="hidden" name="environment" value="server" />
-					<input type="hidden" name="hidedevtools" value="1" />
-					<input
-						type="hidden"
-						name="parameters"
-						value={makeCodeSandboxParams(
-							frontmatter.name!,
-							sources,
-							usedCssLib,
-						)}
-					/>
-					<Tooltip
-						className="radix-themes-custom-fonts"
-						content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}
-					>
-						<Theme appearance="dark" hasBackground={false}>
-							<IconButton
-								className={styles.SandboxButton}
-								variant="soft"
-								type="submit"
-								color="gray"
-								highContrast
-							>
-								<CodeSandboxLogoIcon />
-							</IconButton>
-						</Theme>
-					</Tooltip>
-				</form>
+					<Theme appearance="dark" hasBackground={false}>
+						<IconButton
+							className={styles.SandboxButton}
+							variant="soft"
+							type="button"
+							color="gray"
+							highContrast
+							onClick={() =>
+								openStackBlitz(frontmatter.name!, sources, usedCssLib)
+							}
+						>
+							<LightningBoltIcon />
+						</IconButton>
+					</Theme>
+				</Tooltip>
 			</Flex>
 
 			<Box
@@ -253,13 +241,12 @@ export const HeroCodeBlock = ({
 const onlyUnique = <T,>(value: T, index: number, self: T[]) =>
 	self.indexOf(value) === index;
 
-const makeCodeSandboxParams = (
+const openStackBlitz = (
 	componentName: string,
 	sources: Record<string, string>,
 	cssLib: CssLib,
 ) => {
-	let files = {};
-
+	let files: Record<string, string> = {};
 	switch (cssLib) {
 		case "css":
 			files = makeCssConfig(componentName, sources);
@@ -272,19 +259,30 @@ const makeCodeSandboxParams = (
 			break;
 	}
 
-	return getParameters({ files, template: "node" });
+	sdk.openProject(
+		{
+			title: `Radix Primitives ${componentName} demo`,
+			description: `${CSS_LIB_NAMES[cssLib]} demo of the Radix Primitives ${componentName} component`,
+			template: "node",
+			files,
+		},
+		{
+			newWindow: true,
+			openFile: `${kebabCase(componentName)}.jsx`,
+		},
+	);
 };
 
 const makeCssConfig = (
 	componentName: string,
 	sources: Record<string, string>,
-) => {
+): Record<string, string> => {
 	const dependencies = {
+		"radix-ui": "latest",
 		react: "latest",
 		"react-dom": "latest",
 		"@radix-ui/colors": "latest",
 		"@radix-ui/react-icons": "latest",
-		[`@radix-ui/react-${componentName}`]: "latest",
 		classnames: "latest",
 	};
 
@@ -293,76 +291,26 @@ const makeCssConfig = (
 		"@vitejs/plugin-react": "latest",
 	};
 
-	const files = {
-		"package.json": {
-			content: {
-				scripts: { start: "vite" },
-				dependencies,
-				devDependencies,
-			},
-			isBinary: false,
-		},
+	return {
+		"package.json": makePackageJson(dependencies, devDependencies),
 		...viteConfig,
-		"App.jsx": {
-			content: sources["index.jsx"],
-			isBinary: false,
-		},
-		"index.jsx": {
-			content: `import { createRoot } from 'react-dom/client';
-import App from './App';
-import './global.css';
-
-const container = document.getElementById('root');
-const root = createRoot(container);
-
-root.render(<App />);`,
-			isBinary: false,
-		},
-		"global.css": {
-			content: `* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui;
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  margin-top: 120px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-svg {
-  display: block;
-}
-`,
-			isBinary: false,
-		},
-		"styles.css": {
-			content: sources["styles.css"],
-			isBinary: false,
-		},
+		[`${kebabCase(componentName)}.jsx`]: sources["index.jsx"],
+		"index.jsx": makeIndexEntry(componentName),
+		"global.css": globalCss,
+		"styles.css": sources["styles.css"],
 	};
-
-	return files;
 };
 
 const makeCssModulesConfig = (
 	componentName: string,
 	sources: Record<string, string>,
-) => {
+): Record<string, string> => {
 	const dependencies = {
+		"radix-ui": "latest",
 		react: "latest",
 		"react-dom": "latest",
 		"@radix-ui/colors": "latest",
 		"@radix-ui/react-icons": "latest",
-		[`@radix-ui/react-${componentName}`]: "latest",
 		classnames: "latest",
 	};
 
@@ -371,76 +319,26 @@ const makeCssModulesConfig = (
 		"@vitejs/plugin-react": "latest",
 	};
 
-	const files = {
-		"package.json": {
-			content: {
-				scripts: { start: "vite" },
-				dependencies,
-				devDependencies,
-			},
-			isBinary: false,
-		},
+	return {
+		"package.json": makePackageJson(dependencies, devDependencies),
 		...viteConfig,
-		"App.jsx": {
-			content: sources["index.jsx"],
-			isBinary: false,
-		},
-		"index.jsx": {
-			content: `import { createRoot } from 'react-dom/client';
-import App from './App';
-import './global.css';
-
-const container = document.getElementById('root');
-const root = createRoot(container);
-
-root.render(<App />);`,
-			isBinary: false,
-		},
-		"global.css": {
-			content: `* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui;
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  margin-top: 120px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-svg {
-  display: block;
-}
-`,
-			isBinary: false,
-		},
-		"styles.module.css": {
-			content: sources["styles.module.css"],
-			isBinary: false,
-		},
+		[`${kebabCase(componentName)}.jsx`]: sources["index.jsx"],
+		"index.jsx": makeIndexEntry(componentName),
+		"global.css": globalCss,
+		"styles.module.css": sources["styles.module.css"],
 	};
-
-	return files;
 };
 
 const makeTailwindConfig = (
 	componentName: string,
 	sources: Record<string, string>,
-) => {
+): Record<string, string> => {
 	const dependencies = {
+		"radix-ui": "latest",
 		react: "latest",
 		"react-dom": "latest",
 		"@radix-ui/colors": "latest",
 		"@radix-ui/react-icons": "latest",
-		[`@radix-ui/react-${componentName}`]: "latest",
 		classnames: "latest",
 	};
 
@@ -452,46 +350,19 @@ const makeTailwindConfig = (
 		autoprefixer: "latest",
 	};
 
-	const files = {
-		"package.json": {
-			content: {
-				scripts: { start: "vite" },
-				dependencies,
-				devDependencies,
-			},
-			isBinary: false,
-		},
+	return {
+		"package.json": makePackageJson(dependencies, devDependencies),
 		...viteConfig,
-		"tailwind.config.js": {
-			content: sources["tailwind.config.js"],
-			isBinary: false,
-		},
-		"postcss.config.js": {
-			content: `module.exports = {
+		"tailwind.config.js": sources["tailwind.config.js"],
+		"postcss.config.js": `module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   }
 }`,
-			isBinary: false,
-		},
-		"index.jsx": {
-			content: `import { createRoot } from 'react-dom/client';
-import App from './App';
-import './global.css';
-
-const container = document.getElementById('root');
-const root = createRoot(container);
-
-root.render(<App />);`,
-			isBinary: false,
-		},
-		"App.jsx": {
-			isBinary: false,
-			content: sources["index.jsx"],
-		},
-		"global.css": {
-			content: `@tailwind base;
+		"index.jsx": makeIndexEntry(componentName),
+		[`${kebabCase(componentName)}.jsx`]: sources["index.jsx"],
+		"global.css": `@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -507,25 +378,114 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }`,
-			isBinary: false,
-		},
 	};
-
-	return files;
 };
 
-const viteConfig = {
-	"vite.config.js": {
-		content: `import { defineConfig } from 'vite'
+const makeIndexEntry = (componentName: string) => {
+	const component = `${pascalCase(componentName)}Demo`;
+	return `import { createRoot } from 'react-dom/client';
+import ${component} from './${kebabCase(componentName)}';
+import './global.css';
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
+  <div class="radix-themes light">
+    <${component} />
+  </div>
+);
+`;
+};
+
+const makePackageJson = (
+	dependencies: Record<string, string>,
+	devDependencies: Record<string, string>,
+) =>
+	JSON.stringify(
+		{
+			scripts: { start: "vite", dev: "vite" },
+			dependencies,
+			devDependencies,
+		},
+		null,
+		2,
+	);
+
+const globalCss = `${[
+	"gray",
+	"mauve",
+	"slate",
+	"sage",
+	"olive",
+	"sand",
+	"tomato",
+	"red",
+	"ruby",
+	"crimson",
+	"pink",
+	"plum",
+	"purple",
+	"violet",
+	"iris",
+	"indigo",
+	"blue",
+	"cyan",
+	"teal",
+	"jade",
+	"green",
+	"grass",
+	"bronze",
+	"gold",
+	"brown",
+	"orange",
+	"amber",
+	"yellow",
+	"lime",
+	"mint",
+	"sky",
+]
+	.flatMap((color) => [
+		color,
+		`${color}-dark`,
+		`${color}-alpha`,
+		`${color}-dark-alpha`,
+	])
+	.map((color) => `@import "@radix-ui/colors/${color}.css";`)
+	.join("\n")}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 120px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+svg {
+  display: block;
+}
+`;
+
+const viteConfig: Record<string, string> = {
+	"vite.config.js": `import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
 })`,
-		isBinary: false,
-	},
-	"index.html": {
-		content: `<!DOCTYPE html>
+	"index.html": `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -537,6 +497,8 @@ export default defineConfig({
         <script type="module" src="/index.jsx"></script>
       </body>
     </html>`,
-		isBinary: false,
-	},
 };
+
+function pascalCase(str: string) {
+	return upperFirst(camelCase(str));
+}
