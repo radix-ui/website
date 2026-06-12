@@ -346,25 +346,25 @@ const makeTailwindConfig = (
 		vite: "latest",
 		"@vitejs/plugin-react": "latest",
 		tailwindcss: "latest",
-		postcss: "latest",
-		autoprefixer: "latest",
+		"@tailwindcss/vite": "latest",
 	};
 
 	return {
 		"package.json": makePackageJson(dependencies, devDependencies),
 		...viteConfig,
+		"vite.config.js": `import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})`,
 		"tailwind.config.js": sources["tailwind.config.js"],
-		"postcss.config.js": `module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  }
-}`,
 		"index.jsx": makeIndexEntry(componentName),
 		[`${kebabCase(componentName)}.jsx`]: sources["index.jsx"],
-		"global.css": `@tailwind base;
-@tailwind components;
-@tailwind utilities;
+		"global.css": `@import "tailwindcss";
+@config "./tailwind.config.js";
+@source "./${kebabCase(componentName)}.jsx";
 
 body {
   font-family: system-ui;
