@@ -53,6 +53,8 @@ const STOP_SLUGS = new Set(["primitives/docs/overview/releases"]);
 const DATA_PATH = path.join(process.cwd(), "data");
 const OUTPUT_PATH = path.join(process.cwd(), "public", "search-index.json");
 
+const toPosix = (p: string) => p.split(path.sep).join("/");
+
 interface MdNode {
 	type: string;
 	depth?: number;
@@ -83,9 +85,9 @@ interface EstreeNode {
 
 function getSlugsForSection(dir: string): string[] {
 	const sectionPath = path.join(DATA_PATH, "primitives", "docs", dir);
-	return globSync(`${sectionPath}/**/*.mdx`)
+	return globSync(`${toPosix(sectionPath)}/**/*.mdx`)
 		.map((filePath) =>
-			filePath.slice(DATA_PATH.length + 1).replace(/\.mdx$/, ""),
+			toPosix(path.relative(DATA_PATH, filePath)).replace(/\.mdx$/, ""),
 		)
 		.filter((slug) => !STOP_SLUGS.has(slug))
 		.sort();
