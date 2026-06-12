@@ -5,9 +5,13 @@ import { ThemeProvider } from "@components/ThemeProvider";
 import { CssLibPreferenceProvider } from "@components/CssLibPreference";
 import { Analytics } from "./analytics";
 import { MobileMenuProvider } from "@components/mobile-menu";
+import { baseMetadata } from "@utils/metadata";
 import "@radix-ui/themes/styles.css";
 import "../pages/styles.css";
 import "../pages/syntax-highlighting.css";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { ...baseMetadata };
 
 const adobeTextPro = localFont({
 	variable: "--font-adobe-text-pro",
