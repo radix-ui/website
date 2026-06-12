@@ -216,6 +216,20 @@ export function CopyButton() {
 				</Button>
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content>
+				<DropdownMenu.Item
+					onSelect={() => {
+						copy(window.location.href);
+						setCopiedMessage("URL");
+					}}
+				>
+					<Flex align="center" gap="2">
+						<Box asChild ml="-1">
+							<Share2Icon />
+						</Box>
+						Copy palette URL
+					</Flex>
+				</DropdownMenu.Item>
+				<DropdownMenu.Separator />
 				<DropdownMenu.Sub>
 					<DropdownMenu.SubTrigger>
 						<Flex align="center" gap="2">

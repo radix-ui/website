@@ -35,6 +35,7 @@ import {
 	parseAppearanceCookie,
 	parsePaletteCookie,
 } from "./palette-cookie";
+import { applyPaletteParams } from "./palette-url";
 import { baseMetadata } from "@utils/metadata";
 import type { Metadata } from "next";
 
@@ -45,10 +46,18 @@ export const metadata: Metadata = {
 		"An open-source color system for designing beautiful, accessible websites and apps.",
 };
 
-export default async function CustomColorsPage() {
+export default async function CustomColorsPage({
+	searchParams,
+}: {
+	searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
 	const cookieStore = await cookies();
-	const initialPalette = parsePaletteCookie(
-		cookieStore.get(PALETTE_COOKIE)?.value,
+	// The URL is the source of truth for sharing. Any palette params layer on top
+	// of the cookie-restored palette, so a shared link reproduces exactly what
+	// the sharer saw regardless of the visitor's own saved palette.
+	const initialPalette = applyPaletteParams(
+		parsePaletteCookie(cookieStore.get(PALETTE_COOKIE)?.value),
+		await searchParams,
 	);
 	const initialAppearance = parseAppearanceCookie(
 		cookieStore.get(APPEARANCE_COOKIE)?.value,

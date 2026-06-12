@@ -9,6 +9,7 @@ import {
 	writeAppearanceCookie,
 	writePaletteCookie,
 } from "./palette-cookie";
+import { buildPaletteSearchParams } from "./palette-url";
 import { getColorName } from "./utils";
 import { useIsHydrated } from "@utils/use-is-hydrated";
 
@@ -48,6 +49,24 @@ export function ColorThemeProvider({
 			return next;
 		});
 	}, []);
+
+	// Keep the URL in sync with the palette so the page is always shareable and
+	// survives a reload. We use history.replaceState rather than the Next router
+	// to avoid a server round-trip and re-render — the client already holds the
+	// authoritative state, the URL is just a reflection of it.
+	React.useEffect(() => {
+		const current = new URLSearchParams(window.location.search);
+		const next = buildPaletteSearchParams(palette, current);
+		const nextSearch = next.toString();
+		if (nextSearch === current.toString()) {
+			return;
+		}
+		const url =
+			window.location.pathname +
+			(nextSearch ? `?${nextSearch}` : "") +
+			window.location.hash;
+		window.history.replaceState(window.history.state, "", url);
+	}, [palette]);
 
 	const setAccentValue = React.useCallback(
 		(value: string) =>
