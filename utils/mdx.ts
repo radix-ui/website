@@ -15,10 +15,12 @@ import type { Frontmatter } from "types/frontmatter";
 const ROOT_PATH = process.cwd();
 export const DATA_PATH = path.join(ROOT_PATH, "data");
 
+const toPosix = (p: string) => p.split(path.sep).join("/");
+
 // the front matter and content of all mdx files based on `docsPaths`
 export const getAllFrontmatter = (fromPath: string) => {
 	const PATH = path.join(DATA_PATH, fromPath);
-	const paths = globSync(`${PATH}/**/*.mdx`);
+	const paths = globSync(`${toPosix(PATH)}/**/*.mdx`);
 
 	return paths
 		.map((filePath) => {
@@ -27,7 +29,7 @@ export const getAllFrontmatter = (fromPath: string) => {
 
 			return {
 				...(data as Frontmatter),
-				slug: filePath.replace(`${DATA_PATH}/`, "").replace(".mdx", ""),
+				slug: toPosix(path.relative(DATA_PATH, filePath)).replace(/\.mdx$/, ""),
 			} as Frontmatter;
 		})
 		.sort(
