@@ -6,13 +6,18 @@ const SwitchDemo = () => (
 	<form>
 		<div style={{ display: "flex", alignItems: "center" }}>
 			<label
-				className="Label"
+				id="airplane-mode-label"
 				htmlFor="airplane-mode"
+				className="Label"
 				style={{ paddingRight: 15 }}
 			>
 				Airplane mode
 			</label>
-			<Switch.Root className="SwitchRoot" id="airplane-mode">
+			<Switch.Root
+				id="airplane-mode"
+				aria-labelledby="airplane-mode-label"
+				className="SwitchRoot"
+			>
 				<Switch.Thumb className="SwitchThumb" />
 			</Switch.Root>
 		</div>

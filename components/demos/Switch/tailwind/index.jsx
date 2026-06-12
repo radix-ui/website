@@ -5,8 +5,9 @@ const SwitchDemo = () => (
 	<form>
 		<div className="flex items-center">
 			<label
-				className="pr-[15px] text-[15px] leading-none text-white"
+				id="airplane-mode-label"
 				htmlFor="airplane-mode"
+				className="pr-[15px] text-[15px] leading-none text-white"
 			>
 				Airplane mode
 			</label>
@@ -15,7 +16,11 @@ const SwitchDemo = () => (
 				id="airplane-mode"
 				style={{ "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)" }}
 			>
-				<Switch.Thumb className="block size-[21px] translate-x-0.5 rounded-full bg-white shadow-[0_2px_2px] shadow-blackA4 transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]" />
+				<Switch.Thumb
+					id="airplane-mode"
+					aria-labelledby="airplane-mode-label"
+					className="block size-[21px] translate-x-0.5 rounded-full bg-white shadow-[0_2px_2px] shadow-blackA4 transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]"
+				/>
 			</Switch.Root>
 		</div>
 	</form>
