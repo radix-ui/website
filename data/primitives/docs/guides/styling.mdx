@@ -35,14 +35,12 @@ import * as React from "react";
 import { Accordion } from "radix-ui";
 import "./styles.css";
 
-const AccordionDemo = () => (
+export const AccordionDemo = () => (
 	<Accordion.Root>
 		<Accordion.Item __className__="AccordionItem" value="item-1" />
 		{/* … */}
 	</Accordion.Root>
 );
-
-export default AccordionDemo;
 ```
 
 ### Styling a state
@@ -76,14 +74,12 @@ const StyledItem = __styled__(Accordion.Item)`
   border-bottom: 1px solid gainsboro;
 `;
 
-const AccordionDemo = () => (
+export const AccordionDemo = () => (
 	<Accordion.Root>
 		<StyledItem value="item-1" />
 		{/* … */}
 	</Accordion.Root>
 );
-
-export default AccordionDemo;
 ```
 
 ### Styling a state
