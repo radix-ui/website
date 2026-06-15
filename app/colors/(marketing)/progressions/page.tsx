@@ -1,5 +1,5 @@
-import { ColorsHeader } from "@components/ColorsHeader";
-import { transposeProgressionStart } from "@components/generateRadixColors";
+import { ColorsHeader } from "@components/colors-header";
+import { transposeProgressionStart } from "@components/generate-radix-colors";
 import { Section, Container, Heading, Box, Flex, Text } from "@radix-ui/themes";
 import { baseMetadata } from "@utils/metadata";
 import { Metadata } from "next";

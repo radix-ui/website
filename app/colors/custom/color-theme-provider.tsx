@@ -1,5 +1,5 @@
 "use client";
-import { generateRadixColors } from "@components/generateRadixColors";
+import { generateRadixColors } from "@components/generate-radix-colors";
 import { useTheme } from "next-themes";
 import * as React from "react";
 import { ColorThemeContext } from "./color-theme-context";

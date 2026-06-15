@@ -1,8 +1,8 @@
 import { GTAG_URL, renderGtagSnippet } from "@utils/analytics";
 import * as React from "react";
 import localFont from "next/font/local";
-import { ThemeProvider } from "@components/ThemeProvider";
-import { CssLibPreferenceProvider } from "@components/CssLibPreference";
+import { ThemeProvider } from "@components/theme-provider";
+import { CssLibPreferenceProvider } from "@components/css-lib-preference";
 import { Analytics } from "./analytics";
 import { MobileMenuProvider } from "@components/mobile-menu";
 import { baseMetadata } from "@utils/metadata";
@@ -18,7 +18,7 @@ const adobeTextPro = localFont({
 	display: "swap",
 	src: [
 		{
-			path: "./_fonts/AdobeTextPro-Regular.woff2",
+			path: "./_fonts/adobe-text-pro-regular.woff2",
 			weight: "400",
 		},
 	],

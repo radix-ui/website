@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs";
+import kebabCase from "lodash.kebabcase";
 import { visit } from "unist-util-visit";
 import { UnistNode, UnistTree } from "./unist";
 import { SUPPORTED_CSS_LIBS } from "./constants";
@@ -11,6 +12,7 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
 			const folder = getAttribute(node, "folder");
 
 			if (typeof folder === "string") {
+				const demoFolder = kebabCase(folder);
 				node.children = [];
 
 				SUPPORTED_CSS_LIBS.forEach((lib) => {
@@ -20,7 +22,7 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
 						"styles.module.css",
 						"tailwind.config.js",
 					].forEach((file) => {
-						const filePath = `${process.cwd()}/components/demos/${folder}/${lib}/${file}`;
+						const filePath = `${process.cwd()}/components/demos/${demoFolder}/${lib}/${file}`;
 						if (fileExists(filePath)) {
 							const extension = file.split(".").pop()!;
 							const syntax = getSyntax(extension);

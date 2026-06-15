@@ -1,4 +1,4 @@
-import type { generateRadixColors } from "@components/generateRadixColors";
+import type { generateRadixColors } from "@components/generate-radix-colors";
 import Color from "colorjs.io";
 
 export type GeneratedColors = ReturnType<typeof generateRadixColors>;

@@ -1,6 +1,6 @@
-import { Favicon } from "@components/Favicon";
-import { BlogHeader } from "@components/BlogHeader";
-import { BlogMobileMenu } from "@components/BlogMobileMenu";
+import { Favicon } from "@components/favicon";
+import { BlogHeader } from "@components/blog-header";
+import { BlogMobileMenu } from "@components/blog-mobile-menu";
 import { Theme } from "@radix-ui/themes";
 
 export default function BlogLayout({

@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import type { generateRadixColors } from "@components/generateRadixColors";
+import type { generateRadixColors } from "@components/generate-radix-colors";
 import type { getColorName } from "./utils";
 
 export const ColorThemeContext = React.createContext<{

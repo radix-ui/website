@@ -1,5 +1,5 @@
-import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
-import { Favicon } from "@components/Favicon";
+import { ColorsMobileMenu } from "@components/colors-mobile-menu";
+import { Favicon } from "@components/favicon";
 import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { baseMetadata } from "@utils/metadata";

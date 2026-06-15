@@ -14,8 +14,8 @@ import {
 } from "@radix-ui/themes";
 import { getAllFrontmatter } from "@utils/mdx";
 import NextLink from "next/link";
-import { CommunitySection } from "@components/marketing/CommunitySection";
-import { Footer } from "@components/Footer";
+import { CommunitySection } from "@components/marketing/community-section";
+import { Footer } from "@components/footer";
 import { baseMetadata } from "@utils/metadata";
 import type { Metadata, Route } from "next";
 

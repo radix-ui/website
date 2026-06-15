@@ -1,10 +1,10 @@
-import { IconsHeader } from "@components/IconsHeader";
+import { IconsHeader } from "@components/icons-header";
 import { MobileMenu } from "@components/mobile-menu";
-import { IconsHero } from "@components/icons/IconsHero";
-import { IconsPanel } from "@components/icons/IconsPanel";
+import { IconsHero } from "@components/icons/icons-hero";
+import { IconsPanel } from "@components/icons/icons-panel";
 import { Box, Container, ScrollArea } from "@radix-ui/themes";
-import { Menu } from "@components/icons/Menu";
-import { ColorsHeader } from "@components/ColorsHeader";
+import { Menu } from "@components/icons/menu";
+import { ColorsHeader } from "@components/colors-header";
 import { baseMetadata } from "@utils/metadata";
 import type { Metadata } from "next";
 import { IconsDocsNav } from "./icons-docs-nav";

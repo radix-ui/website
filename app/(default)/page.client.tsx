@@ -10,17 +10,17 @@ import {
 } from "@radix-ui/themes";
 import * as React from "react";
 import NextLink from "next/link";
-import { ThemesHeader } from "@components/ThemesHeader";
-import { ExampleThemesDashboard } from "@components/ExampleThemesDashboard";
-import * as MagicCurtain from "@components/MagicCurtain";
-import { ExampleThemesEcommerce } from "@components/ExampleThemesEcommerce";
-import { ExampleThemesMusicApp } from "@components/ExampleThemesMusicApp";
+import { ThemesHeader } from "@components/themes-header";
+import { ExampleThemesDashboard } from "@components/example-themes-dashboard";
+import * as MagicCurtain from "@components/magic-curtain";
+import { ExampleThemesEcommerce } from "@components/example-themes-ecommerce";
+import { ExampleThemesMusicApp } from "@components/example-themes-music-app";
 import { useTheme } from "next-themes";
-import { SerifHeading } from "@components/SerifHeading";
-import { ThemesHeroLayout } from "@components/ThemesHeroLayout";
-import { ThemesMobileMenu } from "@components/ThemesMobileMenu";
+import { SerifHeading } from "@components/serif-heading";
+import { ThemesHeroLayout } from "@components/themes-hero-layout";
+import { ThemesMobileMenu } from "@components/themes-mobile-menu";
 import { ArrowRightIcon, GridIcon } from "@radix-ui/react-icons";
-import { CodeBlock } from "@components/CodeBlock";
+import { CodeBlock } from "@components/code-block";
 
 export default function ThemesHome() {
 	const { resolvedTheme } = useTheme();

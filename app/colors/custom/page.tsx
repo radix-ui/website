@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import NextLink from "next/link";
-import { ColorsHeader } from "@components/ColorsHeader";
-import { ColorsMobileMenu } from "@components/ColorsMobileMenu";
+import { ColorsHeader } from "@components/colors-header";
+import { ColorsMobileMenu } from "@components/colors-mobile-menu";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import {
 	Box,
@@ -14,9 +14,9 @@ import {
 	Text,
 	Theme,
 } from "@radix-ui/themes";
-import { ColorUsageRange } from "@components/ColorUsageRange";
-import { ColorStepLabel } from "@components/ColorStepLabel";
-import { Favicon } from "@components/Favicon";
+import { ColorUsageRange } from "@components/color-usage-range";
+import { ColorStepLabel } from "@components/color-step-label";
+import { Favicon } from "@components/favicon";
 import { ColorThemeProvider } from "./color-theme-provider";
 import {
 	AccentColorField,

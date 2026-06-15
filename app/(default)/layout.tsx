@@ -1,4 +1,4 @@
-import { Favicon } from "@components/Favicon";
+import { Favicon } from "@components/favicon";
 import { Theme } from "@radix-ui/themes";
 
 export default function DefaultLayout({

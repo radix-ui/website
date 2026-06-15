@@ -1,13 +1,13 @@
-import { BoxLink } from "@components/BoxLink";
-import { Footer } from "@components/Footer";
-import { MdxContent } from "@components/MdxContent";
-import { PrimitivesHeader } from "@components/PrimitivesHeader";
-import { PrimitivesMobileMenu } from "@components/PrimitivesMobileMenu";
+import { BoxLink } from "@components/box-link";
+import { Footer } from "@components/footer";
+import { MdxContent } from "@components/mdx-content";
+import { PrimitivesHeader } from "@components/primitives-header";
+import { PrimitivesMobileMenu } from "@components/primitives-mobile-menu";
 import {
 	CaseStudyLogo,
 	CaseStudyLogoVariant,
-} from "@components/marketing/CaseStudyLogo";
-import { MarketingCaption } from "@components/marketing/MarketingCaption";
+} from "@components/marketing/case-study-logo";
+import { MarketingCaption } from "@components/marketing/marketing-caption";
 import { getAllFrontmatter } from "@utils/mdx";
 import { getMdxBySlug } from "@utils/mdx";
 import { AccessibleIcon } from "radix-ui";

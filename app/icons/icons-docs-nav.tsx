@@ -1,6 +1,6 @@
 "use client";
 import { iconsRoutes } from "@utils/iconsRoutes";
-import { DocsNav } from "@components/DocsNav";
+import { DocsNav } from "@components/docs-nav";
 
 export function IconsDocsNav() {
 	return (

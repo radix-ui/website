@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { ColorField } from "@components/ColorField";
+import { ColorField } from "@components/color-field";
 import { useColorThemeContext } from "./color-theme-context";
 import {
 	type GeneratedColors,
@@ -65,9 +65,9 @@ import {
 } from "@radix-ui/themes";
 import { copy } from "@utils/clipboard";
 import { useTheme } from "next-themes";
-import { CustomSwatch } from "@components/CustomSwatch";
-import { AvatarIconFallback } from "@components/AvatarIconFallback";
-import { ThemesPanelBackgroundImage } from "@components/ThemesPanelBackgroundImage";
+import { CustomSwatch } from "@components/custom-swatch";
+import { AvatarIconFallback } from "@components/avatar-icon-fallback";
+import { ThemesPanelBackgroundImage } from "@components/themes-panel-background-image";
 import { getPeopleForColor } from "@utils/people";
 import { ToggleGroup } from "radix-ui";
 import styles from "./page.module.css";

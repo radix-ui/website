@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Flex, Heading, Separator, Theme, Link, Box } from "@radix-ui/themes";
-import { ExampleThemesDashboard } from "@components/ExampleThemesDashboard";
+import { ExampleThemesDashboard } from "@components/example-themes-dashboard";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { baseMetadata } from "@utils/metadata";
 import { Metadata, Viewport } from "next";
@@ -32,7 +32,7 @@ export default function ExamplePage() {
 								size="2"
 								color="gray"
 								target="_blank"
-								href="https://github.com/radix-ui/website/blob/main/components/ExampleThemesDashboard.tsx"
+								href="https://github.com/radix-ui/website/blob/main/components/example-themes-dashboard.tsx"
 							>
 								Source code
 								<ExternalLinkIcon />

@@ -1,7 +1,7 @@
 import { getAllFrontmatter } from "@utils/mdx";
 import { getMdxBySlug } from "@utils/mdx";
-import { MdxContent } from "@components/MdxContent";
-import { QuickNav } from "@components/QuickNav";
+import { MdxContent } from "@components/mdx-content";
+import { QuickNav } from "@components/quick-nav";
 import { baseMetadata } from "@utils/metadata";
 import type { Metadata } from "next";
 

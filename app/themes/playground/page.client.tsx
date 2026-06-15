@@ -103,11 +103,11 @@ import {
 import { getPeopleForColor } from "@utils/people";
 import styles from "./page.module.css";
 import { MobileMenu } from "@components/mobile-menu";
-import { ThemesHeader } from "@components/ThemesHeader";
-import { ThemesPanelBackgroundImage } from "@components/ThemesPanelBackgroundImage";
+import { ThemesHeader } from "@components/themes-header";
+import { ThemesPanelBackgroundImage } from "@components/themes-panel-background-image";
 import { useTheme } from "next-themes";
-import { ThemesMobileMenu } from "@components/ThemesMobileMenu";
-import { AvatarIconFallback } from "@components/AvatarIconFallback";
+import { ThemesMobileMenu } from "@components/themes-mobile-menu";
+import { AvatarIconFallback } from "@components/avatar-icon-fallback";
 import { RemoveScroll } from "react-remove-scroll";
 import { TabNavDemo } from "@components/tab-nav-demo";
 

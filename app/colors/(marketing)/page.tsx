@@ -12,10 +12,10 @@ import {
 	ScrollArea,
 	Button,
 } from "@radix-ui/themes";
-import { Footer } from "@components/Footer";
-import { ColorsHeader } from "@components/ColorsHeader";
-import { ColorsMarketingButton } from "@components/ColorsMarketingButton";
-import { SerifHeading } from "@components/SerifHeading";
+import { Footer } from "@components/footer";
+import { ColorsHeader } from "@components/colors-header";
+import { ColorsMarketingButton } from "@components/colors-marketing-button";
+import { SerifHeading } from "@components/serif-heading";
 import {
 	DesktopIcon,
 	EyeOpenIcon,
@@ -24,9 +24,9 @@ import {
 	MoonIcon,
 	TransparencyGridIcon,
 } from "@radix-ui/react-icons";
-import { Swatch } from "@components/Swatch";
-import { ColorUsageRange } from "@components/ColorUsageRange";
-import { ColorStepLabel } from "@components/ColorStepLabel";
+import { Swatch } from "@components/swatch";
+import { ColorUsageRange } from "@components/color-usage-range";
+import { ColorStepLabel } from "@components/color-step-label";
 import styles from "./page.module.css";
 
 export default function ColorsHome() {

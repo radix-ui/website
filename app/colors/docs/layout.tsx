@@ -1,5 +1,5 @@
-import { ColorsDocsPage } from "@components/ColorsDocsPage";
-import { Favicon } from "@components/Favicon";
+import { ColorsDocsPage } from "@components/colors-docs-page";
+import { Favicon } from "@components/favicon";
 import { MobileMenuProvider } from "@components/mobile-menu";
 import { Theme } from "@radix-ui/themes";
 

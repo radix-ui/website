@@ -1,5 +1,5 @@
-import { Favicon } from "@components/Favicon";
-import { PrimitivesDocsPage } from "@components/PrimitivesDocsPage";
+import { Favicon } from "@components/favicon";
+import { PrimitivesDocsPage } from "@components/primitives-docs-page";
 import { Theme } from "@radix-ui/themes";
 
 export default function PrimitivesDocsLayout({

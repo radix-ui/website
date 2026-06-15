@@ -1,5 +1,5 @@
 import { Flex, Heading, Separator, Theme, Link, Box } from "@radix-ui/themes";
-import { ExampleThemesMusicApp } from "@components/ExampleThemesMusicApp";
+import { ExampleThemesMusicApp } from "@components/example-themes-music-app";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { baseMetadata } from "@utils/metadata";
 import { Metadata, Viewport } from "next";
@@ -32,7 +32,7 @@ export default function ExamplePage() {
 								size="2"
 								color="gray"
 								target="_blank"
-								href="https://github.com/radix-ui/website/blob/main/components/ExampleThemesMusicApp.tsx"
+								href="https://github.com/radix-ui/website/blob/main/components/example-themes-music-app.tsx"
 							>
 								Source code
 								<ExternalLinkIcon />
