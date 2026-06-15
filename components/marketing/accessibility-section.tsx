@@ -1,14 +1,5 @@
 "use client";
-import {
-	Box,
-	Container,
-	Card,
-	Grid,
-	Flex,
-	Section,
-	Heading,
-	Text,
-} from "@radix-ui/themes";
+import { Box, Container, Card, Grid, Flex, Section, Heading, Text } from "@radix-ui/themes";
 import {
 	CaretDownIcon,
 	CaretLeftIcon,
@@ -251,8 +242,7 @@ export const AccessibilitySection = () => {
 	const playKeypressAnimation = React.useRef(true);
 	const [keyframe, setKeyframe] = React.useState(0);
 	const [isIntersecting, setIsIntersecting] = React.useState(false);
-	const [currentSequence, setCurrentSequence] =
-		React.useState<SequenceType>("screenReader");
+	const [currentSequence, setCurrentSequence] = React.useState<SequenceType>("screenReader");
 
 	// Fancy function to update the animation state when changing sequence.
 	// When user changes sequence, we attempt to pick the new keyframe intelligently
@@ -267,15 +257,12 @@ export const AccessibilitySection = () => {
 				// We need to pick nth dropdown item without the submenu as other animations don't have it.
 				if (desiredDropdownState.includes("submenu")) {
 					const length = "-submenu".length * -1;
-					desiredDropdownState = desiredDropdownState.slice(
-						0,
-						length,
-					) as MockDropdownState;
+					desiredDropdownState = desiredDropdownState.slice(0, length) as MockDropdownState;
 				}
 
-				let keyframeWithSimilarDropdownState = animations[
-					newSequence
-				].findIndex(({ dropdown }) => dropdown === desiredDropdownState);
+				let keyframeWithSimilarDropdownState = animations[newSequence].findIndex(
+					({ dropdown }) => dropdown === desiredDropdownState,
+				);
 				const newKeyframe = Math.max(0, keyframeWithSimilarDropdownState);
 
 				// Update all animation state pieces
@@ -294,11 +281,9 @@ export const AccessibilitySection = () => {
 				// Intersection flag is disabled once less than 10% of the container is visible in the viewport,
 				// and enabled once more than 90% of the container is visible in the viewport. Alternatively,
 				// it's considered intersecting if the container takes up at least 70% of the viewport height.
-				const almostCoversViewport =
-					entry.intersectionRect.height / entry.rootBounds!.height > 0.7;
+				const almostCoversViewport = entry.intersectionRect.height / entry.rootBounds!.height > 0.7;
 				const newIsIntersecting =
-					entry.intersectionRatio > (intersectingRef.current ? 0.1 : 0.9) ||
-					almostCoversViewport;
+					entry.intersectionRatio > (intersectingRef.current ? 0.1 : 0.9) || almostCoversViewport;
 
 				if (newIsIntersecting !== intersectingRef.current) {
 					if (newIsIntersecting === false) {
@@ -328,9 +313,7 @@ export const AccessibilitySection = () => {
 		const updateKeyframe = () => {
 			// Increment keyframe counter, or loop from 1st when last keyframe is reached
 			keyframeRef.current =
-				keyframeRef.current < animations[currentSequence].length - 1
-					? keyframeRef.current + 1
-					: 1;
+				keyframeRef.current < animations[currentSequence].length - 1 ? keyframeRef.current + 1 : 1;
 
 			// Increment iteration counter when starting keyframe is reached
 			if (keyframeRef.current === 0) {
@@ -362,10 +345,7 @@ export const AccessibilitySection = () => {
 	}, [currentSequence, isIntersecting]);
 
 	return (
-		<Section
-			size={{ initial: "2", md: "4" }}
-			className={styles.AccessibilitySectionRoot}
-		>
+		<Section size={{ initial: "2", md: "4" }} className={styles.AccessibilitySectionRoot}>
 			<div className={styles.AccessibilitySectionBackground}>
 				<div className={styles.AccessibilitySectionBackgroundSquare} />
 				<div className={styles.AccessibilitySectionBackgroundTriangle}>
@@ -386,24 +366,16 @@ export const AccessibilitySection = () => {
 				<div className={styles.AccessibilitySectionBackgroundCircle} />
 			</div>
 
-			<Container
-				position="relative"
-				mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}
-			>
+			<Container position="relative" mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Box mb="5">
-					<MarketingCaption mb="1">
-						Supports assistive technology
-					</MarketingCaption>
+					<MarketingCaption mb="1">Supports assistive technology</MarketingCaption>
 					<Heading as="h2" size="7">
 						Accessibility out of the box
 					</Heading>
 				</Box>
 
 				<Box mb="5">
-					<div
-						ref={containerRef}
-						className={styles.AccessibilitySectionExamplesContainer}
-					>
+					<div ref={containerRef} className={styles.AccessibilitySectionExamplesContainer}>
 						<div className={styles.AccessibilitySectionLeft}>
 							<Flex direction="column" align="start" mb="1">
 								<button
@@ -437,10 +409,7 @@ export const AccessibilitySection = () => {
 							</Flex>
 						</div>
 
-						<div
-							className={styles.AccessibilitySectionCenter}
-							role="presentation"
-						>
+						<div className={styles.AccessibilitySectionCenter} role="presentation">
 							{currentSequence === "screenReader" && (
 								<Grid flexGrow="1" rows="auto 1fr">
 									<Flex align="center" gap="1" my="2" mx="3">
@@ -466,9 +435,7 @@ export const AccessibilitySection = () => {
 												}}
 											>
 												<ScreenReaderOutput
-													dropdownState={
-														animations[currentSequence][keyframe]?.dropdown
-													}
+													dropdownState={animations[currentSequence][keyframe]?.dropdown}
 												/>
 											</Text>
 										</Box>
@@ -513,8 +480,7 @@ export const AccessibilitySection = () => {
 										</Flex>
 									)}
 
-									{(currentSequence === "keyboardNavigation" ||
-										currentSequence === "rtl") && (
+									{(currentSequence === "keyboardNavigation" || currentSequence === "rtl") && (
 										// 1. React's key prop is needed so that the mock keyboards animates correctly on repeat key press.
 										// 2. We don't animate the key when switching sequence to avoid unneeded motion
 										<Flex
@@ -539,10 +505,7 @@ export const AccessibilitySection = () => {
 							)}
 						</div>
 
-						<div
-							className={styles.AccessibilitySectionRight}
-							role="presentation"
-						>
+						<div className={styles.AccessibilitySectionRight} role="presentation">
 							<Grid rows="auto 1fr" flexGrow="1">
 								<Flex align="center" gap="1" my="2" mx="3">
 									<Text color="gray" size="2">
@@ -553,14 +516,10 @@ export const AccessibilitySection = () => {
 
 								<Flex align="center" justify="center" pb="3">
 									{currentSequence !== "rtl" && (
-										<MockDropdown
-											state={animations[currentSequence][keyframe]?.dropdown}
-										/>
+										<MockDropdown state={animations[currentSequence][keyframe]?.dropdown} />
 									)}
 									{currentSequence === "rtl" && (
-										<MockRtlDropdown
-											state={animations[currentSequence][keyframe]?.dropdown}
-										/>
+										<MockRtlDropdown state={animations[currentSequence][keyframe]?.dropdown} />
 									)}
 								</Flex>
 							</Grid>
@@ -577,8 +536,8 @@ export const AccessibilitySection = () => {
 							WAI-ARIA compliant
 						</Heading>
 						<Text size="3" as="p" color="gray">
-							Radix Primitives follow the WAI-ARIA guidelines, implementing
-							correct semantics and behaviors for our components.
+							Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
+							behaviors for our components.
 						</Text>
 					</Card>
 
@@ -590,8 +549,8 @@ export const AccessibilitySection = () => {
 							Keyboard navigation
 						</Heading>
 						<Text size="3" as="p" color="gray">
-							Primitives provide full keyboard support for components where
-							users expect to use a keyboard or other input devices.
+							Primitives provide full keyboard support for components where users expect to use a
+							keyboard or other input devices.
 						</Text>
 					</Card>
 
@@ -603,8 +562,8 @@ export const AccessibilitySection = () => {
 							Focus management
 						</Heading>
 						<Text size="3" as="p" color="gray">
-							Out of the box, Primitives provide sensible focus management
-							defaults, which can be further customized in your code.
+							Out of the box, Primitives provide sensible focus management defaults, which can be
+							further customized in your code.
 						</Text>
 					</Card>
 
@@ -616,8 +575,8 @@ export const AccessibilitySection = () => {
 							Screen reader tested
 						</Heading>
 						<Text size="3" as="p" color="gray">
-							We test Primitives with common assistive technologies, looking out
-							for practical issues that people may experience.
+							We test Primitives with common assistive technologies, looking out for practical
+							issues that people may experience.
 						</Text>
 					</Card>
 				</Grid>
@@ -644,17 +603,10 @@ const screenReaderItems: {
 	{ state: "item4", label: "Go to References,", suffix: "menu item" },
 ];
 
-const ScreenReaderOutput = ({
-	dropdownState,
-}: {
-	dropdownState: MockDropdownState;
-}) => (
+const ScreenReaderOutput = ({ dropdownState }: { dropdownState: MockDropdownState }) => (
 	<>
 		{screenReaderItems.map(({ state, label, suffix, prefix }) => (
-			<span
-				key={state}
-				style={dropdownState !== state ? { display: "none" } : undefined}
-			>
+			<span key={state} style={dropdownState !== state ? { display: "none" } : undefined}>
 				{label}
 				<br />
 				{prefix}
@@ -667,37 +619,21 @@ const ScreenReaderOutput = ({
 const MockDropdown = ({ state }: { state?: MockDropdownState }) => {
 	return (
 		<Box mt="1">
-			<div
-				className={styles.ExampleDropdownTrigger}
-				data-focused={state === "closed"}
-			>
+			<div className={styles.ExampleDropdownTrigger} data-focused={state === "closed"}>
 				Navigation <CaretDownIcon style={{ marginRight: -4 }} />
 			</div>
-			<div
-				className={styles.ExampleDropdownContent}
-				data-animated
-				data-open={state !== "closed"}
-			>
+			<div className={styles.ExampleDropdownContent} data-animated data-open={state !== "closed"}>
 				<ExampleDropdownCheckboxItem checked data-focused={state === "item1"}>
 					Show Minimap
 				</ExampleDropdownCheckboxItem>
 				<div className={styles.ExampleDropdownSeparator} />
-				<div
-					className={styles.ExampleDropdownItem}
-					data-focused={state === "item2"}
-				>
+				<div className={styles.ExampleDropdownItem} data-focused={state === "item2"}>
 					Go to Symbol
 				</div>
-				<div
-					className={styles.ExampleDropdownItem}
-					data-focused={state === "item3"}
-				>
+				<div className={styles.ExampleDropdownItem} data-focused={state === "item3"}>
 					Go to Definition
 				</div>
-				<div
-					className={styles.ExampleDropdownItem}
-					data-focused={state === "item4"}
-				>
+				<div className={styles.ExampleDropdownItem} data-focused={state === "item4"}>
 					Go to References
 				</div>
 			</div>
@@ -708,10 +644,7 @@ const MockDropdown = ({ state }: { state?: MockDropdownState }) => {
 const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
 	return (
 		<Box mt="1" style={{ direction: "rtl" }}>
-			<div
-				className={styles.ExampleDropdownTrigger}
-				data-focused={state === "closed"}
-			>
+			<div className={styles.ExampleDropdownTrigger} data-focused={state === "closed"}>
 				التنسيق
 				<CaretDownIcon style={{ marginLeft: -5 }} />
 			</div>
@@ -750,14 +683,8 @@ const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
 						المسافة البادئة
 						<CaretLeftIcon style={{ marginLeft: -5, marginRight: 10 }} />
 					</div>
-					<div
-						className={styles.ExampleDropdownSeparator}
-						style={{ marginLeft: 10 }}
-					/>
-					<div
-						className={styles.ExampleDropdownItem}
-						data-focused={state === "item4"}
-					>
+					<div className={styles.ExampleDropdownSeparator} style={{ marginLeft: 10 }} />
+					<div className={styles.ExampleDropdownItem} data-focused={state === "item4"}>
 						أعاد للوضع السابق
 					</div>
 				</div>
@@ -775,10 +702,7 @@ const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
 						} as React.CSSProperties
 					}
 				>
-					<div
-						className={styles.ExampleDropdownItem}
-						data-focused={state === "item1-submenu"}
-					>
+					<div className={styles.ExampleDropdownItem} data-focused={state === "item1-submenu"}>
 						يسار
 					</div>
 					<div className={styles.ExampleDropdownItem}>يمين</div>
@@ -798,10 +722,7 @@ const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
 						} as React.CSSProperties
 					}
 				>
-					<div
-						className={styles.ExampleDropdownItem}
-						data-focused={state === "item2-submenu"}
-					>
+					<div className={styles.ExampleDropdownItem} data-focused={state === "item2-submenu"}>
 						عريض
 					</div>
 					<div className={styles.ExampleDropdownItem}>مائل</div>
@@ -821,10 +742,7 @@ const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
 						} as React.CSSProperties
 					}
 				>
-					<div
-						className={styles.ExampleDropdownItem}
-						data-focused={state === "item3-submenu"}
-					>
+					<div className={styles.ExampleDropdownItem} data-focused={state === "item3-submenu"}>
 						زيادة
 					</div>
 					<div className={styles.ExampleDropdownItem}>تقليل</div>
@@ -938,15 +856,11 @@ const MockArrowKeyboard = ({ currentKey }: { currentKey?: string | null }) => {
 							borderBottomRightRadius: "var(--radius-2)",
 						}}
 					>
-						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>
-							▲
-						</Box>
+						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>▲</Box>
 					</Key>
 					<div />
 					<Key size="2" pressed={currentKey === "left"}>
-						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>
-							◀
-						</Box>
+						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>◀</Box>
 					</Key>
 					<Key
 						size="2"
@@ -956,14 +870,10 @@ const MockArrowKeyboard = ({ currentKey }: { currentKey?: string | null }) => {
 							borderTopRightRadius: "var(--radius-2)",
 						}}
 					>
-						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>
-							▼
-						</Box>
+						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>▼</Box>
 					</Key>
 					<Key size="2" pressed={currentKey === "right"}>
-						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>
-							▶
-						</Box>
+						<Box style={{ fontSize: "75%", opacity: 0.8, marginBottom: 1 }}>▶</Box>
 					</Key>
 				</Grid>
 			</Flex>

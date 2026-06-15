@@ -27,9 +27,7 @@ const DialogDemo = () => (
 					</label>
 					<input className="Input" id="username" defaultValue="@peduarte" />
 				</fieldset>
-				<div
-					style={{ display: "flex", marginTop: 25, justifyContent: "flex-end" }}
-				>
+				<div style={{ display: "flex", marginTop: 25, justifyContent: "flex-end" }}>
 					<Dialog.Close asChild>
 						<button className="Button green">Save changes</button>
 					</Dialog.Close>

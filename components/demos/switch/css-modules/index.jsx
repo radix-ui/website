@@ -13,11 +13,7 @@ const SwitchDemo = () => (
 			>
 				Airplane mode
 			</label>
-			<Switch.Root
-				id="airplane-mode"
-				aria-labelledby="airplane-mode-label"
-				className={styles.Root}
-			>
+			<Switch.Root id="airplane-mode" aria-labelledby="airplane-mode-label" className={styles.Root}>
 				<Switch.Thumb className={styles.Thumb} />
 			</Switch.Root>
 		</div>

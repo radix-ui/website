@@ -6,11 +6,7 @@ import "./styles.css";
 const CollapsibleDemo = () => {
 	const [open, setOpen] = React.useState(false);
 	return (
-		<Collapsible.Root
-			className="CollapsibleRoot"
-			open={open}
-			onOpenChange={setOpen}
-		>
+		<Collapsible.Root className="CollapsibleRoot" open={open} onOpenChange={setOpen}>
 			<div
 				style={{
 					display: "flex",
@@ -22,9 +18,7 @@ const CollapsibleDemo = () => {
 					@peduarte starred 3 repositories
 				</span>
 				<Collapsible.Trigger asChild>
-					<button className="IconButton">
-						{open ? <Cross2Icon /> : <RowSpacingIcon />}
-					</button>
+					<button className="IconButton">{open ? <Cross2Icon /> : <RowSpacingIcon />}</button>
 				</Collapsible.Trigger>
 			</div>
 

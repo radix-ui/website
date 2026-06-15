@@ -6,10 +6,7 @@ const TabsDemo = () => (
 		className="flex w-[300px] flex-col shadow-[0_2px_10px] shadow-blackA2"
 		defaultValue="tab1"
 	>
-		<Tabs.List
-			className="flex shrink-0 border-b border-mauve6"
-			aria-label="Manage your account"
-		>
+		<Tabs.List className="flex shrink-0 border-b border-mauve6" aria-label="Manage your account">
 			<Tabs.Trigger
 				className="flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-white px-5 text-[15px] leading-none text-mauve11 outline-none first:rounded-tl-md last:rounded-tr-md hover:text-violet11 data-[state=active]:text-violet11 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active]:focus:shadow-[0_0_0_2px] data-[state=active]:focus:shadow-black"
 				value="tab1"
@@ -31,10 +28,7 @@ const TabsDemo = () => (
 				Make changes to your account here. Click save when you&apos;re done.
 			</p>
 			<fieldset className="mb-[15px] flex w-full flex-col justify-start">
-				<label
-					className="mb-2.5 block text-[13px] leading-none text-violet12"
-					htmlFor="name"
-				>
+				<label className="mb-2.5 block text-[13px] leading-none text-violet12" htmlFor="name">
 					Name
 				</label>
 				<input
@@ -44,10 +38,7 @@ const TabsDemo = () => (
 				/>
 			</fieldset>
 			<fieldset className="mb-[15px] flex w-full flex-col justify-start">
-				<label
-					className="mb-2.5 block text-[13px] leading-none text-violet12"
-					htmlFor="username"
-				>
+				<label className="mb-2.5 block text-[13px] leading-none text-violet12" htmlFor="username">
 					Username
 				</label>
 				<input

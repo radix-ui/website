@@ -8,15 +8,10 @@ interface BoxLinkProps extends React.ComponentPropsWithoutRef<"a"> {
 	asChild?: boolean;
 }
 
-export const BoxLink = React.forwardRef<HTMLAnchorElement, BoxLinkProps>(
-	function BoxLink({ className, asChild, ...props }, forwardedRef) {
-		const Comp = asChild ? Slot.Root : "a";
-		return (
-			<Comp
-				ref={forwardedRef}
-				className={classNames(styles.BoxLink, className)}
-				{...props}
-			/>
-		);
-	},
-);
+export const BoxLink = React.forwardRef<HTMLAnchorElement, BoxLinkProps>(function BoxLink(
+	{ className, asChild, ...props },
+	forwardedRef,
+) {
+	const Comp = asChild ? Slot.Root : "a";
+	return <Comp ref={forwardedRef} className={classNames(styles.BoxLink, className)} {...props} />;
+});

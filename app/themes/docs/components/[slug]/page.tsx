@@ -13,9 +13,7 @@ interface PageProps {
 	params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({
-	params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const { frontmatter } = await getMdxBySlug(DOCS_BASE, slug);
 	return {
@@ -35,12 +33,7 @@ export default async function ComponentsDoc({ params }: PageProps) {
 			<div data-search-lvl0 style={{ display: "none" }}>
 				Components
 			</div>
-			<Heading
-				as="h1"
-				size="8"
-				mb="2"
-				style={{ scrollMarginTop: "var(--space-9)" }}
-			>
+			<Heading as="h1" size="8" mb="2" style={{ scrollMarginTop: "var(--space-9)" }}>
 				{frontmatter.metaTitle}
 			</Heading>
 			<Box mt="2" mb="7">

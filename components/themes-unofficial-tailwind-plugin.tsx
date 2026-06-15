@@ -27,8 +27,7 @@ export function ThemesUnofficialTailwindPlugin() {
 							Tailwind preset
 						</Heading>
 						<Text as="p" size="3" color="gray">
-							Configures Tailwind to support Radix Themes tokens, by Viktor
-							Bonino.
+							Configures Tailwind to support Radix Themes tokens, by Viktor Bonino.
 						</Text>
 					</Box>
 				</Flex>

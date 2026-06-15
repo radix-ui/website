@@ -7,8 +7,5 @@ export function useEffectEvent<T extends Function>(fn: T): T {
 	React.useInsertionEffect(() => {
 		ref.current = fn;
 	}, [fn]);
-	return React.useCallback(
-		(...args: any[]) => ref.current?.(...args),
-		[ref],
-	) as any;
+	return React.useCallback((...args: any[]) => ref.current?.(...args), [ref]) as any;
 }

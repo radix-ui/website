@@ -40,13 +40,9 @@ type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 	focusable?: boolean;
 };
 
-export const ExampleThemesDashboard = ({
-	focusable = true,
-	...props
-}: ExampleLayoutProps) => {
+export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLayoutProps) => {
 	// We’ll use a different portal container for homepage demo purposes; this is usually not needed.
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLDivElement | null>(null);
+	const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement | null>(null);
 
 	// Interactive elements may be not focusable for homepage demo purposes
 	const tabIndex = focusable ? undefined : -1;
@@ -79,11 +75,7 @@ export const ExampleThemesDashboard = ({
 
 					<Flex gap="3" mb="5">
 						<Box flexGrow="1">
-							<TextField.Root
-								tabIndex={tabIndex}
-								size="2"
-								placeholder="Email address"
-							/>
+							<TextField.Root tabIndex={tabIndex} size="2" placeholder="Email address" />
 						</Box>
 						<Button tabIndex={tabIndex} size="2">
 							Invite
@@ -117,24 +109,15 @@ export const ExampleThemesDashboard = ({
 									<Flex flexGrow="1" justify="end">
 										<DropdownMenu.Root>
 											<DropdownMenu.Trigger>
-												<IconButton
-													color="gray"
-													tabIndex={tabIndex}
-													variant="ghost"
-												>
+												<IconButton color="gray" tabIndex={tabIndex} variant="ghost">
 													<DotsHorizontalIcon />
 												</IconButton>
 											</DropdownMenu.Trigger>
-											<DropdownMenu.Content
-												container={portalContainer}
-												variant="soft"
-											>
+											<DropdownMenu.Content container={portalContainer} variant="soft">
 												<DropdownMenu.Item>View profile</DropdownMenu.Item>
 												<DropdownMenu.Item>Change role</DropdownMenu.Item>
 												<DropdownMenu.Separator />
-												<DropdownMenu.Item color="red">
-													Remove
-												</DropdownMenu.Item>
+												<DropdownMenu.Item color="red">Remove</DropdownMenu.Item>
 											</DropdownMenu.Content>
 										</DropdownMenu.Root>
 									</Flex>
@@ -170,8 +153,7 @@ export const ExampleThemesDashboard = ({
 									Comments
 								</Heading>
 								<Text as="p" size="2" color="gray">
-									Receive notifications when someone comments on your documents
-									or mentions you.
+									Receive notifications when someone comments on your documents or mentions you.
 								</Text>
 							</Box>
 							<Flex direction="column" gap="4" mt="1">
@@ -208,8 +190,7 @@ export const ExampleThemesDashboard = ({
 									Favorites
 								</Heading>
 								<Text as="p" size="2" color="gray">
-									Receive notifications when there is activity related to your
-									favorited items.
+									Receive notifications when there is activity related to your favorited items.
 								</Text>
 							</Box>
 							<Flex direction="column" gap="4" mt="1">
@@ -246,8 +227,7 @@ export const ExampleThemesDashboard = ({
 									New documents
 								</Heading>
 								<Text as="p" size="2" color="gray">
-									Receive notifications whenever people on your team create new
-									documents.
+									Receive notifications whenever people on your team create new documents.
 								</Text>
 							</Box>
 							<Flex direction="column" gap="4" mt="1">
@@ -282,8 +262,7 @@ export const ExampleThemesDashboard = ({
 					</Heading>
 
 					<Text as="p" size="2" mb="5" color="gray">
-						No credit card required. Every plan includes a 30-day trial of all
-						Pro features.
+						No credit card required. Every plan includes a 30-day trial of all Pro features.
 					</Text>
 
 					<Grid columns="3" gap="6">
@@ -296,11 +275,7 @@ export const ExampleThemesDashboard = ({
 							</Text>
 							<Text weight="bold" size="5" mb="4">
 								$0
-								<Text
-									size="5"
-									weight="bold"
-									style={{ color: "var(--gray-a8)" }}
-								>
+								<Text size="5" weight="bold" style={{ color: "var(--gray-a8)" }}>
 									{" / mo"}
 								</Text>
 							</Text>
@@ -357,11 +332,7 @@ export const ExampleThemesDashboard = ({
 							</Text>
 							<Text weight="bold" size="5" mb="4">
 								$49
-								<Text
-									size="5"
-									weight="bold"
-									style={{ color: "var(--gray-a8)" }}
-								>
+								<Text size="5" weight="bold" style={{ color: "var(--gray-a8)" }}>
 									{" / mo"}
 								</Text>
 							</Text>
@@ -418,11 +389,7 @@ export const ExampleThemesDashboard = ({
 							</Text>
 							<Text weight="bold" size="5" mb="4">
 								$99
-								<Text
-									size="5"
-									weight="bold"
-									style={{ color: "var(--gray-a8)" }}
-								>
+								<Text size="5" weight="bold" style={{ color: "var(--gray-a8)" }}>
 									{" / mo"}
 								</Text>
 							</Text>
@@ -481,12 +448,7 @@ export const ExampleThemesDashboard = ({
 
 					<Box mb="5">
 						<Flex mb="1">
-							<Text
-								as="label"
-								htmlFor="example-email-field"
-								size="2"
-								weight="bold"
-							>
+							<Text as="label" htmlFor="example-email-field" size="2" weight="bold">
 								Email address
 							</Text>
 						</Flex>
@@ -499,20 +461,10 @@ export const ExampleThemesDashboard = ({
 
 					<Box mb="5" position="relative">
 						<Flex align="baseline" justify="between" mb="1">
-							<Text
-								as="label"
-								size="2"
-								weight="bold"
-								htmlFor="example-password-field"
-							>
+							<Text as="label" size="2" weight="bold" htmlFor="example-password-field">
 								Password
 							</Text>
-							<Link
-								href="#"
-								tabIndex={tabIndex}
-								size="2"
-								onClick={(e) => e.preventDefault()}
-							>
+							<Link href="#" tabIndex={tabIndex} size="2" onClick={(e) => e.preventDefault()}>
 								Forgot password?
 							</Link>
 						</Flex>
@@ -533,12 +485,7 @@ export const ExampleThemesDashboard = ({
 
 				<Card size="4">
 					<Box position="absolute" top="0" right="0" m="3">
-						<IconButton
-							tabIndex={tabIndex}
-							variant="ghost"
-							color="gray"
-							highContrast
-						>
+						<IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
 							<Cross2Icon width="20" height="20" />
 						</IconButton>
 					</Box>
@@ -565,8 +512,7 @@ export const ExampleThemesDashboard = ({
 								height="168px"
 								style={
 									{
-										background:
-											"linear-gradient(to top right, var(--accent-9), #E18BFF)",
+										background: "linear-gradient(to top right, var(--accent-9), #E18BFF)",
 										boxShadow: "0 1px 20px -5px #7971E9AA",
 										borderRadius: "var(--radius-3)",
 										"--gray-12": "white",
@@ -613,12 +559,7 @@ export const ExampleThemesDashboard = ({
 
 				<Card size="4">
 					<Box position="absolute" top="0" right="0" m="3">
-						<IconButton
-							tabIndex={tabIndex}
-							variant="ghost"
-							color="gray"
-							highContrast
-						>
+						<IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
 							<Cross2Icon width="20" height="20" />
 						</IconButton>
 					</Box>
@@ -634,8 +575,7 @@ export const ExampleThemesDashboard = ({
 					</Flex>
 
 					<Text as="p" size="3" align="center" mb="5">
-						You paid $17,975.30. A receipt copy was sent to{" "}
-						<Strong>accounting@example.com</Strong>
+						You paid $17,975.30. A receipt copy was sent to <Strong>accounting@example.com</Strong>
 					</Text>
 
 					<Flex direction="column" gap="3" align="stretch">
@@ -649,24 +589,14 @@ export const ExampleThemesDashboard = ({
 
 				<Card size="4">
 					<Box position="absolute" top="0" right="0" m="3">
-						<IconButton
-							tabIndex={tabIndex}
-							variant="ghost"
-							color="gray"
-							highContrast
-						>
+						<IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
 							<Cross2Icon width="20" height="20" />
 						</IconButton>
 					</Box>
 
 					<Heading as="h3" size="6" trim="start" mb="5">
 						Invoice{" "}
-						<Link
-							href="#"
-							tabIndex={tabIndex}
-							weight="bold"
-							onClick={(e) => e.preventDefault()}
-						>
+						<Link href="#" tabIndex={tabIndex} weight="bold" onClick={(e) => e.preventDefault()}>
 							#3463
 						</Link>
 					</Heading>
@@ -803,11 +733,7 @@ export const ExampleThemesDashboard = ({
 									MRR
 								</Text>
 								<Badge color="teal" radius="full">
-									<ArrowUpIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									3.2%
 								</Badge>
 							</Flex>
@@ -822,11 +748,7 @@ export const ExampleThemesDashboard = ({
 									OpEx
 								</Text>
 								<Badge color="red" radius="full">
-									<ArrowUpIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									12.8%
 								</Badge>
 							</Flex>
@@ -841,11 +763,7 @@ export const ExampleThemesDashboard = ({
 									CapEx
 								</Text>
 								<Badge color="teal" radius="full">
-									<ArrowDownIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									8.8%
 								</Badge>
 							</Flex>
@@ -860,11 +778,7 @@ export const ExampleThemesDashboard = ({
 									GPM
 								</Text>
 								<Badge color="red" radius="full">
-									<ArrowDownIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									1.2%
 								</Badge>
 							</Flex>
@@ -893,11 +807,7 @@ export const ExampleThemesDashboard = ({
 									EBITDA
 								</Text>
 								<Badge color="teal" radius="full">
-									<ArrowUpIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									4.1%
 								</Badge>
 							</Flex>
@@ -912,11 +822,7 @@ export const ExampleThemesDashboard = ({
 									CAC
 								</Text>
 								<Badge color="teal" radius="full">
-									<ArrowDownIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									11.0%
 								</Badge>
 							</Flex>
@@ -931,11 +837,7 @@ export const ExampleThemesDashboard = ({
 									LTV
 								</Text>
 								<Badge color="teal" radius="full">
-									<ArrowUpIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									3%
 								</Badge>
 							</Flex>
@@ -950,11 +852,7 @@ export const ExampleThemesDashboard = ({
 									Churn
 								</Text>
 								<Badge color="red" radius="full">
-									<ArrowUpIcon
-										width="12"
-										height="12"
-										style={{ marginLeft: -2 }}
-									/>
+									<ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
 									1.1%
 								</Badge>
 							</Flex>
@@ -1021,11 +919,7 @@ export const ExampleThemesDashboard = ({
 										</Text>
 										<Text as="div" size="2" color="gray">
 											Approved invoice{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												#3461
 											</Link>
 										</Text>
@@ -1056,19 +950,11 @@ export const ExampleThemesDashboard = ({
 										</Text>
 										<Text as="p" size="2" color="gray">
 											Purchased{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												15 office chairs
 											</Link>{" "}
 											and{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												2 drum sets
 											</Link>
 										</Text>
@@ -1099,11 +985,7 @@ export const ExampleThemesDashboard = ({
 										</Text>
 										<Text as="p" size="2" color="gray">
 											Responded to your comment{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												#7514
 											</Link>
 										</Text>
@@ -1134,11 +1016,7 @@ export const ExampleThemesDashboard = ({
 										</Text>
 										<Text as="p" size="2" color="gray">
 											Created{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												4 invoices
 											</Link>
 										</Text>
@@ -1169,11 +1047,7 @@ export const ExampleThemesDashboard = ({
 										</Text>
 										<Text as="p" size="2" color="gray">
 											Updated client details for{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												Acme Co.
 											</Link>
 										</Text>
@@ -1204,11 +1078,7 @@ export const ExampleThemesDashboard = ({
 										</Text>
 										<Text as="p" size="2" color="gray">
 											Created{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												a new report
 											</Link>
 										</Text>
@@ -1239,11 +1109,7 @@ export const ExampleThemesDashboard = ({
 										</Text>
 										<Text as="p" size="2" color="gray">
 											Deleted report{" "}
-											<Link
-												href="#"
-												tabIndex={tabIndex}
-												onClick={(e) => e.preventDefault()}
-											>
+											<Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 												#34
 											</Link>
 										</Text>
@@ -1292,20 +1158,10 @@ export const ExampleThemesDashboard = ({
 					</Heading>
 
 					<Flex gap="3" position="absolute" top="0" right="0" m="3">
-						<IconButton
-							tabIndex={tabIndex}
-							variant="ghost"
-							color="gray"
-							highContrast
-						>
+						<IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
 							<Share2Icon width="20" height="20" />
 						</IconButton>
-						<IconButton
-							tabIndex={tabIndex}
-							variant="ghost"
-							color="gray"
-							highContrast
-						>
+						<IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
 							<PlusIcon width="20" height="20" />
 						</IconButton>
 					</Flex>
@@ -1342,12 +1198,7 @@ const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
 		a: (
 			<span>
 				Respond to comment{" "}
-				<Link
-					href="#"
-					underline="hover"
-					tabIndex={tabIndex}
-					onClick={(e) => e.preventDefault()}
-				>
+				<Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 					#384
 				</Link>{" "}
 				from Travis Ross
@@ -1356,12 +1207,7 @@ const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
 		b: (
 			<span>
 				Invite{" "}
-				<Link
-					href="#"
-					underline="hover"
-					tabIndex={tabIndex}
-					onClick={(e) => e.preventDefault()}
-				>
+				<Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 					Acme Co.
 				</Link>{" "}
 				team to Slack
@@ -1370,12 +1216,7 @@ const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
 		c: (
 			<span>
 				Create a report{" "}
-				<Link
-					href="#"
-					underline="hover"
-					tabIndex={tabIndex}
-					onClick={(e) => e.preventDefault()}
-				>
+				<Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 					requested
 				</Link>{" "}
 				by Danilo Sousa
@@ -1384,12 +1225,7 @@ const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
 		d: (
 			<span>
 				Review support request{" "}
-				<Link
-					href="#"
-					underline="hover"
-					tabIndex={tabIndex}
-					onClick={(e) => e.preventDefault()}
-				>
+				<Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 					#85
 				</Link>
 			</span>
@@ -1398,12 +1234,7 @@ const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
 		f: (
 			<span>
 				Review invoice{" "}
-				<Link
-					href="#"
-					underline="hover"
-					tabIndex={tabIndex}
-					onClick={(e) => e.preventDefault()}
-				>
+				<Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
 					#3456
 				</Link>
 			</span>
@@ -1420,9 +1251,7 @@ const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
 							checked={item.completed}
 							onCheckedChange={(checked) => {
 								const newItems = items.slice();
-								const newItem = newItems.find(
-									(candidate) => candidate.id === item.id,
-								)!;
+								const newItem = newItems.find((candidate) => candidate.id === item.id)!;
 								newItem.completed = !!checked;
 								onItemsChange(newItems);
 							}}

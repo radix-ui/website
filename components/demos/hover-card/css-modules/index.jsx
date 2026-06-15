@@ -32,8 +32,8 @@ const HoverCardDemo = () => (
 							<div className={`${styles.Text} faded`}>@radix_ui</div>
 						</div>
 						<div className={styles.Text}>
-							Components, icons, colors, and templates for building
-							high-quality, accessible UI. Free and open-source.
+							Components, icons, colors, and templates for building high-quality, accessible UI.
+							Free and open-source.
 						</div>
 						<div style={{ display: "flex", gap: 15 }}>
 							<div style={{ display: "flex", gap: 5 }}>

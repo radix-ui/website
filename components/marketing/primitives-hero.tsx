@@ -54,61 +54,59 @@ function DemoContainer({
 	);
 }
 
-const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
-	function FocusArea({ children, onKeyDown, ...props }, forwardedRef) {
-		const ownRef = React.useRef<HTMLDivElement | null>(null);
-		const composedRef = useComposedRefs(ownRef, forwardedRef);
+const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(function FocusArea(
+	{ children, onKeyDown, ...props },
+	forwardedRef,
+) {
+	const ownRef = React.useRef<HTMLDivElement | null>(null);
+	const composedRef = useComposedRefs(ownRef, forwardedRef);
 
-		return (
-			<div
-				{...props}
-				className={styles.FocusArea}
-				data-focus-area
-				ref={composedRef}
-				tabIndex={0}
-				onKeyDown={(event) => {
-					onKeyDown?.(event);
+	return (
+		<div
+			{...props}
+			className={styles.FocusArea}
+			data-focus-area
+			ref={composedRef}
+			tabIndex={0}
+			onKeyDown={(event) => {
+				onKeyDown?.(event);
 
-					// Move focus inside the FocusArea when Enter or Spacebar is pressed
-					if (
-						event.target === event.currentTarget &&
-						(event.key === "Enter" || event.key === " ")
-					) {
-						// We are looking for something obviously focusable
-						const tier1 =
-							'[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]';
-						const tier2 = "a, button, input, select, textarea";
+				// Move focus inside the FocusArea when Enter or Spacebar is pressed
+				if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {
+					// We are looking for something obviously focusable
+					const tier1 =
+						'[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]';
+					const tier2 = "a, button, input, select, textarea";
 
-						// Search for tier 1 and tier 2 elements, prioritising
-						const elementToFocus = [
-							event.currentTarget.querySelector<HTMLElement>(tier1),
-							event.currentTarget.querySelector<HTMLElement>(tier2),
-						].filter((el) => Boolean(el))[0];
+					// Search for tier 1 and tier 2 elements, prioritising
+					const elementToFocus = [
+						event.currentTarget.querySelector<HTMLElement>(tier1),
+						event.currentTarget.querySelector<HTMLElement>(tier2),
+					].filter((el) => Boolean(el))[0];
 
-						if (elementToFocus) {
-							event.preventDefault();
-							elementToFocus.focus();
-						}
+					if (elementToFocus) {
+						event.preventDefault();
+						elementToFocus.focus();
 					}
+				}
 
-					// Move focus onto the FocusArea when Escape is pressed, unless the focus is currently inside a modal
-					if (
-						event.key === "Escape" &&
-						event.target instanceof HTMLElement &&
-						event.target !== event.currentTarget &&
-						event.target.closest('[role="dialog"], [role="menu"]') === null
-					) {
-						event.currentTarget.focus();
-					}
-				}}
-			>
-				<div data-focus-area-entry />
-				{children}
-				<div data-focus-area-exit />
-			</div>
-		);
-	},
-);
+				// Move focus onto the FocusArea when Escape is pressed, unless the focus is currently inside a modal
+				if (
+					event.key === "Escape" &&
+					event.target instanceof HTMLElement &&
+					event.target !== event.currentTarget &&
+					event.target.closest('[role="dialog"], [role="menu"]') === null
+				) {
+					event.currentTarget.focus();
+				}
+			}}
+		>
+			<div data-focus-area-entry />
+			{children}
+			<div data-focus-area-exit />
+		</div>
+	);
+});
 
 export const PrimitivesHero = () => {
 	const lastUsedFocusArea = React.useRef<HTMLElement | null>(null);
@@ -118,106 +116,78 @@ export const PrimitivesHero = () => {
 		lastUsedFocusArea.current = document.querySelector("[data-focus-area]");
 	}, []);
 
-	const onFocusAreaFocus = React.useCallback(
-		(event: React.FocusEvent<HTMLElement>) => {
-			lastUsedFocusArea.current = event.currentTarget;
-		},
-		[],
-	);
+	const onFocusAreaFocus = React.useCallback((event: React.FocusEvent<HTMLElement>) => {
+		lastUsedFocusArea.current = event.currentTarget;
+	}, []);
 
 	// We are implementing a simple roving tab index with some tweaks
-	const onFocusAreaKeyDown = React.useCallback(
-		(event: React.KeyboardEvent<HTMLElement>) => {
-			if (event.target === event.currentTarget) {
-				if (event.key === "ArrowRight") {
+	const onFocusAreaKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLElement>) => {
+		if (event.target === event.currentTarget) {
+			if (event.key === "ArrowRight") {
+				event.preventDefault();
+				const allAreas = Array.from(document.querySelectorAll<HTMLElement>("[data-focus-area]"));
+				const thisIndex = allAreas.findIndex((el) => el === event.currentTarget);
+				const nextIndex = Math.min(thisIndex + 1, allAreas.length - 1);
+				const nextDemo = allAreas[nextIndex];
+				isRoving.current = true;
+				nextDemo.focus();
+				(nextDemo as any).scrollIntoViewIfNeeded?.(true);
+				lastUsedFocusArea.current = nextDemo;
+				isRoving.current = false;
+			}
+
+			if (event.key === "ArrowLeft") {
+				event.preventDefault();
+				const allAreas = Array.from(document.querySelectorAll<HTMLElement>("[data-focus-area]"));
+				const thisIndex = allAreas.findIndex((el) => el === event.currentTarget);
+				const prevIndex = Math.max(thisIndex - 1, 0); // thisIndex - 1 >= 0 ? thisIndex - 1 : allAreas.length - 1;
+				const prevDemo = allAreas[prevIndex];
+				isRoving.current = true;
+				prevDemo.focus();
+				(prevDemo as any).scrollIntoViewIfNeeded?.(true);
+				lastUsedFocusArea.current = prevDemo;
+				isRoving.current = false;
+			}
+
+			// Tab key press moves focus to the next element after the carousel
+			if (event.key === "Tab" && event.shiftKey === false) {
+				const selector = "a, button, input, select, textarea, [data-focus-area-exit]";
+				const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
+					(element) => element.tabIndex !== -1 || element.hasAttribute("data-focus-area-exit"),
+				);
+
+				// Find last exit guard
+				elements.reverse();
+				const lastExit = elements.find((el) => el.matches("[data-focus-area-exit]"));
+				elements.reverse();
+				const lastExitIndex = elements.indexOf(lastExit!);
+				const nextElement = elements[lastExitIndex + 1];
+
+				if (nextElement) {
 					event.preventDefault();
-					const allAreas = Array.from(
-						document.querySelectorAll<HTMLElement>("[data-focus-area]"),
-					);
-					const thisIndex = allAreas.findIndex(
-						(el) => el === event.currentTarget,
-					);
-					const nextIndex = Math.min(thisIndex + 1, allAreas.length - 1);
-					const nextDemo = allAreas[nextIndex];
-					isRoving.current = true;
-					nextDemo.focus();
-					(nextDemo as any).scrollIntoViewIfNeeded?.(true);
-					lastUsedFocusArea.current = nextDemo;
-					isRoving.current = false;
-				}
-
-				if (event.key === "ArrowLeft") {
-					event.preventDefault();
-					const allAreas = Array.from(
-						document.querySelectorAll<HTMLElement>("[data-focus-area]"),
-					);
-					const thisIndex = allAreas.findIndex(
-						(el) => el === event.currentTarget,
-					);
-					const prevIndex = Math.max(thisIndex - 1, 0); // thisIndex - 1 >= 0 ? thisIndex - 1 : allAreas.length - 1;
-					const prevDemo = allAreas[prevIndex];
-					isRoving.current = true;
-					prevDemo.focus();
-					(prevDemo as any).scrollIntoViewIfNeeded?.(true);
-					lastUsedFocusArea.current = prevDemo;
-					isRoving.current = false;
-				}
-
-				// Tab key press moves focus to the next element after the carousel
-				if (event.key === "Tab" && event.shiftKey === false) {
-					const selector =
-						"a, button, input, select, textarea, [data-focus-area-exit]";
-					const elements = Array.from(
-						document.querySelectorAll<HTMLElement>(selector),
-					).filter(
-						(element) =>
-							element.tabIndex !== -1 ||
-							element.hasAttribute("data-focus-area-exit"),
-					);
-
-					// Find last exit guard
-					elements.reverse();
-					const lastExit = elements.find((el) =>
-						el.matches("[data-focus-area-exit]"),
-					);
-					elements.reverse();
-					const lastExitIndex = elements.indexOf(lastExit!);
-					const nextElement = elements[lastExitIndex + 1];
-
-					if (nextElement) {
-						event.preventDefault();
-						nextElement.focus();
-					}
-				}
-
-				// Shift + Tab key press moves focus to the previous element before the carousel
-				if (event.key === "Tab" && event.shiftKey) {
-					const selector =
-						"a, button, input, select, textarea, [data-focus-area-entry]";
-					const elements = Array.from(
-						document.querySelectorAll<HTMLElement>(selector),
-					).filter(
-						(element) =>
-							element.tabIndex !== -1 ||
-							element.hasAttribute("data-focus-area-entry"),
-					);
-
-					// Find first entry guard
-					const firstEntry = elements.find((el) =>
-						el.matches("[data-focus-area-entry]"),
-					);
-					const firstEntryIndex = elements.indexOf(firstEntry!);
-					const prevElement = elements[firstEntryIndex - 1];
-
-					if (prevElement) {
-						event.preventDefault();
-						prevElement.focus();
-					}
+					nextElement.focus();
 				}
 			}
-		},
-		[],
-	);
+
+			// Shift + Tab key press moves focus to the previous element before the carousel
+			if (event.key === "Tab" && event.shiftKey) {
+				const selector = "a, button, input, select, textarea, [data-focus-area-entry]";
+				const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
+					(element) => element.tabIndex !== -1 || element.hasAttribute("data-focus-area-entry"),
+				);
+
+				// Find first entry guard
+				const firstEntry = elements.find((el) => el.matches("[data-focus-area-entry]"));
+				const firstEntryIndex = elements.indexOf(firstEntry!);
+				const prevElement = elements[firstEntryIndex - 1];
+
+				if (prevElement) {
+					event.preventDefault();
+					prevElement.focus();
+				}
+			}
+		}
+	}, []);
 
 	React.useEffect(() => {
 		const tabListener = (event: KeyboardEvent) => {
@@ -229,11 +199,8 @@ export const PrimitivesHero = () => {
 				event.target instanceof HTMLElement &&
 				!event.target.hasAttribute("data-focus-area")
 			) {
-				const selector =
-					"a, button, input, select, textarea, [data-focus-area-entry]";
-				const elements = Array.from(
-					document.querySelectorAll<HTMLElement>(selector),
-				).filter(
+				const selector = "a, button, input, select, textarea, [data-focus-area-entry]";
+				const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
 					(element) =>
 						element.tabIndex !== -1 ||
 						element === event.target ||
@@ -259,11 +226,8 @@ export const PrimitivesHero = () => {
 				event.target instanceof HTMLElement &&
 				!event.target.hasAttribute("data-focus-area")
 			) {
-				const selector =
-					"a, button, input, select, textarea, [data-focus-area-exit]";
-				const elements = Array.from(
-					document.querySelectorAll<HTMLElement>(selector),
-				).filter(
+				const selector = "a, button, input, select, textarea, [data-focus-area-exit]";
+				const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
 					(element) =>
 						element.tabIndex !== -1 ||
 						element === event.target ||
@@ -272,9 +236,7 @@ export const PrimitivesHero = () => {
 
 				// Find last exit guard
 				elements.reverse();
-				const lastExit = elements.find((el) =>
-					el.hasAttribute("data-focus-area-exit"),
-				);
+				const lastExit = elements.find((el) => el.hasAttribute("data-focus-area-exit"));
 				elements.reverse();
 				const lastExitIndex = elements.indexOf(lastExit!);
 
@@ -298,16 +260,11 @@ export const PrimitivesHero = () => {
 							Core building blocks for your design system
 						</SerifHeading>
 						<Text size="5" as="p" mb="6" color="gray" style={{ maxWidth: 520 }}>
-							Unstyled, accessible, open source React primitives for
-							high-quality web apps and design systems.
+							Unstyled, accessible, open source React primitives for high-quality web apps and
+							design systems.
 						</Text>
 					</Box>
-					<Button
-						asChild
-						size={{ initial: "3", xs: "4" }}
-						color="gray"
-						highContrast
-					>
+					<Button asChild size={{ initial: "3", xs: "4" }} color="gray" highContrast>
 						<NextLink href="/primitives/docs/overview/introduction">
 							Get started
 							<svg
@@ -343,8 +300,7 @@ export const PrimitivesHero = () => {
 									"--margin-left-override": 0,
 
 									// Move the responsive margin here
-									paddingLeft:
-										"max(var(--margin-left), calc(50% - var(--container-4) / 2))",
+									paddingLeft: "max(var(--margin-left), calc(50% - var(--container-4) / 2))",
 								}}
 							>
 								<Box pr="5">
@@ -363,8 +319,8 @@ export const PrimitivesHero = () => {
 												Dialog
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												With modal and non-modal modes, fine-grained
-												focus&nbsp;control, accessible to screen readers.
+												With modal and non-modal modes, fine-grained focus&nbsp;control, accessible
+												to screen readers.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -386,8 +342,8 @@ export const PrimitivesHero = () => {
 												Dropdown Menu
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												With submenus, checkable items, collision handling,
-												arrow key navigation, and typeahead support.
+												With submenus, checkable items, collision handling, arrow key navigation,
+												and typeahead support.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -409,8 +365,8 @@ export const PrimitivesHero = () => {
 												Popover
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												With fine-grained focus control, collision handling,
-												origin-aware and collision-aware animations.
+												With fine-grained focus control, collision handling, origin-aware and
+												collision-aware animations.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -432,8 +388,8 @@ export const PrimitivesHero = () => {
 												Slider
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												Supports keyboard and touch input, step interval,
-												multiple thumbs for value ranges, and RTL direction.
+												Supports keyboard and touch input, step interval, multiple thumbs for value
+												ranges, and RTL direction.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -455,8 +411,8 @@ export const PrimitivesHero = () => {
 												Scroll Area
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												Supports custom cross-browser styling while maintaining
-												the browser&apos;s native scroll behavior.
+												Supports custom cross-browser styling while maintaining the browser&apos;s
+												native scroll behavior.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -478,8 +434,8 @@ export const PrimitivesHero = () => {
 												Tabs
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												Supports arrow key navigation, horizontal/vertical
-												orientation, controlled or uncontrolled.
+												Supports arrow key navigation, horizontal/vertical orientation, controlled
+												or uncontrolled.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -501,8 +457,8 @@ export const PrimitivesHero = () => {
 												Accordion
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												Supports one or multiple items open at the same time,
-												keyboard navigation, collapse and expand animation.
+												Supports one or multiple items open at the same time, keyboard navigation,
+												collapse and expand animation.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -524,8 +480,8 @@ export const PrimitivesHero = () => {
 												Radio Group
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												With arrow key navigation, horizontal/vertical
-												orientation support, controlled or uncontrolled.
+												With arrow key navigation, horizontal/vertical orientation support,
+												controlled or uncontrolled.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -547,8 +503,8 @@ export const PrimitivesHero = () => {
 												Toggle Group
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												A set of two-state buttons that can be toggled on or
-												off. Supports single and multiple pressed buttons.
+												A set of two-state buttons that can be toggled on or off. Supports single
+												and multiple pressed buttons.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -570,8 +526,7 @@ export const PrimitivesHero = () => {
 												Switch
 											</Heading>
 											<Text as="p" size="2" color="gray">
-												Allows the user to toggle between checked and not
-												checked.
+												Allows the user to toggle between checked and not checked.
 											</Text>
 										</GrabBox>
 									</CarouselSlide>
@@ -579,21 +534,13 @@ export const PrimitivesHero = () => {
 
 								<Box pr="5">
 									<CarouselSlide>
-										<FocusArea
-											onKeyDown={onFocusAreaKeyDown}
-											onFocus={onFocusAreaFocus}
-										>
+										<FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
 											<DemoContainer ariaUnhide>
 												<Flex align="center" direction="column" gap="2">
 													<Text size="2" color="gray">
 														See more components in the docs
 													</Text>
-													<Flex
-														asChild
-														display="inline-flex"
-														align="center"
-														gap="1"
-													>
+													<Flex asChild display="inline-flex" align="center" gap="1">
 														<Link asChild size="3" highContrast color="gray">
 															<NextLink href="/primitives/docs/overview/getting-started">
 																View docs
@@ -632,11 +579,7 @@ export const PrimitivesHero = () => {
 							right: "15px",
 						}}
 					>
-						<CarouselNext
-							aria-label="Show next demo"
-							tabIndex={-1}
-							as={CarouselArrowButton}
-						>
+						<CarouselNext aria-label="Show next demo" tabIndex={-1} as={CarouselArrowButton}>
 							<ArrowRightIcon />
 						</CarouselNext>
 					</Box>
@@ -646,10 +589,7 @@ export const PrimitivesHero = () => {
 	);
 };
 
-const CarouselArrowButton = ({
-	children,
-	...props
-}: React.ComponentProps<"button">) => {
+const CarouselArrowButton = ({ children, ...props }: React.ComponentProps<"button">) => {
 	return (
 		<button {...props} type="button" className={styles.CarouselArrowButton}>
 			{children}

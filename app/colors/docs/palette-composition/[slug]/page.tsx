@@ -9,9 +9,7 @@ interface PageProps {
 	params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({
-	params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const { frontmatter } = await getMdxBySlug(DOCS_BASE, slug);
 	return {
@@ -21,19 +19,13 @@ export async function generateMetadata({
 	};
 }
 
-export default async function ColorsPaletteCompositionDoc({
-	params,
-}: PageProps) {
+export default async function ColorsPaletteCompositionDoc({ params }: PageProps) {
 	const { slug } = await params;
 	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
 
 	return (
 		<>
-			<MdxContent
-				code={code}
-				frontmatter={frontmatter}
-				scope="colors-palette"
-			/>
+			<MdxContent code={code} frontmatter={frontmatter} scope="colors-palette" />
 
 			<QuickNav key={frontmatter.slug} />
 		</>

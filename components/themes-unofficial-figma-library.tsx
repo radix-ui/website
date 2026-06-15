@@ -4,10 +4,7 @@ import { Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
 export function ThemesUnofficialFigmaLibrary() {
 	return (
 		<Card asChild size="3">
-			<a
-				href="https://www.figma.com/community/file/1280428825266545105"
-				target="_blank"
-			>
+			<a href="https://www.figma.com/community/file/1280428825266545105" target="_blank">
 				<Flex align="start" gap="5">
 					<Flex>
 						<FigmaLogoIcon width="45" height="45" />

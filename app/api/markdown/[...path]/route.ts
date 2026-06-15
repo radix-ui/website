@@ -49,16 +49,12 @@ export async function GET(
 				"Content-Type": "text/markdown; charset=utf-8",
 				"X-Content-Type-Options": "nosniff",
 				// Aggressive caching: 7 days browser, 30 days CDN, serve stale for 90 days while revalidating
-				"Cache-Control":
-					"public, max-age=604800, s-maxage=2592000, stale-while-revalidate=7776000",
+				"Cache-Control": "public, max-age=604800, s-maxage=2592000, stale-while-revalidate=7776000",
 			},
 		});
 	} catch (error) {
 		console.error("Error converting to markdown:", error);
-		return Response.json(
-			{ error: "Failed to convert page to markdown" },
-			{ status: 500 },
-		);
+		return Response.json({ error: "Failed to convert page to markdown" }, { status: 500 });
 	}
 }
 
@@ -66,18 +62,13 @@ export async function GET(
 // rewrite (Accept: text/markdown), the catch-all params are populated from the
 // rewritten URL. Fall back to parsing the request URL and stripping an optional
 // `/api/markdown` prefix to stay correct in every entry path.
-function getPathSegments(
-	request: NextRequest,
-	fromQuery: string[] | undefined,
-): string[] {
+function getPathSegments(request: NextRequest, fromQuery: string[] | undefined): string[] {
 	if (Array.isArray(fromQuery) && fromQuery.length > 0) {
 		return fromQuery;
 	}
 
 	const pathOnly = request.nextUrl.pathname;
-	const stripped = pathOnly
-		.replace(/^\/+/, "")
-		.replace(/^api\/markdown\/?/, "");
+	const stripped = pathOnly.replace(/^\/+/, "").replace(/^api\/markdown\/?/, "");
 	return stripped ? stripped.split("/").filter(Boolean) : [];
 }
 
@@ -107,9 +98,7 @@ async function convertHtmlToMarkdown(html: string): Promise<string> {
 function extractMainContent() {
 	return (tree: Root) => {
 		// Try to find the main content area marked with data-search-page-scope
-		const mainContent = select("[data-search-page-scope]", tree) as
-			| Element
-			| undefined;
+		const mainContent = select("[data-search-page-scope]", tree) as Element | undefined;
 
 		if (mainContent) {
 			// Return a new root with just the main content

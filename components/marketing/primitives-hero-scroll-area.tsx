@@ -15,9 +15,7 @@ const ScrollAreaScrollbar = StyledScrollbar;
 const ScrollAreaThumb = StyledThumb;
 const ScrollAreaCorner = StyledCorner;
 
-const TAGS = Array.from({ length: 50 }).map(
-	(_, i, a) => `v1.2.0-beta.${a.length - i}`,
-);
+const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
 export function PrimitivesHeroScrollArea() {
 	return (

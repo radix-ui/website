@@ -32,17 +32,11 @@ export const getAllFrontmatter = (fromPath: string) => {
 				slug: toPosix(path.relative(DATA_PATH, filePath)).replace(/\.mdx$/, ""),
 			} as Frontmatter;
 		})
-		.sort(
-			(a, b) =>
-				Number(new Date(b.publishedAt!)) - Number(new Date(a.publishedAt!)),
-		);
+		.sort((a, b) => Number(new Date(b.publishedAt!)) - Number(new Date(a.publishedAt!)));
 };
 
 export const getMdxBySlug = cache(async (basePath: string, slug: string) => {
-	const source = fs.readFileSync(
-		path.join(DATA_PATH, basePath, `${slug}.mdx`),
-		"utf8",
-	);
+	const source = fs.readFileSync(path.join(DATA_PATH, basePath, `${slug}.mdx`), "utf8");
 	const { frontmatter, code } = await bundleMDX({
 		source: source,
 		mdxOptions(options, frontmatter) {

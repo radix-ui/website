@@ -1,18 +1,12 @@
 import * as React from "react";
 import { Menubar } from "radix-ui";
-import {
-	CheckIcon,
-	ChevronRightIcon,
-	DotFilledIcon,
-} from "@radix-ui/react-icons";
+import { CheckIcon, ChevronRightIcon, DotFilledIcon } from "@radix-ui/react-icons";
 
 const RADIO_ITEMS = ["Andy", "Benoît", "Luis"];
 const CHECK_ITEMS = ["Always Show Bookmarks Bar", "Always Show Full URLs"];
 
 const MenubarDemo = () => {
-	const [checkedSelection, setCheckedSelection] = React.useState([
-		CHECK_ITEMS[1],
-	]);
+	const [checkedSelection, setCheckedSelection] = React.useState([CHECK_ITEMS[1]]);
 	const [radioSelection, setRadioSelection] = React.useState(RADIO_ITEMS[2]);
 
 	return (
@@ -218,10 +212,7 @@ const MenubarDemo = () => {
 						sideOffset={5}
 						alignOffset={-14}
 					>
-						<Menubar.RadioGroup
-							value={radioSelection}
-							onValueChange={setRadioSelection}
-						>
+						<Menubar.RadioGroup value={radioSelection} onValueChange={setRadioSelection}>
 							{RADIO_ITEMS.map((item) => (
 								<Menubar.RadioItem
 									className="relative flex h-[25px] select-none items-center rounded pl-5 pr-2.5 text-[13px] leading-none text-violet11 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-gradient-to-br data-[highlighted]:from-violet9 data-[highlighted]:to-violet10 data-[disabled]:text-mauve8 data-[highlighted]:text-violet1"

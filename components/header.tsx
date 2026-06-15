@@ -1,13 +1,6 @@
 "use client";
 import * as React from "react";
-import {
-	AccessibleIcon,
-	Flex,
-	IconButton,
-	Link,
-	Theme,
-	Tooltip,
-} from "@radix-ui/themes";
+import { AccessibleIcon, Flex, IconButton, Link, Theme, Tooltip } from "@radix-ui/themes";
 import styles from "./header.module.css";
 import { BoxLink } from "./box-link";
 import { ThemeToggle } from "./theme-toggle";
@@ -38,8 +31,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 		let previousScrollY = window.scrollY;
 
 		const handleScroll = () => {
-			const direction =
-				previousScrollY < window.scrollY ? "scrolling-down" : "scrolling-up";
+			const direction = previousScrollY < window.scrollY ? "scrolling-down" : "scrolling-up";
 			const state = window.scrollY < 30 ? "at-top" : direction;
 			previousScrollY = window.scrollY;
 			setScrollState(state);
@@ -121,22 +113,13 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 							>
 								Themes
 							</HeaderProductLink>
-							<HeaderProductLink
-								href="/primitives"
-								active={pathname?.startsWith("/primitives")}
-							>
+							<HeaderProductLink href="/primitives" active={pathname?.startsWith("/primitives")}>
 								Primitives
 							</HeaderProductLink>
-							<HeaderProductLink
-								href="/icons"
-								active={pathname?.startsWith("/icons")}
-							>
+							<HeaderProductLink href="/icons" active={pathname?.startsWith("/icons")}>
 								Icons
 							</HeaderProductLink>
-							<HeaderProductLink
-								href="/colors"
-								active={pathname?.startsWith("/colors")}
-							>
+							<HeaderProductLink href="/colors" active={pathname?.startsWith("/colors")}>
 								Colors
 							</HeaderProductLink>
 						</div>
@@ -153,26 +136,14 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 						>
 							{children}
 
-							<Link
-								size="2"
-								color="gray"
-								href="/blog"
-								highContrast={pathname?.includes("/blog")}
-							>
+							<Link size="2" color="gray" href="/blog" highContrast={pathname?.includes("/blog")}>
 								Blog
 							</Link>
 
 							{gitHubLink && (
-								<Tooltip
-									className="radix-themes-custom-fonts"
-									content="View GitHub"
-								>
+								<Tooltip className="radix-themes-custom-fonts" content="View GitHub">
 									<IconButton asChild size="3" variant="ghost" color="gray">
-										<a
-											href={gitHubLink}
-											target="_blank"
-											aria-label="View GitHub"
-										>
+										<a href={gitHubLink} target="_blank" aria-label="View GitHub">
 											<GitHubLogoIcon width="16" height="16" />
 										</a>
 									</IconButton>
@@ -196,10 +167,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
 								<ThemeToggle />
 							</div>
 
-							<Tooltip
-								className="radix-themes-custom-fonts"
-								content="Navigation"
-							>
+							<Tooltip className="radix-themes-custom-fonts" content="Navigation">
 								<IconButton
 									size="3"
 									variant="ghost"

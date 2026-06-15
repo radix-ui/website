@@ -42,11 +42,7 @@ const ToastDemo = () => {
 						{prettyDate(eventDateRef.current)}
 					</time>
 				</Toast.Description>
-				<Toast.Action
-					className="[grid-area:_action]"
-					asChild
-					altText="Goto schedule to undo"
-				>
+				<Toast.Action className="[grid-area:_action]" asChild altText="Goto schedule to undo">
 					<button className="inline-flex h-[25px] items-center justify-center rounded bg-green2 px-2.5 text-xs font-medium leading-[25px] text-green11 shadow-[inset_0_0_0_1px] shadow-green7 hover:shadow-[inset_0_0_0_1px] hover:shadow-green8 focus:shadow-[0_0_0_2px] focus:shadow-green8">
 						Undo
 					</button>

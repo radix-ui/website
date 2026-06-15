@@ -1,8 +1,6 @@
 import { Heading } from "@radix-ui/themes";
 
-export const SerifHeading = (
-	props: React.ComponentPropsWithRef<typeof Heading>,
-) => {
+export const SerifHeading = (props: React.ComponentPropsWithRef<typeof Heading>) => {
 	return (
 		<Heading
 			weight="regular"

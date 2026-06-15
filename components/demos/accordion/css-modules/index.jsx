@@ -5,24 +5,16 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";
 
 const AccordionDemo = () => (
-	<Accordion.Root
-		className={styles.Root}
-		type="single"
-		defaultValue="item-1"
-		collapsible
-	>
+	<Accordion.Root className={styles.Root} type="single" defaultValue="item-1" collapsible>
 		<Accordion.Item className={styles.Item} value="item-1">
 			<AccordionTrigger>Is it accessible?</AccordionTrigger>
-			<AccordionContent>
-				Yes. It adheres to the WAI-ARIA design pattern.
-			</AccordionContent>
+			<AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
 		</Accordion.Item>
 
 		<Accordion.Item className={styles.Item} value="item-2">
 			<AccordionTrigger>Is it unstyled?</AccordionTrigger>
 			<AccordionContent>
-				Yes. It&apos;s unstyled by default, giving you freedom over the look and
-				feel.
+				Yes. It&apos;s unstyled by default, giving you freedom over the look and feel.
 			</AccordionContent>
 		</Accordion.Item>
 

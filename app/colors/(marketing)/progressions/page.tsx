@@ -7,18 +7,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
 	...baseMetadata,
 	title: "Create your Radix palette – Radix Colors",
-	description:
-		"An open-source color system for designing beautiful, accessible websites and apps.",
+	description: "An open-source color system for designing beautiful, accessible websites and apps.",
 };
 
 export default function Page() {
 	return (
 		<>
 			<ColorsHeader ghost />
-			<Section
-				px={{ initial: "5", xs: "6", sm: "7", md: "9" }}
-				size={{ initial: "2", md: "3" }}
-			>
+			<Section px={{ initial: "5", xs: "6", sm: "7", md: "9" }} size={{ initial: "2", md: "3" }}>
 				<Container position="relative">
 					<Heading align="center" mb="5">
 						Internal test page

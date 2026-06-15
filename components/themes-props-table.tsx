@@ -1,11 +1,7 @@
 import * as React from "react";
 import { PropsTable } from "./props-table";
 import * as props from "@utils/themes/props";
-import {
-	Code,
-	Link as DSLink,
-	LinkProps as DSLinkProps,
-} from "@radix-ui/themes";
+import { Code, Link as DSLink, LinkProps as DSLinkProps } from "@radix-ui/themes";
 import NextLink from "next/link";
 import type { Route } from "next";
 import { ExternalLink } from "./external-link";
@@ -65,9 +61,7 @@ type UniqueDescriptions = {
 };
 
 type ExtractProps<T> = {
-	[K in keyof T]: T[K] extends object
-		? keyof ExtractProps<T[K]>
-		: React.ReactNode;
+	[K in keyof T]: T[K] extends object ? keyof ExtractProps<T[K]> : React.ReactNode;
 };
 type ExtractedProps = ExtractProps<PropDefinitions>;
 type ExtractedPropsKeys = ExtractedProps[keyof ExtractedProps];
@@ -133,33 +127,27 @@ const uniqueDescriptions: UniqueDescriptions = {
 	themePropDefs: {
 		appearance: (
 			<>
-				The color scheme of the theme (typcially referred to as light and dark
-				mode). See the{" "}
-				<Link href="/themes/docs/theme/dark-mode">dark mode guide</Link> for
-				more details.
+				The color scheme of the theme (typcially referred to as light and dark mode). See the{" "}
+				<Link href="/themes/docs/theme/dark-mode">dark mode guide</Link> for more details.
 			</>
 		),
 		accentColor: (
 			<>
 				The dominant color of the theme, see the{" "}
-				<Link href="/themes/docs/theme/color">color guide</Link> for more
-				details.
+				<Link href="/themes/docs/theme/color">color guide</Link> for more details.
 			</>
 		),
 		grayColor: (
 			<>
-				The grayscale of the theme, see the{" "}
-				<Link href="/themes/docs/theme/color">color guide</Link> for more
-				details.
+				The grayscale of the theme, see the <Link href="/themes/docs/theme/color">color guide</Link>{" "}
+				for more details.
 			</>
 		),
-		hasBackground:
-			"Whether to apply the themes background color to the theme node.",
+		hasBackground: "Whether to apply the themes background color to the theme node.",
 		scaling: (
 			<>
 				The linear scaling applied to the theme. See the{" "}
-				<Link href="/themes/docs/theme/spacing#scaling">scaling guide</Link> for
-				more details.
+				<Link href="/themes/docs/theme/spacing#scaling">scaling guide</Link> for more details.
 			</>
 		),
 	},
@@ -172,8 +160,7 @@ const commonDescriptions: CommonDescriptions = {
 	variant: (
 		<>
 			The visual variant to apply, see{" "}
-			<Link href="/themes/docs/theme/overview#variants">theme overview</Link>{" "}
-			for more details.
+			<Link href="/themes/docs/theme/overview#variants">theme overview</Link> for more details.
 		</>
 	),
 	color: (
@@ -186,27 +173,25 @@ const commonDescriptions: CommonDescriptions = {
 	radius: (
 		<>
 			Overrides the radius inherited from the theme. See the{" "}
-			<Link href="/themes/docs/theme/radius">radius guide</Link> for more
-			details.
+			<Link href="/themes/docs/theme/radius">radius guide</Link> for more details.
 		</>
 	),
 	as: (
 		<>
-			Shorthand for changing the default rendered element into a semantically
-			appropriate alternative. <br />
+			Shorthand for changing the default rendered element into a semantically appropriate
+			alternative. <br />
 			<br />
 			Cannot be used in combination with <Code>asChild</Code>.
 		</>
 	),
 	asChild: (
 		<>
-			Change the default rendered element for the one passed as a child, merging
-			their props and behavior.
+			Change the default rendered element for the one passed as a child, merging their props and
+			behavior.
 			<br />
 			<br />
-			Read our{" "}
-			<Link href="/primitives/docs/guides/composition">Composition</Link> guide
-			for more details.
+			Read our <Link href="/primitives/docs/guides/composition">Composition</Link> guide for more
+			details.
 		</>
 	),
 	shortcut: "Optional shortcut command displayed next to the item text.",
@@ -272,39 +257,30 @@ function formatDefinitions(
 	Object.keys(definitions).forEach((componentName) => {
 		const propsDef = (definitions as any)[componentName] as ThemesPropsDef;
 
-		(formattedProps as any)[componentName] = Object.keys(propsDef).map(
-			(key) => {
-				const item = propsDef[key];
-				const propName = key;
-				const description =
-					(uniqueDescriptions as any)[componentName]?.[propName] ||
-					(commonDescriptions as any)[propName];
+		(formattedProps as any)[componentName] = Object.keys(propsDef).map((key) => {
+			const item = propsDef[key];
+			const propName = key;
+			const description =
+				(uniqueDescriptions as any)[componentName]?.[propName] ||
+				(commonDescriptions as any)[propName];
 
-				let value = applyStringUnion(
-					formatValues(item.values),
-					item.type === "enum | string",
-				);
-				value = applyResponsive(value, item.responsive);
+			let value = applyStringUnion(formatValues(item.values), item.type === "enum | string");
+			value = applyResponsive(value, item.responsive);
 
-				const shouldUseSimpleType = item.values
-					? value!.length > MAX_TYPE_LENGTH || item.type === "enum | string"
-					: true;
+			const shouldUseSimpleType = item.values
+				? value!.length > MAX_TYPE_LENGTH || item.type === "enum | string"
+				: true;
 
-				return {
-					name: propName,
-					required: item.required,
-					typeSimple: shouldUseSimpleType
-						? applyResponsive(item.type, item.responsive)
-						: value,
-					type: shouldUseSimpleType ? value : undefined,
-					default:
-						typeof item.default === "boolean"
-							? String(item.default)
-							: formatValues(item.default),
-					description: description,
-				};
-			},
-		);
+			return {
+				name: propName,
+				required: item.required,
+				typeSimple: shouldUseSimpleType ? applyResponsive(item.type, item.responsive) : value,
+				type: shouldUseSimpleType ? value : undefined,
+				default:
+					typeof item.default === "boolean" ? String(item.default) : formatValues(item.default),
+				description: description,
+			};
+		});
 	});
 
 	return formattedProps;

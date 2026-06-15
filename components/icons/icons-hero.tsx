@@ -25,18 +25,10 @@ export const IconsHero = () => {
 					<Line color="var(--pink-a5)" angle="0deg" offset="0, 0.533em" />
 
 					<Line color="var(--pink-a5)" angle="45deg" offset="-0.288em, 0" />
-					<Line
-						color="var(--pink-a5)"
-						angle="45deg"
-						offset="-0.288em, 0.090em"
-					/>
+					<Line color="var(--pink-a5)" angle="45deg" offset="-0.288em, 0.090em" />
 
 					<Line color="var(--pink-a5)" angle="-45deg" offset="0.622em, 0" />
-					<Line
-						color="var(--pink-a5)"
-						angle="-45deg"
-						offset="0.622em, 0.090em"
-					/>
+					<Line color="var(--pink-a5)" angle="-45deg" offset="0.622em, 0.090em" />
 
 					<Line color="var(--pink-a5)" angle="45deg" offset="0.242em, 0" />
 					<Line color="var(--pink-a5)" angle="-45deg" offset="0.242em, 1em" />
@@ -47,9 +39,7 @@ export const IconsHero = () => {
 					<Line color="var(--mint-a5)" angle="90deg" offset="0, 0" />
 					<Line color="var(--mint-a5)" angle="90deg" offset="1em, 0" />
 
-					<ArrowLeftIcon
-						style={{ position: "relative", width: "1em", height: "1em" }}
-					/>
+					<ArrowLeftIcon style={{ position: "relative", width: "1em", height: "1em" }} />
 				</Box>
 			</Box>
 
@@ -64,17 +54,8 @@ export const IconsHero = () => {
 							</SerifHeading>
 						</Box>
 
-						<Flex
-							align="stretch"
-							gap="4"
-							direction={{ initial: "column", sm: "row" }}
-						>
-							<Button
-								asChild
-								size={{ initial: "3", xs: "4" }}
-								color="gray"
-								highContrast
-							>
+						<Flex align="stretch" gap="4" direction={{ initial: "column", sm: "row" }}>
+							<Button asChild size={{ initial: "3", xs: "4" }} color="gray" highContrast>
 								<a
 									target="_blank"
 									href="https://www.figma.com/community/file/1510053249065427020/radix-icons"

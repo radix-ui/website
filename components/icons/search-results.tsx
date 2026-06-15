@@ -33,9 +33,7 @@ const iconNames = Object.keys(Icons).map((key) => {
 export const SearchResults = ({ value }: SearchResultsProps) => {
 	const { showCopyToast } = useCopyToast();
 	const cleanValue = escapeStringRegexp(value.trim().replace(/\s/g, " "));
-	const matchingNames = iconNames.filter((name) =>
-		new RegExp(`\\b${cleanValue}`, "gi").test(name),
-	);
+	const matchingNames = iconNames.filter((name) => new RegExp(`\\b${cleanValue}`, "gi").test(name));
 
 	return (
 		<>
@@ -85,9 +83,7 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
 								}
 							}}
 						>
-							{React.createElement(
-								Object.values(Icons)[iconNames.indexOf(name)] as any,
-							)}
+							{React.createElement(Object.values(Icons)[iconNames.indexOf(name)] as any)}
 							{name}
 						</Button>
 					))}

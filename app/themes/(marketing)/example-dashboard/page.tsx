@@ -16,11 +16,7 @@ export const viewport: Viewport = {
 
 export default function ExamplePage() {
 	return (
-		<Theme
-			accentColor="indigo"
-			grayColor="mauve"
-			className="radix-themes-default-fonts"
-		>
+		<Theme accentColor="indigo" grayColor="mauve" className="radix-themes-default-fonts">
 			<Box p="9" minWidth="fit-content">
 				<Box mx="auto" width="fit-content">
 					<Flex align="center" direction="column">

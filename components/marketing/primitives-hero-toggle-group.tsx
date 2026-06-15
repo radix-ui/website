@@ -1,10 +1,6 @@
 import * as React from "react";
 import { styled } from "@utils/css";
-import {
-	TextAlignCenterIcon,
-	TextAlignLeftIcon,
-	TextAlignRightIcon,
-} from "@radix-ui/react-icons";
+import { TextAlignCenterIcon, TextAlignLeftIcon, TextAlignRightIcon } from "@radix-ui/react-icons";
 import styles from "./primitives-hero-toggle-group.module.css";
 import { ToggleGroup as ToggleGroupPrimitive } from "radix-ui";
 
@@ -13,11 +9,7 @@ const ToggleGroupItem = styled(ToggleGroupPrimitive.Item, styles.Item);
 
 export function PrimitivesHeroToggleGroup() {
 	return (
-		<ToggleGroup
-			type="single"
-			defaultValue="center"
-			aria-label="Text alignment"
-		>
+		<ToggleGroup type="single" defaultValue="center" aria-label="Text alignment">
 			<ToggleGroupItem value="left" aria-label="Left aligned">
 				<TextAlignLeftIcon />
 			</ToggleGroupItem>

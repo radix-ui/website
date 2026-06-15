@@ -7,9 +7,7 @@ export const CommunitySection = () => {
 		<>
 			<Box mb="5">
 				<Flex mb="1">
-					<MarketingCaption mb="1">
-						An active and friendly community
-					</MarketingCaption>
+					<MarketingCaption mb="1">An active and friendly community</MarketingCaption>
 					<Text size="3"> 👋</Text>
 				</Flex>
 				<Heading as="h2" size="7" mb="4">
@@ -17,11 +15,7 @@ export const CommunitySection = () => {
 				</Heading>
 			</Box>
 
-			<Grid
-				gap="3"
-				justify="start"
-				columns={{ xs: "1fr 1fr", sm: "repeat(4, 230px)" }}
-			>
+			<Grid gap="3" justify="start" columns={{ xs: "1fr 1fr", sm: "repeat(4, 230px)" }}>
 				<Card asChild>
 					<a target="_blank" href="https://bsky.app/profile/radix-ui.com">
 						<Box mb="3">
@@ -96,8 +90,7 @@ export const CommunitySection = () => {
 							GitHub
 						</Heading>
 						<Text size="3" as="p" color="gray">
-							To file issues, request features, and contribute, check out our
-							GitHub.
+							To file issues, request features, and contribute, check out our GitHub.
 						</Text>
 					</a>
 				</Card>

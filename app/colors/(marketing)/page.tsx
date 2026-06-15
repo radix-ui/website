@@ -49,8 +49,7 @@ export default function ColorsHome() {
 					right: 0,
 					height: 480,
 					opacity: 0.6,
-					background:
-						"linear-gradient(to bottom, var(--crimson-4), var(--amber-2), transparent)",
+					background: "linear-gradient(to bottom, var(--crimson-4), var(--amber-2), transparent)",
 				}}
 			/>
 			<ColorsHeader ghost />
@@ -63,8 +62,7 @@ export default function ColorsHome() {
 
 						<Box style={{ maxWidth: 500 }}>
 							<Text size="5" as="p" mb="6" color="gray">
-								Comprehensive color system for designing beautiful, accessible
-								websites and apps.
+								Comprehensive color system for designing beautiful, accessible websites and apps.
 							</Text>
 						</Box>
 
@@ -105,18 +103,10 @@ export default function ColorsHome() {
 						<div className={styles.ColorsHomeGrid}>
 							<Box />
 							<ColorUsageRange gridColumn="2 / 4">Backgrounds</ColorUsageRange>
-							<ColorUsageRange gridColumn="4 / 7">
-								Interactive components
-							</ColorUsageRange>
-							<ColorUsageRange gridColumn="7 / 10">
-								Borders and separators
-							</ColorUsageRange>
-							<ColorUsageRange gridColumn="10 / 12">
-								Solid colors
-							</ColorUsageRange>
-							<ColorUsageRange gridColumn="12 / 14">
-								Accessible text
-							</ColorUsageRange>
+							<ColorUsageRange gridColumn="4 / 7">Interactive components</ColorUsageRange>
+							<ColorUsageRange gridColumn="7 / 10">Borders and separators</ColorUsageRange>
+							<ColorUsageRange gridColumn="10 / 12">Solid colors</ColorUsageRange>
+							<ColorUsageRange gridColumn="12 / 14">Accessible text</ColorUsageRange>
 
 							<Box />
 							<ColorStepLabel>1</ColorStepLabel>
@@ -172,11 +162,7 @@ export default function ColorsHome() {
 										{scale.charAt(0).toUpperCase() + scale.slice(1)}
 									</Text>
 									{Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-										<Swatch
-											key={step}
-											scale={scale}
-											step={step.toString() as "1"}
-										/>
+										<Swatch key={step} scale={scale} step={step.toString() as "1"} />
 									))}
 								</React.Fragment>
 							))}
@@ -201,11 +187,7 @@ export default function ColorsHome() {
 										{scale.charAt(0).toUpperCase() + scale.slice(1)}
 									</Text>
 									{Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-										<Swatch
-											key={step}
-											scale={scale}
-											step={step.toString() as "1"}
-										/>
+										<Swatch key={step} scale={scale} step={step.toString() as "1"} />
 									))}
 								</React.Fragment>
 							))}
@@ -217,10 +199,7 @@ export default function ColorsHome() {
 			<Box mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Section size={{ initial: "2", md: "4" }}>
 					<Container>
-						<Grid
-							columns={{ sm: "3" }}
-							gap={{ initial: "7", sm: "6", md: "9" }}
-						>
+						<Grid columns={{ sm: "3" }} gap={{ initial: "7", sm: "6", md: "9" }}>
 							<Box style={{ maxWidth: 540 }}>
 								<Flex mb="3">
 									<EyeOpenIcon width="30" height="30" />
@@ -229,8 +208,8 @@ export default function ColorsHome() {
 									Accessibility made easy
 								</Heading>
 								<Text as="p" size="3">
-									Text colors are guaranteed to pass target contrast ratios
-									against the corresponding background colors.
+									Text colors are guaranteed to pass target contrast ratios against the
+									corresponding background colors.
 								</Text>
 							</Box>
 							<Box style={{ maxWidth: 540 }}>
@@ -241,8 +220,8 @@ export default function ColorsHome() {
 									Automatic dark mode
 								</Heading>
 								<Text as="p" size="3">
-									Switching to dark theme is as simple as applying a class to a
-									container. Dark mode Just Works™.
+									Switching to dark theme is as simple as applying a class to a container. Dark mode
+									Just Works™.
 								</Text>
 							</Box>
 							<Box style={{ maxWidth: 540 }}>
@@ -253,8 +232,8 @@ export default function ColorsHome() {
 									Transparent variants
 								</Heading>
 								<Text as="p" size="3">
-									Each scale has a matching alpha color variant, which is handy
-									for UI components that need to blend into colored backgrounds.
+									Each scale has a matching alpha color variant, which is handy for UI components
+									that need to blend into colored backgrounds.
 								</Text>
 							</Box>
 							<Box style={{ maxWidth: 540 }}>
@@ -265,9 +244,8 @@ export default function ColorsHome() {
 									APCA text contrast
 								</Heading>
 								<Text as="p" size="3">
-									Contrast targets are based on the modern APCA contrast
-									algorithm, which accurately predicts how human vision
-									perceives text.
+									Contrast targets are based on the modern APCA contrast algorithm, which accurately
+									predicts how human vision perceives text.
 								</Text>
 							</Box>
 							<Box style={{ maxWidth: 540 }}>
@@ -278,8 +256,8 @@ export default function ColorsHome() {
 									P3 color gamut support
 								</Heading>
 								<Text as="p" size="3">
-									Accounts for the blending differences in the wide gamut color
-									spaces and enables the brightest yellows and reds possible.
+									Accounts for the blending differences in the wide gamut color spaces and enables
+									the brightest yellows and reds possible.
 								</Text>
 							</Box>
 							<Box style={{ maxWidth: 540 }}>
@@ -290,8 +268,8 @@ export default function ColorsHome() {
 									Designed for user interfaces
 								</Heading>
 								<Text as="p" size="3">
-									Each step is designed with a specific use case in mind, such
-									as backgrounds, hover states, borders, overlays, or text.
+									Each step is designed with a specific use case in mind, such as backgrounds, hover
+									states, borders, overlays, or text.
 								</Text>
 							</Box>
 						</Grid>

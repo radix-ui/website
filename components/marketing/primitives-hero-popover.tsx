@@ -41,10 +41,7 @@ export function PrimitivesHeroPopover() {
 					onInteractOutside={(event) => event.preventDefault()}
 					onEscapeKeyDown={(event) => {
 						event.preventDefault();
-						if (
-							event.target instanceof HTMLElement &&
-							contentRef.current?.contains(event.target)
-						) {
+						if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
 							setOpen(false);
 						}
 					}}

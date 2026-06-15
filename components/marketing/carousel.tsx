@@ -15,10 +15,7 @@ const [CarouselProvider, useCarouselContext] = Context.createContext<{
 	prevDisabled: boolean;
 }>("Carousel");
 
-export const Carousel = (props: {
-	children: React.ReactNode;
-	[key: string]: any;
-}) => {
+export const Carousel = (props: { children: React.ReactNode; [key: string]: any }) => {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const { children, ...carouselProps } = props;
 	const slideListRef = useRef<HTMLDivElement>(null);
@@ -30,9 +27,7 @@ export const Carousel = (props: {
 	useEffect(() => smoothscroll.polyfill(), []);
 
 	const getSlideInDirection = useCallbackRef((direction: 1 | -1) => {
-		const slides = ref.current?.querySelectorAll<HTMLElement>(
-			"[data-slide-intersection-ratio]",
-		);
+		const slides = ref.current?.querySelectorAll<HTMLElement>("[data-slide-intersection-ratio]");
 		if (slides) {
 			const slidesArray = Array.from(slides.values());
 
@@ -40,9 +35,7 @@ export const Carousel = (props: {
 				slidesArray.reverse();
 			}
 
-			return slidesArray.find(
-				(slide) => slide.dataset.slideIntersectionRatio !== "0",
-			);
+			return slidesArray.find((slide) => slide.dataset.slideIntersectionRatio !== "0");
 		}
 	});
 
@@ -53,11 +46,8 @@ export const Carousel = (props: {
 		if (slideList && nextSlide) {
 			const { scrollLeft, scrollWidth, clientWidth } = slideList;
 			const itemWidth = nextSlide.clientWidth;
-			const itemsToScroll =
-				itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
-			const nextPos =
-				Math.floor(scrollLeft / itemWidth) * itemWidth +
-				itemWidth * itemsToScroll;
+			const itemsToScroll = itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
+			const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * itemsToScroll;
 			slideList.scrollTo({ left: nextPos, behavior: "smooth" });
 
 			// Disable previous & next buttons immediately
@@ -74,11 +64,8 @@ export const Carousel = (props: {
 		if (slideList && prevSlide) {
 			const { scrollLeft, scrollWidth, clientWidth } = slideList;
 			const itemWidth = prevSlide.clientWidth;
-			const itemsToScroll =
-				itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
-			const nextPos =
-				Math.ceil(scrollLeft / itemWidth) * itemWidth -
-				itemWidth * itemsToScroll;
+			const itemsToScroll = itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
+			const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * itemsToScroll;
 			slideList.scrollTo({ left: nextPos, behavior: "smooth" });
 
 			// Disable previous & next buttons immediately
@@ -166,24 +153,21 @@ export const CarouselSlideList = (props: React.ComponentProps<"div">) => {
 			{...props}
 			ref={composedRefs}
 			data-state={dragStart ? "dragging" : undefined}
-			onMouseDownCapture={composeEventHandlers(
-				props.onMouseDownCapture,
-				(event) => {
-					if (event.target instanceof HTMLInputElement) {
-						return;
-					}
+			onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event) => {
+				if (event.target instanceof HTMLInputElement) {
+					return;
+				}
 
-					// Drag only if main mouse button was clicked
-					if (event.button === 0) {
-						document.addEventListener("mousemove", handleMouseMove);
-						document.addEventListener("mouseup", handleMouseUp);
-						setDragStart({
-							scrollX: (event.currentTarget as HTMLElement).scrollLeft,
-							pointerX: event.clientX,
-						});
-					}
-				},
-			)}
+				// Drag only if main mouse button was clicked
+				if (event.button === 0) {
+					document.addEventListener("mousemove", handleMouseMove);
+					document.addEventListener("mouseup", handleMouseUp);
+					setDragStart({
+						scrollX: (event.currentTarget as HTMLElement).scrollLeft,
+						pointerX: event.clientX,
+					});
+				}
+			})}
 			onPointerDown={composeEventHandlers(props.onPointerDown, (event) => {
 				if (event.target instanceof HTMLInputElement) {
 					return;
@@ -254,11 +238,7 @@ export const CarouselNext = (
 	const { as: Comp = "button", ...nextProps } = props;
 	const context = useCarouselContext("CarouselNext");
 	return (
-		<Comp
-			{...nextProps}
-			onClick={() => context.onNextClick()}
-			disabled={context.nextDisabled}
-		/>
+		<Comp {...nextProps} onClick={() => context.onNextClick()} disabled={context.nextDisabled} />
 	);
 };
 
@@ -270,10 +250,6 @@ export const CarouselPrevious = (
 	const { as: Comp = "button", ...prevProps } = props;
 	const context = useCarouselContext("CarouselPrevious");
 	return (
-		<Comp
-			{...prevProps}
-			onClick={() => context.onPrevClick()}
-			disabled={context.prevDisabled}
-		/>
+		<Comp {...prevProps} onClick={() => context.onPrevClick()} disabled={context.prevDisabled} />
 	);
 };

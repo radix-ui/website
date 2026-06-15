@@ -43,13 +43,9 @@ type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 	focusable?: boolean;
 };
 
-export const ExampleThemesEcommerce = ({
-	focusable = true,
-	...props
-}: ExampleLayoutProps) => {
+export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLayoutProps) => {
 	// We’ll use a different portal container for homepage demo purposes; this is usually not needed.
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLDivElement | null>(null);
+	const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement | null>(null);
 
 	// Interactive elements may be not focusable for homepage demo purposes
 	const tabIndex = focusable ? undefined : -1;
@@ -100,13 +96,7 @@ export const ExampleThemesEcommerce = ({
 							</Text>
 						</Box>
 						<Box flexShrink="0">
-							<Button
-								tabIndex={tabIndex}
-								size="2"
-								variant="soft"
-								color="gray"
-								highContrast
-							>
+							<Button tabIndex={tabIndex} size="2" variant="soft" color="gray" highContrast>
 								Shop now
 							</Button>
 						</Box>
@@ -148,11 +138,7 @@ export const ExampleThemesEcommerce = ({
 										}))
 									}
 								>
-									{state.sneakersBookmarked ? (
-										<BookmarkFilledIcon />
-									) : (
-										<BookmarkIcon />
-									)}
+									{state.sneakersBookmarked ? <BookmarkFilledIcon /> : <BookmarkIcon />}
 								</IconButton>
 							</Flex>
 						</Theme>
@@ -185,8 +171,7 @@ export const ExampleThemesEcommerce = ({
 					</Flex>
 
 					<Text as="p" size="2" color="gray" mb="4">
-						Love at the first sight for enthusiasts seeking a fresh and
-						whimsical style.
+						Love at the first sight for enthusiasts seeking a fresh and whimsical style.
 					</Text>
 
 					<Box>
@@ -203,11 +188,7 @@ export const ExampleThemesEcommerce = ({
 
 							<Select.Root defaultValue="Pastel" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
-								<Select.Content
-									variant="soft"
-									container={portalContainer}
-									position="popper"
-								>
+								<Select.Content variant="soft" container={portalContainer} position="popper">
 									<Select.Item value="Pastel">Pastel</Select.Item>
 									<Select.Item value="Bright">Bright</Select.Item>
 								</Select.Content>
@@ -222,11 +203,7 @@ export const ExampleThemesEcommerce = ({
 							</Label.Root>
 							<Select.Root defaultValue="8" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
-								<Select.Content
-									variant="soft"
-									container={portalContainer}
-									position="popper"
-								>
+								<Select.Content variant="soft" container={portalContainer} position="popper">
 									{Array.from({ length: 12 }, (_, i) => (
 										<Select.Item key={i} value={String(i * 0.5 + 5)}>
 											{i * 0.5 + 5}
@@ -236,13 +213,7 @@ export const ExampleThemesEcommerce = ({
 							</Select.Root>
 						</Flex>
 
-						<Button
-							tabIndex={tabIndex}
-							size="2"
-							variant="solid"
-							color="gray"
-							highContrast
-						>
+						<Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
 							Buy
 						</Button>
 					</Flex>
@@ -260,9 +231,7 @@ export const ExampleThemesEcommerce = ({
 									tabIndex={tabIndex}
 									values={["Tomorrow", "Within 3 days"]}
 									value={state.delivery}
-									onValueChange={(value) =>
-										setState({ ...state, delivery: value })
-									}
+									onValueChange={(value) => setState({ ...state, delivery: value })}
 								/>
 							</Grid>
 						</Box>
@@ -275,18 +244,7 @@ export const ExampleThemesEcommerce = ({
 								<ToggleButtons
 									type="single"
 									tabIndex={tabIndex}
-									values={[
-										"5.5",
-										"6",
-										"6.5",
-										"7",
-										"7.5",
-										"8",
-										"8.5",
-										"9",
-										"9.5",
-										"10",
-									]}
+									values={["5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"]}
 									value={state.size}
 									onValueChange={(value) => setState({ ...state, size: value })}
 								/>
@@ -304,9 +262,7 @@ export const ExampleThemesEcommerce = ({
 									tabIndex={tabIndex}
 									values={["Leather", "Suede", "Mesh", "Canvas"]}
 									value={state.material}
-									onValueChange={(value) =>
-										setState({ ...state, material: value })
-									}
+									onValueChange={(value) => setState({ ...state, material: value })}
 								/>
 							</Grid>
 						</Box>
@@ -332,9 +288,7 @@ export const ExampleThemesEcommerce = ({
 										"Beige",
 									]}
 									value={state.color}
-									onValueChange={(value) =>
-										setState({ ...state, color: value })
-									}
+									onValueChange={(value) => setState({ ...state, color: value })}
 								>
 									{(value) => (
 										<React.Fragment>
@@ -427,11 +381,7 @@ export const ExampleThemesEcommerce = ({
 								<Flex direction="column" width="48px">
 									<Select.Root defaultValue={item.count} size="1">
 										<Select.Trigger tabIndex={tabIndex} />
-										<Select.Content
-											variant="soft"
-											container={portalContainer}
-											position="popper"
-										>
+										<Select.Content variant="soft" container={portalContainer} position="popper">
 											{Array.from({ length: 9 }, (_, i) => (
 												<Select.Item key={i} value={String(i + 1)}>
 													{i + 1}
@@ -459,13 +409,7 @@ export const ExampleThemesEcommerce = ({
 							Total <Strong>$313</Strong>
 						</Text>
 
-						<Button
-							tabIndex={tabIndex}
-							size="2"
-							variant="solid"
-							color="gray"
-							highContrast
-						>
+						<Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
 							Go to checkout
 						</Button>
 					</Flex>
@@ -508,11 +452,7 @@ export const ExampleThemesEcommerce = ({
 										}))
 									}
 								>
-									{state.jeansBookmarked ? (
-										<BookmarkFilledIcon />
-									) : (
-										<BookmarkIcon />
-									)}
+									{state.jeansBookmarked ? <BookmarkFilledIcon /> : <BookmarkIcon />}
 								</IconButton>
 							</Flex>
 						</Theme>
@@ -545,8 +485,7 @@ export const ExampleThemesEcommerce = ({
 					</Flex>
 
 					<Text as="p" size="2" color="gray" mb="4">
-						Jeans with a sense of nostalgia, as if they carry whispered tales of
-						past adventures.
+						Jeans with a sense of nostalgia, as if they carry whispered tales of past adventures.
 					</Text>
 
 					<Box>
@@ -563,11 +502,7 @@ export const ExampleThemesEcommerce = ({
 
 							<Select.Root defaultValue="Lighter" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
-								<Select.Content
-									variant="soft"
-									container={portalContainer}
-									position="popper"
-								>
+								<Select.Content variant="soft" container={portalContainer} position="popper">
 									<Select.Item value="Lighter">Lighter</Select.Item>
 									<Select.Item value="Darker">Darker</Select.Item>
 								</Select.Content>
@@ -583,11 +518,7 @@ export const ExampleThemesEcommerce = ({
 
 							<Select.Root defaultValue="30" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
-								<Select.Content
-									variant="soft"
-									container={portalContainer}
-									position="popper"
-								>
+								<Select.Content variant="soft" container={portalContainer} position="popper">
 									{Array.from({ length: 17 }, (_, i) => (
 										<Select.Item key={i} value={String(i + 24)}>
 											{i + 24}
@@ -597,13 +528,7 @@ export const ExampleThemesEcommerce = ({
 							</Select.Root>
 						</Flex>
 
-						<Button
-							tabIndex={tabIndex}
-							size="2"
-							variant="solid"
-							color="gray"
-							highContrast
-						>
+						<Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
 							Add to cart
 						</Button>
 					</Flex>
@@ -640,13 +565,7 @@ export const ExampleThemesEcommerce = ({
 							</Text>
 						</Box>
 						<Box flexShrink="0">
-							<Button
-								tabIndex={tabIndex}
-								size="2"
-								variant="soft"
-								color="gray"
-								highContrast
-							>
+							<Button tabIndex={tabIndex} size="2" variant="soft" color="gray" highContrast>
 								Shop now
 							</Button>
 						</Box>
@@ -698,22 +617,10 @@ export const ExampleThemesEcommerce = ({
 					</Flex>
 
 					<Flex gap="2" justify="end">
-						<Button
-							tabIndex={tabIndex}
-							size="2"
-							variant="soft"
-							color="gray"
-							highContrast
-						>
+						<Button tabIndex={tabIndex} size="2" variant="soft" color="gray" highContrast>
 							Edit
 						</Button>
-						<Button
-							tabIndex={tabIndex}
-							size="2"
-							variant="solid"
-							color="gray"
-							highContrast
-						>
+						<Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
 							Confirm
 						</Button>
 					</Flex>
@@ -897,36 +804,16 @@ export const ExampleThemesEcommerce = ({
 								}}
 							>
 								<Grid columns="2" gap="2">
-									<IconButton
-										tabIndex={tabIndex}
-										highContrast
-										variant="soft"
-										size="2"
-									>
+									<IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
 										<ImageIcon />
 									</IconButton>
-									<IconButton
-										tabIndex={tabIndex}
-										highContrast
-										variant="soft"
-										size="2"
-									>
+									<IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
 										<VideoIcon />
 									</IconButton>
-									<IconButton
-										tabIndex={tabIndex}
-										highContrast
-										variant="soft"
-										size="2"
-									>
+									<IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
 										<InstagramLogoIcon />
 									</IconButton>
-									<IconButton
-										tabIndex={tabIndex}
-										highContrast
-										variant="soft"
-										size="2"
-									>
+									<IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
 										<RulerHorizontalIcon />
 									</IconButton>
 								</Grid>
@@ -1008,9 +895,7 @@ export const ExampleThemesEcommerce = ({
 								type="single"
 								tabIndex={tabIndex}
 								value={state.productMaterial}
-								onValueChange={(value) =>
-									setState({ ...state, productMaterial: value })
-								}
+								onValueChange={(value) => setState({ ...state, productMaterial: value })}
 								values={[
 									"Synthetic",
 									"Wool",
@@ -1047,9 +932,7 @@ export const ExampleThemesEcommerce = ({
 									"Beige",
 								]}
 								value={state.productColor}
-								onValueChange={(value) =>
-									setState({ ...state, productColor: value })
-								}
+								onValueChange={(value) => setState({ ...state, productColor: value })}
 							>
 								{(value) => (
 									<React.Fragment>
@@ -1091,9 +974,7 @@ export const ExampleThemesEcommerce = ({
 								tabIndex={tabIndex}
 								values={["XS", "S", "M", "L", "XL"]}
 								value={state.productSizes}
-								onValueChange={(value) =>
-									setState({ ...state, productSizes: value })
-								}
+								onValueChange={(value) => setState({ ...state, productSizes: value })}
 							/>
 						</Grid>
 					</Box>
@@ -1197,15 +1078,11 @@ export const ExampleThemesEcommerce = ({
 								</Text>
 
 								<Box>
-									<Badge color={order.paymentStatusColor}>
-										{order.paymentStatus}
-									</Badge>
+									<Badge color={order.paymentStatusColor}>{order.paymentStatus}</Badge>
 								</Box>
 
 								<Box>
-									<Badge color={order.fulfillmentColor}>
-										{order.fulfillment}
-									</Badge>
+									<Badge color={order.fulfillmentColor}>{order.fulfillment}</Badge>
 								</Box>
 
 								<Text size="2" align="right">
@@ -1311,20 +1188,13 @@ export const ExampleThemesEcommerce = ({
 						</Flex>
 
 						<Box position="relative" pt="1">
-							<Box
-								position="absolute"
-								top="0"
-								bottom="0"
-								width="1px"
-								ml="-0.5px"
-							>
+							<Box position="absolute" top="0" bottom="0" width="1px" ml="-0.5px">
 								<Separator
 									size="4"
 									orientation="vertical"
 									mt="2"
 									style={{
-										background:
-											"linear-gradient(to bottom, var(--teal-6) 90%, transparent)",
+										background: "linear-gradient(to bottom, var(--teal-6) 90%, transparent)",
 									}}
 								/>
 							</Box>
@@ -1405,13 +1275,7 @@ export const ExampleThemesEcommerce = ({
 								/>
 							</Box>
 
-							<Text
-								asChild
-								size="1"
-								mb="2"
-								color="gray"
-								style={{ lineHeight: "20px" }}
-							>
+							<Text asChild size="1" mb="2" color="gray" style={{ lineHeight: "20px" }}>
 								<Box p="4">
 									<Text mr="6px">Men’s</Text>
 									{[
@@ -1518,11 +1382,7 @@ export const ExampleThemesEcommerce = ({
 
 					<Flex gap="2">
 						<Box position="relative" mb="5" flexGrow="1">
-							<TextField.Root
-								tabIndex={tabIndex}
-								variant="soft"
-								placeholder="Search"
-							>
+							<TextField.Root tabIndex={tabIndex} variant="soft" placeholder="Search">
 								<TextField.Slot>
 									<MagnifyingGlassIcon />
 								</TextField.Slot>
@@ -1531,28 +1391,18 @@ export const ExampleThemesEcommerce = ({
 						<Flex direction="column" minWidth="140px">
 							<Select.Root defaultValue="All customers">
 								<Select.Trigger variant="soft" tabIndex={tabIndex} />
-								<Select.Content
-									variant="soft"
-									container={portalContainer}
-									position="popper"
-								>
+								<Select.Content variant="soft" container={portalContainer} position="popper">
 									<Select.Item value="All customers">All customers</Select.Item>
 									<Select.Item value={new Date().getFullYear().toString()}>
 										{new Date().getFullYear()}
 									</Select.Item>
-									<Select.Item
-										value={(new Date().getFullYear() - 1).toString()}
-									>
+									<Select.Item value={(new Date().getFullYear() - 1).toString()}>
 										{new Date().getFullYear() - 1}
 									</Select.Item>
-									<Select.Item
-										value={(new Date().getFullYear() - 2).toString()}
-									>
+									<Select.Item value={(new Date().getFullYear() - 2).toString()}>
 										{new Date().getFullYear() - 2}
 									</Select.Item>
-									<Select.Item
-										value={(new Date().getFullYear() - 3).toString()}
-									>
+									<Select.Item value={(new Date().getFullYear() - 3).toString()}>
 										{new Date().getFullYear() - 3}
 									</Select.Item>
 								</Select.Content>
@@ -1616,9 +1466,7 @@ export const ExampleThemesEcommerce = ({
 										Customer since {customer.customerSince}
 									</Text>
 									<Text as="div" size="1" mb="1" color="gray">
-										<address style={{ all: "unset" }}>
-											{customer.address}
-										</address>
+										<address style={{ all: "unset" }}>{customer.address}</address>
 									</Text>
 								</Box>
 
@@ -1685,47 +1533,38 @@ interface ToggleButtonsCommonProps {
 
 type ToggleGroupRootElement = React.ElementRef<typeof ToggleGroup.Root>;
 
-type ToggleButtonsProps = (
-	| ToggleButtonsSingleProps
-	| ToggleButtonsMultipleProps
-) &
+type ToggleButtonsProps = (ToggleButtonsSingleProps | ToggleButtonsMultipleProps) &
 	ToggleButtonsCommonProps;
 
-const ToggleButtons = React.forwardRef<
-	ToggleGroupRootElement,
-	ToggleButtonsProps
->(function ToggleButtons(
-	{ children, tabIndex, values, ...props },
-	forwardedRef,
-) {
-	const isActive = (value: string) =>
-		props.type === "single"
-			? props.value === value
-			: props.value.includes(value);
+const ToggleButtons = React.forwardRef<ToggleGroupRootElement, ToggleButtonsProps>(
+	function ToggleButtons({ children, tabIndex, values, ...props }, forwardedRef) {
+		const isActive = (value: string) =>
+			props.type === "single" ? props.value === value : props.value.includes(value);
 
-	return (
-		<ToggleGroup.Root
-			ref={forwardedRef}
-			{...props}
-			{...(tabIndex !== undefined && { tabIndex })}
-			onValueChange={(value: any) => {
-				if (value) {
-					props.onValueChange(value);
-				}
-			}}
-		>
-			{values.map((value) => (
-				<ToggleGroup.Item asChild key={value} value={value}>
-					<Button
-						highContrast
-						variant={isActive(value) ? "solid" : "soft"}
-						style={{ fontWeight: 400 }}
-						{...(tabIndex !== undefined && { tabIndex })}
-					>
-						{children ? children(value) : value}
-					</Button>
-				</ToggleGroup.Item>
-			))}
-		</ToggleGroup.Root>
-	);
-});
+		return (
+			<ToggleGroup.Root
+				ref={forwardedRef}
+				{...props}
+				{...(tabIndex !== undefined && { tabIndex })}
+				onValueChange={(value: any) => {
+					if (value) {
+						props.onValueChange(value);
+					}
+				}}
+			>
+				{values.map((value) => (
+					<ToggleGroup.Item asChild key={value} value={value}>
+						<Button
+							highContrast
+							variant={isActive(value) ? "solid" : "soft"}
+							style={{ fontWeight: 400 }}
+							{...(tabIndex !== undefined && { tabIndex })}
+						>
+							{children ? children(value) : value}
+						</Button>
+					</ToggleGroup.Item>
+				))}
+			</ToggleGroup.Root>
+		);
+	},
+);

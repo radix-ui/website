@@ -26,9 +26,7 @@ export function getColorScaleCss({
 	surface,
 	surfaceWideGamut,
 }: GetColorScaleCssParams) {
-	const selector = isDarkMode
-		? ".dark, .dark-theme"
-		: ":root, .light, .light-theme";
+	const selector = isDarkMode ? ".dark, .dark-theme" : ":root, .light, .light-theme";
 
 	return `
 ${selector} {
@@ -89,10 +87,7 @@ interface GetNewPreviewStylesParams {
 	darkColors: GeneratedColors;
 }
 
-export function getNewPreviewStyles({
-	lightColors,
-	darkColors,
-}: GetNewPreviewStylesParams) {
+export function getNewPreviewStyles({ lightColors, darkColors }: GetNewPreviewStylesParams) {
 	// Use a single, theme-independent accent name for both the light and dark
 	// scales. `data-accent-color` is set to this name and never changes between
 	// themes, so the correct scale is selected purely by the .light / .dark CSS

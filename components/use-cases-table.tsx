@@ -71,8 +71,7 @@ export function UseCasesTable() {
 								style={{
 									display: "table-cell",
 									borderBottom: "1px solid var(--gray-a3)",
-									backgroundColor:
-										i % 2 === 0 ? "var(--gray-a2)" : "transparent",
+									backgroundColor: i % 2 === 0 ? "var(--gray-a2)" : "transparent",
 								}}
 							>
 								<td>
@@ -88,8 +87,7 @@ export function UseCasesTable() {
 								style={{
 									display: "table-cell",
 									borderBottom: "1px solid var(--gray-a3)",
-									backgroundColor:
-										i % 2 === 0 ? "var(--gray-a2)" : "transparent",
+									backgroundColor: i % 2 === 0 ? "var(--gray-a2)" : "transparent",
 								}}
 							>
 								<td>

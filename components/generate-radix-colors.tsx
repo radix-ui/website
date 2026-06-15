@@ -16,36 +16,28 @@ const scaleNames = [...grayScaleNames, 'tomato', 'red', 'ruby', 'crimson', 'pink
 const lightColors = Object.fromEntries(
 	scaleNames.map((scaleName) => [
 		scaleName,
-		Object.values(RadixColors[`${scaleName}P3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
+		Object.values(RadixColors[`${scaleName}P3`]).map((str) => new Color(str).to("oklch")),
 	]),
 ) as Record<(typeof scaleNames)[number], ArrayOf12<Color>>;
 
 const darkColors = Object.fromEntries(
 	scaleNames.map((scaleName) => [
 		scaleName,
-		Object.values(RadixColors[`${scaleName}DarkP3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
+		Object.values(RadixColors[`${scaleName}DarkP3`]).map((str) => new Color(str).to("oklch")),
 	]),
 ) as Record<(typeof scaleNames)[number], ArrayOf12<Color>>;
 
 const lightGrayColors = Object.fromEntries(
 	grayScaleNames.map((scaleName) => [
 		scaleName,
-		Object.values(RadixColors[`${scaleName}P3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
+		Object.values(RadixColors[`${scaleName}P3`]).map((str) => new Color(str).to("oklch")),
 	]),
 ) as Record<(typeof grayScaleNames)[number], ArrayOf12<Color>>;
 
 const darkGrayColors = Object.fromEntries(
 	grayScaleNames.map((scaleName) => [
 		scaleName,
-		Object.values(RadixColors[`${scaleName}DarkP3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
+		Object.values(RadixColors[`${scaleName}DarkP3`]).map((str) => new Color(str).to("oklch")),
 	]),
 ) as Record<(typeof grayScaleNames)[number], ArrayOf12<Color>>;
 
@@ -63,19 +55,11 @@ export const generateRadixColors = ({
 	const backgroundColor = new Color(args.background).to("oklch");
 
 	const grayBaseColor = new Color(args.gray).to("oklch");
-	const grayScaleColors = getScaleFromColor(
-		grayBaseColor,
-		grayScales,
-		backgroundColor,
-	);
+	const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales, backgroundColor);
 
 	const accentBaseColor = new Color(args.accent).to("oklch");
 
-	let accentScaleColors = getScaleFromColor(
-		accentBaseColor,
-		allScales,
-		backgroundColor,
-	);
+	let accentScaleColors = getScaleFromColor(accentBaseColor, allScales, backgroundColor);
 
 	// Enforce srgb for the background color
 	const backgroundHex = backgroundColor.to("srgb").toString({ format: "hex" });
@@ -83,15 +67,10 @@ export const generateRadixColors = ({
 	// Make sure we use the tint from the gray scale for when base is pure white or black
 	const accentBaseHex = accentBaseColor.to("srgb").toString({ format: "hex" });
 	if (accentBaseHex === "#000" || accentBaseHex === "#fff") {
-		accentScaleColors = grayScaleColors.map((color) =>
-			color.clone(),
-		) as ArrayOf12<Color>;
+		accentScaleColors = grayScaleColors.map((color) => color.clone()) as ArrayOf12<Color>;
 	}
 
-	const [accent9Color, accentContrastColor] = getStep9Colors(
-		accentScaleColors,
-		accentBaseColor,
-	);
+	const [accent9Color, accentContrastColor] = getStep9Colors(accentScaleColors, accentBaseColor);
 
 	accentScaleColors[8] = accent9Color;
 	accentScaleColors[9] = getButtonHoverColor(accent9Color, [accentScaleColors]);
@@ -110,9 +89,7 @@ export const generateRadixColors = ({
 		color.to("srgb").toString({ format: "hex" }),
 	) as ArrayOf12<string>;
 
-	const accentScaleWideGamut = accentScaleColors.map(
-		toOklchString,
-	) as ArrayOf12<string>;
+	const accentScaleWideGamut = accentScaleColors.map(toOklchString) as ArrayOf12<string>;
 
 	const accentScaleAlphaHex = accentScaleHex.map((color) =>
 		getAlphaColorSrgb(color, backgroundHex),
@@ -122,17 +99,13 @@ export const generateRadixColors = ({
 		getAlphaColorP3(color, backgroundHex),
 	) as ArrayOf12<string>;
 
-	const accentContrastColorHex = accentContrastColor
-		.to("srgb")
-		.toString({ format: "hex" });
+	const accentContrastColorHex = accentContrastColor.to("srgb").toString({ format: "hex" });
 
 	const grayScaleHex = grayScaleColors.map((color) =>
 		color.to("srgb").toString({ format: "hex" }),
 	) as ArrayOf12<string>;
 
-	const grayScaleWideGamut = grayScaleColors.map(
-		toOklchString,
-	) as ArrayOf12<string>;
+	const grayScaleWideGamut = grayScaleColors.map(toOklchString) as ArrayOf12<string>;
 
 	const grayScaleAlphaHex = grayScaleHex.map((color) =>
 		getAlphaColorSrgb(color, backgroundHex),
@@ -166,9 +139,7 @@ export const generateRadixColors = ({
 
 		graySurface: appearance === "light" ? "#ffffffcc" : "rgba(0, 0, 0, 0.05)",
 		graySurfaceWideGamut:
-			appearance === "light"
-				? "color(display-p3 1 1 1 / 80%)"
-				: "color(display-p3 0 0 0 / 5%)",
+			appearance === "light" ? "color(display-p3 1 1 1 / 80%)" : "color(display-p3 0 0 0 / 5%)",
 
 		accentSurface: accentSurfaceHex,
 		accentSurfaceWideGamut: accentSurfaceWideGamutString,
@@ -177,10 +148,7 @@ export const generateRadixColors = ({
 	};
 };
 
-function getStep9Colors(
-	scale: ArrayOf12<Color>,
-	accentBaseColor: Color,
-): [Color, Color] {
+function getStep9Colors(scale: ArrayOf12<Color>, accentBaseColor: Color): [Color, Color] {
 	const referenceBackgroundColor = scale[0];
 	const distance = accentBaseColor.deltaEOK(referenceBackgroundColor) * 100;
 
@@ -238,8 +206,7 @@ function getScaleFromColor(
 
 	// Remove non-unique scales
 	let closestColors = allColors.filter(
-		(color, i, arr) =>
-			i === arr.findIndex((value) => value.scale === color.scale),
+		(color, i, arr) => i === arr.findIndex((value) => value.scale === color.scale),
 	);
 
 	// If the next two closest colors are both grays, remove the second one until it’s not a gray anymore.
@@ -247,9 +214,7 @@ function getScaleFromColor(
 	// and since the grays are all extremely close to each other, we won’t get any useful data from the second
 	// closest color if it’s also a gray.
 	const grayScaleNamesStr = grayScaleNames as readonly string[];
-	const allAreGrays = closestColors.every((color) =>
-		grayScaleNamesStr.includes(color.scale),
-	);
+	const allAreGrays = closestColors.every((color) => grayScaleNamesStr.includes(color.scale));
 	if (!allAreGrays && grayScaleNamesStr.includes(closestColors[0].scale)) {
 		while (grayScaleNamesStr.includes(closestColors[1].scale)) {
 			closestColors.splice(1, 1);
@@ -332,19 +297,14 @@ function getScaleFromColor(
 	) as ArrayOf12<Color>;
 
 	// Get the closest color from the pre-mixed scale we created
-	const baseColor = scale
-		.slice()
-		.sort((a, b) => source.deltaEOK(a) - source.deltaEOK(b))[0];
+	const baseColor = scale.slice().sort((a, b) => source.deltaEOK(a) - source.deltaEOK(b))[0];
 
 	// Note the chroma difference between the source color and the base color
 	const ratioC = source.coords[1] / baseColor.coords[1];
 
 	// Modify hue and chroma of the scale to match the source color
 	scale.forEach((color) => {
-		color.coords[1] = Math.min(
-			source.coords[1] * 1.5,
-			color.coords[1] * ratioC,
-		);
+		color.coords[1] = Math.min(source.coords[1] * 1.5, color.coords[1] * ratioC);
 		color.coords[2] = source.coords[2];
 	});
 
@@ -388,11 +348,7 @@ function getScaleFromColor(
 
 	const lightnessScale = scale.map(({ coords }) => coords[0]);
 	const backgroundL = backgroundColor.coords[0];
-	const newLightnessScale = transposeProgressionStart(
-		backgroundL,
-		lightnessScale,
-		ease,
-	);
+	const newLightnessScale = transposeProgressionStart(backgroundL, lightnessScale, ease);
 
 	newLightnessScale.forEach((lightness, i) => {
 		scale[i].coords[0] = lightness;
@@ -454,9 +410,7 @@ function getAlphaColor(
 	const alphaG = (tg - bg) / (desiredRgb - bg);
 	const alphaB = (tb - bb) / (desiredRgb - bb);
 
-	const isPureGray = [alphaR, alphaG, alphaB].every(
-		(alpha) => alpha === alphaR,
-	);
+	const isPureGray = [alphaR, alphaG, alphaB].every((alpha) => alpha === alphaR);
 
 	// No need for precision gymnastics with pure grays, and we can get cleaner output
 	if (!targetAlpha && isPureGray) {
@@ -465,10 +419,8 @@ function getAlphaColor(
 		return [V, V, V, alphaR] as const;
 	}
 
-	const clampRgb = (n: number) =>
-		isNaN(n) ? 0 : Math.min(rgbPrecision, Math.max(0, n));
-	const clampA = (n: number) =>
-		isNaN(n) ? 0 : Math.min(alphaPrecision, Math.max(0, n));
+	const clampRgb = (n: number) => (isNaN(n) ? 0 : Math.min(rgbPrecision, Math.max(0, n)));
+	const clampA = (n: number) => (isNaN(n) ? 0 : Math.min(alphaPrecision, Math.max(0, n)));
 	const maxAlpha = targetAlpha ?? Math.max(alphaR, alphaG, alphaB);
 
 	const A = clampA(Math.ceil(maxAlpha * alphaPrecision)) / alphaPrecision;
@@ -524,26 +476,15 @@ function getAlphaColor(
 
 // Important – I empirically discovered that this rounding is how the browser actually overlays
 // transparent RGB bits over each other. It does NOT round the whole result altogether.
-function blendAlpha(
-	foreground: number,
-	alpha: number,
-	background: number,
-	round = true,
-) {
+function blendAlpha(foreground: number, alpha: number, background: number, round = true) {
 	if (round) {
-		return (
-			Math.round(background * (1 - alpha)) + Math.round(foreground * alpha)
-		);
+		return Math.round(background * (1 - alpha)) + Math.round(foreground * alpha);
 	}
 
 	return background * (1 - alpha) + foreground * alpha;
 }
 
-function getAlphaColorSrgb(
-	targetColor: string,
-	backgroundColor: string,
-	targetAlpha?: number,
-) {
+function getAlphaColorSrgb(targetColor: string, backgroundColor: string, targetAlpha?: number) {
 	const [r, g, b, a] = getAlphaColor(
 		new Color(targetColor).to("srgb").coords,
 		new Color(backgroundColor).to("srgb").coords,
@@ -555,11 +496,7 @@ function getAlphaColorSrgb(
 	return formatHex(new Color("srgb", [r, g, b], a).toString({ format: "hex" }));
 }
 
-function getAlphaColorP3(
-	targetColor: string,
-	backgroundColor: string,
-	targetAlpha?: number,
-) {
+function getAlphaColorP3(targetColor: string, backgroundColor: string, targetAlpha?: number) {
 	const [r, g, b, a] = getAlphaColor(
 		new Color(targetColor).to("p3").coords,
 		new Color(backgroundColor).to("p3").coords,

@@ -1,15 +1,7 @@
 "use client";
 import * as React from "react";
 import NextLink from "next/link";
-import {
-	Box,
-	Grid,
-	Text,
-	Flex,
-	Link,
-	Heading,
-	AccessibleIcon,
-} from "@radix-ui/themes";
+import { Box, Grid, Text, Flex, Link, Heading, AccessibleIcon } from "@radix-ui/themes";
 import { RadixLogo } from "./radix-logo";
 import { usePathname } from "next/navigation";
 import { BoxLink } from "./box-link";
@@ -23,12 +15,7 @@ export const Footer = () => {
 	return (
 		<Grid asChild pb="9" gapX="7" gapY="3" className={styles.Footer}>
 			<footer>
-				<Flex
-					align="start"
-					direction="column"
-					className={styles.RadixLogo}
-					mb="5"
-				>
+				<Flex align="start" direction="column" className={styles.RadixLogo} mb="5">
 					<BoxLink asChild>
 						<NextLink href="/">
 							<AccessibleIcon label="Radix Homepage">
@@ -98,18 +85,14 @@ export const Footer = () => {
 							<li>
 								<Text as="p" size="2" mt="3">
 									<Link color="gray" asChild>
-										<NextLink href="/primitives/docs/overview/introduction">
-											Introduction
-										</NextLink>
+										<NextLink href="/primitives/docs/overview/introduction">Introduction</NextLink>
 									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
 									<Link color="gray" asChild>
-										<NextLink href="/primitives/docs/guides/styling">
-											Styling
-										</NextLink>
+										<NextLink href="/primitives/docs/guides/styling">Styling</NextLink>
 									</Link>
 								</Text>
 							</li>
@@ -125,9 +108,7 @@ export const Footer = () => {
 							<li>
 								<Text as="p" size="2" mt="3">
 									<Link color="gray" asChild>
-										<NextLink href="/primitives/docs/overview/releases">
-											Releases
-										</NextLink>
+										<NextLink href="/primitives/docs/overview/releases">Releases</NextLink>
 									</Link>
 								</Text>
 							</li>
@@ -143,18 +124,14 @@ export const Footer = () => {
 							<li>
 								<Text as="p" size="2" mt="3">
 									<Link color="gray" asChild>
-										<NextLink href="/colors/docs/overview/installation">
-											Installation
-										</NextLink>
+										<NextLink href="/colors/docs/overview/installation">Installation</NextLink>
 									</Link>
 								</Text>
 							</li>
 							<li>
 								<Text as="p" size="2" mt="3">
 									<Link color="gray" asChild>
-										<NextLink href="/colors/docs/palette-composition/scales">
-											Scales
-										</NextLink>
+										<NextLink href="/colors/docs/palette-composition/scales">Scales</NextLink>
 									</Link>
 								</Text>
 							</li>

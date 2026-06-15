@@ -7,8 +7,7 @@ export function proxy(request: NextRequest) {
 	// Check if the request accepts markdown
 	const acceptHeader = request.headers.get("accept") || "";
 	const wantsMarkdown =
-		acceptHeader.includes("text/markdown") ||
-		acceptHeader.includes("text/x-markdown");
+		acceptHeader.includes("text/markdown") || acceptHeader.includes("text/x-markdown");
 
 	// If the client accepts markdown and this is a docs page, rewrite to markdown API
 	if (wantsMarkdown && isDocsPage(pathname)) {

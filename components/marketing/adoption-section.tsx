@@ -1,13 +1,5 @@
 import NextLink from "next/link";
-import {
-	Box,
-	Button,
-	Container,
-	Grid,
-	Heading,
-	Section,
-	Text,
-} from "@radix-ui/themes";
+import { Box, Button, Container, Grid, Heading, Section, Text } from "@radix-ui/themes";
 import { MarketingCaption } from "./marketing-caption";
 
 export const AdoptionSection = () => {
@@ -15,18 +7,11 @@ export const AdoptionSection = () => {
 		<Section size={{ initial: "2", md: "4" }}>
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Box mb="8">
-					<MarketingCaption mb="1">
-						Transition to Radix Primitives
-					</MarketingCaption>
+					<MarketingCaption mb="1">Transition to Radix Primitives</MarketingCaption>
 					<Heading as="h2" size="7" mb="5">
 						Adoption made easy
 					</Heading>
-					<Button
-						asChild
-						size={{ initial: "3", xs: "4" }}
-						color="gray"
-						highContrast
-					>
+					<Button asChild size={{ initial: "3", xs: "4" }} color="gray" highContrast>
 						<NextLink href="/primitives/docs/overview/introduction">
 							Go to docs
 							<svg
@@ -43,19 +28,15 @@ export const AdoptionSection = () => {
 					</Button>
 				</Box>
 
-				<Grid
-					columns={{ initial: "1", sm: "2" }}
-					gap={{ initial: "7", sm: "5" }}
-				>
+				<Grid columns={{ initial: "1", sm: "2" }} gap={{ initial: "7", sm: "5" }}>
 					<Box>
 						<Heading as="h3" size="4" mb="2">
 							Incremental adoption
 						</Heading>
 						<Text as="p" size="3" mr={{ sm: "5", md: "7", lg: "9" }}>
-							Each component is its own independently versioned package, so new
-							components can be added alongside your existing code. No need to
-							disrupt feature work with a huge rewrite{"\u2060"}—you can start
-							small and add more components one by one.
+							Each component is its own independently versioned package, so new components can be
+							added alongside your existing code. No need to disrupt feature work with a huge
+							rewrite{"\u2060"}—you can start small and add more components one by one.
 						</Text>
 					</Box>
 
@@ -64,10 +45,10 @@ export const AdoptionSection = () => {
 							Detailed docs and TypeScript support
 						</Heading>
 						<Text as="p" size="3" mr={{ sm: "5", md: "7", lg: "9" }}>
-							Radix documentation contains real-world examples, extensive API
-							references, accessibility details, and full TypeScript support.
-							All components share a similar API, creating a consistent
-							developer experience. You will love working with Radix Primitives.
+							Radix documentation contains real-world examples, extensive API references,
+							accessibility details, and full TypeScript support. All components share a similar
+							API, creating a consistent developer experience. You will love working with Radix
+							Primitives.
 						</Text>
 					</Box>
 				</Grid>

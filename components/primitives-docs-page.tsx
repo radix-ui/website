@@ -10,11 +10,7 @@ import { DocsPageWrapper } from "./docs-page-wrapper";
 import { EditPageLink } from "./edit-page-link";
 import { PrimitivesMobileMenu } from "./primitives-mobile-menu";
 
-export function PrimitivesDocsPage({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<PrimitivesHeader />

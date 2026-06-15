@@ -52,20 +52,14 @@ export const HeroCodeBlock = ({
 		.filter((v): v is NonNullable<typeof v> => !!v);
 
 	const contentRef = React.useRef<HTMLDivElement>(null);
-	const availableCssLibs = snippets
-		.map(({ cssLib }) => cssLib)
-		.filter(onlyUnique);
-	const usedCssLib = availableCssLibs.includes(cssLibCandidate)
-		? cssLibCandidate
-		: DEFAULT_CSS_LIB;
+	const availableCssLibs = snippets.map(({ cssLib }) => cssLib).filter(onlyUnique);
+	const usedCssLib = availableCssLibs.includes(cssLibCandidate) ? cssLibCandidate : DEFAULT_CSS_LIB;
 	const currentTabs = snippets.filter(({ cssLib }) => cssLib === usedCssLib);
 	const sources = currentTabs.reduce((sources, tab) => {
 		return { ...sources, [tab.title]: tab.source };
 	}, {});
 
-	const [currentTabValue, setCurrentTabValue] = React.useState(
-		() => currentTabs[0]?.id,
-	);
+	const [currentTabValue, setCurrentTabValue] = React.useState(() => currentTabs[0]?.id);
 
 	React.useEffect(() => {
 		// Reset tab if the current one isn't available
@@ -74,11 +68,7 @@ export const HeroCodeBlock = ({
 	}, [currentTabValue, currentTabs]);
 
 	return (
-		<Box
-			className={styles.DemoContainer}
-			data-search-exclude
-			position="relative"
-		>
+		<Box className={styles.DemoContainer} data-search-exclude position="relative">
 			<Flex
 				display="inline-flex"
 				position="absolute"
@@ -101,9 +91,7 @@ export const HeroCodeBlock = ({
 							type="button"
 							color="gray"
 							highContrast
-							onClick={() =>
-								openStackBlitz(frontmatter.name!, sources, usedCssLib)
-							}
+							onClick={() => openStackBlitz(frontmatter.name!, sources, usedCssLib)}
 						>
 							<LightningBoltIcon />
 						</IconButton>
@@ -153,12 +141,7 @@ export const HeroCodeBlock = ({
 										if (isValidCssLib(lib)) setPreferredCssLib(lib);
 									}}
 								>
-									<Select.Trigger
-										variant="soft"
-										color="gray"
-										mr="2"
-										style={{ minWidth: 115 }}
-									/>
+									<Select.Trigger variant="soft" color="gray" mr="2" style={{ minWidth: 115 }} />
 									<Select.Content className="radix-themes-custom-fonts">
 										{availableCssLibs.map((lib) => (
 											<Select.Item key={lib} value={lib}>
@@ -173,11 +156,7 @@ export const HeroCodeBlock = ({
 
 					{currentTabs.map((tab) => (
 						<Tabs.Content key={tab.id} value={tab.id} asChild>
-							<CodeBlock.Content
-								id="code-block-content"
-								ref={contentRef}
-								tabIndex={-1}
-							>
+							<CodeBlock.Content id="code-block-content" ref={contentRef} tabIndex={-1}>
 								<Grid
 									position="relative"
 									width="100%"
@@ -185,17 +164,11 @@ export const HeroCodeBlock = ({
 									maxHeight="70vh"
 									minHeight="150px"
 								>
-									<CodeBlock.Pre
-										overflow={isCodeExpanded ? "scroll" : "hidden"}
-									>
+									<CodeBlock.Pre overflow={isCodeExpanded ? "scroll" : "hidden"}>
 										<code>{tab.children}</code>
 
 										<Box height="64px" />
-										<Flex
-											align="end"
-											justify="center"
-											className={styles.CollapsibleGradient}
-										>
+										<Flex align="end" justify="center" className={styles.CollapsibleGradient}>
 											<Box
 												position="relative"
 												style={{
@@ -238,14 +211,9 @@ export const HeroCodeBlock = ({
 	);
 };
 
-const onlyUnique = <T,>(value: T, index: number, self: T[]) =>
-	self.indexOf(value) === index;
+const onlyUnique = <T,>(value: T, index: number, self: T[]) => self.indexOf(value) === index;
 
-const openStackBlitz = (
-	componentName: string,
-	sources: Record<string, string>,
-	cssLib: CssLib,
-) => {
+const openStackBlitz = (componentName: string, sources: Record<string, string>, cssLib: CssLib) => {
 	let files: Record<string, string> = {};
 	switch (cssLib) {
 		case "css":
@@ -445,12 +413,7 @@ const globalCss = `${[
 	"mint",
 	"sky",
 ]
-	.flatMap((color) => [
-		color,
-		`${color}-dark`,
-		`${color}-alpha`,
-		`${color}-dark-alpha`,
-	])
+	.flatMap((color) => [color, `${color}-dark`, `${color}-alpha`, `${color}-dark-alpha`])
 	.map((color) => `@import "@radix-ui/colors/${color}.css";`)
 	.join("\n")}
 

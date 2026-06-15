@@ -51,19 +51,14 @@ export const CustomSwatch = ({
 	const friendlyScaleName = `${scale.charAt(0).toUpperCase() + scale.slice(1)}`;
 	const friendlyColorName = `${friendlyScaleName} ${step}`;
 	const otherTheme = resolvedTheme === "light" ? "dark" : "light";
-	const isGray = ["gray", "mauve", "slate", "sage", "olive", "sand"].includes(
-		scale,
-	);
+	const isGray = ["gray", "mauve", "slate", "sage", "olive", "sand"].includes(scale);
 
 	return (
 		<Dialog.Root>
 			<Dialog.Trigger>
 				<Reset>
 					<button
-						className={classNames(
-							styles.CustomSwatchTrigger,
-							styles.CustomSwatchTransparencyGrid,
-						)}
+						className={classNames(styles.CustomSwatchTrigger, styles.CustomSwatchTransparencyGrid)}
 						{...props}
 					>
 						<span style={{ backgroundColor: cssVariable, ...style }}>
@@ -100,12 +95,7 @@ export const CustomSwatch = ({
 							{friendlyColorName}
 						</Heading>
 
-						<Grid
-							align="center"
-							columns={{ xs: "auto 1fr" }}
-							gapY={{ xs: "2" }}
-							gapX="5"
-						>
+						<Grid align="center" columns={{ xs: "auto 1fr" }} gapY={{ xs: "2" }} gapX="5">
 							<Text color="gray" size="2">
 								Usage
 							</Text>
@@ -114,16 +104,10 @@ export const CustomSwatch = ({
 									{["1", "2"].includes(step) && "Backgrounds"}
 									{["3", "4", "5"].includes(step) && "Interactive components"}
 									{["6", "7"].includes(step) && "Borders and separators"}
-									{["8"].includes(step) &&
-										isGray &&
-										"Borders, focus rings, disabled text"}
+									{["8"].includes(step) && isGray && "Borders, focus rings, disabled text"}
 									{["8"].includes(step) && !isGray && "Borders, focus rings"}
-									{["9", "10"].includes(step) &&
-										isGray &&
-										"Solid backgrounds, disabled text"}
-									{["9", "10"].includes(step) &&
-										!isGray &&
-										"Solid backgrounds, buttons"}
+									{["9", "10"].includes(step) && isGray && "Solid backgrounds, disabled text"}
+									{["9", "10"].includes(step) && !isGray && "Solid backgrounds, buttons"}
 									{["11"].includes(step) && "Secondary text, links"}
 									{["12"].includes(step) && "High-contrast text"}
 								</Text>
@@ -145,10 +129,7 @@ export const CustomSwatch = ({
 								</Text>
 							</Box>
 
-							<Box
-								style={{ gridColumn: "1 / -1 " }}
-								my={{ initial: "4", xs: "1" }}
-							>
+							<Box style={{ gridColumn: "1 / -1 " }} my={{ initial: "4", xs: "1" }}>
 								<Separator size="4" />
 							</Box>
 
@@ -171,34 +152,25 @@ export const CustomSwatch = ({
 
 								<Popover.Root modal>
 									<Popover.Trigger>
-										<IconButton
-											size="1"
-											variant="ghost"
-											style={{ marginLeft: 2 }}
-										>
+										<IconButton size="1" variant="ghost" style={{ marginLeft: 2 }}>
 											<AccessibleIcon label="Learn more">
 												<InfoCircledIcon />
 											</AccessibleIcon>
 										</IconButton>
 									</Popover.Trigger>
 									<Theme asChild className="radix-themes-custom-fonts">
-										<Popover.Content
-											side="top"
-											align="center"
-											style={{ width: 380 }}
-										>
+										<Popover.Content side="top" align="center" style={{ width: 380 }}>
 											<Heading size="2" mb="4" trim="both">
 												Alpha colors
 											</Heading>
 											<Text as="p" size="2" trim="both" mb="4">
-												Alpha color is a translucent color that achieves the
-												same look against a neutral background. Alpha colors are
-												used for elements that need to retain contrast when
-												overlayed over different backgrounds
+												Alpha color is a translucent color that achieves the same look against a
+												neutral background. Alpha colors are used for elements that need to retain
+												contrast when overlayed over different backgrounds
 											</Text>
 											<Text as="p" size="2" trim="both">
-												Radix Colors alphas are designed against white
-												background in light mode and Gray 1 in dark mode.
+												Radix Colors alphas are designed against white background in light mode and
+												Gray 1 in dark mode.
 											</Text>
 										</Popover.Content>
 									</Theme>
@@ -269,17 +241,11 @@ interface CopyButtonState {
 	timeout: ReturnType<typeof setTimeout> | null;
 }
 
-const CopyButton = ({
-	onClick,
-	...props
-}: React.ComponentPropsWithoutRef<typeof Button>) => {
+const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof Button>) => {
 	const ref = React.useRef<HTMLButtonElement>(null);
 
 	const [state, setState] = React.useReducer(
-		(
-			prevState: CopyButtonState,
-			newState: Partial<CopyButtonState>,
-		): CopyButtonState => {
+		(prevState: CopyButtonState, newState: Partial<CopyButtonState>): CopyButtonState => {
 			// Start a timeout to change the text when tooltip is closed
 			if (newState.open === false) {
 				newState.timeout = setTimeout(() => {

@@ -27,11 +27,7 @@
 
 .StatsSectionGraphicLeft {
 	height: 1px;
-	background: linear-gradient(
-		to right,
-		transparent,
-		var(--stats-section-chart-line-start-color)
-	);
+	background: linear-gradient(to right, transparent, var(--stats-section-chart-line-start-color));
 	flex: 0 0 auto;
 	max-width: 1400px;
 }

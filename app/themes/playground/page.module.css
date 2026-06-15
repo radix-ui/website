@@ -13,8 +13,7 @@
 	line-height: 0;
 }
 
-.PlaygroundTable
-	th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
+.PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
 	font-weight: var(--font-weight-regular);
 }
 
@@ -22,8 +21,7 @@
 	vertical-align: middle;
 }
 
-.PlaygroundTable
-	th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
 .PlaygroundTable td:not(:global(.rt-TableCell)) {
 	padding: 0;
 	padding-right: var(--space-4);
@@ -38,9 +36,7 @@
 	text-align: left;
 }
 
-.PlaygroundTable
-	thead
-	th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.PlaygroundTable thead th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
 .PlaygroundTable tbody tr td:first-child:not(:global(.rt-TableCell)) {
 	font-size: var(--font-size-1);
 	letter-spacing: var(--letter-spacing-1);

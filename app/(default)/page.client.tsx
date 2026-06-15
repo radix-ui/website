@@ -1,13 +1,5 @@
 "use client";
-import {
-	Box,
-	Flex,
-	Theme,
-	Text,
-	Button,
-	Section,
-	Badge,
-} from "@radix-ui/themes";
+import { Box, Flex, Theme, Text, Button, Section, Badge } from "@radix-ui/themes";
 import * as React from "react";
 import NextLink from "next/link";
 import { ThemesHeader } from "@components/themes-header";
@@ -47,10 +39,7 @@ export default function ThemesHome() {
 							</ThemesHeroLayout.Main>
 
 							<ThemesHeroLayout.Showcase>
-								<Theme
-									className="radix-themes-default-fonts"
-									hasBackground={false}
-								>
+								<Theme className="radix-themes-default-fonts" hasBackground={false}>
 									<ExampleThemesDashboard align="start" focusable={false} />
 								</Theme>
 							</ThemesHeroLayout.Showcase>
@@ -59,12 +48,7 @@ export default function ThemesHome() {
 				</MagicCurtain.Item>
 
 				<MagicCurtain.Item>
-					<Theme
-						hasBackground
-						accentColor="indigo"
-						grayColor="slate"
-						appearance={inverted}
-					>
+					<Theme hasBackground accentColor="indigo" grayColor="slate" appearance={inverted}>
 						<Box height="0">
 							<ThemesHeader ghost />
 						</Box>
@@ -79,10 +63,7 @@ export default function ThemesHome() {
 							</ThemesHeroLayout.Main>
 
 							<ThemesHeroLayout.Showcase>
-								<Theme
-									className="radix-themes-default-fonts"
-									hasBackground={false}
-								>
+								<Theme className="radix-themes-default-fonts" hasBackground={false}>
 									<ExampleThemesDashboard align="start" focusable={false} />
 								</Theme>
 							</ThemesHeroLayout.Showcase>
@@ -120,12 +101,7 @@ export default function ThemesHome() {
 				</MagicCurtain.Item>
 
 				<MagicCurtain.Item>
-					<Theme
-						hasBackground
-						accentColor="teal"
-						grayColor="gray"
-						appearance={inverted}
-					>
+					<Theme hasBackground accentColor="teal" grayColor="gray" appearance={inverted}>
 						<Box height="0">
 							<ThemesHeader ghost />
 						</Box>
@@ -168,10 +144,7 @@ export default function ThemesHome() {
 							</ThemesHeroLayout.Main>
 
 							<ThemesHeroLayout.Showcase>
-								<Theme
-									className="radix-themes-default-fonts"
-									hasBackground={false}
-								>
+								<Theme className="radix-themes-default-fonts" hasBackground={false}>
 									<ExampleThemesMusicApp align="start" focusable={false} />
 								</Theme>
 							</ThemesHeroLayout.Showcase>
@@ -180,12 +153,7 @@ export default function ThemesHome() {
 				</MagicCurtain.Item>
 
 				<MagicCurtain.Item>
-					<Theme
-						hasBackground
-						accentColor="red"
-						grayColor="slate"
-						appearance={inverted}
-					>
+					<Theme hasBackground accentColor="red" grayColor="slate" appearance={inverted}>
 						<Box height="0">
 							<ThemesHeader ghost />
 						</Box>
@@ -200,10 +168,7 @@ export default function ThemesHome() {
 							</ThemesHeroLayout.Main>
 
 							<ThemesHeroLayout.Showcase>
-								<Theme
-									className="radix-themes-default-fonts"
-									hasBackground={false}
-								>
+								<Theme className="radix-themes-default-fonts" hasBackground={false}>
 									<ExampleThemesMusicApp align="start" focusable={false} />
 								</Theme>
 							</ThemesHeroLayout.Showcase>
@@ -213,9 +178,7 @@ export default function ThemesHome() {
 
 				<Theme appearance="light" hasBackground={false}>
 					<MagicCurtain.Controls
-						images={
-							resolvedTheme === "light" ? previewImages : previewImagesDarkMode
-						}
+						images={resolvedTheme === "light" ? previewImages : previewImagesDarkMode}
 					/>
 				</Theme>
 			</MagicCurtain.Root>
@@ -253,11 +216,7 @@ const MainContent = () => (
 					<Badge asChild size="3" radius="full">
 						<NextLink href="/blog/themes-3">
 							Read about Radix Themes 3.0
-							<ArrowRightIcon
-								width="15"
-								height="15"
-								style={{ marginLeft: -2 }}
-							/>
+							<ArrowRightIcon width="15" height="15" style={{ marginLeft: -2 }} />
 						</NextLink>
 					</Badge>
 				</Flex>
@@ -288,9 +247,8 @@ const MainContent = () => (
 			<Box style={{ maxWidth: 500 }}>
 				<Text size={{ initial: "4", xs: "5" }}>
 					<Text as="p" mb="5" color="gray">
-						An open source component library optimized for fast development,
-						easy maintenance, and accessibility. Just import and go—no
-						configuration required.
+						An open source component library optimized for fast development, easy maintenance, and
+						accessibility. Just import and go—no configuration required.
 					</Text>
 
 					<Box mb="5">
@@ -471,15 +429,8 @@ const BackgroundImage = ({
 				gradientTransform="translate(2922 2538.48) rotate(-117.986) scale(1898.15 3571.73)"
 			>
 				<stop stopColor="var(--color-background-image-base)" />
-				<stop
-					offset="0.822917"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="1"
-					stopColor="var(--color-background-image-base)"
-					stopOpacity="0"
-				/>
+				<stop offset="0.822917" stopColor="var(--color-background-image-base)" />
+				<stop offset="1" stopColor="var(--color-background-image-base)" stopOpacity="0" />
 			</radialGradient>
 
 			<radialGradient
@@ -491,15 +442,8 @@ const BackgroundImage = ({
 				gradientTransform="translate(3069.05 2293.39) rotate(-117.986) scale(1898.15 3571.73)"
 			>
 				<stop stopColor="var(--color-background-image-base)" />
-				<stop
-					offset="0.822917"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="1"
-					stopColor="var(--color-background-image-base)"
-					stopOpacity="0"
-				/>
+				<stop offset="0.822917" stopColor="var(--color-background-image-base)" />
+				<stop offset="1" stopColor="var(--color-background-image-base)" stopOpacity="0" />
 			</radialGradient>
 
 			<radialGradient
@@ -527,15 +471,8 @@ const BackgroundImage = ({
 				gradientTransform="translate(3934.59 656.035) rotate(148.98) scale(1938.73 3648.08)"
 			>
 				<stop stopColor="var(--color-background-image-base)" />
-				<stop
-					offset="0.789375"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="1"
-					stopColor="var(--color-background-image-base)"
-					stopOpacity="0"
-				/>
+				<stop offset="0.789375" stopColor="var(--color-background-image-base)" />
+				<stop offset="1" stopColor="var(--color-background-image-base)" stopOpacity="0" />
 			</radialGradient>
 
 			<radialGradient
@@ -547,26 +484,11 @@ const BackgroundImage = ({
 				gradientTransform="translate(-804.109 -2036.8) rotate(64.9401) scale(6436.87 6304.81)"
 			>
 				<stop stopColor="var(--color-background-image-base)" />
-				<stop
-					offset="0.0833333"
-					stopColor="var(--color-background-image-accent-1)"
-				/>
-				<stop
-					offset="0.364583"
-					stopColor="var(--color-background-image-accent-2)"
-				/>
-				<stop
-					offset="0.658041"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="0.798521"
-					stopColor="var(--color-background-image-accent-3)"
-				/>
-				<stop
-					offset="0.942708"
-					stopColor="var(--color-background-image-base)"
-				/>
+				<stop offset="0.0833333" stopColor="var(--color-background-image-accent-1)" />
+				<stop offset="0.364583" stopColor="var(--color-background-image-accent-2)" />
+				<stop offset="0.658041" stopColor="var(--color-background-image-base)" />
+				<stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
+				<stop offset="0.942708" stopColor="var(--color-background-image-base)" />
 				<stop offset="1" stopColor="var(--color-background-image-base)" />
 			</radialGradient>
 			<radialGradient
@@ -578,26 +500,11 @@ const BackgroundImage = ({
 				gradientTransform="translate(201.6 -1080.02) rotate(64.9401) scale(6436.87 6304.81)"
 			>
 				<stop stopColor="var(--color-background-image-base)" />
-				<stop
-					offset="0.0833333"
-					stopColor="var(--color-background-image-accent-4)"
-				/>
-				<stop
-					offset="0.333803"
-					stopColor="var(--color-background-image-accent-5)"
-				/>
-				<stop
-					offset="0.658041"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="0.798521"
-					stopColor="var(--color-background-image-accent-3)"
-				/>
-				<stop
-					offset="0.942708"
-					stopColor="var(--color-background-image-base)"
-				/>
+				<stop offset="0.0833333" stopColor="var(--color-background-image-accent-4)" />
+				<stop offset="0.333803" stopColor="var(--color-background-image-accent-5)" />
+				<stop offset="0.658041" stopColor="var(--color-background-image-base)" />
+				<stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
+				<stop offset="0.942708" stopColor="var(--color-background-image-base)" />
 				<stop offset="1" stopColor="var(--color-background-image-base)" />
 			</radialGradient>
 			<radialGradient
@@ -614,22 +521,10 @@ const BackgroundImage = ({
 					stopColor="var(--color-background-image-accent-6)"
 					stopOpacity={0}
 				/>
-				<stop
-					offset="0.333803"
-					stopColor="var(--color-background-image-accent-7)"
-				/>
-				<stop
-					offset="0.658041"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="0.798521"
-					stopColor="var(--color-background-image-accent-3)"
-				/>
-				<stop
-					offset="0.942708"
-					stopColor="var(--color-background-image-base)"
-				/>
+				<stop offset="0.333803" stopColor="var(--color-background-image-accent-7)" />
+				<stop offset="0.658041" stopColor="var(--color-background-image-base)" />
+				<stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
+				<stop offset="0.942708" stopColor="var(--color-background-image-base)" />
 				<stop offset="1" stopColor="var(--color-background-image-base)" />
 			</radialGradient>
 			<radialGradient
@@ -641,26 +536,11 @@ const BackgroundImage = ({
 				gradientTransform="translate(1711.41 -1639.11) rotate(64.9401) scale(6436.87 6304.81)"
 			>
 				<stop stopColor="var(--color-background-image-base)" />
-				<stop
-					offset="0.0833333"
-					stopColor="var(--color-background-image-accent-1)"
-				/>
-				<stop
-					offset="0.333803"
-					stopColor="var(--color-background-image-accent-5)"
-				/>
-				<stop
-					offset="0.658041"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="0.798521"
-					stopColor="var(--color-background-image-accent-3)"
-				/>
-				<stop
-					offset="0.942708"
-					stopColor="var(--color-background-image-base)"
-				/>
+				<stop offset="0.0833333" stopColor="var(--color-background-image-accent-1)" />
+				<stop offset="0.333803" stopColor="var(--color-background-image-accent-5)" />
+				<stop offset="0.658041" stopColor="var(--color-background-image-base)" />
+				<stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
+				<stop offset="0.942708" stopColor="var(--color-background-image-base)" />
 				<stop offset="1" stopColor="var(--color-background-image-base)" />
 			</radialGradient>
 			<radialGradient
@@ -672,26 +552,11 @@ const BackgroundImage = ({
 				gradientTransform="translate(3479.06 -623.459) rotate(113.028) scale(8332.26 4870.62)"
 			>
 				<stop stopColor="var(--color-background-image-base)" />
-				<stop
-					offset="0.0833333"
-					stopColor="var(--color-background-image-accent-1)"
-				/>
-				<stop
-					offset="0.333803"
-					stopColor="var(--color-background-image-accent-5)"
-				/>
-				<stop
-					offset="0.658041"
-					stopColor="var(--color-background-image-base)"
-				/>
-				<stop
-					offset="0.798521"
-					stopColor="var(--color-background-image-accent-3)"
-				/>
-				<stop
-					offset="0.942708"
-					stopColor="var(--color-background-image-base)"
-				/>
+				<stop offset="0.0833333" stopColor="var(--color-background-image-accent-1)" />
+				<stop offset="0.333803" stopColor="var(--color-background-image-accent-5)" />
+				<stop offset="0.658041" stopColor="var(--color-background-image-base)" />
+				<stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
+				<stop offset="0.942708" stopColor="var(--color-background-image-base)" />
 				<stop offset="1" stopColor="var(--color-background-image-base)" />
 			</radialGradient>
 		</defs>

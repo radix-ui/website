@@ -3,16 +3,7 @@ import { Box, Text, Flex } from "@radix-ui/themes";
 const pairings = [
 	{
 		color: "mauve",
-		pairs: [
-			"tomato",
-			"red",
-			"ruby",
-			"crimson",
-			"pink",
-			"plum",
-			"purple",
-			"violet",
-		],
+		pairs: ["tomato", "red", "ruby", "crimson", "pink", "plum", "purple", "violet"],
 	},
 	{ color: "slate", pairs: ["iris", "indigo", "blue", "sky", "cyan"] },
 	{ color: "sage", pairs: ["mint", "teal", "jade", "green"] },

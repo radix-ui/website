@@ -3,10 +3,7 @@ import { Footer } from "@components/footer";
 import { MdxContent } from "@components/mdx-content";
 import { PrimitivesHeader } from "@components/primitives-header";
 import { PrimitivesMobileMenu } from "@components/primitives-mobile-menu";
-import {
-	CaseStudyLogo,
-	CaseStudyLogoVariant,
-} from "@components/marketing/case-study-logo";
+import { CaseStudyLogo, CaseStudyLogoVariant } from "@components/marketing/case-study-logo";
 import { MarketingCaption } from "@components/marketing/marketing-caption";
 import { getAllFrontmatter } from "@utils/mdx";
 import { getMdxBySlug } from "@utils/mdx";
@@ -32,9 +29,7 @@ interface PageProps {
 	params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({
-	params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const { frontmatter } = await getMdxBySlug(DOCS_BASE, slug);
 	return {
@@ -49,9 +44,7 @@ export default async function CaseStudy({ params }: PageProps) {
 	const { frontmatter, code } = await getMdxBySlug(DOCS_BASE, slug);
 
 	const frontmatters = getAllFrontmatter(DOCS_BASE);
-	const thisIndex = frontmatters.findIndex((data) =>
-		data.slug.includes(frontmatter.slug),
-	);
+	const thisIndex = frontmatters.findIndex((data) => data.slug.includes(frontmatter.slug));
 	const nextIndex = thisIndex + 1 < frontmatters.length ? thisIndex + 1 : 0;
 	const nextCaseStudy = frontmatters[nextIndex];
 
@@ -77,17 +70,10 @@ export default async function CaseStudy({ params }: PageProps) {
 			<PrimitivesMobileMenu />
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Section size={{ initial: "2", md: "4" }}>
-					<Grid
-						columns={{ md: "1fr 330px", lg: "1fr 380px" }}
-						gap={{ md: "9" }}
-					>
+					<Grid columns={{ md: "1fr 330px", lg: "1fr 380px" }} gap={{ md: "9" }}>
 						<Box>
 							<MarketingCaption mb="1">Case study</MarketingCaption>
-							<MdxContent
-								code={code}
-								frontmatter={extendedFrontmatter}
-								scope="primitives"
-							/>
+							<MdxContent code={code} frontmatter={extendedFrontmatter} scope="primitives" />
 							<Flex align="center" gap="3" mt="8">
 								<Avatar
 									size="5"
@@ -114,12 +100,8 @@ export default async function CaseStudy({ params }: PageProps) {
 										href={`https://${extendedFrontmatter.companyUrl}`}
 										style={{ display: "inline-block", maxWidth: "380px" }}
 									>
-										<AccessibleIcon.Root
-											label={`${extendedFrontmatter.metaTitle} homepage`}
-										>
-											<CaseStudyLogo
-												variant={extendedFrontmatter.companyLogoVariant}
-											/>
+										<AccessibleIcon.Root label={`${extendedFrontmatter.metaTitle} homepage`}>
+											<CaseStudyLogo variant={extendedFrontmatter.companyLogoVariant} />
 										</AccessibleIcon.Root>
 									</BoxLink>
 								</Box>
@@ -139,9 +121,7 @@ export default async function CaseStudy({ params }: PageProps) {
 											color="gray"
 										>
 											{extendedFrontmatter.companyUrl}
-											<ArrowTopRightIcon
-												style={{ marginLeft: -1, marginBottom: -2 }}
-											/>
+											<ArrowTopRightIcon style={{ marginLeft: -1, marginBottom: -2 }} />
 										</Link>
 									</Flex>
 								</Box>
@@ -158,11 +138,7 @@ export default async function CaseStudy({ params }: PageProps) {
 									</Text>
 
 									<Link highContrast color="gray" asChild>
-										<NextLink
-											href={
-												`/${extendedFrontmatter.nextCaseStudySlug}` as Route
-											}
-										>
+										<NextLink href={`/${extendedFrontmatter.nextCaseStudySlug}` as Route}>
 											{extendedFrontmatter.nextCaseStudyTitle}
 										</NextLink>
 									</Link>

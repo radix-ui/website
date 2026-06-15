@@ -17,11 +17,7 @@ import { ColorGrayPairsComplementary } from "@components/color-gray-pairs-comple
 import { CopyIcon, PlusIcon } from "@radix-ui/react-icons";
 import type { Frontmatter } from "types/frontmatter";
 
-export type MdxScope =
-	| "primitives"
-	| "themes"
-	| "colors-overview"
-	| "colors-palette";
+export type MdxScope = "primitives" | "themes" | "colors-overview" | "colors-palette";
 
 function resolveComponents(scope: MdxScope) {
 	switch (scope) {

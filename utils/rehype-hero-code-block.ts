@@ -16,12 +16,7 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
 				node.children = [];
 
 				SUPPORTED_CSS_LIBS.forEach((lib) => {
-					[
-						"index.jsx",
-						"styles.css",
-						"styles.module.css",
-						"tailwind.config.js",
-					].forEach((file) => {
+					["index.jsx", "styles.css", "styles.module.css", "tailwind.config.js"].forEach((file) => {
 						const filePath = `${process.cwd()}/components/demos/${demoFolder}/${lib}/${file}`;
 						if (fileExists(filePath)) {
 							const extension = file.split(".").pop()!;

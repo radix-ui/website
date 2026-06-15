@@ -6,8 +6,5 @@ export const HiddenScroll = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof Box>) => (
-	<Box
-		className={`${className ? `${className} ` : ""}${styles.HiddenScroll}`}
-		{...props}
-	/>
+	<Box className={`${className ? `${className} ` : ""}${styles.HiddenScroll}`} {...props} />
 );

@@ -37,11 +37,7 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
 					)}
 
 					{section.pages.map((page) => (
-						<DocsNavItem
-							key={page.slug}
-							href={page.slug}
-							active={currentPageSlug === page.slug}
-						>
+						<DocsNavItem key={page.slug} href={page.slug} active={currentPageSlug === page.slug}>
 							<Flex gap="2" align="center">
 								{page.icon}
 								<Text size={{ initial: "3", md: "2" }}>{page.title}</Text>
@@ -74,12 +70,7 @@ interface DocsNavItemProps {
 	className?: string;
 }
 
-const DocsNavItem = ({
-	active,
-	disabled,
-	href,
-	...props
-}: DocsNavItemProps) => {
+const DocsNavItem = ({ active, disabled, href, ...props }: DocsNavItemProps) => {
 	const className = classNames(styles.DocsNavItem, active && styles.active);
 	const isExternal = href.startsWith("http");
 	const ref = React.useRef<HTMLAnchorElement>(null);
@@ -87,9 +78,7 @@ const DocsNavItem = ({
 	React.useEffect(() => {
 		// Scroll active links into view when in a Scroll Area
 		if (ref.current && active) {
-			const container = document.querySelector(
-				"[data-radix-scroll-area-viewport]",
-			);
+			const container = document.querySelector("[data-radix-scroll-area-viewport]");
 
 			if (!container) {
 				return;
@@ -117,23 +106,9 @@ const DocsNavItem = ({
 
 	if (isExternal) {
 		return (
-			<a
-				ref={ref}
-				className={className}
-				href={href}
-				target="_blank"
-				rel="noopener"
-				{...props}
-			/>
+			<a ref={ref} className={className} href={href} target="_blank" rel="noopener" {...props} />
 		);
 	}
 
-	return (
-		<NextLink
-			href={`/${href}` as Route}
-			ref={ref}
-			className={className}
-			{...props}
-		/>
-	);
+	return <NextLink href={`/${href}` as Route} ref={ref} className={className} {...props} />;
 };

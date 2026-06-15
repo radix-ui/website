@@ -2,15 +2,7 @@
 import * as React from "react";
 import styles from "./primitives-search-desktop.module.css";
 import { Cross2Icon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import {
-	Box,
-	Flex,
-	IconButton,
-	Kbd,
-	ScrollArea,
-	Theme,
-	Tooltip,
-} from "@radix-ui/themes";
+import { Box, Flex, IconButton, Kbd, ScrollArea, Theme, Tooltip } from "@radix-ui/themes";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { PrimitivesSearch } from "./primitives-search";
 
@@ -24,10 +16,7 @@ export const PrimitivesSearchDesktop = () => {
 		const isEditingContent = (event: KeyboardEvent) => {
 			const element = event.target as HTMLElement;
 			const tagName = element.tagName;
-			return (
-				element.isContentEditable ||
-				["INPUT", "SELECT", "TEXTAREA"].includes(tagName)
-			);
+			return element.isContentEditable || ["INPUT", "SELECT", "TEXTAREA"].includes(tagName);
 		};
 
 		const handleKeyDown = (event: KeyboardEvent) => {
@@ -52,21 +41,14 @@ export const PrimitivesSearchDesktop = () => {
 					aria-label="Search. Press Slash key to search quickly."
 					className={styles.PrimitivesSearchDesktopButton}
 					onKeyDown={(event) => {
-						if (
-							!event.metaKey &&
-							!event.ctrlKey &&
-							/^[a-z]$/i.test(event.key)
-						) {
+						if (!event.metaKey && !event.ctrlKey && /^[a-z]$/i.test(event.key)) {
 							setDialogOpen(true);
 						}
 					}}
 				>
 					<MagnifyingGlassIcon />
 					Search
-					<Tooltip
-						className="radix-themes-custom-fonts"
-						content="Press Slash key to search"
-					>
+					<Tooltip className="radix-themes-custom-fonts" content="Press Slash key to search">
 						<Flex ml="auto" my="-2" aria-hidden>
 							<Kbd size="2">/</Kbd>
 						</Flex>
@@ -76,9 +58,7 @@ export const PrimitivesSearchDesktop = () => {
 
 			<DialogPrimitive.Portal>
 				<Theme className="radix-themes-custom-fonts">
-					<DialogPrimitive.Overlay
-						className={styles.PrimitivesSearchDesktopDialogOverlay}
-					>
+					<DialogPrimitive.Overlay className={styles.PrimitivesSearchDesktopDialogOverlay}>
 						<DialogPrimitive.Content
 							onEscapeKeyDown={() => {
 								if (inputRef.current?.value === "") {
@@ -92,10 +72,7 @@ export const PrimitivesSearchDesktop = () => {
 							<PrimitivesSearch.Root>
 								<Box position="relative">
 									<PrimitivesSearch.Input>
-										<input
-											ref={inputRef}
-											className={styles.PrimitivesSearchDesktopInput}
-										/>
+										<input ref={inputRef} className={styles.PrimitivesSearchDesktopInput} />
 									</PrimitivesSearch.Input>
 
 									<Flex
@@ -107,11 +84,7 @@ export const PrimitivesSearchDesktop = () => {
 										ml="3"
 										style={{ pointerEvents: "none" }}
 									>
-										<MagnifyingGlassIcon
-											width="18"
-											height="18"
-											color="var(--gray-a11)"
-										/>
+										<MagnifyingGlassIcon width="18" height="18" color="var(--gray-a11)" />
 									</Flex>
 
 									<Flex

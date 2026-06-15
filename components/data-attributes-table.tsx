@@ -12,9 +12,7 @@ export function DataAttributesTable({ data }: { data: KeyboardDef[] }) {
 			<Table.Root variant="surface">
 				<Table.Header>
 					<Table.Row>
-						<Table.ColumnHeaderCell style={{ width: "37%" }}>
-							Data attribute
-						</Table.ColumnHeaderCell>
+						<Table.ColumnHeaderCell style={{ width: "37%" }}>Data attribute</Table.ColumnHeaderCell>
 						<Table.ColumnHeaderCell>Values</Table.ColumnHeaderCell>
 					</Table.Row>
 				</Table.Header>
@@ -31,8 +29,7 @@ export function DataAttributesTable({ data }: { data: KeyboardDef[] }) {
 									{Array.isArray(values) ? (
 										<Code size="2" color="gray">
 											{values.map(
-												(value, index) =>
-													`"${value}" ${values.length !== index + 1 ? " | " : ""}`,
+												(value, index) => `"${value}" ${values.length !== index + 1 ? " | " : ""}`,
 											)}
 										</Code>
 									) : (

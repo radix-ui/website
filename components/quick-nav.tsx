@@ -69,12 +69,7 @@ export function QuickNav({ title = "Quick nav" }: { title?: string }) {
 												className={styles.LinkWrapper}
 											>
 												<li>
-													<Link
-														href={`#${id}`}
-														color="gray"
-														size="2"
-														className={styles.Link}
-													>
+													<Link href={`#${id}`} color="gray" size="2" className={styles.Link}>
 														{innerText}
 													</Link>
 												</li>

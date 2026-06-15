@@ -1,10 +1,5 @@
 "use client";
-import {
-	CubeIcon,
-	DownloadIcon,
-	FigmaLogoIcon,
-	GitHubLogoIcon,
-} from "@radix-ui/react-icons";
+import { CubeIcon, DownloadIcon, FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Box, Flex, Heading, Link, Separator, Text } from "@radix-ui/themes";
 import { CopyToastProvider } from "./copy-toast";
 import { MainContent } from "./main-content";
@@ -35,10 +30,7 @@ export const IconsPanel = () => {
 
 				<Separator size="4" />
 
-				<Box
-					p={{ initial: "5", sm: "6" }}
-					className={styles.IconsPanelMainSection}
-				>
+				<Box p={{ initial: "5", sm: "6" }} className={styles.IconsPanelMainSection}>
 					<Box mb="5" style={{ gridColumn: "3 / 4" }}>
 						<Heading as="h3" size="5">
 							Assets
@@ -98,25 +90,19 @@ export const IconsPanel = () => {
 						</Flex>
 					</Box>
 
-					<Box
-						mb={{ initial: "5", sm: "0" }}
-						className={styles.IconsPanelSectionContent}
-					>
+					<Box mb={{ initial: "5", sm: "0" }} className={styles.IconsPanelSectionContent}>
 						<Heading as="h3" size="5">
 							React components
 						</Heading>
 
 						<Text as="p" size="3" mt="3">
-							All icons are available as individual React components. Install
-							Radix Icons from npm:
+							All icons are available as individual React components. Install Radix Icons from npm:
 						</Text>
 
 						<CodeBlock.Root mt="3">
 							<CodeBlock.Content>
 								<CodeBlock.Pre>
-									<CodeBlock.Code language="bash">
-										npm install @radix-ui/react-icons
-									</CodeBlock.Code>
+									<CodeBlock.Code language="bash">npm install @radix-ui/react-icons</CodeBlock.Code>
 								</CodeBlock.Pre>
 								<CodeBlock.CopyButton />
 							</CodeBlock.Content>

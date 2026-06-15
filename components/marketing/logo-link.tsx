@@ -11,12 +11,5 @@ export const LogoLink = React.forwardRef<
 	}
 >(function LogoLink({ variant = "normal", asChild, ...props }, forwardedRef) {
 	const Comp = asChild ? Slot.Root : "a";
-	return (
-		<Comp
-			{...props}
-			data-variant={variant}
-			ref={forwardedRef}
-			className={styles.LogoLink}
-		/>
-	);
+	return <Comp {...props} data-variant={variant} ref={forwardedRef} className={styles.LogoLink} />;
 });

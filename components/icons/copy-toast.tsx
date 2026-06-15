@@ -9,15 +9,9 @@ type CopyToastContextValue = {
 	showCopyToast: (icon: string) => void;
 };
 
-const CopyToastContext = React.createContext<CopyToastContextValue | null>(
-	null,
-);
+const CopyToastContext = React.createContext<CopyToastContextValue | null>(null);
 
-export const CopyToastProvider = ({
-	children,
-}: {
-	children: React.ReactNode;
-}) => {
+export const CopyToastProvider = ({ children }: { children: React.ReactNode }) => {
 	const [open, setOpen] = React.useState(false);
 	const [icon, setIcon] = React.useState("");
 	const timeoutRef = React.useRef<number | null>(null);
@@ -78,9 +72,7 @@ export const CopyToastProvider = ({
 export const useCopyToast = () => {
 	const copyToastContext = React.useContext(CopyToastContext);
 	if (!copyToastContext) {
-		throw new TypeError(
-			"`useCopyToast` must be called from within an `CopyToastProvider`",
-		);
+		throw new TypeError("`useCopyToast` must be called from within an `CopyToastProvider`");
 	}
 
 	return copyToastContext;

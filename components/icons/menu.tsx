@@ -1,9 +1,4 @@
-import {
-	CubeIcon,
-	DownloadIcon,
-	FigmaLogoIcon,
-	GitHubLogoIcon,
-} from "@radix-ui/react-icons";
+import { CubeIcon, DownloadIcon, FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Flex, Link } from "@radix-ui/themes";
 
 export const Menu = () => {
@@ -23,8 +18,7 @@ export const Menu = () => {
 				p="4"
 				style={{
 					backgroundColor: "var(--color-panel-solid)",
-					backgroundImage:
-						"linear-gradient(to top, var(--accent-a4), var(--accent-a4))",
+					backgroundImage: "linear-gradient(to top, var(--accent-a4), var(--accent-a4))",
 					borderRadius: "var(--radius-1)",
 					boxShadow: "0 10px 40px -10px hsla(174, 100%, 30%, 0.05)",
 					userSelect: "none",

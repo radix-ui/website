@@ -30,9 +30,7 @@ export function ColorThemeProvider({
 	// resolved theme on the client, so before hydration we trust the appearance
 	// cookie, ensuring the SSR markup and the first client render agree. After
 	// hydration we follow Next Themes.
-	const isDark = isHydrated
-		? resolvedTheme === "dark"
-		: initialAppearance === "dark";
+	const isDark = isHydrated ? resolvedTheme === "dark" : initialAppearance === "dark";
 
 	// Mirror the resolved appearance into a cookie so the next SSR render starts
 	// with the correct theme already selected.
@@ -62,25 +60,20 @@ export function ColorThemeProvider({
 			return;
 		}
 		const url =
-			window.location.pathname +
-			(nextSearch ? `?${nextSearch}` : "") +
-			window.location.hash;
+			window.location.pathname + (nextSearch ? `?${nextSearch}` : "") + window.location.hash;
 		window.history.replaceState(window.history.state, "", url);
 	}, [palette]);
 
 	const setAccentValue = React.useCallback(
-		(value: string) =>
-			updatePalette(isDark ? { darkAccent: value } : { lightAccent: value }),
+		(value: string) => updatePalette(isDark ? { darkAccent: value } : { lightAccent: value }),
 		[isDark, updatePalette],
 	);
 	const setGrayValue = React.useCallback(
-		(value: string) =>
-			updatePalette(isDark ? { darkGray: value } : { lightGray: value }),
+		(value: string) => updatePalette(isDark ? { darkGray: value } : { lightGray: value }),
 		[isDark, updatePalette],
 	);
 	const setBgValue = React.useCallback(
-		(value: string) =>
-			updatePalette(isDark ? { darkBg: value } : { lightBg: value }),
+		(value: string) => updatePalette(isDark ? { darkBg: value } : { lightBg: value }),
 		[isDark, updatePalette],
 	);
 

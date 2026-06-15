@@ -27,10 +27,7 @@ type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 	focusable?: boolean;
 };
 
-export const ExampleThemesMusicApp = ({
-	focusable = true,
-	...props
-}: ExampleLayoutProps) => {
+export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLayoutProps) => {
 	// Interactive elements may be not focusable for homepage demo purposes
 	const tabIndex = focusable ? undefined : -1;
 
@@ -170,12 +167,7 @@ export const ExampleThemesMusicApp = ({
 
 							<Flex direction="column" gap="2" align="center" asChild>
 								<Text as="label">
-									<IconButton
-										tabIndex={tabIndex}
-										radius="full"
-										variant="soft"
-										color="gray"
-									>
+									<IconButton tabIndex={tabIndex} radius="full" variant="soft" color="gray">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 30 30"
@@ -199,12 +191,7 @@ export const ExampleThemesMusicApp = ({
 
 							<Flex direction="column" gap="2" align="center" asChild>
 								<Text as="label">
-									<IconButton
-										tabIndex={tabIndex}
-										radius="full"
-										variant="soft"
-										color="gray"
-									>
+									<IconButton tabIndex={tabIndex} radius="full" variant="soft" color="gray">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 30 30"
@@ -251,50 +238,17 @@ export const ExampleThemesMusicApp = ({
 						</Flex>
 
 						<Box position="relative" my="-1">
-							<Flex
-								direction="column"
-								gap="4"
-								py="4"
-								position="absolute"
-								left="0"
-								right="0"
-							>
-								<Box
-									mt="-1px"
-									style={{ borderTop: "1px dotted var(--gray-a5)" }}
-								/>
-								<Box
-									mt="-1px"
-									style={{ borderTop: "1px dotted var(--gray-a5)" }}
-								/>
-								<Box
-									mt="-1px"
-									style={{ borderTop: "1px dotted var(--gray-a5)" }}
-								/>
-								<Box
-									mt="-1px"
-									style={{ borderTop: "1px solid var(--gray-a5)" }}
-								/>
-								<Box
-									mt="-1px"
-									style={{ borderTop: "1px dotted var(--gray-a5)" }}
-								/>
-								<Box
-									mt="-1px"
-									style={{ borderTop: "1px dotted var(--gray-a5)" }}
-								/>
-								<Box
-									mt="-1px"
-									style={{ borderTop: "1px dotted var(--gray-a5)" }}
-								/>
+							<Flex direction="column" gap="4" py="4" position="absolute" left="0" right="0">
+								<Box mt="-1px" style={{ borderTop: "1px dotted var(--gray-a5)" }} />
+								<Box mt="-1px" style={{ borderTop: "1px dotted var(--gray-a5)" }} />
+								<Box mt="-1px" style={{ borderTop: "1px dotted var(--gray-a5)" }} />
+								<Box mt="-1px" style={{ borderTop: "1px solid var(--gray-a5)" }} />
+								<Box mt="-1px" style={{ borderTop: "1px dotted var(--gray-a5)" }} />
+								<Box mt="-1px" style={{ borderTop: "1px dotted var(--gray-a5)" }} />
+								<Box mt="-1px" style={{ borderTop: "1px dotted var(--gray-a5)" }} />
 							</Flex>
 
-							<Flex
-								flexShrink="0"
-								flexGrow="1"
-								justify="between"
-								position="relative"
-							>
+							<Flex flexShrink="0" flexGrow="1" justify="between" position="relative">
 								{[
 									{ frequency: "32", value: 75 },
 									{ frequency: "64", value: 73 },
@@ -443,46 +397,17 @@ export const ExampleThemesMusicApp = ({
 							</TextField.Root>
 						</Flex>
 
-						<Flex
-							align="center"
-							position="absolute"
-							top="0"
-							right="0"
-							height="64px"
-							mr="4"
-							gap="4"
-						>
-							<IconButton
-								tabIndex={tabIndex}
-								size="2"
-								variant="ghost"
-								radius="full"
-							>
+						<Flex align="center" position="absolute" top="0" right="0" height="64px" mr="4" gap="4">
+							<IconButton tabIndex={tabIndex} size="2" variant="ghost" radius="full">
 								<HeartIcon />
 							</IconButton>
-							<IconButton
-								tabIndex={tabIndex}
-								size="2"
-								variant="ghost"
-								radius="full"
-							>
+							<IconButton tabIndex={tabIndex} size="2" variant="ghost" radius="full">
 								<CounterClockwiseClockIcon />
 							</IconButton>
-							<IconButton
-								tabIndex={tabIndex}
-								size="2"
-								variant="ghost"
-								radius="full"
-							>
+							<IconButton tabIndex={tabIndex} size="2" variant="ghost" radius="full">
 								<MixerHorizontalIcon />
 							</IconButton>
-							<IconButton
-								tabIndex={tabIndex}
-								size="1"
-								variant="ghost"
-								radius="full"
-								color="gray"
-							>
+							<IconButton tabIndex={tabIndex} size="1" variant="ghost" radius="full" color="gray">
 								<Avatar
 									size="2"
 									radius="full"
@@ -766,17 +691,11 @@ export const ExampleThemesMusicApp = ({
 													Automatic downloads
 												</Text>
 												<Text as="div" color="gray" size="1">
-													Automatically download music when added to your
-													library
+													Automatically download music when added to your library
 												</Text>
 											</Box>
 
-											<Switch
-												size="3"
-												variant="classic"
-												tabIndex={tabIndex}
-												mt="2"
-											/>
+											<Switch size="3" variant="classic" tabIndex={tabIndex} mt="2" />
 										</Flex>
 									</Text>
 
@@ -787,17 +706,12 @@ export const ExampleThemesMusicApp = ({
 													Lossless audio
 												</Text>
 												<Text as="div" color="gray" size="1">
-													Preserve every detail of the original audio, but
-													consume significantly more data
+													Preserve every detail of the original audio, but consume significantly
+													more data
 												</Text>
 											</Box>
 
-											<Switch
-												size="3"
-												variant="classic"
-												tabIndex={tabIndex}
-												mt="2"
-											/>
+											<Switch size="3" variant="classic" tabIndex={tabIndex} mt="2" />
 										</Flex>
 									</Text>
 
@@ -812,12 +726,7 @@ export const ExampleThemesMusicApp = ({
 												</Text>
 											</Box>
 
-											<Switch
-												size="3"
-												variant="classic"
-												tabIndex={tabIndex}
-												mt="2"
-											/>
+											<Switch size="3" variant="classic" tabIndex={tabIndex} mt="2" />
 										</Flex>
 									</Text>
 
@@ -861,12 +770,7 @@ export const ExampleThemesMusicApp = ({
 												</Text>
 											</Box>
 											<Box flexGrow="1">
-												<Slider
-													tabIndex={tabIndex}
-													radius="full"
-													size="1"
-													defaultValue={[80]}
-												/>
+												<Slider tabIndex={tabIndex} radius="full" size="1" defaultValue={[80]} />
 											</Box>
 											<Box asChild width="32px">
 												<Text color="gray" size="1">
@@ -895,12 +799,7 @@ export const ExampleThemesMusicApp = ({
 												</Text>
 											</Box>
 											<Box flexGrow="1">
-												<Slider
-													tabIndex={tabIndex}
-													radius="full"
-													size="1"
-													defaultValue={[0]}
-												/>
+												<Slider tabIndex={tabIndex} radius="full" size="1" defaultValue={[0]} />
 											</Box>
 											<Box asChild width="32px">
 												<Text color="gray" size="1">
@@ -1153,11 +1052,7 @@ export const ExampleThemesMusicApp = ({
 											<Button
 												tabIndex={tabIndex}
 												radius="full"
-												variant={
-													["Blues", "Jazz", "Funk"].includes(genre)
-														? "solid"
-														: "soft"
-												}
+												variant={["Blues", "Jazz", "Funk"].includes(genre) ? "solid" : "soft"}
 												key={genre}
 											>
 												{genre}
@@ -1217,9 +1112,8 @@ export const ExampleThemesMusicApp = ({
 									</Heading>
 
 									<Text align="center" as="p" color="gray" size="2" mb="4">
-										A dark and introspective album that showcases King
-										Krule&apos;s distinctive blend of genres, while delivering
-										hauntingly raw and poetic lyrics.
+										A dark and introspective album that showcases King Krule&apos;s distinctive
+										blend of genres, while delivering hauntingly raw and poetic lyrics.
 									</Text>
 
 									<Flex justify="center" gap="3">
@@ -1252,43 +1146,35 @@ export const ExampleThemesMusicApp = ({
 												<HoverCard.Root>
 													<HoverCard.Trigger>
 														<Link href="#" tabIndex={tabIndex}>
-															I seem to sink lower, gazing in the rays of the
-															solar
+															I seem to sink lower, gazing in the rays of the solar
 														</Link>
 													</HoverCard.Trigger>
 													<HoverCard.Content side="top" maxWidth="320px">
 														<Flex gap="2" direction="column">
 															<Text size="2" as="p">
-																Archy Marshall begins the opening track with an
-																allusion to a common theme that appears
-																throughout his body of work – introspection, and
-																unhappiness with himself and the world around
-																him. A “sinking” feeling is often linked to
-																sadness, depression or anxiety.
+																Archy Marshall begins the opening track with an allusion to a common
+																theme that appears throughout his body of work – introspection, and
+																unhappiness with himself and the world around him. A “sinking”
+																feeling is often linked to sadness, depression or anxiety.
 															</Text>
 
 															<Text size="2" as="p">
-																After releasing his debut studio album 6 Feet
-																Beneath the Moon as King Krule, Archy said in an
-																interview with HYPEBEAST:
+																After releasing his debut studio album 6 Feet Beneath the Moon as
+																King Krule, Archy said in an interview with HYPEBEAST:
 															</Text>
 
 															<Blockquote size="2" color="gray">
-																I was unhappy with myself and what I was
-																creating, and when that happens you feel like
-																you’re useless. Musically I felt so useless.
+																I was unhappy with myself and what I was creating, and when that
+																happens you feel like you’re useless. Musically I felt so useless.
 															</Blockquote>
 
 															<Text size="2" as="p">
-																This lyric can furthermore be connected to his
-																debut album’s title.
+																This lyric can furthermore be connected to his debut album’s title.
 															</Text>
 														</Flex>
 													</HoverCard.Content>
 												</HoverCard.Root>
-												<Text>
-													In fact, we made a pact, but now I think it’s over
-												</Text>
+												<Text>In fact, we made a pact, but now I think it’s over</Text>
 
 												<HoverCard.Root>
 													<HoverCard.Trigger>
@@ -1299,10 +1185,9 @@ export const ExampleThemesMusicApp = ({
 													<HoverCard.Content side="top" maxWidth="320px">
 														<Flex gap="2" direction="column">
 															<Text size="2" as="p">
-																Archy is an Englishman, the flag of England is
-																white with a red cross. But he’s drinking KA
-																soda (or at least thinks he is), which is a soda
-																from the Caribbean
+																Archy is an Englishman, the flag of England is white with a red
+																cross. But he’s drinking KA soda (or at least thinks he is), which
+																is a soda from the Caribbean
 															</Text>
 														</Flex>
 													</HoverCard.Content>
@@ -1318,22 +1203,17 @@ export const ExampleThemesMusicApp = ({
 														<HoverCard.Content side="top" maxWidth="320px">
 															<Flex gap="2" direction="column">
 																<Text size="2" as="p">
-																	This could refer to the banning of 3 West
-																	African athletes from the 2014 Youth Olympic
-																	Games due to an ebola outbreak in the region.
-																	The line serves to set the scene by saying he
-																	is watching television, or at least its on,
-																	and news of the athletes&apos; banning would
-																	be what’s being broadcast.
+																	This could refer to the banning of 3 West African athletes from
+																	the 2014 Youth Olympic Games due to an ebola outbreak in the
+																	region. The line serves to set the scene by saying he is watching
+																	television, or at least its on, and news of the athletes&apos;
+																	banning would be what’s being broadcast.
 																</Text>
 															</Flex>
 														</HoverCard.Content>
 													</HoverCard.Root>
 												</Text>
-												<Text>
-													I think we might be bipolar, I think she thinks I’m
-													bipolar
-												</Text>
+												<Text>I think we might be bipolar, I think she thinks I’m bipolar</Text>
 
 												<HoverCard.Root>
 													<HoverCard.Trigger>
@@ -1344,16 +1224,14 @@ export const ExampleThemesMusicApp = ({
 													<HoverCard.Content side="top" maxWidth="320px">
 														<Flex gap="2" direction="column">
 															<Text size="2" as="p">
-																One of the most iconic mobile phones produced
-																was the Motorola Razr.
+																One of the most iconic mobile phones produced was the Motorola Razr.
 															</Text>
 
 															<Text size="2" as="p">
-																The name ‘Razor’ is meant to reflect how thin
-																the phone was. In this context, the “Motorola”
-																is a metaphor for the weapon left at the crime
-																scene. It could also be a direct reference to
-																the phone left at the scene.
+																The name ‘Razor’ is meant to reflect how thin the phone was. In this
+																context, the “Motorola” is a metaphor for the weapon left at the
+																crime scene. It could also be a direct reference to the phone left
+																at the scene.
 															</Text>
 														</Flex>
 													</HoverCard.Content>
@@ -1374,11 +1252,10 @@ export const ExampleThemesMusicApp = ({
 													<HoverCard.Content side="top" maxWidth="320px">
 														<Flex gap="2" direction="column">
 															<Text size="2" as="p">
-																Biscuit Town = Bermondsey, London, which is the
-																former home of Peek Freans, a now global biscuit
-																company. This is further confirmed by the
-																album’s two interludes being named “Bermondsey
-																Bosom (Left)” and “Bermondsey Bosom (Right)”.
+																Biscuit Town = Bermondsey, London, which is the former home of Peek
+																Freans, a now global biscuit company. This is further confirmed by
+																the album’s two interludes being named “Bermondsey Bosom (Left)” and
+																“Bermondsey Bosom (Right)”.
 															</Text>
 														</Flex>
 													</HoverCard.Content>
@@ -1387,13 +1264,12 @@ export const ExampleThemesMusicApp = ({
 
 											<Flex direction="column" align="start" gap="1">
 												<Text>
-													You&apos;re shallow waters, I&apos;m the deep seabed
-													And I&apos;m the reason you flow
+													You&apos;re shallow waters, I&apos;m the deep seabed And I&apos;m the
+													reason you flow
 												</Text>
-												I got more moons wrapped around my head and Jupiter
-												knows Whilst you orbit with some stupider hoes Only a
-												slacker would know tryna get up and group home Tryna eat
-												from the same bowl, in my troopers abode
+												I got more moons wrapped around my head and Jupiter knows Whilst you orbit
+												with some stupider hoes Only a slacker would know tryna get up and group
+												home Tryna eat from the same bowl, in my troopers abode
 											</Flex>
 										</Flex>
 									</Text>
@@ -1788,9 +1664,7 @@ const HeartIcon = (props: React.ComponentPropsWithoutRef<"svg">) => (
 	</svg>
 );
 
-const CounterClockwiseClockIcon = (
-	props: React.ComponentPropsWithoutRef<"svg">,
-) => (
+const CounterClockwiseClockIcon = (props: React.ComponentPropsWithoutRef<"svg">) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 30 30"

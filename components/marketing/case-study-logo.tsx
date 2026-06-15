@@ -124,11 +124,7 @@ export const CaseStudyLogo = ({ variant, ...props }: CaseStudyLogoProps) => {
 				xmlns="http://www.w3.org/2000/svg"
 				{...props}
 			>
-				<path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="M0 88H88V0H0V88ZM79 79V9H9V79H79Z"
-				></path>
+				<path fillRule="evenodd" clipRule="evenodd" d="M0 88H88V0H0V88ZM79 79V9H9V79H79Z"></path>
 				<path d="M179.17 51.7467H169.691C168.314 60.3341 162.562 65.2758 154.623 65.2758C144.091 65.2758 137.205 57.0936 137.205 44.0505C137.205 31.1695 143.848 22.8252 154.056 22.8252C162.319 22.8252 167.747 27.686 169.286 36.4353H178.764C176.901 23.6353 166.613 15.291 153.732 15.291C138.258 15.291 127.564 28.091 127.564 44.0505C127.564 60.4961 138.501 72.81 153.975 72.81C166.856 72.81 177.225 64.5467 179.17 51.7467Z"></path>
 				<path
 					fillRule="evenodd"

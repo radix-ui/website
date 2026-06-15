@@ -8,9 +8,7 @@ import { PrimitivesHeader } from "./primitives-header";
 import { PrimitivesSearchMobile } from "./primitives-search-mobile";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-export const PrimitivesMobileMenu = (
-	props: Omit<MobileMenuProps, "children">,
-) => {
+export const PrimitivesMobileMenu = (props: Omit<MobileMenuProps, "children">) => {
 	const [mobileSearchOpen, setMobileSearchOpen] = React.useState(false);
 	return (
 		<MobileMenu {...props}>

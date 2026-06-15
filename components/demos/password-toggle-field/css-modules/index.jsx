@@ -8,10 +8,7 @@ const PasswordToggleFieldDemo = () => (
 		<div className={styles.Root}>
 			<PasswordToggleField.Input className={styles.Input} />
 			<PasswordToggleField.Toggle className={styles.Toggle}>
-				<PasswordToggleField.Icon
-					visible={<EyeOpenIcon />}
-					hidden={<EyeClosedIcon />}
-				/>
+				<PasswordToggleField.Icon visible={<EyeOpenIcon />} hidden={<EyeClosedIcon />} />
 			</PasswordToggleField.Toggle>
 		</div>
 	</PasswordToggleField.Root>

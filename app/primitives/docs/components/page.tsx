@@ -42,9 +42,7 @@ export default function ComponentsIndex() {
 						<Box key={component.slug} asChild>
 							<li>
 								<Link size="3" weight="medium" asChild>
-									<NextLink href={`/${component.slug}` as Route}>
-										{component.title}
-									</NextLink>
+									<NextLink href={`/${component.slug}` as Route}>{component.title}</NextLink>
 								</Link>
 								<Text as="p" size="2" color="gray">
 									{component.description}

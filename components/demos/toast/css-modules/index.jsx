@@ -30,18 +30,11 @@ const ToastDemo = () => {
 			<Toast.Root className={styles.Root} open={open} onOpenChange={setOpen}>
 				<Toast.Title className={styles.Title}>Scheduled: Catch up</Toast.Title>
 				<Toast.Description asChild>
-					<time
-						className={styles.Description}
-						dateTime={eventDateRef.current.toISOString()}
-					>
+					<time className={styles.Description} dateTime={eventDateRef.current.toISOString()}>
 						{prettyDate(eventDateRef.current)}
 					</time>
 				</Toast.Description>
-				<Toast.Action
-					className={styles.Action}
-					asChild
-					altText="Goto schedule to undo"
-				>
+				<Toast.Action className={styles.Action} asChild altText="Goto schedule to undo">
 					<button className={`${styles.Button} small green`}>Undo</button>
 				</Toast.Action>
 			</Toast.Root>

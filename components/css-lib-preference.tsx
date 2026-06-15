@@ -10,14 +10,10 @@ type CssLibPreferenceContextValue = {
 	setPreferredCssLib: (lib: CssLib) => void;
 };
 
-const CssLibPreferenceContext =
-	React.createContext<CssLibPreferenceContextValue | null>(null);
+const CssLibPreferenceContext = React.createContext<CssLibPreferenceContextValue | null>(null);
 
-const CssLibPreferenceProvider: React.FC<{ children?: React.ReactNode }> = ({
-	children,
-}) => {
-	const [preferredCssLib, setPreferredCssLib] =
-		React.useState<CssLib>(DEFAULT_CSS_LIB);
+const CssLibPreferenceProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+	const [preferredCssLib, setPreferredCssLib] = React.useState<CssLib>(DEFAULT_CSS_LIB);
 
 	const savePreferredCssLib = React.useCallback((lib: unknown) => {
 		if (isValidCssLib(lib)) {
@@ -64,7 +60,6 @@ function setLocalStorageCssLib(lib: CssLib) {
 	window.localStorage.setItem(LOCAL_STORAGE_KEY, lib);
 }
 
-const isValidCssLib = (lib: unknown): lib is CssLib =>
-	SUPPORTED_CSS_LIBS.includes(lib as CssLib);
+const isValidCssLib = (lib: unknown): lib is CssLib => SUPPORTED_CSS_LIBS.includes(lib as CssLib);
 
 export { CssLibPreferenceProvider, useCssLibPreference, isValidCssLib };

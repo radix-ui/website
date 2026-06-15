@@ -19,25 +19,15 @@ const DialogDemo = () => (
 					<label className={styles.Label} htmlFor="name">
 						Name
 					</label>
-					<input
-						className={styles.Input}
-						id="name"
-						defaultValue="Pedro Duarte"
-					/>
+					<input className={styles.Input} id="name" defaultValue="Pedro Duarte" />
 				</fieldset>
 				<fieldset className={styles.Fieldset}>
 					<label className={styles.Label} htmlFor="username">
 						Username
 					</label>
-					<input
-						className={styles.Input}
-						id="username"
-						defaultValue="@peduarte"
-					/>
+					<input className={styles.Input} id="username" defaultValue="@peduarte" />
 				</fieldset>
-				<div
-					style={{ display: "flex", marginTop: 25, justifyContent: "flex-end" }}
-				>
+				<div style={{ display: "flex", marginTop: 25, justifyContent: "flex-end" }}>
 					<Dialog.Close asChild>
 						<button className={`${styles.Button} green`}>Save changes</button>
 					</Dialog.Close>

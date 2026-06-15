@@ -69,9 +69,7 @@ export function PrimitivesHeroTabs() {
 					</Label.Root>
 				</Fieldset>
 				<Flex justify="end" mt="4">
-					<PrimitivesHeroButton variant="gray">
-						Change password
-					</PrimitivesHeroButton>
+					<PrimitivesHeroButton variant="gray">Change password</PrimitivesHeroButton>
 				</Flex>
 			</TabsContent>
 		</Tabs>

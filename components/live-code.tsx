@@ -13,14 +13,9 @@ interface LiveCodeProps {
 	onRender?: (error: Error | undefined) => void;
 }
 
-export const LiveCode = ({
-	code = "",
-	scope = {},
-	onRender = () => undefined,
-}: LiveCodeProps) => {
+export const LiveCode = ({ code = "", scope = {}, onRender = () => undefined }: LiveCodeProps) => {
 	const currentError = React.useRef<Error | undefined>(undefined);
-	const setCurrentError = (error: Error | undefined) =>
-		(currentError.current = error);
+	const setCurrentError = (error: Error | undefined) => (currentError.current = error);
 
 	// Reset current error state at render
 	setCurrentError(undefined);
@@ -46,10 +41,7 @@ export const LiveCode = ({
 		// This is a valid React element
 		if (React.isValidElement(Preview)) {
 			return (
-				<ErrorBoundary
-					key={transformedCode}
-					onError={(error) => setCurrentError(error)}
-				>
+				<ErrorBoundary key={transformedCode} onError={(error) => setCurrentError(error)}>
 					{Preview}
 				</ErrorBoundary>
 			);
@@ -58,10 +50,7 @@ export const LiveCode = ({
 		// This is a function
 		if (typeof Preview === "function") {
 			return (
-				<ErrorBoundary
-					key={transformedCode}
-					onError={(error) => setCurrentError(error)}
-				>
+				<ErrorBoundary key={transformedCode} onError={(error) => setCurrentError(error)}>
 					<Preview />
 				</ErrorBoundary>
 			);
@@ -85,10 +74,7 @@ type ErrorBoundaryState = {
 	error?: Error;
 };
 
-class ErrorBoundary extends React.Component<
-	ErrorBoundaryProps,
-	ErrorBoundaryState
-> {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	constructor(props: ErrorBoundaryProps) {
 		super(props);
 		this.state = {};
@@ -135,8 +121,7 @@ const transform = (code = "") => {
 };
 
 // Wrap JSX code in React fragment so it's easier to author code that renders multiple elements
-const injectFragment = (code = "") =>
-	/^<[^]*>$/m.test(code) ? `<>${code}</>` : code;
+const injectFragment = (code = "") => (/^<[^]*>$/m.test(code) ? `<>${code}</>` : code);
 
 // Wrap code in `return` statement so we can create a function and inject try / catch into the expression body
 const injectReturnTryCatch = (code = "") => {
@@ -167,10 +152,7 @@ const injectReturnTryCatch = (code = "") => {
 	// This might be a function component declared like this: () => ...
 	regexp = /^((?:\([^]*?\)|\w+)\s*=>\s*)([^]+)/m;
 	if (regexp.test(code)) {
-		return code.replace(
-			regexp,
-			`return ($1 { try { return $2 } ${catchBlock}})`,
-		);
+		return code.replace(regexp, `return ($1 { try { return $2 } ${catchBlock}})`);
 	}
 
 	// No match found, don't do anything fancy

@@ -20,9 +20,7 @@ const [MagicCurtainProvider, useMagicCurtainContext] = Context.createContext<{
 	setItems: React.Dispatch<React.SetStateAction<MagicCurtainItem[]>>;
 
 	controlsPosition: { left: number; top: number };
-	setControlsPosition: React.Dispatch<
-		React.SetStateAction<{ left: number; top: number }>
-	>;
+	setControlsPosition: React.Dispatch<React.SetStateAction<{ left: number; top: number }>>;
 
 	// Which control is highlighted as active
 	highlightedControl: string;
@@ -66,11 +64,7 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
 			focusedControl={focusedControl}
 			setFocusedControl={setFocusedControl}
 		>
-			<div
-				ref={ref}
-				data-is-firefox={isFirefox}
-				className={styles.MagicCurtainRoot}
-			>
+			<div ref={ref} data-is-firefox={isFirefox} className={styles.MagicCurtainRoot}>
 				{children}
 			</div>
 		</MagicCurtainProvider>
@@ -86,8 +80,7 @@ const MagicCurtainItem = ({
 }) => {
 	const context = useMagicCurtainContext("MagicCurtain");
 	const ref = React.useRef<HTMLDivElement | null>(null);
-	const [visibility, setVisibility] =
-		React.useState<Visibility>(defaultVisibility);
+	const [visibility, setVisibility] = React.useState<Visibility>(defaultVisibility);
 	const { setItems } = context;
 
 	React.useLayoutEffect(() => {
@@ -96,9 +89,7 @@ const MagicCurtainItem = ({
 		setItems((items) =>
 			[...items, item].sort((a, b) => {
 				// Sort items according to their order in the DOM
-				return a.ref.current!.compareDocumentPosition(b.ref.current!) & 4
-					? -1
-					: 1;
+				return a.ref.current!.compareDocumentPosition(b.ref.current!) & 4 ? -1 : 1;
 			}),
 		);
 
@@ -110,12 +101,7 @@ const MagicCurtainItem = ({
 	}, [visibility, setItems]);
 
 	return (
-		<div
-			data-visibility={visibility}
-			ref={ref}
-			className={styles.MagicCurtainItem}
-			{...props}
-		>
+		<div data-visibility={visibility} ref={ref} className={styles.MagicCurtainItem} {...props}>
 			{visibility === "hidden" ? null : children}
 		</div>
 	);
@@ -132,9 +118,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 	const viewportWrapperRef = React.useRef<HTMLDivElement | null>(null);
 	const [menuValue, setMenuValue] = React.useState<string>("");
 	const [offsetIndex, setOffsetIndex] = React.useState<string>("");
-	const hasAnimatingItem = !!context.items.find(
-		(value) => value.visibility === "animating-out",
-	);
+	const hasAnimatingItem = !!context.items.find((value) => value.visibility === "animating-out");
 	const upcomingAnimationCallback = React.useRef<(() => void) | null>(null);
 
 	// Clear offset on viewport removal
@@ -142,9 +126,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 		const observer = new MutationObserver((mutationList) => {
 			for (const mutation of mutationList) {
 				if (mutation.type === "childList") {
-					const firstRemovedNode = mutation.removedNodes[0] as
-						| HTMLElement
-						| undefined;
+					const firstRemovedNode = mutation.removedNodes[0] as HTMLElement | undefined;
 
 					if (firstRemovedNode?.getAttribute("data-viewport")) {
 						setOffsetIndex("");
@@ -167,9 +149,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 				return;
 			}
 
-			const itemToHide = context.items.find(
-				(value) => value.visibility === "visible",
-			);
+			const itemToHide = context.items.find((value) => value.visibility === "visible");
 
 			const handleAnimationEnd = (event: AnimationEvent) => {
 				// Make sure this is the right animation
@@ -198,10 +178,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 
 			clickedItem.setVisibility("visible");
 			itemToHide?.setVisibility("animating-out");
-			itemToHide?.ref.current?.addEventListener(
-				"animationend",
-				handleAnimationEnd,
-			);
+			itemToHide?.ref.current?.addEventListener("animationend", handleAnimationEnd);
 		},
 		[context.items],
 	);
@@ -293,10 +270,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 								}
 
 								const items = context.items;
-								let nextItem =
-									event.key === "ArrowLeft"
-										? items[index - 1]
-										: items[index + 1];
+								let nextItem = event.key === "ArrowLeft" ? items[index - 1] : items[index + 1];
 
 								// This is for when we are focused on the item that isn’t currently active and press an arrow key.
 								// We want to activate the item on either arrow key press first before we can continue cycling through
@@ -315,9 +289,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 
 								// Always set the clicked control as highlighted,
 								// even if it's going to be animated a bit later
-								context.setHighlightedControl(
-									items.indexOf(nextItem).toString(),
-								);
+								context.setHighlightedControl(items.indexOf(nextItem).toString());
 
 								if (hasAnimatingItem) {
 									upcomingAnimationCallback.current = () => {
@@ -337,9 +309,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
 									forceMount
 									data-active={menuValue === index.toString()}
 									className={styles.MagicCurtainControlsPreviewContent}
-									onPointerMove={() =>
-										context.setHoveredControl(index.toString())
-									}
+									onPointerMove={() => context.setHoveredControl(index.toString())}
 									onPointerLeave={() => {
 										// Wait a tick and reset the control index if it wasn't changed by anything else
 										setTimeout(() => {

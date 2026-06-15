@@ -3,17 +3,7 @@ import NextLink from "next/link";
 import { ColorsHeader } from "@components/colors-header";
 import { ColorsMobileMenu } from "@components/colors-mobile-menu";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import {
-	Box,
-	Container,
-	Flex,
-	Grid,
-	Heading,
-	Link,
-	Section,
-	Text,
-	Theme,
-} from "@radix-ui/themes";
+import { Box, Container, Flex, Grid, Heading, Link, Section, Text, Theme } from "@radix-ui/themes";
 import { ColorUsageRange } from "@components/color-usage-range";
 import { ColorStepLabel } from "@components/color-step-label";
 import { Favicon } from "@components/favicon";
@@ -42,8 +32,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
 	...baseMetadata,
 	title: "Create a custom palette – Radix Colors",
-	description:
-		"An open-source color system for designing beautiful, accessible websites and apps.",
+	description: "An open-source color system for designing beautiful, accessible websites and apps.",
 };
 
 export default async function CustomColorsPage({
@@ -59,14 +48,9 @@ export default async function CustomColorsPage({
 		parsePaletteCookie(cookieStore.get(PALETTE_COOKIE)?.value),
 		await searchParams,
 	);
-	const initialAppearance = parseAppearanceCookie(
-		cookieStore.get(APPEARANCE_COOKIE)?.value,
-	);
+	const initialAppearance = parseAppearanceCookie(cookieStore.get(APPEARANCE_COOKIE)?.value);
 	return (
-		<ColorThemeProvider
-			initialPalette={initialPalette}
-			initialAppearance={initialAppearance}
-		>
+		<ColorThemeProvider initialPalette={initialPalette} initialAppearance={initialAppearance}>
 			<ColorStyles />
 			<RootTheme className="radix-themes-custom-fonts">
 				<Favicon />
@@ -77,18 +61,14 @@ export default async function CustomColorsPage({
 						right: 0,
 						height: 480,
 						opacity: 0.6,
-						background:
-							"linear-gradient(to bottom, var(--accent-4), transparent)",
+						background: "linear-gradient(to bottom, var(--accent-4), transparent)",
 					}}
 				/>
 
 				<ColorsHeader ghost />
 				<ColorsMobileMenu />
 
-				<Section
-					px={{ initial: "5", xs: "6", sm: "7", md: "9" }}
-					size={{ initial: "2", md: "3" }}
-				>
+				<Section px={{ initial: "5", xs: "6", sm: "7", md: "9" }} size={{ initial: "2", md: "3" }}>
 					<Container position="relative">
 						<Flex direction="column" align="center" mb="7">
 							<Flex asChild align="center" gap="1" mb="3">
@@ -166,73 +146,34 @@ export default async function CustomColorsPage({
 							mx={{ initial: "-5", xs: "-6", sm: "0" }}
 							px={{ initial: "2px", sm: "0" }}
 						>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="1 / 3"
-							>
+							<ColorUsageRange display={{ initial: "none", sm: "flex" }} gridColumn="1 / 3">
 								Backgrounds
 							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="3 / 6"
-							>
+							<ColorUsageRange display={{ initial: "none", sm: "flex" }} gridColumn="3 / 6">
 								Interactive components
 							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="6 / 9"
-							>
+							<ColorUsageRange display={{ initial: "none", sm: "flex" }} gridColumn="6 / 9">
 								Borders and separators
 							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="9 / 11"
-							>
+							<ColorUsageRange display={{ initial: "none", sm: "flex" }} gridColumn="9 / 11">
 								Solid colors
 							</ColorUsageRange>
-							<ColorUsageRange
-								display={{ initial: "none", sm: "flex" }}
-								gridColumn="11 / 13"
-							>
+							<ColorUsageRange display={{ initial: "none", sm: "flex" }} gridColumn="11 / 13">
 								Accessible text
 							</ColorUsageRange>
 
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								1
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								2
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								3
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								4
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								5
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								6
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								7
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								8
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								9
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								10
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								11
-							</ColorStepLabel>
-							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>
-								12
-							</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>1</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>2</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>3</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>4</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>5</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>6</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>7</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>8</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>9</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>10</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>11</ColorStepLabel>
+							<ColorStepLabel display={{ initial: "none", sm: "flex" }}>12</ColorStepLabel>
 
 							{Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
 								<Swatch key={step} scale={i} step={step} type="accent" />

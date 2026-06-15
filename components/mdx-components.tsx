@@ -47,8 +47,7 @@ export const components = {
 	Description: ({ children, ...props }: any) => {
 		// takes the text even if it's wrapped in `<p>`
 		// https://github.com/wooorm/xdm/issues/47
-		const childText =
-			typeof children === "string" ? children : children.props.children;
+		const childText = typeof children === "string" ? children : children.props.children;
 		return (
 			<Text as="p" size="4" mt="2" mb="7" color="gray" {...props}>
 				{childText}
@@ -99,9 +98,7 @@ export const components = {
 				<Flex asChild display="inline-flex" align="center" gap="1">
 					<Link {...props} href={href} target="_blank" rel="noopener">
 						{children}
-						<ExternalLinkIcon
-							style={{ marginTop: 2, marginLeft: -1, marginRight: -1 }}
-						/>
+						<ExternalLinkIcon style={{ marginTop: 2, marginLeft: -1, marginRight: -1 }} />
 					</Link>
 				</Flex>
 			);
@@ -112,9 +109,7 @@ export const components = {
 			</Link>
 		);
 	},
-	hr: (props: any) => (
-		<Separator size="2" {...props} my="8" style={{ marginInline: "auto" }} />
-	),
+	hr: (props: any) => <Separator size="2" {...props} my="8" style={{ marginInline: "auto" }} />,
 	ul: (props: any) => <ul {...props} className={styles.List} />,
 	ol: ({ children, ...props }: any) => (
 		<Box {...props} mb="3" pl="4" asChild>
@@ -131,10 +126,7 @@ export const components = {
 	img: ({ style, ...props }: any) => (
 		<Box my="6">
 			{/* oxlint-disable-next-line jsx-a11y/alt-text */}
-			<img
-				{...props}
-				style={{ maxWidth: "100%", verticalAlign: "middle", ...style }}
-			/>
+			<img {...props} style={{ maxWidth: "100%", verticalAlign: "middle", ...style }} />
 		</Box>
 	),
 	blockquote: Blockquote,
@@ -142,10 +134,7 @@ export const components = {
 	pre: ({ children }: any) => (
 		<CodeBlock.Root my="5">
 			{children.props.live && (
-				<CodeBlock.LivePreview
-					code={childrenText(children) ?? ""}
-					scroll={children.props.scroll}
-				/>
+				<CodeBlock.LivePreview code={childrenText(children) ?? ""} scroll={children.props.scroll} />
 			)}
 			<CodeBlock.Content>
 				<CodeBlock.Pre>{children}</CodeBlock.Pre>
@@ -157,11 +146,7 @@ export const components = {
 		// if it's a codeblock (``` block in markdown), it'll have a className from prism
 		const isInlineCode = !className;
 		return isInlineCode ? (
-			<Code
-				className={className}
-				{...props}
-				style={{ whiteSpace: "break-spaces" }}
-			/>
+			<Code className={className} {...props} style={{ whiteSpace: "break-spaces" }} />
 		) : (
 			<code className={className} {...props} />
 		);
@@ -208,19 +193,8 @@ const LinkHeading = ({
 	id: string;
 	children: React.ReactNode;
 } & React.ComponentProps<typeof Link>) => (
-	<Link
-		asChild
-		weight="bold"
-		highContrast
-		color="gray"
-		underline="hover"
-		{...props}
-	>
-		<a
-			id={id}
-			href={`#${id}`}
-			className={classNames(className, styles.LinkHeading)}
-		>
+	<Link asChild weight="bold" highContrast color="gray" underline="hover" {...props}>
+		<a id={id} href={`#${id}`} className={classNames(className, styles.LinkHeading)}>
 			{children}
 
 			<Link2Icon aria-hidden />
@@ -232,16 +206,9 @@ export const FrontmatterContext = React.createContext<Frontmatter>({} as any);
 
 // Custom provider for next-mdx-remote
 // https://github.com/hashicorp/next-mdx-remote#using-providers
-export function MDXProvider(props: {
-	frontmatter: Frontmatter;
-	children: React.ReactNode;
-}) {
+export function MDXProvider(props: { frontmatter: Frontmatter; children: React.ReactNode }) {
 	const { frontmatter, children } = props;
-	return (
-		<FrontmatterContext.Provider value={frontmatter}>
-			{children}
-		</FrontmatterContext.Provider>
-	);
+	return <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>;
 }
 
 export const childrenText = (children?: unknown): string | null => {

@@ -34,9 +34,7 @@ export function PropsTable({
 			<Table.Root variant="surface">
 				<Table.Header>
 					<Table.Row>
-						<Table.ColumnHeaderCell
-							style={{ width: propHeaderFixedWidth ? "37%" : "auto" }}
-						>
+						<Table.ColumnHeaderCell style={{ width: propHeaderFixedWidth ? "37%" : "auto" }}>
 							Prop
 						</Table.ColumnHeaderCell>
 						<Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
@@ -46,22 +44,9 @@ export function PropsTable({
 
 				<Table.Body>
 					{data.map(
-						(
-							{
-								name,
-								type,
-								typeSimple,
-								required,
-								default: defaultValue,
-								description,
-							},
-							i,
-						) => {
+						({ name, type, typeSimple, required, default: defaultValue, description }, i) => {
 							return (
-								<Table.Row
-									key={`${name}-${i}`}
-									style={{ whiteSpace: "nowrap" }}
-								>
+								<Table.Row key={`${name}-${i}`} style={{ whiteSpace: "nowrap" }}>
 									<Table.RowHeaderCell>
 										<Flex display="inline-flex" align="center" gap="2">
 											<Box>
@@ -73,12 +58,7 @@ export function PropsTable({
 											{description && (
 												<Popover.Root>
 													<Popover.Trigger>
-														<IconButton
-															variant="ghost"
-															size="1"
-															color="gray"
-															data-md-exclude
-														>
+														<IconButton variant="ghost" size="1" color="gray" data-md-exclude>
 															<AccessibleIcon.Root label="Prop description">
 																<InfoCircledIcon aria-hidden="true" />
 															</AccessibleIcon.Root>
@@ -112,12 +92,7 @@ export function PropsTable({
 											{Boolean(typeSimple) && Boolean(type) && (
 												<Popover.Root>
 													<Popover.Trigger>
-														<IconButton
-															variant="ghost"
-															color="gray"
-															size="1"
-															data-md-exclude
-														>
+														<IconButton variant="ghost" color="gray" size="1" data-md-exclude>
 															<AccessibleIcon.Root label="See full type">
 																<InfoCircledIcon />
 															</AccessibleIcon.Root>
@@ -134,8 +109,7 @@ export function PropsTable({
 																	style={{
 																		paddingTop: "var(--inset-padding-top)",
 																		paddingRight: "var(--inset-padding-right)",
-																		paddingBottom:
-																			"var(--inset-padding-bottom)",
+																		paddingBottom: "var(--inset-padding-bottom)",
 																		paddingLeft: "var(--inset-padding-left)",
 																	}}
 																>
@@ -167,9 +141,7 @@ export function PropsTable({
 										) : (
 											<>
 												<AccessibleIcon.Root label="No default value">
-													<DividerHorizontalIcon
-														style={{ color: "var(--gray-8)" }}
-													/>
+													<DividerHorizontalIcon style={{ color: "var(--gray-8)" }} />
 												</AccessibleIcon.Root>
 											</>
 										)}

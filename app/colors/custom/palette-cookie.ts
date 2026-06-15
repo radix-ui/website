@@ -13,9 +13,7 @@ export const APPEARANCE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
 
 export type Appearance = "light" | "dark";
 
-export function parseAppearanceCookie(
-	value: string | undefined,
-): Appearance | undefined {
+export function parseAppearanceCookie(value: string | undefined): Appearance | undefined {
 	return value === "light" || value === "dark" ? value : undefined;
 }
 

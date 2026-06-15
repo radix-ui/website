@@ -6,11 +6,7 @@ import styles from "./styles.module.css";
 const CollapsibleDemo = () => {
 	const [open, setOpen] = React.useState(false);
 	return (
-		<Collapsible.Root
-			className={styles.Root}
-			open={open}
-			onOpenChange={setOpen}
-		>
+		<Collapsible.Root className={styles.Root} open={open} onOpenChange={setOpen}>
 			<div
 				style={{
 					display: "flex",

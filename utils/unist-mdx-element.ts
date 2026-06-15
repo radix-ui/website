@@ -11,11 +11,7 @@ interface Args {
  * A tiny wrapper around unist-builder to easily create
  * a node that is an HTML element or a React component.
  */
-export const mdxElement = ({
-	name,
-	props = {},
-	children = [],
-}: Args): UnistNode => {
+export const mdxElement = ({ name, props = {}, children = [] }: Args): UnistNode => {
 	const isHtmlElement = name.toLowerCase() === name;
 	if (isHtmlElement) {
 		return u("element", { tagName: name, properties: props }, children);

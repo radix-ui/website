@@ -38,16 +38,9 @@ export default function CaseStudy() {
 						<Heading size="8" mb="2" align="center">
 							Case studies
 						</Heading>
-						<Text
-							align="center"
-							size="4"
-							mb="3"
-							as="p"
-							style={{ maxWidth: 480 }}
-							color="gray"
-						>
-							Learn how teams behind everyone’s favorite products use Radix to
-							save time, boost quality, and set the bar for accessibility.
+						<Text align="center" size="4" mb="3" as="p" style={{ maxWidth: 480 }} color="gray">
+							Learn how teams behind everyone’s favorite products use Radix to save time, boost
+							quality, and set the bar for accessibility.
 						</Text>
 					</Flex>
 					<Grid

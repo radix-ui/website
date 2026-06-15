@@ -18,9 +18,7 @@
  */
 @media (min-width: 1440px) {
 	.DocsPageWrapper {
-		margin-left: calc(
-			-144px + (100vw - 1440px) * 0.52 - (100vw - 1440px) * 1.25
-		);
+		margin-left: calc(-144px + (100vw - 1440px) * 0.52 - (100vw - 1440px) * 1.25);
 	}
 }
 

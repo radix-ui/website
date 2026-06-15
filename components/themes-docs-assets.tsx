@@ -34,13 +34,7 @@ import {
 } from "@radix-ui/themes";
 import { Label } from "radix-ui";
 import { allPeople } from "./people";
-import {
-	CheckIcon,
-	CopyIcon,
-	CubeIcon,
-	Half2Icon,
-	PlayIcon,
-} from "@radix-ui/react-icons";
+import { CheckIcon, CopyIcon, CubeIcon, Half2Icon, PlayIcon } from "@radix-ui/react-icons";
 import { Marker } from "./marker";
 import * as React from "react";
 import { ThemesPanelBackgroundImage } from "./themes-panel-background-image";
@@ -57,25 +51,9 @@ export function ThemesPanelCardExample({
 	return (
 		<Theme panelBackground={panelBackground} asChild>
 			<Flex direction="column" mx={{ initial: "-5", xs: "-6", sm: "0" }}>
-				<Flex
-					justify="center"
-					position="relative"
-					px="5"
-					py={{ initial: "7", xs: "9" }}
-				>
-					<Flex
-						align="center"
-						justify="center"
-						overflow="hidden"
-						position="absolute"
-						inset="0"
-					>
-						<ThemesPanelBackgroundImage
-							id="1"
-							width="900"
-							height="200%"
-							style={{ opacity: 0.5 }}
-						/>
+				<Flex justify="center" position="relative" px="5" py={{ initial: "7", xs: "9" }}>
+					<Flex align="center" justify="center" overflow="hidden" position="absolute" inset="0">
+						<ThemesPanelBackgroundImage id="1" width="900" height="200%" style={{ opacity: 0.5 }} />
 					</Flex>
 
 					<Box width="100%" maxWidth="400px">
@@ -95,22 +73,14 @@ export function ThemesPanelCardExample({
 
 							<Box mb="5" position="relative">
 								<Flex align="baseline" justify="between" mb="1">
-									<Text
-										as="label"
-										size="2"
-										weight="medium"
-										htmlFor={passwordFieldId}
-									>
+									<Text as="label" size="2" weight="medium" htmlFor={passwordFieldId}>
 										Password
 									</Text>
 									<Link href="#" size="2">
 										Forgot password?
 									</Link>
 								</Flex>
-								<TextField.Root
-									id={passwordFieldId}
-									placeholder="Enter your password"
-								/>
+								<TextField.Root id={passwordFieldId} placeholder="Enter your password" />
 							</Box>
 
 							<Flex
@@ -139,19 +109,8 @@ export function ThemesPanelTableExample({
 		<Card>
 			<Inset>
 				<Theme panelBackground={panelBackground} asChild>
-					<Flex
-						justify="center"
-						position="relative"
-						px="5"
-						py={{ initial: "5", sm: "8" }}
-					>
-						<Flex
-							align="center"
-							justify="center"
-							overflow="hidden"
-							position="absolute"
-							inset="0"
-						>
+					<Flex justify="center" position="relative" px="5" py={{ initial: "5", sm: "8" }}>
+						<Flex align="center" justify="center" overflow="hidden" position="absolute" inset="0">
 							<ThemesPanelBackgroundImage
 								id="2"
 								width="1700"
@@ -222,10 +181,7 @@ export function ThemesVariantsExample() {
 										<Text size="2" weight="bold">
 											Name
 										</Text>
-										<TextField.Root
-											variant="surface"
-											defaultValue="Emily Adams"
-										/>
+										<TextField.Root variant="surface" defaultValue="Emily Adams" />
 									</Label.Root>
 								</Flex>
 
@@ -234,10 +190,7 @@ export function ThemesVariantsExample() {
 										<Text size="2" weight="bold">
 											Username
 										</Text>
-										<TextField.Root
-											variant="surface"
-											defaultValue="@emilyadams"
-										/>
+										<TextField.Root variant="surface" defaultValue="@emilyadams" />
 									</Label.Root>
 								</Flex>
 
@@ -246,10 +199,7 @@ export function ThemesVariantsExample() {
 										<Text size="2" weight="bold">
 											Email
 										</Text>
-										<TextField.Root
-											variant="surface"
-											defaultValue="emily@example.com"
-										/>
+										<TextField.Root variant="surface" defaultValue="emily@example.com" />
 									</Label.Root>
 								</Flex>
 
@@ -321,8 +271,7 @@ export function ThemesVariantsExample() {
 									</Flex>
 
 									<Text as="p" size="3" align="center" mb="5">
-										You paid $17,975.30. A receipt copy was sent to{" "}
-										<Strong>acc@example.com</Strong>
+										You paid $17,975.30. A receipt copy was sent to <Strong>acc@example.com</Strong>
 									</Text>
 
 									<Flex direction="column" gap="3" align="stretch">
@@ -356,11 +305,7 @@ export function ThemesScalingExample() {
 					<Theme scaling={scaling} style={{ flex: 1, maxWidth: 240 + 20 * i }}>
 						<Card variant="surface" aria-label={`${scaling} scaled UI example`}>
 							<Flex gap="3" align="center" aria-hidden>
-								<Avatar
-									size="3"
-									src={person.image}
-									fallback={person?.name[0].toUpperCase()}
-								/>
+								<Avatar size="3" src={person.image} fallback={person?.name[0].toUpperCase()} />
 								<Box>
 									<Text as="div" size="2" weight="bold">
 										{person.name}
@@ -385,11 +330,7 @@ export function ThemesRadiusExample() {
 	return (
 		<PropValueExampleCard>
 			{themePropDefs.radius.values.map((radius, i, arr) => (
-				<PropValueExampleCardRow
-					value={radius}
-					bordered={i + 1 !== arr.length}
-					key={radius}
-				>
+				<PropValueExampleCardRow value={radius} bordered={i + 1 !== arr.length} key={radius}>
 					<Theme radius={radius}>
 						<Box maxWidth="320px">
 							<TextField.Root size="3" placeholder="Reply…">
@@ -476,13 +417,7 @@ export function ThemesRadiusScale() {
 
 			<Flex align="center" gap="1" px="4">
 				{[...new Array(6)].map((_, i) => (
-					<Flex
-						align="center"
-						justify="center"
-						height="100%"
-						width="100%"
-						key={i}
-					>
+					<Flex align="center" justify="center" height="100%" width="100%" key={i}>
 						<Text size="1" color="gray">
 							{i + 1}
 						</Text>
@@ -542,13 +477,7 @@ export function ThemesShadowScale() {
 
 			<Flex align="center" gap="1" px="4">
 				{[...new Array(6)].map((_, i) => (
-					<Flex
-						align="center"
-						justify="center"
-						height="100%"
-						width="100%"
-						key={i}
-					>
+					<Flex align="center" justify="center" height="100%" width="100%" key={i}>
 						<Text size="1" color="gray">
 							{i + 1}
 						</Text>
@@ -576,11 +505,7 @@ export function SwatchRow({ name }: { name: string }) {
 	);
 }
 
-export function ThemesColorScale({
-	type = "accent",
-}: {
-	type: "accent" | "gray";
-}) {
+export function ThemesColorScale({ type = "accent" }: { type: "accent" | "gray" }) {
 	return (
 		<Flex direction={{ sm: "column" }} gap="2">
 			<Flex
@@ -628,13 +553,7 @@ export function ThemesColorScale({
 				gap="1"
 			>
 				{[...new Array(12)].map((_, i) => (
-					<Flex
-						align="center"
-						justify="center"
-						height="100%"
-						width="100%"
-						key={i}
-					>
+					<Flex align="center" justify="center" height="100%" width="100%" key={i}>
 						<Text size="1" color="gray">
 							{i + 1}
 						</Text>
@@ -650,9 +569,7 @@ export function ThemesSpacingScale() {
 		<Flex align="end" gap="1">
 			{[...new Array(9)].map((_, i) => (
 				<Flex direction="column" flexGrow="1" key={i} align="center" gap="4">
-					<DecorativeBox
-						style={{ width: "100%", height: `var(--space-${i + 1})` }}
-					/>
+					<DecorativeBox style={{ width: "100%", height: `var(--space-${i + 1})` }} />
 
 					<Text size="1" color="gray">
 						{i + 1}
@@ -666,10 +583,7 @@ export function ThemesSpacingScale() {
 export function ThemesFontSizeScale() {
 	return (
 		<Box pb="6">
-			<Flex
-				align="stretch"
-				style={{ borderBottom: "1px dashed var(--gray-a6)" }}
-			>
+			<Flex align="stretch" style={{ borderBottom: "1px dashed var(--gray-a6)" }}>
 				{[...new Array(9)].map((_, i) => (
 					<Flex
 						key={i}
@@ -679,18 +593,11 @@ export function ThemesFontSizeScale() {
 						align="center"
 						position="relative"
 					>
-						<Text
-							weight="bold"
-							style={{ fontSize: `var(--font-size-${i + 1})` }}
-							trim="both"
-						>
+						<Text weight="bold" style={{ fontSize: `var(--font-size-${i + 1})` }} trim="both">
 							Aa
 						</Text>
 
-						<Flex
-							position="absolute"
-							style={{ top: "calc(100% + var(--space-4))" }}
-						>
+						<Flex position="absolute" style={{ top: "calc(100% + var(--space-4))" }}>
 							<Text size="1" color="gray">
 								{i + 1}
 							</Text>
@@ -730,24 +637,22 @@ export function ThemeGraySwatches() {
 	return (
 		<Flex direction="column" gap="5">
 			<Grid columns={{ initial: "4", xs: "6", sm: "9" }} gapX="1" gapY="3">
-				{(["gray", "mauve", "slate", "sage", "olive", "sand"] as const).map(
-					(color, i) => (
-						<Box flexGrow="1" key={i}>
-							<Box
-								mb="1"
-								height="48px"
-								style={{
-									backgroundColor: `var(--${color}-9)`,
-									borderRadius: "var(--radius-1)",
-									filter: color === "gray" ? "saturate(0)" : undefined,
-								}}
-							/>
-							<Text as="div" size="1" color="gray">
-								{color.charAt(0).toUpperCase() + color.slice(1)}
-							</Text>
-						</Box>
-					),
-				)}
+				{(["gray", "mauve", "slate", "sage", "olive", "sand"] as const).map((color, i) => (
+					<Box flexGrow="1" key={i}>
+						<Box
+							mb="1"
+							height="48px"
+							style={{
+								backgroundColor: `var(--${color}-9)`,
+								borderRadius: "var(--radius-1)",
+								filter: color === "gray" ? "saturate(0)" : undefined,
+							}}
+						/>
+						<Text as="div" size="1" color="gray">
+							{color.charAt(0).toUpperCase() + color.slice(1)}
+						</Text>
+					</Box>
+				))}
 			</Grid>
 		</Flex>
 	);
@@ -880,10 +785,7 @@ export function ThemesTypeSpecimen() {
 						</Flex>
 					</Flex>
 					<Grid align="baseline" columns="auto auto" gap="5">
-						<Box
-							position="relative"
-							top={{ initial: "0", sm: "calc(-1 * var(--line-height-2))" }}
-						>
+						<Box position="relative" top={{ initial: "0", sm: "calc(-1 * var(--line-height-2))" }}>
 							<Text
 								as="p"
 								size="2"
@@ -976,16 +878,8 @@ export function ThemesPanelComposition() {
 							boxShadow: "var(--shadow-5)",
 						}}
 					>
-						<StaticSkeleton
-							width="80px"
-							height="16px"
-							style={{ borderRadius: "100px" }}
-						/>
-						<StaticSkeleton
-							width="100%"
-							height="24px"
-							style={{ borderRadius: "100px" }}
-						/>
+						<StaticSkeleton width="80px" height="16px" style={{ borderRadius: "100px" }} />
+						<StaticSkeleton width="100%" height="24px" style={{ borderRadius: "100px" }} />
 					</Flex>
 				</Grid>
 			</Flex>
@@ -997,18 +891,12 @@ export function ThemesPanelComposition() {
 	);
 }
 
-const StaticSkeleton = (
-	props: React.ComponentPropsWithoutRef<typeof Skeleton>,
-) => (
+const StaticSkeleton = (props: React.ComponentPropsWithoutRef<typeof Skeleton>) => (
 	<Skeleton
 		{...props}
 		ref={(element) => {
 			element?.style.setProperty("animation", "none", "important");
-			element?.style.setProperty(
-				"background-color",
-				"var(--gray-a3)",
-				"important",
-			);
+			element?.style.setProperty("background-color", "var(--gray-a3)", "important");
 		}}
 	/>
 );
@@ -1177,9 +1065,7 @@ const VolumeMaxIcon = (props: React.ComponentPropsWithoutRef<"svg">) => (
 	</svg>
 );
 
-export function DecorativeBox(
-	props: React.ComponentPropsWithoutRef<typeof Box>,
-) {
+export function DecorativeBox(props: React.ComponentPropsWithoutRef<typeof Box>) {
 	return (
 		<Box
 			height="100%"
@@ -1200,21 +1086,13 @@ export function ThemesDarkModeExample() {
 	return (
 		<Box overflow="hidden" style={{ borderRadius: "var(--radius-6)" }}>
 			<Grid columns={{ initial: "1", sm: "2" }}>
-				<Theme
-					asChild
-					appearance="light"
-					style={{ backgroundColor: "var(--gray-2)" }}
-				>
+				<Theme asChild appearance="light" style={{ backgroundColor: "var(--gray-2)" }}>
 					<Box p={{ initial: "4", sm: "5" }}>
 						<AlbumCard />
 					</Box>
 				</Theme>
 
-				<Theme
-					asChild
-					appearance="dark"
-					style={{ backgroundColor: "var(--gray-2)" }}
-				>
+				<Theme asChild appearance="dark" style={{ backgroundColor: "var(--gray-2)" }}>
 					<Box p="5">
 						<AlbumCard />
 					</Box>
@@ -1277,8 +1155,7 @@ function AlbumCard() {
 					</Heading>
 
 					<Text align="center" as="p" color="gray" size="2" mb="4">
-						A dark and introspective album that showcases a distinctive blend of
-						genres.
+						A dark and introspective album that showcases a distinctive blend of genres.
 					</Text>
 
 					<Flex justify="center" gap="3">
@@ -1400,9 +1277,7 @@ export function ThemesSectionExample() {
 				}}
 			>
 				<Box height="96px">
-					<DecorativeBox
-						style={{ borderRadius: 0, borderLeft: 0, borderRight: 0 }}
-					/>
+					<DecorativeBox style={{ borderRadius: 0, borderLeft: 0, borderRight: 0 }} />
 				</Box>
 			</Section>
 		</Card>
@@ -1423,9 +1298,7 @@ export function ThemesContainerExample() {
 				}}
 			>
 				<Box height="96px">
-					<DecorativeBox
-						style={{ borderRadius: 0, borderTop: 0, borderBottom: 0 }}
-					/>
+					<DecorativeBox style={{ borderRadius: 0, borderTop: 0, borderBottom: 0 }} />
 				</Box>
 			</Container>
 		</Card>
@@ -1543,13 +1416,7 @@ export function ThemesBlogPostExampleSkeleton() {
 
 					<Box mb="5">
 						<Flex direction="column">
-							<Text
-								as="label"
-								size="2"
-								weight="medium"
-								mb="2"
-								htmlFor="password"
-							>
+							<Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
 								<Skeleton loading={isLoading}>Password</Skeleton>
 							</Text>
 							<Skeleton loading={isLoading}>
@@ -1579,13 +1446,7 @@ export function ThemesBlogPostExampleSkeleton() {
 			</Box>
 
 			<Box mb="6">
-				<Flex
-					justify="center"
-					position="absolute"
-					bottom="4"
-					left="0"
-					right="0"
-				>
+				<Flex justify="center" position="absolute" bottom="4" left="0" right="0">
 					<Button
 						size="1"
 						color="gray"
@@ -1690,10 +1551,7 @@ export function ThemesBlogPostExampleProgress() {
 export function ThemesBlogPostExampleTabNav() {
 	return (
 		<ThemesBlogPostExampleArea>
-			<TabNavDemo
-				items={["Account", "Documents", "Workspace"]}
-				size={{ initial: "1", xs: "2" }}
-			/>
+			<TabNavDemo items={["Account", "Documents", "Workspace"]} size={{ initial: "1", xs: "2" }} />
 		</ThemesBlogPostExampleArea>
 	);
 }
@@ -1705,12 +1563,7 @@ export function ThemesBlogPostExampleDataList() {
 				<DataList.Item align="center">
 					<DataList.Label minWidth="88px">Status</DataList.Label>
 					<DataList.Value>
-						<Badge
-							color="jade"
-							variant="soft"
-							radius="full"
-							style={{ marginLeft: -2 }}
-						>
+						<Badge color="jade" variant="soft" radius="full" style={{ marginLeft: -2 }}>
 							Authorized
 						</Badge>
 					</DataList.Value>

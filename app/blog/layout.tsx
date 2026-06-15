@@ -3,11 +3,7 @@ import { BlogHeader } from "@components/blog-header";
 import { BlogMobileMenu } from "@components/blog-mobile-menu";
 import { Theme } from "@radix-ui/themes";
 
-export default function BlogLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function BlogLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<Theme accentColor="indigo" className="radix-themes-custom-fonts">
 			<Favicon />

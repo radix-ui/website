@@ -184,10 +184,7 @@
 
 .MagicCurtainControlsPreviewViewportWrapper {
 	transform: translateX(
-		calc(
-			var(--magic-curtain-controls-offset-index) *
-				var(--magic-curtain-controls-trigger-width)
-		)
+		calc(var(--magic-curtain-controls-offset-index) * var(--magic-curtain-controls-trigger-width))
 	);
 	position: absolute;
 	top: calc(-1 * var(--magic-curtain-controls-preview-height));

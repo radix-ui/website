@@ -1,10 +1,7 @@
 import { Box, ScrollArea } from "@radix-ui/themes";
 
 export const SideNav = ({ children }: { children: React.ReactNode }) => (
-	<Box
-		display={{ initial: "none", md: "block" }}
-		style={{ width: 290, flexShrink: 0 }}
-	>
+	<Box display={{ initial: "none", md: "block" }} style={{ width: 290, flexShrink: 0 }}>
 		<Box
 			position="fixed"
 			left="0"

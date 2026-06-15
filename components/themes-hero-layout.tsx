@@ -2,26 +2,21 @@
 import * as React from "react";
 import styles from "./themes-hero-layout.module.css";
 
-const ThemesHeroLayoutRoot = ({
-	children,
-	...props
-}: React.ComponentPropsWithoutRef<"div">) => (
+const ThemesHeroLayoutRoot = ({ children, ...props }: React.ComponentPropsWithoutRef<"div">) => (
 	<div className={styles.ThemesHeroLayoutRoot} {...props}>
 		<div className={styles.ThemesHeroLayoutContent}>{children}</div>
 	</div>
 );
 
-const ThemesHeroLayoutBackground = (
-	props: React.ComponentPropsWithoutRef<"div">,
-) => <div className={styles.ThemesHeroLayoutBackground} {...props} />;
+const ThemesHeroLayoutBackground = (props: React.ComponentPropsWithoutRef<"div">) => (
+	<div className={styles.ThemesHeroLayoutBackground} {...props} />
+);
 
 const ThemesHeroLayoutMain = (props: React.ComponentPropsWithoutRef<"div">) => (
 	<div className={styles.ThemesHeroLayoutMain} {...props} />
 );
 
-const ThemesHeroLayoutControls = (
-	props: React.ComponentPropsWithoutRef<"div">,
-) => {
+const ThemesHeroLayoutControls = (props: React.ComponentPropsWithoutRef<"div">) => {
 	const [rendered, setRendered] = React.useState(false);
 
 	React.useEffect(() => {
@@ -35,17 +30,13 @@ const ThemesHeroLayoutControls = (
 	return <div className={styles.ThemesHeroLayoutControls} {...props} />;
 };
 
-const ThemesHeroLayoutShowcase = ({
-	children,
-}: React.ComponentPropsWithoutRef<"div">) => {
+const ThemesHeroLayoutShowcase = ({ children }: React.ComponentPropsWithoutRef<"div">) => {
 	return (
 		<div className={styles.ThemesHeroLayoutShowcase} aria-hidden>
 			<div className={styles.ThemesHeroLayoutShowcaseInner}>
 				{/* An extra div is needed to have padding working as expected within the scroll container */}
 				<div>
-					<div className={styles.ThemesHeroLayoutShowcaseInnerScaled}>
-						{children}
-					</div>
+					<div className={styles.ThemesHeroLayoutShowcaseInnerScaled}>{children}</div>
 				</div>
 			</div>
 		</div>

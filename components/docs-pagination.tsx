@@ -7,9 +7,7 @@ import { useCurrentPageSlug } from "@utils/use-current-page-slug";
 
 export function DocsPagination({ allRoutes }: { allRoutes: Route[] }) {
 	const currentPageSlug = useCurrentPageSlug();
-	const currentPageIndex = allRoutes.findIndex(
-		(page) => page.slug === currentPageSlug,
-	);
+	const currentPageIndex = allRoutes.findIndex((page) => page.slug === currentPageSlug);
 	const previous = allRoutes[currentPageIndex - 1];
 	const next = allRoutes[currentPageIndex + 1];
 
@@ -17,9 +15,7 @@ export function DocsPagination({ allRoutes }: { allRoutes: Route[] }) {
 		<Box>
 			{(previous || next) && (
 				<Flex aria-label="Pagination navigation" justify="between" my="8">
-					{previous && (
-						<DocsPaginationLink route={previous} direction="Previous" />
-					)}
+					{previous && <DocsPaginationLink route={previous} direction="Previous" />}
 					{next && (
 						<Box flexGrow="1" style={{ textAlign: "right" }}>
 							<DocsPaginationLink route={next} direction="Next" />
@@ -31,13 +27,7 @@ export function DocsPagination({ allRoutes }: { allRoutes: Route[] }) {
 	);
 }
 
-function DocsPaginationLink({
-	route,
-	direction,
-}: {
-	route: Route;
-	direction: string;
-}) {
+function DocsPaginationLink({ route, direction }: { route: Route; direction: string }) {
 	return (
 		<Flex
 			gap="1"

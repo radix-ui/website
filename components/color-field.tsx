@@ -5,9 +5,7 @@ import { TextField } from "@radix-ui/themes";
 import styles from "./color-field.module.css";
 import * as React from "react";
 
-interface ColorFieldProps extends React.ComponentPropsWithoutRef<
-	typeof TextField.Root
-> {
+interface ColorFieldProps extends React.ComponentPropsWithoutRef<typeof TextField.Root> {
 	value?: string;
 	defaultValue?: string;
 	onValueChange?: (value: string) => void;
@@ -143,9 +141,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
 									// after using the native browser’s picker, which always outputs a color formatted as hex.
 									const colorSpace = new Color(value!).spaceId;
 									const string = toShortFormat(
-										new Color(event.currentTarget.value)
-											.to(colorSpace)
-											.toString(),
+										new Color(event.currentTarget.value).to(colorSpace).toString(),
 									);
 
 									if (string) {
@@ -161,9 +157,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
 								// input type="color" accepts 6-digit hex values only
 								value={toCssFormat(
 									toShortFormat(
-										new Color(toCssFormat(color))
-											.to("srgb")
-											.toString({ format: "hex" }),
+										new Color(toCssFormat(color)).to("srgb").toString({ format: "hex" }),
 									)!,
 								)}
 							/>
@@ -213,9 +207,7 @@ const toShortFormat = (value?: string): string | null => {
 			const str = color.toString({ precision: 3 });
 
 			// Remove the `color()` function wrapper for brevity
-			return str.startsWith("color")
-				? str.replace("color(", "").replace(")", "")
-				: str;
+			return str.startsWith("color") ? str.replace("color(", "").replace(")", "") : str;
 		} catch {}
 	}
 

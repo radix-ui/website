@@ -1,9 +1,4 @@
-import {
-	CubeIcon,
-	DownloadIcon,
-	FigmaLogoIcon,
-	GitHubLogoIcon,
-} from "@radix-ui/react-icons";
+import { CubeIcon, DownloadIcon, FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export const iconsRoutes: RouteProps[] = [
 	{

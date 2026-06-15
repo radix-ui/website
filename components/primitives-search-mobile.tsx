@@ -34,10 +34,7 @@ export const PrimitivesSearchMobile = ({
 		<PrimitivesSearch.Root snippetLength={7} hitsPerPage={20}>
 			<Box position="relative">
 				<PrimitivesSearch.Input>
-					<input
-						ref={inputRef}
-						className={styles.PrimitivesSearchMobileInput}
-					/>
+					<input ref={inputRef} className={styles.PrimitivesSearchMobileInput} />
 				</PrimitivesSearch.Input>
 
 				<Flex
@@ -69,10 +66,7 @@ export const PrimitivesSearchMobile = ({
 				</Flex>
 			</Box>
 
-			<PrimitivesSearch.ResultsPanel
-				onSearchShow={onSearchShow}
-				onSearchHide={onSearchHide}
-			>
+			<PrimitivesSearch.ResultsPanel onSearchShow={onSearchShow} onSearchHide={onSearchHide}>
 				<Box
 					py="4"
 					style={{

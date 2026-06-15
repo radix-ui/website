@@ -14,10 +14,7 @@ const CheckboxDemo = () => (
 					<CheckIcon />
 				</Checkbox.Indicator>
 			</Checkbox.Root>
-			<label
-				className="pl-[15px] text-[15px] leading-none text-white"
-				htmlFor="c1"
-			>
+			<label className="pl-[15px] text-[15px] leading-none text-white" htmlFor="c1">
 				Accept terms and conditions.
 			</label>
 		</div>

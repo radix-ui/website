@@ -26,13 +26,7 @@ const NavigationMenuDemo = () => {
 										href="#"
 										aria-labelledby={`radix-primitives-link-${id}`}
 									>
-										<svg
-											aria-hidden
-											width="38"
-											height="38"
-											viewBox="0 0 25 25"
-											fill="white"
-										>
+										<svg aria-hidden width="38" height="38" viewBox="0 0 25 25" fill="white">
 											<path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z"></path>
 											<path d="M12 0H4V8H12V0Z"></path>
 											<path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z"></path>
@@ -55,19 +49,11 @@ const NavigationMenuDemo = () => {
 								title="Stitches"
 								aria-labelledby={`stitches-link-${id}`}
 							>
-								<VisuallyHidden id={`stitches-link-${id}`}>
-									Stitches{" "}
-								</VisuallyHidden>
+								<VisuallyHidden id={`stitches-link-${id}`}>Stitches </VisuallyHidden>
 								CSS-in-JS with best-in-class developer experience.
 							</ListItem>
-							<ListItem
-								href="/colors"
-								title="Colors"
-								aria-labelledby={`colors-link-${id}`}
-							>
-								<VisuallyHidden id={`colors-link-${id}`}>
-									Radix Colors{" "}
-								</VisuallyHidden>
+							<ListItem href="/colors" title="Colors" aria-labelledby={`colors-link-${id}`}>
+								<VisuallyHidden id={`colors-link-${id}`}>Radix Colors </VisuallyHidden>
 								Beautiful, thought-out palettes with auto dark mode.
 							</ListItem>
 							<ListItem
@@ -75,9 +61,7 @@ const NavigationMenuDemo = () => {
 								title="Icons"
 								aria-labelledby={`icons-link-${id}`}
 							>
-								<VisuallyHidden id={`icons-link-${id}`}>
-									Radix Icons{" "}
-								</VisuallyHidden>
+								<VisuallyHidden id={`icons-link-${id}`}>Radix Icons </VisuallyHidden>
 								A crisp set of 15x15 icons, balanced and consistent.
 							</ListItem>
 						</ul>
@@ -94,38 +78,22 @@ const NavigationMenuDemo = () => {
 					</NavigationMenu.Trigger>
 					<NavigationMenu.Content className="absolute left-0 top-0 w-full data-[motion=from-end]:animate-enterFromRight data-[motion=from-start]:animate-enterFromLeft data-[motion=to-end]:animate-exitToRight data-[motion=to-start]:animate-exitToLeft sm:w-auto">
 						<ul className="m-0 grid list-none gap-x-2.5 p-[22px] sm:w-[600px] sm:grid-flow-col sm:grid-rows-3">
-							<ListItem
-								title="Introduction"
-								href="/primitives/docs/overview/introduction"
-							>
+							<ListItem title="Introduction" href="/primitives/docs/overview/introduction">
 								Build high-quality, accessible design systems and web apps.
 							</ListItem>
-							<ListItem
-								title="Getting started"
-								href="/primitives/docs/overview/getting-started"
-							>
-								A quick tutorial to get you up and running with Radix
-								Primitives.
+							<ListItem title="Getting started" href="/primitives/docs/overview/getting-started">
+								A quick tutorial to get you up and running with Radix Primitives.
 							</ListItem>
 							<ListItem title="Styling" href="/primitives/docs/guides/styling">
 								Unstyled and compatible with any styling solution.
 							</ListItem>
-							<ListItem
-								title="Animation"
-								href="/primitives/docs/guides/animation"
-							>
+							<ListItem title="Animation" href="/primitives/docs/guides/animation">
 								Use CSS keyframes or any animation library of your choice.
 							</ListItem>
-							<ListItem
-								title="Accessibility"
-								href="/primitives/docs/overview/accessibility"
-							>
+							<ListItem title="Accessibility" href="/primitives/docs/overview/accessibility">
 								Tested in a range of browsers and assistive technologies.
 							</ListItem>
-							<ListItem
-								title="Releases"
-								href="/primitives/docs/overview/releases"
-							>
+							<ListItem title="Releases" href="/primitives/docs/overview/releases">
 								Radix Primitives releases and their changelogs.
 							</ListItem>
 						</ul>
@@ -168,9 +136,7 @@ const ListItem = React.forwardRef(function ListItem(
 					{...props}
 					ref={forwardedRef}
 				>
-					<div className="mb-[5px] font-medium leading-[1.2] text-violet12">
-						{title}
-					</div>
+					<div className="mb-[5px] font-medium leading-[1.2] text-violet12">{title}</div>
 					<p className="leading-[1.4] text-mauve11">{children}</p>
 				</a>
 			</NavigationMenu.Link>

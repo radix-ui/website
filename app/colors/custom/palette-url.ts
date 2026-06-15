@@ -17,9 +17,7 @@ const FIELD_TO_PARAM = Object.fromEntries(
 	Object.entries(PARAM_TO_FIELD).map(([param, field]) => [field, param]),
 ) as Record<keyof Palette, string>;
 
-export type SearchParamsLike =
-	| URLSearchParams
-	| Record<string, string | string[] | undefined>;
+export type SearchParamsLike = URLSearchParams | Record<string, string | string[] | undefined>;
 
 function getParam(params: SearchParamsLike, key: string): string | undefined {
 	if (params instanceof URLSearchParams) {
@@ -47,10 +45,7 @@ function stripHash(value: string): string {
 	return value.startsWith("#") ? value.slice(1) : value;
 }
 
-export function applyPaletteParams(
-	base: Palette,
-	params: SearchParamsLike,
-): Palette {
+export function applyPaletteParams(base: Palette, params: SearchParamsLike): Palette {
 	const next = { ...base };
 	for (const [param, field] of Object.entries(PARAM_TO_FIELD)) {
 		const raw = getParam(params, param);

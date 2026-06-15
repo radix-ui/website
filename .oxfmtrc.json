@@ -2,14 +2,22 @@
 	"$schema": "./node_modules/oxfmt/configuration_schema.json",
 	"useTabs": true,
 	"tabWidth": 2,
-	"printWidth": 80,
-	"experimentalSortPackageJson": false,
+	"printWidth": 100,
 	"ignorePatterns": [
+		//
 		"node_modules",
 		".next",
 		"out",
 		".mdx-data",
 		"aliasing.mdx",
 		"pnpm-lock.yaml"
+	],
+	"overrides": [
+		{
+			"files": ["**/*.mdx"],
+			"options": {
+				"printWidth": 80
+			}
+		}
 	]
 }

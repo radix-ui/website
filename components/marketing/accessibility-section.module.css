@@ -1,9 +1,5 @@
 .AccessibilitySectionRoot {
-	background: linear-gradient(
-		to bottom,
-		var(--gray-2),
-		var(--color-background)
-	);
+	background: linear-gradient(to bottom, var(--gray-2), var(--color-background));
 	position: relative;
 	overflow: hidden;
 }

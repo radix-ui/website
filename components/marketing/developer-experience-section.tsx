@@ -1,14 +1,6 @@
 "use client";
 import * as React from "react";
-import {
-	Box,
-	Section,
-	Text,
-	Flex,
-	Grid,
-	Heading,
-	Card,
-} from "@radix-ui/themes";
+import { Box, Section, Text, Flex, Grid, Heading, Card } from "@radix-ui/themes";
 import { MarketingCaption } from "./marketing-caption";
 import { Container, Theme } from "@radix-ui/themes";
 import { HiddenScroll } from "./hidden-scroll";
@@ -23,9 +15,7 @@ enum Highlights {
 }
 
 export const DeveloperExperienceSection = () => {
-	const [activeLines, setActiveLines] = React.useState<Highlights>(
-		Highlights.Unstyled,
-	);
+	const [activeLines, setActiveLines] = React.useState<Highlights>(Highlights.Unstyled);
 	const preRef = React.useRef<HTMLPreElement>(null);
 
 	React.useLayoutEffect(() => {
@@ -48,10 +38,7 @@ export const DeveloperExperienceSection = () => {
 		const linesToHighlight = rangeParser(activeLines);
 
 		const firstLineNumber = Math.max(0, linesToHighlight[0] - 1);
-		const lastLineNumber = Math.min(
-			lines.length - 1,
-			[...linesToHighlight].reverse()[0] - 1,
-		);
+		const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
 		const firstLine = lines[firstLineNumber];
 		const lastLine = lines[lastLineNumber];
 
@@ -61,13 +48,11 @@ export const DeveloperExperienceSection = () => {
 			return;
 		}
 
-		const linesHeight =
-			lastLine.offsetTop + lastLine.offsetHeight - firstLine.offsetTop;
+		const linesHeight = lastLine.offsetTop + lastLine.offsetHeight - firstLine.offsetTop;
 		const maxDistance = codeInner.clientHeight - codeBlockHeight;
 
 		const codeFits = linesHeight < codeBlockHeight;
-		const lastLineIsBelow =
-			lastLine.offsetTop + lastLine.offsetHeight > codeBlockHeight - paddingY;
+		const lastLineIsBelow = lastLine.offsetTop + lastLine.offsetHeight > codeBlockHeight - paddingY;
 		const lastLineIsAbove = !lastLineIsBelow;
 
 		let translateY: number;
@@ -109,18 +94,15 @@ export const DeveloperExperienceSection = () => {
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Grid gap={{ initial: "5", md: "8" }} columns={{ sm: "auto 1fr" }}>
 					<Box style={{ maxWidth: 430 }}>
-						<MarketingCaption mb="1">
-							Developer experience to love
-						</MarketingCaption>
+						<MarketingCaption mb="1">Developer experience to love</MarketingCaption>
 						<Heading as="h2" size="7" mb="4">
 							Develop with an open, thought‑out API
 						</Heading>
 
 						<Text as="p" mb="5" style={{ maxWidth: 500 }}>
-							One of our main goals is to provide the best possible developer
-							experience. Radix Primitives provides a fully-typed API. All
-							components share a similar API, creating a consistent and
-							predictable experience.
+							One of our main goals is to provide the best possible developer experience. Radix
+							Primitives provides a fully-typed API. All components share a similar API, creating a
+							consistent and predictable experience.
 						</Text>
 
 						<HiddenScroll
@@ -141,9 +123,7 @@ export const DeveloperExperienceSection = () => {
 									<CodeBlock.Root style={codeBlockRootStyles}>
 										<CodeBlock.Content>
 											<CodeBlock.Pre>
-												<CodeBlock.Code language="jsx">
-													{code.unstyled}
-												</CodeBlock.Code>
+												<CodeBlock.Code language="jsx">{code.unstyled}</CodeBlock.Code>
 											</CodeBlock.Pre>
 										</CodeBlock.Content>
 									</CodeBlock.Root>
@@ -162,9 +142,7 @@ export const DeveloperExperienceSection = () => {
 									<CodeBlock.Root style={codeBlockRootStyles}>
 										<CodeBlock.Content>
 											<CodeBlock.Pre>
-												<CodeBlock.Code language="jsx">
-													{code.composable}
-												</CodeBlock.Code>
+												<CodeBlock.Code language="jsx">{code.composable}</CodeBlock.Code>
 											</CodeBlock.Pre>
 										</CodeBlock.Content>
 									</CodeBlock.Root>
@@ -183,9 +161,7 @@ export const DeveloperExperienceSection = () => {
 									<CodeBlock.Root style={codeBlockRootStyles}>
 										<CodeBlock.Content>
 											<CodeBlock.Pre>
-												<CodeBlock.Code language="jsx">
-													{code.customizable}
-												</CodeBlock.Code>
+												<CodeBlock.Code language="jsx">{code.customizable}</CodeBlock.Code>
 											</CodeBlock.Pre>
 										</CodeBlock.Content>
 									</CodeBlock.Root>
@@ -204,9 +180,7 @@ export const DeveloperExperienceSection = () => {
 									<CodeBlock.Root style={codeBlockRootStyles}>
 										<CodeBlock.Content>
 											<CodeBlock.Pre>
-												<CodeBlock.Code language="jsx">
-													{code.consistent}
-												</CodeBlock.Code>
+												<CodeBlock.Code language="jsx">{code.consistent}</CodeBlock.Code>
 											</CodeBlock.Pre>
 										</CodeBlock.Content>
 									</CodeBlock.Root>
@@ -224,12 +198,7 @@ export const DeveloperExperienceSection = () => {
 							</Grid>
 						</HiddenScroll>
 
-						<Flex
-							gap="1"
-							direction="column"
-							ml="-3"
-							display={{ initial: "none", md: "flex" }}
-						>
+						<Flex gap="1" direction="column" ml="-3" display={{ initial: "none", md: "flex" }}>
 							<Card
 								asChild
 								onMouseDown={() => setActiveLines(Highlights.Unstyled)}
@@ -238,9 +207,7 @@ export const DeveloperExperienceSection = () => {
 								style={{
 									margin: 0,
 									backgroundColor:
-										activeLines === Highlights.Unstyled
-											? "var(--gray-a3)"
-											: undefined,
+										activeLines === Highlights.Unstyled ? "var(--gray-a3)" : undefined,
 								}}
 							>
 								<button>
@@ -261,9 +228,7 @@ export const DeveloperExperienceSection = () => {
 								style={{
 									margin: 0,
 									backgroundColor:
-										activeLines === Highlights.Composable
-											? "var(--gray-a3)"
-											: undefined,
+										activeLines === Highlights.Composable ? "var(--gray-a3)" : undefined,
 								}}
 							>
 								<button>
@@ -284,9 +249,7 @@ export const DeveloperExperienceSection = () => {
 								style={{
 									margin: 0,
 									backgroundColor:
-										activeLines === Highlights.Customizable
-											? "var(--gray-a3)"
-											: undefined,
+										activeLines === Highlights.Customizable ? "var(--gray-a3)" : undefined,
 								}}
 							>
 								<button>
@@ -307,9 +270,7 @@ export const DeveloperExperienceSection = () => {
 								style={{
 									margin: 0,
 									backgroundColor:
-										activeLines === Highlights.Consistent
-											? "var(--gray-a3)"
-											: undefined,
+										activeLines === Highlights.Consistent ? "var(--gray-a3)" : undefined,
 								}}
 							>
 								<button>
@@ -350,11 +311,7 @@ export const DeveloperExperienceSection = () => {
 
 								<CodeBlock.Content>
 									<CodeBlock.Pre ref={preRef} overflow="hidden">
-										<CodeBlock.Code
-											language="jsx"
-											invertLineHighlight
-											style={codeBlockCodeStyles}
-										>
+										<CodeBlock.Code language="jsx" invertLineHighlight style={codeBlockCodeStyles}>
 											{allCode}
 										</CodeBlock.Code>
 									</CodeBlock.Pre>
@@ -369,8 +326,7 @@ export const DeveloperExperienceSection = () => {
 };
 
 const codeBlockRootStyles = {
-	"--code-block-background":
-		"var(--developer-experience-code-block-background)",
+	"--code-block-background": "var(--developer-experience-code-block-background)",
 	"--code-block-border": "transparent",
 	"--code-block-radius": "var(--radius-5)",
 	"--scrollarea-scrollbar-vertical-margin-top": "var(--space-2)",
@@ -497,9 +453,4 @@ export const InfoDialog = ({ children }) => {
 };`,
 };
 
-const allCode = [
-	code.unstyled,
-	code.composable,
-	code.customizable,
-	code.consistent,
-].join("\t");
+const allCode = [code.unstyled, code.composable, code.customizable, code.consistent].join("\t");

@@ -10,9 +10,7 @@ interface PageProps {
 	params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({
-	params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const { frontmatter } = await getMdxBySlug(DOCS_BASE, slug);
 	return {
@@ -33,10 +31,7 @@ export default async function ComponentsDoc({ params }: PageProps) {
 	const extendedFrontmatter = {
 		...frontmatter,
 		version: packageData?.version ?? undefined,
-		gzip:
-			typeof packageData?.gzip === "number"
-				? formatBytes(packageData.gzip)
-				: undefined,
+		gzip: typeof packageData?.gzip === "number" ? formatBytes(packageData.gzip) : undefined,
 	};
 
 	return (
@@ -45,11 +40,7 @@ export default async function ComponentsDoc({ params }: PageProps) {
 				Components
 			</div>
 
-			<MdxContent
-				code={code}
-				frontmatter={extendedFrontmatter}
-				scope="primitives"
-			/>
+			<MdxContent code={code} frontmatter={extendedFrontmatter} scope="primitives" />
 
 			<QuickNav key={frontmatter.slug} />
 		</>

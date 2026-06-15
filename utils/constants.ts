@@ -1,9 +1,5 @@
 const DEFAULT_CSS_LIB = "css";
-const SUPPORTED_CSS_LIBS = [
-	DEFAULT_CSS_LIB,
-	"css-modules",
-	"tailwind",
-] as const;
+const SUPPORTED_CSS_LIBS = [DEFAULT_CSS_LIB, "css-modules", "tailwind"] as const;
 
 type CssLib = (typeof SUPPORTED_CSS_LIBS)[number];
 

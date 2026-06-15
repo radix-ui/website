@@ -40,10 +40,9 @@ export const CaseStudiesSection = () => {
 								</AccessibleIcon>
 							</Box>
 							<Text as="p" size="3" mb="4" style={{ textIndent: "-0.5em" }}>
-								“Radix Primitives are crucial for the Node.js website and are a
-								significant part of Node’s Web Design System. It allows our
-								engineers to focus on what matters and create delightful
-								experiences for the community.”
+								“Radix Primitives are crucial for the Node.js website and are a significant part of
+								Node’s Web Design System. It allows our engineers to focus on what matters and
+								create delightful experiences for the community.”
 							</Text>
 							<Flex align="center" gap="3">
 								<Avatar
@@ -67,10 +66,9 @@ export const CaseStudiesSection = () => {
 								</AccessibleIcon>
 							</Box>
 							<Text as="p" size="3" mb="4" style={{ textIndent: "-0.5em" }}>
-								“We’ve been able to focus on building solid user experiences on
-								top of Radix Primitives. With UI components, there are just too
-								many angles and rabbit holes to cover for product teams that
-								wish to move quickly.”
+								“We’ve been able to focus on building solid user experiences on top of Radix
+								Primitives. With UI components, there are just too many angles and rabbit holes to
+								cover for product teams that wish to move quickly.”
 							</Text>
 							<Flex align="center" gap="3">
 								<Avatar
@@ -114,13 +112,7 @@ export const CaseStudiesSection = () => {
 					mx={{ initial: "-5", xs: "-6", sm: "-7", md: "-9" }}
 					px={{ initial: "5", xs: "6", sm: "7", md: "9" }}
 				>
-					<Grid
-						columns="none"
-						flow="column"
-						align="center"
-						justify="start"
-						gap="6"
-					>
+					<Grid columns="none" flow="column" align="center" justify="start" gap="6">
 						<LogoLink asChild>
 							<NextLink href="/primitives/case-studies/basedash">
 								<AccessibleIcon label="Basedash case study">
@@ -172,10 +164,7 @@ export const CaseStudiesSection = () => {
 						<LogoLink style={{ marginTop: 2 }} asChild>
 							<NextLink href="/primitives/case-studies/university-of-amsterdam">
 								<AccessibleIcon label="University of Amsterdam case study">
-									<CaseStudyLogo
-										variant="University of Amsterdam"
-										width="152"
-									/>
+									<CaseStudyLogo variant="University of Amsterdam" width="152" />
 								</AccessibleIcon>
 							</NextLink>
 						</LogoLink>

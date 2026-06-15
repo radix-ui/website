@@ -5,12 +5,9 @@ module.exports = (Prism) => {
 		/<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/gi;
 	//this will match a line plus the line break while ignoring the line breaks HTML tags may contain.
 	var HTML_LINE = RegExp(
-		/(?:__|[^\r\n<])*(?:\r\n?|\n|(?:__|[^\r\n<])(?![^\r\n]))/.source.replace(
-			/__/g,
-			function () {
-				return HTML_TAG.source;
-			},
-		),
+		/(?:__|[^\r\n<])*(?:\r\n?|\n|(?:__|[^\r\n<])(?![^\r\n]))/.source.replace(/__/g, function () {
+			return HTML_TAG.source;
+		}),
 		"gi",
 	);
 
@@ -62,9 +59,7 @@ module.exports = (Prism) => {
 			}
 
 			// get the HTML source of the prefix token
-			var prefixToken = new Prism.Token("prefix", PREFIXES[env.type], [
-				/\w+/.exec(env.type)[0],
-			]);
+			var prefixToken = new Prism.Token("prefix", PREFIXES[env.type], [/\w+/.exec(env.type)[0]]);
 			var prefix = Prism.Token.stringify(prefixToken, env.language);
 
 			// add prefix

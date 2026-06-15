@@ -30,12 +30,9 @@ module.exports = {
 			},
 			animation: {
 				slideUpAndFade: "slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-				slideRightAndFade:
-					"slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-				slideDownAndFade:
-					"slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-				slideLeftAndFade:
-					"slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+				slideRightAndFade: "slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+				slideDownAndFade: "slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+				slideLeftAndFade: "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
 			},
 		},
 	},

@@ -12,9 +12,7 @@ export function CssVariablesTable({ data }: { data: KeyboardDef[] }) {
 			<Table.Root variant="surface">
 				<Table.Header>
 					<Table.Row>
-						<Table.ColumnHeaderCell style={{ width: "37%" }}>
-							CSS Variable
-						</Table.ColumnHeaderCell>
+						<Table.ColumnHeaderCell style={{ width: "37%" }}>CSS Variable</Table.ColumnHeaderCell>
 						<Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
 					</Table.Row>
 				</Table.Header>

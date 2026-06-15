@@ -30,9 +30,7 @@ export function useLocalStorage<T>(
 
 	const serializer = React.useCallback<(value: T) => string>(
 		(value) => {
-			return options.serializer
-				? options.serializer(value)
-				: JSON.stringify(value);
+			return options.serializer ? options.serializer(value) : JSON.stringify(value);
 		},
 		[options],
 	);
@@ -47,8 +45,7 @@ export function useLocalStorage<T>(
 				return undefined as unknown as T;
 			}
 
-			const defaultValue =
-				initialValue instanceof Function ? initialValue() : initialValue;
+			const defaultValue = initialValue instanceof Function ? initialValue() : initialValue;
 			let parsed: unknown;
 			try {
 				parsed = JSON.parse(value);
@@ -65,8 +62,7 @@ export function useLocalStorage<T>(
 	// Get from local storage then
 	// parse stored json or return initialValue
 	const readValue = React.useCallback((): T => {
-		const initialValueToUse =
-			initialValue instanceof Function ? initialValue() : initialValue;
+		const initialValueToUse = initialValue instanceof Function ? initialValue() : initialValue;
 
 		// Prevent build error "window is undefined" but keep working
 		if (!canUseDOM) {
@@ -92,33 +88,31 @@ export function useLocalStorage<T>(
 
 	// Return a wrapped version of useState's setter function that ...
 	// ... persists the new value to localStorage.
-	const setValue: React.Dispatch<SetStateAction<T>> = useEffectEvent(
-		(value) => {
-			// Prevent build error "window is undefined" but keeps working
-			if (!canUseDOM) {
-				console.warn(
-					`Tried setting localStorage key “${key}” even though environment is not a client`,
-				);
-				return;
-			}
+	const setValue: React.Dispatch<SetStateAction<T>> = useEffectEvent((value) => {
+		// Prevent build error "window is undefined" but keeps working
+		if (!canUseDOM) {
+			console.warn(
+				`Tried setting localStorage key “${key}” even though environment is not a client`,
+			);
+			return;
+		}
 
-			try {
-				// Allow value to be a function so we have the same API as useState
-				const newValue = value instanceof Function ? value(readValue()) : value;
+		try {
+			// Allow value to be a function so we have the same API as useState
+			const newValue = value instanceof Function ? value(readValue()) : value;
 
-				// Save to local storage
-				window.localStorage.setItem(key, serializer(newValue));
+			// Save to local storage
+			window.localStorage.setItem(key, serializer(newValue));
 
-				// Save state
-				setStoredValue(newValue);
+			// Save state
+			setStoredValue(newValue);
 
-				// We dispatch a custom event so every similar useLocalStorage hook is notified
-				window.dispatchEvent(new StorageEvent("local-storage", { key }));
-			} catch (error) {
-				console.warn(`Error setting localStorage key “${key}”:`, error);
-			}
-		},
-	);
+			// We dispatch a custom event so every similar useLocalStorage hook is notified
+			window.dispatchEvent(new StorageEvent("local-storage", { key }));
+		} catch (error) {
+			console.warn(`Error setting localStorage key “${key}”:`, error);
+		}
+	});
 
 	const removeValue = useEffectEvent(() => {
 		// Prevent build error "window is undefined" but keeps working
@@ -129,8 +123,7 @@ export function useLocalStorage<T>(
 			return;
 		}
 
-		const defaultValue =
-			initialValue instanceof Function ? initialValue() : initialValue;
+		const defaultValue = initialValue instanceof Function ? initialValue() : initialValue;
 
 		// Remove the key from local storage
 		window.localStorage.removeItem(key);

@@ -19,10 +19,7 @@ export const StatsSection = () => {
 				}}
 			/>
 			<FancyBackgroundChart />
-			<Container
-				position="relative"
-				mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}
-			>
+			<Container position="relative" mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 				<Grid
 					width="fit-content"
 					align="stretch"
@@ -36,10 +33,8 @@ export const StatsSection = () => {
 						<Flex asChild align="center">
 							<Text
 								style={{
-									fontSize:
-										"max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
-									fontFamily:
-										'var(--font-adobe-text-pro), serif',
+									fontSize: "max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
+									fontFamily: "var(--font-adobe-text-pro), serif",
 									fontVariant: "proportional-nums",
 									lineHeight: 0.85,
 									letterSpacing: "-0.05em",
@@ -72,10 +67,8 @@ export const StatsSection = () => {
 						<Flex asChild align="center">
 							<Text
 								style={{
-									fontSize:
-										"max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
-									fontFamily:
-										'var(--font-adobe-text-pro), serif',
+									fontSize: "max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
+									fontFamily: "var(--font-adobe-text-pro), serif",
 									fontVariant: "proportional-nums",
 									lineHeight: 0.85,
 									letterSpacing: "-0.05em",
@@ -108,10 +101,8 @@ export const StatsSection = () => {
 						<Flex asChild align="center">
 							<Text
 								style={{
-									fontSize:
-										"max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
-									fontFamily:
-										'var(--font-adobe-text-pro), serif',
+									fontSize: "max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
+									fontFamily: "var(--font-adobe-text-pro), serif",
 									fontVariant: "proportional-nums",
 									lineHeight: 0.85,
 									letterSpacing: "-0.05em",
@@ -170,12 +161,7 @@ const FancyBackgroundChart = () => {
 					xmlns="http://www.w3.org/2000/svg"
 					style={{ position: "absolute", width: "100%", height: "100%" }}
 				>
-					<rect
-						y="10"
-						width="320"
-						height="310"
-						fill="url(#gradient-fill-space)"
-					/>
+					<rect y="10" width="320" height="310" fill="url(#gradient-fill-space)" />
 					<defs>
 						<linearGradient
 							gradientUnits="userSpaceOnUse"
@@ -185,15 +171,8 @@ const FancyBackgroundChart = () => {
 							x2="0"
 							y2="100%"
 						>
-							<stop
-								offset="0"
-								stopColor="var(--stats-section-chart-top-color)"
-								stopOpacity="0"
-							/>
-							<stop
-								offset="0.7"
-								stopColor="var(--stats-section-chart-bottom-color)"
-							/>
+							<stop offset="0" stopColor="var(--stats-section-chart-top-color)" stopOpacity="0" />
+							<stop offset="0.7" stopColor="var(--stats-section-chart-bottom-color)" />
 						</linearGradient>
 					</defs>
 				</svg>
@@ -239,15 +218,8 @@ const Chart = () => (
 				y2="319"
 				gradientUnits="userSpaceOnUse"
 			>
-				<stop
-					offset="0"
-					stopColor="var(--stats-section-chart-top-color)"
-					stopOpacity="0"
-				/>
-				<stop
-					offset="0.7"
-					stopColor="var(--stats-section-chart-bottom-color)"
-				/>
+				<stop offset="0" stopColor="var(--stats-section-chart-top-color)" stopOpacity="0" />
+				<stop offset="0.7" stopColor="var(--stats-section-chart-bottom-color)" />
 			</linearGradient>
 			<linearGradient
 				id="gradient-line"
@@ -257,14 +229,8 @@ const Chart = () => (
 				y2="359.5"
 				gradientUnits="userSpaceOnUse"
 			>
-				<stop
-					offset="0"
-					stopColor="var(--stats-section-chart-line-start-color)"
-				/>
-				<stop
-					offset="1"
-					stopColor="var(--stats-section-chart-line-end-color)"
-				/>
+				<stop offset="0" stopColor="var(--stats-section-chart-line-start-color)" />
+				<stop offset="1" stopColor="var(--stats-section-chart-line-end-color)" />
 			</linearGradient>
 		</defs>
 	</svg>

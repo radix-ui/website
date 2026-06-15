@@ -67,10 +67,7 @@ interface MdNode {
 interface MdxAttribute {
 	type: string;
 	name?: string;
-	value?:
-		| string
-		| null
-		| { type: string; value?: string; data?: { estree?: EstreeNode } };
+	value?: string | null | { type: string; value?: string; data?: { estree?: EstreeNode } };
 }
 
 interface EstreeNode {
@@ -86,9 +83,7 @@ interface EstreeNode {
 function getSlugsForSection(dir: string): string[] {
 	const sectionPath = path.join(DATA_PATH, "primitives", "docs", dir);
 	return globSync(`${toPosix(sectionPath)}/**/*.mdx`)
-		.map((filePath) =>
-			toPosix(path.relative(DATA_PATH, filePath)).replace(/\.mdx$/, ""),
-		)
+		.map((filePath) => toPosix(path.relative(DATA_PATH, filePath)).replace(/\.mdx$/, ""))
 		.filter((slug) => !STOP_SLUGS.has(slug))
 		.sort();
 }
@@ -141,11 +136,7 @@ function getHighlightFeatures(node: MdNode): string[] {
 		.filter(Boolean);
 }
 
-function extractRecords(
-	source: string,
-	slug: string,
-	lvl0: string,
-): SearchRecord[] {
+function extractRecords(source: string, slug: string, lvl0: string): SearchRecord[] {
 	const { content } = matter(source);
 	const tree = unified()
 		.use(remarkParse)
@@ -169,11 +160,7 @@ function extractRecords(
 
 	const makeUrl = () => `${pageUrl}${currentAnchor ? `#${currentAnchor}` : ""}`;
 
-	const setHeading = (
-		level: Exclude<LevelContentType, "lvl0">,
-		text: string,
-		anchor: string,
-	) => {
+	const setHeading = (level: Exclude<LevelContentType, "lvl0">, text: string, anchor: string) => {
 		currentAnchor = anchor;
 		const levelIndex = SUPPORTED_LEVELS.indexOf(level);
 		hierarchy.lvl1 = level === "lvl1" ? text : hierarchy.lvl1;
@@ -280,10 +267,7 @@ function main() {
 
 	for (const { dir, lvl0 } of SECTIONS) {
 		for (const slug of getSlugsForSection(dir)) {
-			const source = fs.readFileSync(
-				path.join(DATA_PATH, `${slug}.mdx`),
-				"utf8",
-			);
+			const source = fs.readFileSync(path.join(DATA_PATH, `${slug}.mdx`), "utf8");
 			const records = extractRecords(source, slug, lvl0);
 			allRecords.push(...records);
 			pageCount += 1;

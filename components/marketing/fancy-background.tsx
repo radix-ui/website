@@ -1,10 +1,6 @@
 import { Box } from "@radix-ui/themes";
 
-export const FancyBackground = ({
-	children,
-}: {
-	children: React.ReactNode;
-}) => {
+export const FancyBackground = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<Box
 			style={{

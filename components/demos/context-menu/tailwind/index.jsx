@@ -1,10 +1,6 @@
 import * as React from "react";
 import { ContextMenu } from "radix-ui";
-import {
-	DotFilledIcon,
-	CheckIcon,
-	ChevronRightIcon,
-} from "@radix-ui/react-icons";
+import { DotFilledIcon, CheckIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 
 const ContextMenuDemo = () => {
 	const [bookmarksChecked, setBookmarksChecked] = React.useState(true);

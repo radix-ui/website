@@ -110,9 +110,7 @@ export function RootTheme({
 
 export function AccentColorField({ id }: { id: string }) {
 	const { accentValue, setAccentValue } = useColorThemeContext();
-	return (
-		<ColorField id={id} value={accentValue} onValueChange={setAccentValue} />
-	);
+	return <ColorField id={id} value={accentValue} onValueChange={setAccentValue} />;
 }
 
 export function GrayColorField({ id }: { id: string }) {
@@ -327,14 +325,11 @@ export function Swatch({
 }) {
 	const { result, accent } = useColorThemeContext();
 	const scaleResult = type === "gray" ? result.grayScale : result.accentScale;
-	const scaleAlphaResult =
-		type === "gray" ? result.grayScaleAlpha : result.accentScaleAlpha;
+	const scaleAlphaResult = type === "gray" ? result.grayScaleAlpha : result.accentScaleAlpha;
 	const scaleWideGamutResult =
 		type === "gray" ? result.grayScaleWideGamut : result.accentScaleWideGamut;
 	const scaleAlphaWideGamutResult =
-		type === "gray"
-			? result.grayScaleAlphaWideGamut
-			: result.accentScaleAlphaWideGamut;
+		type === "gray" ? result.grayScaleAlphaWideGamut : result.accentScaleAlphaWideGamut;
 	return (
 		<CustomSwatch
 			scale={type === "gray" ? "gray" : accent === "custom" ? "accent" : accent}
@@ -348,10 +343,7 @@ export function Swatch({
 	);
 }
 
-export function Preview({
-	children,
-	...props
-}: React.ComponentPropsWithoutRef<typeof Grid>) {
+export function Preview({ children, ...props }: React.ComponentPropsWithoutRef<typeof Grid>) {
 	const [state, setState] = React.useState({
 		todo: [
 			{ id: "a", completed: false },
@@ -430,11 +422,7 @@ export function Preview({
 					</LayersItem>
 				</LayersRoot>
 
-				<Flex
-					align="center"
-					justify={{ initial: "center", sm: "between" }}
-					gap="4"
-				>
+				<Flex align="center" justify={{ initial: "center", sm: "between" }} gap="4">
 					<Badge radius="full" variant="soft">
 						Fully-featured
 					</Badge>
@@ -484,11 +472,7 @@ export function Preview({
 					<Card asChild variant="classic" size="2">
 						<a href="#" onClick={(e) => e.preventDefault()}>
 							<Flex align="center" gap="3">
-								<Avatar
-									size="4"
-									src={getPeopleForColor("gray")[0].image}
-									fallback="V"
-								/>
+								<Avatar size="4" src={getPeopleForColor("gray")[0].image} fallback="V" />
 								<Box>
 									<Text as="div" weight="medium" size="3">
 										Emily Adams
@@ -505,11 +489,7 @@ export function Preview({
 					<Card asChild variant="surface" size="2">
 						<a href="#" onClick={(e) => e.preventDefault()}>
 							<Flex align="center" gap="3">
-								<Avatar
-									size="4"
-									src={getPeopleForColor("gray")[0].image}
-									fallback="V"
-								/>
+								<Avatar size="4" src={getPeopleForColor("gray")[0].image} fallback="V" />
 								<Box>
 									<Text as="div" weight="medium" size="3">
 										Emily Adams
@@ -553,17 +533,8 @@ export function Preview({
 						/>
 						<Avatar radius="full" variant="solid" fallback="V" />
 						<Avatar radius="full" variant="solid" fallback="BG" />
-						<Avatar
-							radius="full"
-							variant="solid"
-							fallback={<AvatarIconFallback />}
-						/>
-						<Avatar
-							radius="full"
-							variant="solid"
-							fallback={<AvatarIconFallback />}
-							highContrast
-						/>
+						<Avatar radius="full" variant="solid" fallback={<AvatarIconFallback />} />
+						<Avatar radius="full" variant="solid" fallback={<AvatarIconFallback />} highContrast />
 					</Flex>
 
 					<Flex gap="3">
@@ -581,17 +552,8 @@ export function Preview({
 						/>
 						<Avatar radius="full" variant="soft" fallback="V" />
 						<Avatar radius="full" variant="soft" fallback="BG" />
-						<Avatar
-							radius="full"
-							variant="soft"
-							fallback={<AvatarIconFallback />}
-						/>
-						<Avatar
-							radius="full"
-							variant="soft"
-							fallback={<AvatarIconFallback />}
-							highContrast
-						/>
+						<Avatar radius="full" variant="soft" fallback={<AvatarIconFallback />} />
+						<Avatar radius="full" variant="soft" fallback={<AvatarIconFallback />} highContrast />
 					</Flex>
 				</Flex>
 
@@ -731,30 +693,20 @@ export function Preview({
 							<DropdownMenu.Group>
 								<DropdownMenu.Item shortcut="⌘ C">Copy</DropdownMenu.Item>
 								<DropdownMenu.Item shortcut="⌘ V">Paste</DropdownMenu.Item>
-								<DropdownMenu.Item shortcut="⇧ ⌘ R">
-									Paste to replace
-								</DropdownMenu.Item>
+								<DropdownMenu.Item shortcut="⇧ ⌘ R">Paste to replace</DropdownMenu.Item>
 							</DropdownMenu.Group>
 							<DropdownMenu.Separator />
 							<DropdownMenu.Sub>
 								<DropdownMenu.SubTrigger>Layers</DropdownMenu.SubTrigger>
 								<DropdownMenu.SubContent>
-									<DropdownMenu.Item shortcut="⇧ ⌘ ]">
-										Move to top
-									</DropdownMenu.Item>
+									<DropdownMenu.Item shortcut="⇧ ⌘ ]">Move to top</DropdownMenu.Item>
 									<DropdownMenu.Item shortcut="⌘ ]">Move up</DropdownMenu.Item>
-									<DropdownMenu.Item shortcut="⌘ [">
-										Move down
-									</DropdownMenu.Item>
-									<DropdownMenu.Item shortcut="⇧ ⌘ [">
-										Move to bottom
-									</DropdownMenu.Item>
+									<DropdownMenu.Item shortcut="⌘ [">Move down</DropdownMenu.Item>
+									<DropdownMenu.Item shortcut="⇧ ⌘ [">Move to bottom</DropdownMenu.Item>
 								</DropdownMenu.SubContent>
 							</DropdownMenu.Sub>
 							<DropdownMenu.Sub>
-								<DropdownMenu.SubTrigger>
-									Boolean groups
-								</DropdownMenu.SubTrigger>
+								<DropdownMenu.SubTrigger>Boolean groups</DropdownMenu.SubTrigger>
 								<DropdownMenu.SubContent>
 									<DropdownMenu.Item>Union</DropdownMenu.Item>
 									<DropdownMenu.Item>Subtract</DropdownMenu.Item>
@@ -783,10 +735,7 @@ export function Preview({
 							overflow="hidden"
 							style={{ background: "var(--gray-2)" }}
 						>
-							<ThemesPanelBackgroundImage
-								id="1"
-								style={{ width: "240%", marginLeft: "70%" }}
-							/>
+							<ThemesPanelBackgroundImage id="1" style={{ width: "240%", marginLeft: "70%" }} />
 						</Flex>
 
 						<Box position="relative">
@@ -822,13 +771,7 @@ export function Preview({
 
 									<Flex direction="column" mb="5">
 										<Flex>
-											<Text
-												htmlFor="example-email"
-												as="label"
-												size="2"
-												weight="medium"
-												mb="1"
-											>
+											<Text htmlFor="example-email" as="label" size="2" weight="medium" mb="1">
 												Email
 											</Text>
 										</Flex>
@@ -845,13 +788,7 @@ export function Preview({
 
 									<Flex direction="column" mb="5">
 										<Flex>
-											<Text
-												htmlFor="example-password"
-												as="label"
-												size="2"
-												weight="medium"
-												mb="1"
-											>
+											<Text htmlFor="example-password" as="label" size="2" weight="medium" mb="1">
 												Password
 											</Text>
 										</Flex>
@@ -869,9 +806,7 @@ export function Preview({
 									<Grid
 										mt="5"
 										gap="4"
-										style={
-											{ "--cursor-button": "pointer" } as React.CSSProperties
-										}
+										style={{ "--cursor-button": "pointer" } as React.CSSProperties}
 									>
 										<Button>Create account</Button>
 										<Flex align="center" gap="3">
@@ -1210,9 +1145,9 @@ function LinksExample({ highContrast = false }) {
 							/>
 						</Inset>
 						<Text as="p" size="2" style={{ maxWidth: 250 }}>
-							<Strong>Graphic design</Strong> is a profession and applied art
-							whose activity consists in projecting visual communications
-							intended to transmit specific messages to people.
+							<Strong>Graphic design</Strong> is a profession and applied art whose activity
+							consists in projecting visual communications intended to transmit specific messages to
+							people.
 						</Text>
 					</Flex>
 				</HoverCard.Content>
@@ -1248,8 +1183,8 @@ function LinksExample({ highContrast = false }) {
 						</Inset>
 						<Text as="p" size="2" style={{ maxWidth: 250 }}>
 							In the industrial design field of human–computer interaction, a{" "}
-							<Strong>user interface</Strong> is the space where interactions
-							between humans and machines occur.
+							<Strong>user interface</Strong> is the space where interactions between humans and
+							machines occur.
 						</Text>
 					</Flex>
 				</HoverCard.Content>
@@ -1282,10 +1217,9 @@ function LinksExample({ highContrast = false }) {
 							/>
 						</Inset>
 						<Text as="p" size="2" style={{ maxWidth: 250 }}>
-							A <Strong>typeface</Strong> or <Strong>font family</Strong> is a
-							design of letters, numbers and other symbols, to be used in
-							printing or for electronic display. There are thousands of
-							different typefaces in existence, with new ones being developed
+							A <Strong>typeface</Strong> or <Strong>font family</Strong> is a design of letters,
+							numbers and other symbols, to be used in printing or for electronic display. There are
+							thousands of different typefaces in existence, with new ones being developed
 							constantly.
 						</Text>
 					</Flex>
@@ -1322,9 +1256,8 @@ function LinksExample({ highContrast = false }) {
 						</Inset>
 						<Text as="p" size="2" style={{ maxWidth: 250 }}>
 							The <Strong>Apple Macintosh</Strong>—later rebranded as the{" "}
-							<Strong>Macintosh 128K</Strong>—was the first successful
-							mass-market all-in-one desktop personal computer with a graphical
-							user interface, built-in screen, and mouse.
+							<Strong>Macintosh 128K</Strong>—was the first successful mass-market all-in-one
+							desktop personal computer with a graphical user interface, built-in screen, and mouse.
 						</Text>
 					</Flex>
 				</HoverCard.Content>
@@ -1337,30 +1270,16 @@ function LinksExample({ highContrast = false }) {
 function LayersRoot({
 	type = "single",
 	...props
-}: Extract<
-	React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>,
-	{ type: "single" }
->) {
-	return (
-		<ToggleGroup.Root
-			type={type}
-			defaultValue="1"
-			className={styles.LayersRoot}
-			{...props}
-		/>
-	);
+}: Extract<React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>, { type: "single" }>) {
+	return <ToggleGroup.Root type={type} defaultValue="1" className={styles.LayersRoot} {...props} />;
 }
 
-function LayersItem(
-	props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Item>,
-) {
+function LayersItem(props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Item>) {
 	return (
 		<Reset>
 			<ToggleGroup.Item
 				className={styles.LayersItem}
-				onMouseDown={(event) =>
-					event.button === 0 && event.currentTarget.click()
-				}
+				onMouseDown={(event) => event.button === 0 && event.currentTarget.click()}
 				onClick={(event) => {
 					if (event.currentTarget.getAttribute("data-state") === "on") {
 						event.preventDefault();
@@ -1386,11 +1305,7 @@ const itemsContent: Record<string, React.ReactElement> = {
 	a: (
 		<span>
 			Respond to comment{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
+			<Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
 				#384
 			</Link>{" "}
 			from Travis
@@ -1399,11 +1314,7 @@ const itemsContent: Record<string, React.ReactElement> = {
 	b: (
 		<span>
 			Invite{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
+			<Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
 				Acme Co.
 			</Link>{" "}
 			team to Slack
@@ -1412,11 +1323,7 @@ const itemsContent: Record<string, React.ReactElement> = {
 	c: (
 		<span>
 			Create a report{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
+			<Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
 				requested
 			</Link>{" "}
 			by Danilo
@@ -1426,11 +1333,7 @@ const itemsContent: Record<string, React.ReactElement> = {
 	e: (
 		<span>
 			Review invoice{" "}
-			<Link
-				href="#"
-				underline="hover"
-				onClick={(event) => event.preventDefault()}
-			>
+			<Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
 				#3456
 			</Link>
 		</span>
@@ -1447,9 +1350,7 @@ function ToDoList({ items, onItemsChange }: ToDoList) {
 							checked={item.completed}
 							onCheckedChange={(checked) => {
 								const newItems = items.slice();
-								const newItem = newItems.find(
-									(candidate) => candidate.id === item.id,
-								)!;
+								const newItem = newItems.find((candidate) => candidate.id === item.id)!;
 								newItem.completed = !!checked;
 								onItemsChange(newItems);
 							}}

@@ -30,26 +30,20 @@ const HoverCardDemo = () => (
 					/>
 					<div className="flex flex-col gap-[15px]">
 						<div>
-							<div className="m-0 text-[15px] font-medium text-mauve12">
-								Radix
-							</div>
+							<div className="m-0 text-[15px] font-medium text-mauve12">Radix</div>
 							<div className="m-0 text-[15px] text-mauve10">@radix_ui</div>
 						</div>
 						<div className="m-0 text-[15px] text-mauve12">
-							Components, icons, colors, and templates for building
-							high-quality, accessible UI. Free and open-source.
+							Components, icons, colors, and templates for building high-quality, accessible UI.
+							Free and open-source.
 						</div>
 						<div className="flex gap-[15px]">
 							<div className="flex gap-[5px]">
-								<div className="m-0 text-[15px] font-medium text-mauve12">
-									0
-								</div>{" "}
+								<div className="m-0 text-[15px] font-medium text-mauve12">0</div>{" "}
 								<div className="m-0 text-[15px] text-mauve10">Following</div>
 							</div>
 							<div className="flex gap-[5px]">
-								<div className="m-0 text-[15px] font-medium text-mauve12">
-									2,900
-								</div>{" "}
+								<div className="m-0 text-[15px] font-medium text-mauve12">2,900</div>{" "}
 								<div className="m-0 text-[15px] text-mauve10">Followers</div>
 							</div>
 						</div>

@@ -160,15 +160,7 @@ const allPeople = [
 ];
 
 // neutral
-const neutralPeople = [
-	person15,
-	person03,
-	person05,
-	person01,
-	person09,
-	person16,
-	person24,
-];
+const neutralPeople = [person15, person03, person05, person01, person09, person16, person24];
 
 function getPeopleForColor(color: (typeof accentColors)[number]) {
 	switch (color) {
@@ -213,10 +205,7 @@ function getPeopleForColor(color: (typeof accentColors)[number]) {
 	}
 }
 
-function avatar(
-	id: string,
-	params?: { x?: number; y?: number; zoom?: number },
-) {
+function avatar(id: string, params?: { x?: number; y?: number; zoom?: number }) {
 	let crop = "";
 	if (params === undefined) {
 		crop = "faces";

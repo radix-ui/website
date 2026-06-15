@@ -16,11 +16,7 @@ const AccordionTrigger = React.forwardRef<
 >(function AccordionTrigger({ children, ...props }, forwardedRef) {
 	return (
 		<AccordionPrimitive.Header className={styles.Header}>
-			<AccordionPrimitive.Trigger
-				{...props}
-				className={styles.Trigger}
-				ref={forwardedRef}
-			>
+			<AccordionPrimitive.Trigger {...props} className={styles.Trigger} ref={forwardedRef}>
 				{children}
 				<ChevronDownIcon className={styles.Chevron} aria-hidden />
 			</AccordionPrimitive.Trigger>
@@ -32,11 +28,7 @@ const AccordionContent = React.forwardRef<
 	React.ComponentProps<typeof AccordionPrimitive.Content>
 >(function AccordionContent({ children, ...props }, forwardedRef) {
 	return (
-		<AccordionPrimitive.Content
-			{...props}
-			className={styles.Content}
-			ref={forwardedRef}
-		>
+		<AccordionPrimitive.Content {...props} className={styles.Content} ref={forwardedRef}>
 			<div className={styles.ContentText}>{children}</div>
 		</AccordionPrimitive.Content>
 	);
@@ -55,8 +47,7 @@ export function PrimitivesHeroAccordion() {
 			<AccordionItem value="item-2">
 				<AccordionTrigger>Is it unstyled?</AccordionTrigger>
 				<AccordionContent>
-					Yes. The Accordion is unstyled by default, giving you freedom over the
-					look and feel.
+					Yes. The Accordion is unstyled by default, giving you freedom over the look and feel.
 				</AccordionContent>
 			</AccordionItem>
 

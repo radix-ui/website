@@ -19,11 +19,7 @@ export function PackageRelease({
 				{name}
 			</Heading>
 			{version && (
-				<Badge
-					size="1"
-					color={major ? "yellow" : "gray"}
-					style={{ fontWeight: "normal" }}
-				>
+				<Badge size="1" color={major ? "yellow" : "gray"} style={{ fontWeight: "normal" }}>
 					{version}
 				</Badge>
 			)}

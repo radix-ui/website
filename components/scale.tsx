@@ -1,13 +1,6 @@
 "use client";
 import * as React from "react";
-import {
-	Box,
-	DropdownMenu,
-	Flex,
-	IconButton,
-	Text,
-	Tooltip,
-} from "@radix-ui/themes";
+import { Box, DropdownMenu, Flex, IconButton, Text, Tooltip } from "@radix-ui/themes";
 import { CopyIcon } from "@radix-ui/react-icons";
 import * as Colors from "@radix-ui/colors";
 import tinycolor from "tinycolor2";
@@ -32,8 +25,7 @@ const scaleToHexObject = (name: string, scale: Scale) => {
 		.map(([key, value]) => {
 			const color = tinycolor(value);
 			// Use 8-digit hex (#RRGGBBAA) for alpha colors, 6-digit for solid colors
-			const hex =
-				color.getAlpha() === 1 ? color.toHexString() : color.toHex8String();
+			const hex = color.getAlpha() === 1 ? color.toHexString() : color.toHex8String();
 			return `	${key}: "${hex}",`;
 		})
 		.join("\n");
@@ -109,13 +101,7 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
 	);
 };
 
-export const ColorScale = ({
-	label,
-	name,
-}: {
-	label: string;
-	name: keyof typeof Colors;
-}) => {
+export const ColorScale = ({ label, name }: { label: string; name: keyof typeof Colors }) => {
 	const [isHovered, setIsHovered] = React.useState(false);
 	const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = React.useState(false);
 
@@ -149,8 +135,7 @@ export const ColorScale = ({
 								// Show transparency grid for all alpha colors
 								...(isAlpha
 									? {
-											backgroundColor:
-												isWhiteA || isDarkAlpha ? "#181818" : "#ffffff",
+											backgroundColor: isWhiteA || isDarkAlpha ? "#181818" : "#ffffff",
 											backgroundSize: "16px 16px",
 											backgroundPosition: "0 0, 8px 0, 8px -8px, 0 8px",
 											backgroundImage:
@@ -169,83 +154,50 @@ export const ColorScale = ({
 									: { backgroundColor: "transparent" }),
 							}}
 						>
-							<Box
-								key={i}
-								width="100%"
-								height="100%"
-								style={{ backgroundColor: value }}
-							/>
+							<Box key={i} width="100%" height="100%" style={{ backgroundColor: value }} />
 						</Box>
 					);
 				})}
 			</Flex>
 			{(isHovered || dropdownMenuIsOpen) && (
-				<Flex
-					align="center"
-					justify="center"
-					height="32px"
-					position="absolute"
-					right="0"
-					mr="-1"
-				>
-					<DropdownMenu.Root
-						onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}
-					>
-						<Tooltip
-							className="radix-themes-custom-fonts"
-							content="Copy to Clipboard"
-						>
+				<Flex align="center" justify="center" height="32px" position="absolute" right="0" mr="-1">
+					<DropdownMenu.Root onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
+						<Tooltip className="radix-themes-custom-fonts" content="Copy to Clipboard">
 							<DropdownMenu.Trigger>
 								<IconButton size="2" variant="ghost" color="gray" highContrast>
 									<CopyIcon />
 								</IconButton>
 							</DropdownMenu.Trigger>
 						</Tooltip>
-						<DropdownMenu.Content
-							className="radix-themes-custom-fonts"
-							align="end"
-							size="1"
-						>
+						<DropdownMenu.Content className="radix-themes-custom-fonts" align="end" size="1">
 							<DropdownMenu.Group>
 								<DropdownMenu.Item
-									onSelect={(e) =>
-										navigator.clipboard.writeText(scaleToHSLObject(name, scale))
-									}
+									onSelect={(e) => navigator.clipboard.writeText(scaleToHSLObject(name, scale))}
 								>
 									Copy as Object (HSL)
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) =>
-										navigator.clipboard.writeText(scaleToHexObject(name, scale))
-									}
+									onSelect={(e) => navigator.clipboard.writeText(scaleToHexObject(name, scale))}
 								>
 									Copy as Object (Hex)
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) =>
-										navigator.clipboard.writeText(scaleToCSS(name, scale))
-									}
+									onSelect={(e) => navigator.clipboard.writeText(scaleToCSS(name, scale))}
 								>
 									Copy as CSS
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) =>
-										navigator.clipboard.writeText(scaleToLESS(scale))
-									}
+									onSelect={(e) => navigator.clipboard.writeText(scaleToLESS(scale))}
 								>
 									Copy as LESS
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) =>
-										navigator.clipboard.writeText(scaleToSASS(scale))
-									}
+									onSelect={(e) => navigator.clipboard.writeText(scaleToSASS(scale))}
 								>
 									Copy as Sass
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) =>
-										navigator.clipboard.writeText(scaleToSvg(scale))
-									}
+									onSelect={(e) => navigator.clipboard.writeText(scaleToSvg(scale))}
 								>
 									Copy as SVG
 								</DropdownMenu.Item>

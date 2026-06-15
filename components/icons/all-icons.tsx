@@ -1,14 +1,7 @@
 "use client";
 import * as React from "react";
 import * as Icons from "@radix-ui/react-icons";
-import {
-	Grid,
-	Tooltip,
-	Heading,
-	Box,
-	IconButton,
-	Flex,
-} from "@radix-ui/themes";
+import { Grid, Tooltip, Heading, Box, IconButton, Flex } from "@radix-ui/themes";
 import { useCopyToast } from "./copy-toast";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 import styles from "./all-icons.module.css";
@@ -55,12 +48,7 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
 	const { showCopyToast } = useCopyToast();
 
 	return (
-		<Tooltip
-			className="radix-themes-custom-fonts"
-			content={label}
-			side="top"
-			sideOffset={5}
-		>
+		<Tooltip className="radix-themes-custom-fonts" content={label} side="top" sideOffset={5}>
 			<IconButton
 				highContrast
 				variant="ghost"

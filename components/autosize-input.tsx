@@ -84,10 +84,7 @@ export class AutosizeInput extends React.Component<
 		};
 	}
 
-	static getDerivedStateFromProps(
-		props: AutosizeInputProps,
-		state: AutosizeInputState,
-	) {
+	static getDerivedStateFromProps(props: AutosizeInputProps, state: AutosizeInputState) {
 		const { id } = props;
 		return id !== state.prevId ? { inputId: id, prevId: id } : null;
 	}
@@ -97,10 +94,7 @@ export class AutosizeInput extends React.Component<
 		this.copyInputStyles();
 		this.updateInputWidth();
 	}
-	componentDidUpdate(
-		prevProps: AutosizeInputProps,
-		prevState: AutosizeInputState,
-	) {
+	componentDidUpdate(prevProps: AutosizeInputProps, prevState: AutosizeInputState) {
 		if (prevState.inputWidth !== this.state.inputWidth) {
 			if (typeof this.props.onAutosize === "function") {
 				this.props.onAutosize(this.state.inputWidth);
@@ -139,22 +133,15 @@ export class AutosizeInput extends React.Component<
 		}
 	}
 	updateInputWidth() {
-		if (
-			!this.mounted ||
-			!this.sizer ||
-			typeof this.sizer.scrollWidth === "undefined"
-		) {
+		if (!this.mounted || !this.sizer || typeof this.sizer.scrollWidth === "undefined") {
 			return;
 		}
 		let newInputWidth;
 		if (
 			this.props.placeholder &&
-			(!this.props.value ||
-				(this.props.value && this.props.placeholderIsMinWidth))
+			(!this.props.value || (this.props.value && this.props.placeholderIsMinWidth))
 		) {
-			let placeHolderWidth = this.placeHolderSizer
-				? this.placeHolderSizer.scrollWidth
-				: 0;
+			let placeHolderWidth = this.placeHolderSizer ? this.placeHolderSizer.scrollWidth : 0;
 			newInputWidth = Math.max(this.sizer.scrollWidth, placeHolderWidth) + 2;
 		} else {
 			newInputWidth = this.sizer.scrollWidth + 2;
@@ -242,10 +229,7 @@ function cleanInputProps<T extends Record<string, any>>(inputProps: T): T {
 	return inputProps;
 }
 
-function copyStyles(
-	styles: CSSStyleDeclaration,
-	node: HTMLElement | SVGElement,
-) {
+function copyStyles(styles: CSSStyleDeclaration, node: HTMLElement | SVGElement) {
 	node.style.fontSize = styles.fontSize;
 	node.style.fontFamily = styles.fontFamily;
 	node.style.fontWeight = styles.fontWeight;
@@ -290,9 +274,7 @@ function NewAutosizeInput({
 				: 0;
 
 	const [inputWidth, setInputWidth] = React.useState(() =>
-		initialWidth && initialWidth >= 0 && Number.isFinite(initialWidth)
-			? initialWidth
-			: -1,
+		initialWidth && initialWidth >= 0 && Number.isFinite(initialWidth) ? initialWidth : -1,
 	);
 
 	const hasValue = !!value;
@@ -338,9 +320,7 @@ function NewAutosizeInput({
 
 			let newInputWidth: number;
 			if (placeholder && (!hasValue || (hasValue && placeholderIsMinWidth))) {
-				let placeholderWidth = placeHolderSizer
-					? placeHolderSizer.scrollWidth
-					: 0;
+				let placeholderWidth = placeHolderSizer ? placeHolderSizer.scrollWidth : 0;
 				newInputWidth = Math.max(sizer.scrollWidth, placeholderWidth) + 2;
 			} else {
 				newInputWidth = sizer.scrollWidth + 2;
@@ -353,23 +333,14 @@ function NewAutosizeInput({
 
 			setInputWidth(newInputWidth);
 		}
-	}, [
-		inputWidth,
-		minWidth,
-		extraWidth,
-		placeholder,
-		hasValue,
-		placeholderIsMinWidth,
-	]);
+	}, [inputWidth, minWidth, extraWidth, placeholder, hasValue, placeholderIsMinWidth]);
 
-	const sizerValue = [defaultValue, value, ""].reduce(
-		(previousValue, currentValue) => {
-			if (previousValue !== null && previousValue !== undefined) {
-				return previousValue;
-			}
-			return currentValue;
-		},
-	);
+	const sizerValue = [defaultValue, value, ""].reduce((previousValue, currentValue) => {
+		if (previousValue !== null && previousValue !== undefined) {
+			return previousValue;
+		}
+		return currentValue;
+	});
 
 	const inputProps = {
 		defaultValue,

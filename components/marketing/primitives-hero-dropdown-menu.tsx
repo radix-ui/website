@@ -15,48 +15,25 @@ import { styled } from "@utils/css";
 
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, styles.Arrow);
 const DropdownMenuContentWrapper = styled("div", styles.ContentWrapper);
-const DropdownMenuContent = styled(
-	DropdownMenuPrimitive.Content,
-	styles.Content,
-);
-const DropdownMenuSeparator = styled(
-	DropdownMenuPrimitive.Separator,
-	styles.Separator,
-);
+const DropdownMenuContent = styled(DropdownMenuPrimitive.Content, styles.Content);
+const DropdownMenuSeparator = styled(DropdownMenuPrimitive.Separator, styles.Separator);
 const DropdownMenuItem = styled(DropdownMenuPrimitive.Item, styles.Item);
-const DropdownMenuCheckboxItem = styled(
-	DropdownMenuPrimitive.CheckboxItem,
-	styles.CheckboxItem,
-);
-const DropdownMenuSubTrigger = styled(
-	DropdownMenuPrimitive.SubTrigger,
-	styles.SubTrigger,
-);
-const DropdownMenuSubContent = styled(
-	DropdownMenuPrimitive.SubContent,
-	styles.SubContent,
-);
+const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, styles.CheckboxItem);
+const DropdownMenuSubTrigger = styled(DropdownMenuPrimitive.SubTrigger, styles.SubTrigger);
+const DropdownMenuSubContent = styled(DropdownMenuPrimitive.SubContent, styles.SubContent);
 
 export function PrimitivesHeroDropdownMenu() {
 	// We prevent the initial auto focus because it's a demo rather than a real UI,
 	// so the parent page focus is not stolen.
 	const initialAutoFocusPrevented = React.useRef(false);
-	const [showToolbar, setShowToolbar] = React.useState<
-		boolean | "indeterminate"
-	>(true);
-	const [showUrls, setShowUrls] = React.useState<boolean | "indeterminate">(
-		false,
-	);
+	const [showToolbar, setShowToolbar] = React.useState<boolean | "indeterminate">(true);
+	const [showUrls, setShowUrls] = React.useState<boolean | "indeterminate">(false);
 	const triggerRef = React.useRef<HTMLButtonElement>(null);
 	const contentRef = React.useRef<HTMLDivElement | null>(null);
 	const [open, setOpen] = React.useState(true);
 
 	return (
-		<DropdownMenuPrimitive.Root
-			modal={false}
-			open={open}
-			onOpenChange={setOpen}
-		>
+		<DropdownMenuPrimitive.Root modal={false} open={open} onOpenChange={setOpen}>
 			<Box style={{ marginBottom: 120 }}>
 				<DropdownMenuPrimitive.Trigger asChild>
 					<PrimitivesHeroButton ref={triggerRef}>
@@ -72,10 +49,7 @@ export function PrimitivesHeroDropdownMenu() {
 					avoidCollisions={false}
 					onEscapeKeyDown={(event) => {
 						event.preventDefault();
-						if (
-							event.target instanceof HTMLElement &&
-							contentRef.current?.contains(event.target)
-						) {
+						if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
 							setOpen(false);
 						}
 					}}
@@ -150,19 +124,13 @@ export function PrimitivesHeroDropdownMenu() {
 
 					<DropdownMenuItem>Downloads</DropdownMenuItem>
 					<DropdownMenuSeparator />
-					<DropdownMenuCheckboxItem
-						checked={showToolbar}
-						onCheckedChange={setShowToolbar}
-					>
+					<DropdownMenuCheckboxItem checked={showToolbar} onCheckedChange={setShowToolbar}>
 						<DropdownMenuPrimitive.ItemIndicator>
 							<CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
 						</DropdownMenuPrimitive.ItemIndicator>
 						Show Toolbar
 					</DropdownMenuCheckboxItem>
-					<DropdownMenuCheckboxItem
-						checked={showUrls}
-						onCheckedChange={setShowUrls}
-					>
+					<DropdownMenuCheckboxItem checked={showUrls} onCheckedChange={setShowUrls}>
 						<DropdownMenuPrimitive.ItemIndicator>
 							<CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
 						</DropdownMenuPrimitive.ItemIndicator>

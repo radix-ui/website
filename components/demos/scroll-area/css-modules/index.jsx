@@ -2,9 +2,7 @@ import * as React from "react";
 import { ScrollArea } from "radix-ui";
 import styles from "./styles.module.css";
 
-const TAGS = Array.from({ length: 50 }).map(
-	(_, i, a) => `v1.2.0-beta.${a.length - i}`,
-);
+const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
 const ScrollAreaDemo = () => (
 	<ScrollArea.Root className={styles.Root}>

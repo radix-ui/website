@@ -26,11 +26,7 @@ const PopoverDemo = () => (
 						<label className={styles.Label} htmlFor="maxWidth">
 							Max. width
 						</label>
-						<input
-							className={styles.Input}
-							id="maxWidth"
-							defaultValue="300px"
-						/>
+						<input className={styles.Input} id="maxWidth" defaultValue="300px" />
 					</fieldset>
 					<fieldset className={styles.Fieldset}>
 						<label className={styles.Label} htmlFor="height">
@@ -42,11 +38,7 @@ const PopoverDemo = () => (
 						<label className={styles.Label} htmlFor="maxHeight">
 							Max. height
 						</label>
-						<input
-							className={styles.Input}
-							id="maxHeight"
-							defaultValue="none"
-						/>
+						<input className={styles.Input} id="maxHeight" defaultValue="none" />
 					</fieldset>
 				</div>
 				<Popover.Close className={styles.Close} aria-label="Close">

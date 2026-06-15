@@ -4,9 +4,7 @@ import NextLink from "next/link";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import { TabNav } from "@radix-ui/themes";
 
-interface TabNavDemoProps extends React.ComponentPropsWithRef<
-	typeof TabNav.Root
-> {
+interface TabNavDemoProps extends React.ComponentPropsWithRef<typeof TabNav.Root> {
 	items?: string[];
 }
 
@@ -28,11 +26,7 @@ function TabNavDemoImpl({
 					key={item}
 					active={tab === item.toLowerCase() || (i === 0 && tab === null)}
 				>
-					<NextLink
-						href={{ query: { "tab-nav": item.toLowerCase() } }}
-						scroll={false}
-						replace
-					>
+					<NextLink href={{ query: { "tab-nav": item.toLowerCase() } }} scroll={false} replace>
 						{item}
 					</NextLink>
 				</TabNav.Link>

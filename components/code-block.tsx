@@ -29,11 +29,7 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(function Root(
 	forwardedRef,
 ) {
 	return (
-		<Box
-			ref={forwardedRef}
-			className={classNames(styles.CodeBlockRoot, className)}
-			{...props}
-		/>
+		<Box ref={forwardedRef} className={classNames(styles.CodeBlockRoot, className)} {...props} />
 	);
 });
 Root.displayName = "CodeBlock.Root";
@@ -42,40 +38,35 @@ type LivePreviewProps = React.ComponentPropsWithoutRef<typeof Box> & {
 	code: string;
 	scroll?: boolean;
 };
-const LivePreview = React.forwardRef<HTMLDivElement, LivePreviewProps>(
-	function LivePreview(
-		{ className, code, scroll = false, ...props },
-		forwardedRef,
-	) {
-		return (
-			<Theme asChild className="radix-themes-default-fonts" data-md-exclude>
-				<Box
-					ref={forwardedRef}
-					className={classNames(styles.CodeBlockLivePreview, className)}
-					{...props}
-				>
-					<ScrollArea>
-						<div
-							data-scroll={scroll}
-							className={styles.CodeBlockLivePreviewInner}
-						>
-							<LiveCode
-								code={code}
-								scope={{
-									...themes,
-									...icons,
-									ThemesVolumeControlExample,
-									DecorativeBox,
-									RightClickZone,
-								}}
-							/>
-						</div>
-					</ScrollArea>
-				</Box>
-			</Theme>
-		);
-	},
-);
+const LivePreview = React.forwardRef<HTMLDivElement, LivePreviewProps>(function LivePreview(
+	{ className, code, scroll = false, ...props },
+	forwardedRef,
+) {
+	return (
+		<Theme asChild className="radix-themes-default-fonts" data-md-exclude>
+			<Box
+				ref={forwardedRef}
+				className={classNames(styles.CodeBlockLivePreview, className)}
+				{...props}
+			>
+				<ScrollArea>
+					<div data-scroll={scroll} className={styles.CodeBlockLivePreviewInner}>
+						<LiveCode
+							code={code}
+							scope={{
+								...themes,
+								...icons,
+								ThemesVolumeControlExample,
+								DecorativeBox,
+								RightClickZone,
+							}}
+						/>
+					</div>
+				</ScrollArea>
+			</Box>
+		</Theme>
+	);
+});
 LivePreview.displayName = "CodeBlock.LivePreview";
 
 type HeaderProps = React.ComponentPropsWithoutRef<typeof Box>;
@@ -84,11 +75,7 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(function Header(
 	forwardedRef,
 ) {
 	return (
-		<Box
-			ref={forwardedRef}
-			className={classNames(styles.CodeBlockHeader, className)}
-			{...props}
-		/>
+		<Box ref={forwardedRef} className={classNames(styles.CodeBlockHeader, className)} {...props} />
 	);
 });
 Header.displayName = "CodeBlock.Header";
@@ -117,11 +104,7 @@ const Pre = React.forwardRef<HTMLPreElement, PreProps>(function Pre(
 	forwardedRef,
 ) {
 	const pre = (
-		<pre
-			ref={forwardedRef}
-			className={classNames(styles.CodeBlockPre, className)}
-			{...props}
-		>
+		<pre ref={forwardedRef} className={classNames(styles.CodeBlockPre, className)} {...props}>
 			{children}
 		</pre>
 	);
@@ -141,14 +124,7 @@ interface CodeProps extends React.ComponentPropsWithoutRef<"code"> {
 	invertLineHighlight?: boolean;
 }
 const Code = React.forwardRef<HTMLElement, CodeProps>(function Code(
-	{
-		className,
-		children,
-		invertLineHighlight = false,
-		language,
-		lines = "0",
-		...props
-	},
+	{ className, children, invertLineHighlight = false, language, lines = "0", ...props },
 	forwardedRef,
 ) {
 	let root = refractor.highlight(children, language);
@@ -170,9 +146,7 @@ const Code = React.forwardRef<HTMLElement, CodeProps>(function Code(
 });
 Code.displayName = "CodeBlock.Code";
 
-interface CopyButtonProps extends React.ComponentPropsWithoutRef<
-	typeof IconButton
-> {}
+interface CopyButtonProps extends React.ComponentPropsWithoutRef<typeof IconButton> {}
 const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
 	({ className, ...props }, forwardedRef) => {
 		const [hasCopied, setHasCopied] = React.useState(false);

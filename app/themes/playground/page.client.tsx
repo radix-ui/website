@@ -164,45 +164,31 @@ export default function ComponentsPage() {
 						className={RemoveScroll.classNames.zeroRight}
 						onAppearanceChange={(newTheme) => {
 							const newThemeMatchesSystem = newTheme === systemTheme;
-							setTheme(
-								newThemeMatchesSystem
-									? "system"
-									: (newTheme as "light" | "dark"),
-							);
+							setTheme(newThemeMatchesSystem ? "system" : (newTheme as "light" | "dark"));
 						}}
 						style={{
 							top: "var(--header-height)",
-							maxHeight:
-								"calc(100vh - var(--header-height) - var(--space-4) * 2)",
+							maxHeight: "calc(100vh - var(--header-height) - var(--space-4) * 2)",
 						}}
 					/>
 				</Box>
 
 				<Section size={{ initial: "2", md: "4" }}>
-					<Flex
-						direction="column"
-						gap="9"
-						mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}
-					>
+					<Flex direction="column" gap="9" mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="alert-dialog">
-								Alert Dialog
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="alert-dialog">Alert Dialog</PlaygroundSectionTitle>
 							<Flex gap="4" align="center">
 								<AlertDialog.Root>
 									<AlertDialog.Trigger>
 										<Button size="1">Open</Button>
 									</AlertDialog.Trigger>
-									<AlertDialog.Content
-										size="1"
-										style={{ width: "calc(300px * var(--scaling))" }}
-									>
+									<AlertDialog.Content size="1" style={{ width: "calc(300px * var(--scaling))" }}>
 										<AlertDialog.Title size="2" mb="1">
 											Revoke access
 										</AlertDialog.Title>
 										<AlertDialog.Description size="1" mb="3">
-											Are you sure? This application will no longer be
-											accessible and any existing sessions will be expired.
+											Are you sure? This application will no longer be accessible and any existing
+											sessions will be expired.
 										</AlertDialog.Description>
 
 										<Flex gap="2" mt="3" justify="end">
@@ -224,14 +210,11 @@ export default function ComponentsPage() {
 									<AlertDialog.Trigger>
 										<Button size="2">Open</Button>
 									</AlertDialog.Trigger>
-									<AlertDialog.Content
-										size="2"
-										style={{ width: "calc(400px * var(--scaling))" }}
-									>
+									<AlertDialog.Content size="2" style={{ width: "calc(400px * var(--scaling))" }}>
 										<AlertDialog.Title mb="2">Revoke access</AlertDialog.Title>
 										<AlertDialog.Description size="2" mb="4">
-											Are you sure? This application will no longer be
-											accessible and any existing sessions will be expired.
+											Are you sure? This application will no longer be accessible and any existing
+											sessions will be expired.
 										</AlertDialog.Description>
 
 										<Flex gap="3" mt="4" justify="end">
@@ -251,14 +234,11 @@ export default function ComponentsPage() {
 									<AlertDialog.Trigger>
 										<Button size="3">Open</Button>
 									</AlertDialog.Trigger>
-									<AlertDialog.Content
-										size="3"
-										style={{ width: "calc(400px * var(--scaling))" }}
-									>
+									<AlertDialog.Content size="3" style={{ width: "calc(400px * var(--scaling))" }}>
 										<AlertDialog.Title>Revoke access</AlertDialog.Title>
 										<AlertDialog.Description size="2" mb="4">
-											Are you sure? This application will no longer be
-											accessible and any existing sessions will be expired.
+											Are you sure? This application will no longer be accessible and any existing
+											sessions will be expired.
 										</AlertDialog.Description>
 
 										<Flex gap="3" mt="4" justify="end">
@@ -278,16 +258,11 @@ export default function ComponentsPage() {
 									<AlertDialog.Trigger>
 										<Button size="4">Open</Button>
 									</AlertDialog.Trigger>
-									<AlertDialog.Content
-										size="4"
-										style={{ width: "calc(450px * var(--scaling))" }}
-									>
-										<AlertDialog.Title size="6">
-											Revoke access
-										</AlertDialog.Title>
+									<AlertDialog.Content size="4" style={{ width: "calc(450px * var(--scaling))" }}>
+										<AlertDialog.Title size="6">Revoke access</AlertDialog.Title>
 										<AlertDialog.Description size="3" mb="5">
-											Are you sure? This application will no longer be
-											accessible and any existing sessions will be expired.
+											Are you sure? This application will no longer be accessible and any existing
+											sessions will be expired.
 										</AlertDialog.Description>
 
 										<Flex gap="3" mt="5" justify="end">
@@ -308,27 +283,21 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="aspect-ratio">
-								Aspect Ratio
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="aspect-ratio">Aspect Ratio</PlaygroundSectionTitle>
 							<Grid columns={{ initial: "3", lg: "5", xl: "6" }} gap="4">
 								{["2 / 3", "1 / 1", "16 / 9"].map((ratio) => (
 									<div key={ratio}>
 										<Text as="p" size="1" color="gray" mb="2">
 											{ratio.replace(" / ", ":")}
 										</Text>
-										<AspectRatio ratio={eval(ratio)}>
-											{aspectRatioImage}
-										</AspectRatio>
+										<AspectRatio ratio={eval(ratio)}>{aspectRatioImage}</AspectRatio>
 									</div>
 								))}
 							</Grid>
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="avatar">
-								Avatar
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="avatar">Avatar</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -363,10 +332,7 @@ export default function ComponentsPage() {
 															<Avatar variant={variant} fallback="BG" />
 														</td>
 														<td>
-															<Avatar
-																variant={variant}
-																fallback={<AvatarIconFallback />}
-															/>
+															<Avatar variant={variant} fallback={<AvatarIconFallback />} />
 														</td>
 														<td>
 															<Avatar
@@ -384,18 +350,10 @@ export default function ComponentsPage() {
 															/>
 														</td>
 														<td>
-															<Avatar
-																variant={variant}
-																color="gray"
-																fallback="V"
-															/>
+															<Avatar variant={variant} color="gray" fallback="V" />
 														</td>
 														<td>
-															<Avatar
-																variant={variant}
-																color="gray"
-																fallback="BG"
-															/>
+															<Avatar variant={variant} color="gray" fallback="BG" />
 														</td>
 														<td>
 															<Avatar
@@ -436,51 +394,39 @@ export default function ComponentsPage() {
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{avatarPropDefs.variant.values.map(
-															(variant, index) => (
-																<React.Fragment key={variant}>
-																	<td>
-																		<Avatar
-																			variant={variant}
-																			color={color}
-																			src={
-																				getPeopleForColor(color)[index].image
-																			}
-																			fallback="V"
-																		/>
-																	</td>
-																	<td>
-																		<Avatar
-																			variant={variant}
-																			color={color}
-																			fallback="V"
-																		/>
-																	</td>
-																	<td>
-																		<Avatar
-																			variant={variant}
-																			color={color}
-																			fallback="BG"
-																		/>
-																	</td>
-																	<td>
-																		<Avatar
-																			variant={variant}
-																			color={color}
-																			fallback={<AvatarIconFallback />}
-																		/>
-																	</td>
-																	<td>
-																		<Avatar
-																			variant={variant}
-																			color={color}
-																			fallback={<AvatarIconFallback />}
-																			highContrast
-																		/>
-																	</td>
-																</React.Fragment>
-															),
-														)}
+														{avatarPropDefs.variant.values.map((variant, index) => (
+															<React.Fragment key={variant}>
+																<td>
+																	<Avatar
+																		variant={variant}
+																		color={color}
+																		src={getPeopleForColor(color)[index].image}
+																		fallback="V"
+																	/>
+																</td>
+																<td>
+																	<Avatar variant={variant} color={color} fallback="V" />
+																</td>
+																<td>
+																	<Avatar variant={variant} color={color} fallback="BG" />
+																</td>
+																<td>
+																	<Avatar
+																		variant={variant}
+																		color={color}
+																		fallback={<AvatarIconFallback />}
+																	/>
+																</td>
+																<td>
+																	<Avatar
+																		variant={variant}
+																		color={color}
+																		fallback={<AvatarIconFallback />}
+																		highContrast
+																	/>
+																</td>
+															</React.Fragment>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -496,9 +442,7 @@ export default function ComponentsPage() {
 													<th />
 													{avatarPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
@@ -515,10 +459,7 @@ export default function ComponentsPage() {
 															<tr key={size}>
 																<td>Size {size}</td>
 																{avatarPropDefs.radius.values.map((radius) => (
-																	<td
-																		key={radius}
-																		style={{ textAlign: "left" }}
-																	>
+																	<td key={radius} style={{ textAlign: "left" }}>
 																		<Avatar
 																			size={size}
 																			variant={variant}
@@ -573,11 +514,7 @@ export default function ComponentsPage() {
 																<Badge variant={variant} color="gray">
 																	New
 																</Badge>
-																<Badge
-																	variant={variant}
-																	color="gray"
-																	highContrast
-																>
+																<Badge variant={variant} color="gray" highContrast>
 																	New
 																</Badge>
 															</Flex>
@@ -610,11 +547,7 @@ export default function ComponentsPage() {
 																	<Badge variant={variant} color={color}>
 																		New
 																	</Badge>
-																	<Badge
-																		variant={variant}
-																		color={color}
-																		highContrast
-																	>
+																	<Badge variant={variant} color={color} highContrast>
 																		New
 																	</Badge>
 																</Flex>
@@ -635,9 +568,7 @@ export default function ComponentsPage() {
 													<th />
 													{badgePropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
@@ -654,15 +585,8 @@ export default function ComponentsPage() {
 															<tr key={size}>
 																<td>Size {size}</td>
 																{badgePropDefs.radius.values.map((radius) => (
-																	<td
-																		key={radius}
-																		style={{ textAlign: "left" }}
-																	>
-																		<Badge
-																			size={size}
-																			variant={variant}
-																			radius={radius}
-																		>
+																	<td key={radius} style={{ textAlign: "left" }}>
+																		<Badge size={size} variant={variant} radius={radius}>
 																			New
 																		</Badge>
 																	</td>
@@ -679,9 +603,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="blockquote">
-								Blockquote
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="blockquote">Blockquote</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -690,34 +612,26 @@ export default function ComponentsPage() {
 									<Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
 								</Tabs.List>
 								<Tabs.Content value="theme-colors">
-									<Grid
-										mt="6"
-										gap="6"
-										columns="auto auto"
-										style={{ whiteSpace: "nowrap" }}
-									>
+									<Grid mt="6" gap="6" columns="auto auto" style={{ whiteSpace: "nowrap" }}>
 										<Flex direction="column" gap="6">
 											<Text mb="-4" size="1" color="gray" align="center">
 												Accent
 											</Text>
 
 											<Blockquote size="4">
-												Perfect typography is certainly the most elusive of all
-												arts.
+												Perfect typography is certainly the most elusive of all arts.
 												<br />
 												Sculpture in stone alone comes near it in obstinacy.
 											</Blockquote>
 
 											<Blockquote size="3">
-												Perfect typography is certainly the most elusive of all
-												arts.
+												Perfect typography is certainly the most elusive of all arts.
 												<br />
 												Sculpture in stone alone comes near it in obstinacy.
 											</Blockquote>
 
 											<Blockquote size="2">
-												Perfect typography is certainly the most elusive of all
-												arts.
+												Perfect typography is certainly the most elusive of all arts.
 												<br />
 												Sculpture in stone alone comes near it in obstinacy.
 											</Blockquote>
@@ -729,22 +643,19 @@ export default function ComponentsPage() {
 											</Text>
 
 											<Blockquote size="4" color="gray">
-												Perfect typography is certainly the most elusive of all
-												arts.
+												Perfect typography is certainly the most elusive of all arts.
 												<br />
 												Sculpture in stone alone comes near it in obstinacy.
 											</Blockquote>
 
 											<Blockquote size="3" color="gray">
-												Perfect typography is certainly the most elusive of all
-												arts.
+												Perfect typography is certainly the most elusive of all arts.
 												<br />
 												Sculpture in stone alone comes near it in obstinacy.
 											</Blockquote>
 
 											<Blockquote size="2" color="gray">
-												Perfect typography is certainly the most elusive of all
-												arts.
+												Perfect typography is certainly the most elusive of all arts.
 												<br />
 												Sculpture in stone alone comes near it in obstinacy.
 											</Blockquote>
@@ -754,10 +665,7 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-colors">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
@@ -765,18 +673,14 @@ export default function ComponentsPage() {
 														<td style={{ textAlign: "left" }}>
 															<Flex gap="6">
 																<Blockquote color={color}>
-																	Perfect typography is certainly the most
-																	elusive of all arts.
+																	Perfect typography is certainly the most elusive of all arts.
 																	<br />
-																	Sculpture in stone alone comes near it in
-																	obstinacy.
+																	Sculpture in stone alone comes near it in obstinacy.
 																</Blockquote>
 																<Blockquote color={color} highContrast>
-																	Perfect typography is certainly the most
-																	elusive of all arts.
+																	Perfect typography is certainly the most elusive of all arts.
 																	<br />
-																	Sculpture in stone alone comes near it in
-																	obstinacy.
+																	Sculpture in stone alone comes near it in obstinacy.
 																</Blockquote>
 															</Flex>
 														</td>
@@ -810,21 +714,16 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-weights">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{blockquotePropDefs.weight.values.map((weight) => (
 													<tr key={weight}>
 														<td>{upperFirst(weight)}</td>
 														<td style={{ textAlign: "left" }}>
 															<Blockquote weight={weight}>
-																Perfect typography is certainly the most elusive
-																of all arts.
+																Perfect typography is certainly the most elusive of all arts.
 																<br />
-																Sculpture in stone alone comes near it in
-																obstinacy.
+																Sculpture in stone alone comes near it in obstinacy.
 															</Blockquote>
 														</td>
 													</tr>
@@ -837,9 +736,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="button">
-								Button
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="button">Button</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -878,11 +775,7 @@ export default function ComponentsPage() {
 															</Button>
 														</td>
 														<td>
-															<Button
-																variant={variant}
-																color="gray"
-																highContrast
-															>
+															<Button variant={variant} color="gray" highContrast>
 																Next <ArrowRightIcon width="16" height="16" />
 															</Button>
 														</td>
@@ -922,16 +815,10 @@ export default function ComponentsPage() {
 															<td key={variant}>
 																<Flex align="center" justify="center" gap="4">
 																	<Button variant={variant} color={color}>
-																		Next{" "}
-																		<ArrowRightIcon width="16" height="16" />
+																		Next <ArrowRightIcon width="16" height="16" />
 																	</Button>
-																	<Button
-																		variant={variant}
-																		color={color}
-																		highContrast
-																	>
-																		Next{" "}
-																		<ArrowRightIcon width="16" height="16" />
+																	<Button variant={variant} color={color} highContrast>
+																		Next <ArrowRightIcon width="16" height="16" />
 																	</Button>
 																</Flex>
 															</td>
@@ -951,9 +838,7 @@ export default function ComponentsPage() {
 													<th />
 													{buttonPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
@@ -970,19 +855,9 @@ export default function ComponentsPage() {
 															<tr key={size}>
 																<td>Size {size}</td>
 																{buttonPropDefs.radius.values.map((radius) => (
-																	<td
-																		key={radius}
-																		style={{ textAlign: "left" }}
-																	>
-																		<Button
-																			size={size}
-																			variant={variant}
-																			radius={radius}
-																		>
-																			Next{" "}
-																			<ArrowRightIcon
-																				{...buttonSizeToIconSize(size)}
-																			/>
+																	<td key={radius} style={{ textAlign: "left" }}>
+																		<Button size={size} variant={variant} radius={radius}>
+																			Next <ArrowRightIcon {...buttonSizeToIconSize(size)} />
 																		</Button>
 																	</td>
 																))}
@@ -998,9 +873,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="callout">
-								Callout
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="callout">Callout</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -1028,29 +901,19 @@ export default function ComponentsPage() {
 																</Callout.Icon>
 																<Callout.Text>
 																	Please{" "}
-																	<Link
-																		href="#"
-																		onClick={(e) => e.preventDefault()}
-																	>
+																	<Link href="#" onClick={(e) => e.preventDefault()}>
 																		upgrade
 																	</Link>{" "}
 																	to the new version.
 																</Callout.Text>
 															</Callout.Root>
-															<Callout.Root
-																variant={variant}
-																highContrast
-																mt="4"
-															>
+															<Callout.Root variant={variant} highContrast mt="4">
 																<Callout.Icon>
 																	<InfoCircledIcon width="16" height="16" />
 																</Callout.Icon>
 																<Callout.Text>
 																	Please{" "}
-																	<Link
-																		href="#"
-																		onClick={(e) => e.preventDefault()}
-																	>
+																	<Link href="#" onClick={(e) => e.preventDefault()}>
 																		upgrade
 																	</Link>{" "}
 																	to the new version.
@@ -1064,30 +927,19 @@ export default function ComponentsPage() {
 																</Callout.Icon>
 																<Callout.Text>
 																	Please{" "}
-																	<Link
-																		href="#"
-																		onClick={(e) => e.preventDefault()}
-																	>
+																	<Link href="#" onClick={(e) => e.preventDefault()}>
 																		upgrade
 																	</Link>{" "}
 																	to the new version.
 																</Callout.Text>
 															</Callout.Root>
-															<Callout.Root
-																variant={variant}
-																color="gray"
-																highContrast
-																mt="4"
-															>
+															<Callout.Root variant={variant} color="gray" highContrast mt="4">
 																<Callout.Icon>
 																	<InfoCircledIcon width="16" height="16" />
 																</Callout.Icon>
 																<Callout.Text>
 																	Please{" "}
-																	<Link
-																		href="#"
-																		onClick={(e) => e.preventDefault()}
-																	>
+																	<Link href="#" onClick={(e) => e.preventDefault()}>
 																		upgrade
 																	</Link>{" "}
 																	to the new version.
@@ -1116,47 +968,34 @@ export default function ComponentsPage() {
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{calloutRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Callout.Root variant={variant} color={color}>
-																		<Callout.Icon>
-																			<InfoCircledIcon width="16" height="16" />
-																		</Callout.Icon>
-																		<Callout.Text>
-																			Please{" "}
-																			<Link
-																				href="#"
-																				onClick={(e) => e.preventDefault()}
-																			>
-																				upgrade
-																			</Link>{" "}
-																			to the new version.
-																		</Callout.Text>
-																	</Callout.Root>
-																	<Callout.Root
-																		variant={variant}
-																		color={color}
-																		highContrast
-																		mt="4"
-																	>
-																		<Callout.Icon>
-																			<InfoCircledIcon width="16" height="16" />
-																		</Callout.Icon>
-																		<Callout.Text>
-																			Please{" "}
-																			<Link
-																				href="#"
-																				onClick={(e) => e.preventDefault()}
-																			>
-																				upgrade
-																			</Link>{" "}
-																			to the new version.
-																		</Callout.Text>
-																	</Callout.Root>
-																</td>
-															),
-														)}
+														{calloutRootPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Callout.Root variant={variant} color={color}>
+																	<Callout.Icon>
+																		<InfoCircledIcon width="16" height="16" />
+																	</Callout.Icon>
+																	<Callout.Text>
+																		Please{" "}
+																		<Link href="#" onClick={(e) => e.preventDefault()}>
+																			upgrade
+																		</Link>{" "}
+																		to the new version.
+																	</Callout.Text>
+																</Callout.Root>
+																<Callout.Root variant={variant} color={color} highContrast mt="4">
+																	<Callout.Icon>
+																		<InfoCircledIcon width="16" height="16" />
+																	</Callout.Icon>
+																	<Callout.Text>
+																		Please{" "}
+																		<Link href="#" onClick={(e) => e.preventDefault()}>
+																			upgrade
+																		</Link>{" "}
+																		to the new version.
+																	</Callout.Text>
+																</Callout.Root>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -1181,31 +1020,24 @@ export default function ComponentsPage() {
 												{calloutRootPropDefs.size.values.map((size) => (
 													<tr key={size}>
 														<td>Size {size}</td>
-														{calloutRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex>
-																		<Callout.Root variant={variant} size={size}>
-																			<Callout.Icon>
-																				<InfoCircledIcon
-																					{...calloutSizeToIconSize(size)}
-																				/>
-																			</Callout.Icon>
-																			<Callout.Text>
-																				Please{" "}
-																				<Link
-																					href="#"
-																					onClick={(e) => e.preventDefault()}
-																				>
-																					upgrade
-																				</Link>{" "}
-																				to the new version.
-																			</Callout.Text>
-																		</Callout.Root>
-																	</Flex>
-																</td>
-															),
-														)}
+														{calloutRootPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex>
+																	<Callout.Root variant={variant} size={size}>
+																		<Callout.Icon>
+																			<InfoCircledIcon {...calloutSizeToIconSize(size)} />
+																		</Callout.Icon>
+																		<Callout.Text>
+																			Please{" "}
+																			<Link href="#" onClick={(e) => e.preventDefault()}>
+																				upgrade
+																			</Link>{" "}
+																			to the new version.
+																		</Callout.Text>
+																	</Callout.Root>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -1231,11 +1063,7 @@ export default function ComponentsPage() {
 											position="absolute"
 											inset="0"
 										>
-											<ThemesPanelBackgroundImage
-												id="1"
-												width="1000px"
-												height="1000px"
-											/>
+											<ThemesPanelBackgroundImage id="1" width="1000px" height="1000px" />
 										</Flex>
 
 										<Card size="4" style={{ width: 400 }}>
@@ -1254,12 +1082,7 @@ export default function ComponentsPage() {
 
 											<Box mb="5" position="relative">
 												<Flex align="baseline" justify="between" mb="1">
-													<Text
-														as="label"
-														size="2"
-														weight="medium"
-														htmlFor="card-password-field"
-													>
+													<Text as="label" size="2" weight="medium" htmlFor="card-password-field">
 														Password
 													</Text>
 													<Link href="#" size="2">
@@ -1309,10 +1132,7 @@ export default function ComponentsPage() {
 																>
 																	<a href="#card">
 																		{/* @ts-ignore */}
-																		<Flex
-																			align="center"
-																			gap={String(+size + 1)}
-																		>
+																		<Flex align="center" gap={String(+size + 1)}>
 																			<Avatar
 																				// @ts-ignore
 																				size={String(+size + 2)}
@@ -1348,9 +1168,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="checkbox">
-								Checkbox
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="checkbox">Checkbox</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -1380,21 +1198,13 @@ export default function ComponentsPage() {
 														</td>
 														<td>
 															<Flex align="center" justify="center" gap="4">
-																<Checkbox
-																	variant={variant}
-																	highContrast
-																	defaultChecked
-																/>
+																<Checkbox variant={variant} highContrast defaultChecked />
 															</Flex>
 														</td>
 														<td>
 															<Flex align="center" justify="center" gap="4">
 																<Checkbox variant={variant} color="gray" />
-																<Checkbox
-																	variant={variant}
-																	color="gray"
-																	defaultChecked
-																/>
+																<Checkbox variant={variant} color="gray" defaultChecked />
 															</Flex>
 														</td>
 														<td>
@@ -1410,11 +1220,7 @@ export default function ComponentsPage() {
 														<td>
 															<Flex align="center" justify="center" gap="4">
 																<Checkbox variant={variant} disabled />
-																<Checkbox
-																	variant={variant}
-																	disabled
-																	defaultChecked
-																/>
+																<Checkbox variant={variant} disabled defaultChecked />
 															</Flex>
 														</td>
 													</tr>
@@ -1443,11 +1249,7 @@ export default function ComponentsPage() {
 															<td key={variant}>
 																<Flex align="center" justify="center" gap="4">
 																	<Checkbox variant={variant} color={color} />
-																	<Checkbox
-																		variant={variant}
-																		color={color}
-																		defaultChecked
-																	/>
+																	<Checkbox variant={variant} color={color} defaultChecked />
 																	<Checkbox
 																		variant={variant}
 																		color={color}
@@ -1484,11 +1286,7 @@ export default function ComponentsPage() {
 														{checkboxPropDefs.variant.values.map((variant) => (
 															<td key={variant} style={{ textAlign: "left" }}>
 																<Flex align="center" justify="start" gap="4">
-																	<Checkbox
-																		size={size}
-																		variant={variant}
-																		defaultChecked
-																	/>
+																	<Checkbox size={size} variant={variant} defaultChecked />
 																</Flex>
 															</td>
 														))}
@@ -1502,31 +1300,19 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="checkbox-group">
-								Checkbox Group
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="checkbox-group">Checkbox Group</PlaygroundSectionTitle>
 							<Flex align="start" direction="column" gap="5">
 								{checkboxGroupRootPropDefs.size.values.map((size) => (
-									<CheckboxGroup.Root
-										defaultValue={["1"]}
-										size={size}
-										key={size}
-									>
-										<CheckboxGroup.Item value="1">
-											Agree to Terms and Conditions
-										</CheckboxGroup.Item>
-										<CheckboxGroup.Item value="2">
-											Agree to Privacy Policy
-										</CheckboxGroup.Item>
+									<CheckboxGroup.Root defaultValue={["1"]} size={size} key={size}>
+										<CheckboxGroup.Item value="1">Agree to Terms and Conditions</CheckboxGroup.Item>
+										<CheckboxGroup.Item value="2">Agree to Privacy Policy</CheckboxGroup.Item>
 									</CheckboxGroup.Root>
 								))}
 							</Flex>
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="checkbox-cards">
-								Checkbox Cards
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="checkbox-cards">Checkbox Cards</PlaygroundSectionTitle>
 
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
@@ -1545,47 +1331,23 @@ export default function ComponentsPage() {
 												</tr>
 											</thead>
 											<tbody>
-												{checkboxCardsRootPropDefs.variant.values.map(
-													(variant) => (
-														<tr key={variant}>
-															<td>{upperFirst(variant)}</td>
-															<td>
-																<Flex
-																	direction="column"
-																	width="280px"
-																	gap="4"
-																	mx="2"
-																	mb="4"
-																>
-																	<ExampleCheckboxCards variant={variant} />
-																	<ExampleCheckboxCards
-																		variant={variant}
-																		highContrast
-																	/>
-																</Flex>
-															</td>
-															<td>
-																<Flex
-																	direction="column"
-																	width="280px"
-																	gap="4"
-																	mx="2"
-																	mb="4"
-																>
-																	<ExampleCheckboxCards
-																		color="gray"
-																		variant={variant}
-																	/>
-																	<ExampleCheckboxCards
-																		color="gray"
-																		variant={variant}
-																		highContrast
-																	/>
-																</Flex>
-															</td>
-														</tr>
-													),
-												)}
+												{checkboxCardsRootPropDefs.variant.values.map((variant) => (
+													<tr key={variant}>
+														<td>{upperFirst(variant)}</td>
+														<td>
+															<Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+																<ExampleCheckboxCards variant={variant} />
+																<ExampleCheckboxCards variant={variant} highContrast />
+															</Flex>
+														</td>
+														<td>
+															<Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+																<ExampleCheckboxCards color="gray" variant={variant} />
+																<ExampleCheckboxCards color="gray" variant={variant} highContrast />
+															</Flex>
+														</td>
+													</tr>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -1597,43 +1359,31 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{checkboxCardsRootPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant}>{upperFirst(variant)}</th>
-														),
-													)}
+													{checkboxCardsRootPropDefs.variant.values.map((variant) => (
+														<th key={variant}>{upperFirst(variant)}</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{checkboxCardsRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex
-																		align="center"
-																		justify="center"
-																		gap="5"
-																		mx="2"
-																	>
-																		<Box width="280px">
-																			<ExampleCheckboxCards
-																				color={color}
-																				variant={variant}
-																			/>
-																		</Box>
-																		<Box width="280px">
-																			<ExampleCheckboxCards
-																				color={color}
-																				variant={variant}
-																				highContrast
-																			/>
-																		</Box>
-																	</Flex>
-																</td>
-															),
-														)}
+														{checkboxCardsRootPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex align="center" justify="center" gap="5" mx="2">
+																	<Box width="280px">
+																		<ExampleCheckboxCards color={color} variant={variant} />
+																	</Box>
+																	<Box width="280px">
+																		<ExampleCheckboxCards
+																			color={color}
+																			variant={variant}
+																			highContrast
+																		/>
+																	</Box>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -1647,35 +1397,24 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{checkboxCardsRootPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant} style={{ textAlign: "left" }}>
-																{upperFirst(variant)}
-															</th>
-														),
-													)}
+													{checkboxCardsRootPropDefs.variant.values.map((variant) => (
+														<th key={variant} style={{ textAlign: "left" }}>
+															{upperFirst(variant)}
+														</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{checkboxCardsRootPropDefs.size.values.map((size) => (
 													<tr key={size}>
 														<td>Size {size}</td>
-														{checkboxCardsRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant} style={{ textAlign: "left" }}>
-																	<Box
-																		width={`${160 + +size * 60}px`}
-																		mr="5"
-																		my="1"
-																	>
-																		<ExampleCheckboxCards
-																			variant={variant}
-																			size={size}
-																		/>
-																	</Box>
-																</td>
-															),
-														)}
+														{checkboxCardsRootPropDefs.variant.values.map((variant) => (
+															<td key={variant} style={{ textAlign: "left" }}>
+																<Box width={`${160 + +size * 60}px`} mr="5" my="1">
+																	<ExampleCheckboxCards variant={variant} size={size} />
+																</Box>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -1706,10 +1445,7 @@ export default function ComponentsPage() {
 											</thead>
 											<tbody>
 												{codePropDefs.variant.values.map((variant) => (
-													<tr
-														key={variant}
-														style={{ verticalAlign: "baseline" }}
-													>
+													<tr key={variant} style={{ verticalAlign: "baseline" }}>
 														<td>{upperFirst(variant)}</td>
 														<td>
 															<Flex>
@@ -1732,11 +1468,7 @@ export default function ComponentsPage() {
 														</td>
 														<td>
 															<Flex>
-																<Code
-																	variant={variant}
-																	color="gray"
-																	highContrast
-																>
+																<Code variant={variant} color="gray" highContrast>
 																	console.log()
 																</Code>
 															</Flex>
@@ -1769,11 +1501,7 @@ export default function ComponentsPage() {
 																	<Code variant={variant} color={color}>
 																		console.log()
 																	</Code>
-																	<Code
-																		variant={variant}
-																		color={color}
-																		highContrast
-																	>
+																	<Code variant={variant} color={color} highContrast>
 																		console.log()
 																	</Code>
 																</Flex>
@@ -1805,16 +1533,10 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-weights">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{(["regular", "bold"] as const).map((weight) => (
-													<tr
-														key={weight}
-														style={{ verticalAlign: "baseline" }}
-													>
+													<tr key={weight} style={{ verticalAlign: "baseline" }}>
 														<td>{upperFirst(weight)}</td>
 														<td style={{ textAlign: "left" }}>
 															<Code weight={weight}>console.log()</Code>
@@ -1829,9 +1551,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="context-menu">
-								Context Menu
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="context-menu">Context Menu</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -1849,73 +1569,51 @@ export default function ComponentsPage() {
 												</tr>
 											</thead>
 											<tbody>
-												{contextMenuContentPropDefs.variant.values.map(
-													(variant) => (
-														<tr key={variant}>
-															<td>{upperFirst(variant)}</td>
-															<td>
-																<ContextMenu.Root>
-																	<ContextMenu.Trigger>
-																		<RightClickArea variant={variant} />
-																	</ContextMenu.Trigger>
-																	<ContextMenu.Content variant={variant}>
-																		<ExampleContextMenuContent />
-																	</ContextMenu.Content>
-																</ContextMenu.Root>
-															</td>
-															<td>
-																<ContextMenu.Root>
-																	<ContextMenu.Trigger>
-																		<RightClickArea
-																			variant={variant}
-																			highContrast
-																		/>
-																	</ContextMenu.Trigger>
-																	<ContextMenu.Content
-																		variant={variant}
-																		highContrast
-																	>
-																		<ExampleContextMenuContent />
-																	</ContextMenu.Content>
-																</ContextMenu.Root>
-															</td>
-															<td>
-																<ContextMenu.Root>
-																	<ContextMenu.Trigger>
-																		<RightClickArea
-																			variant={variant}
-																			color="gray"
-																		/>
-																	</ContextMenu.Trigger>
-																	<ContextMenu.Content
-																		variant={variant}
-																		color="gray"
-																	>
-																		<ExampleContextMenuContent />
-																	</ContextMenu.Content>
-																</ContextMenu.Root>
-															</td>
-															<td>
-																<ContextMenu.Root>
-																	<ContextMenu.Trigger>
-																		<RightClickArea
-																			variant={variant}
-																			color="gray"
-																			highContrast
-																		/>
-																	</ContextMenu.Trigger>
-																	<ContextMenu.Content
-																		variant={variant}
-																		color="gray"
-																		highContrast
-																	>
-																		<ExampleContextMenuContent />
-																	</ContextMenu.Content>
-																</ContextMenu.Root>
-															</td>
-														</tr>
-													),
-												)}
+												{contextMenuContentPropDefs.variant.values.map((variant) => (
+													<tr key={variant}>
+														<td>{upperFirst(variant)}</td>
+														<td>
+															<ContextMenu.Root>
+																<ContextMenu.Trigger>
+																	<RightClickArea variant={variant} />
+																</ContextMenu.Trigger>
+																<ContextMenu.Content variant={variant}>
+																	<ExampleContextMenuContent />
+																</ContextMenu.Content>
+															</ContextMenu.Root>
+														</td>
+														<td>
+															<ContextMenu.Root>
+																<ContextMenu.Trigger>
+																	<RightClickArea variant={variant} highContrast />
+																</ContextMenu.Trigger>
+																<ContextMenu.Content variant={variant} highContrast>
+																	<ExampleContextMenuContent />
+																</ContextMenu.Content>
+															</ContextMenu.Root>
+														</td>
+														<td>
+															<ContextMenu.Root>
+																<ContextMenu.Trigger>
+																	<RightClickArea variant={variant} color="gray" />
+																</ContextMenu.Trigger>
+																<ContextMenu.Content variant={variant} color="gray">
+																	<ExampleContextMenuContent />
+																</ContextMenu.Content>
+															</ContextMenu.Root>
+														</td>
+														<td>
+															<ContextMenu.Root>
+																<ContextMenu.Trigger>
+																	<RightClickArea variant={variant} color="gray" highContrast />
+																</ContextMenu.Trigger>
+																<ContextMenu.Content variant={variant} color="gray" highContrast>
+																	<ExampleContextMenuContent />
+																</ContextMenu.Content>
+															</ContextMenu.Root>
+														</td>
+													</tr>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -1927,55 +1625,45 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{contextMenuContentPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant}>{upperFirst(variant)}</th>
-														),
-													)}
+													{contextMenuContentPropDefs.variant.values.map((variant) => (
+														<th key={variant}>{upperFirst(variant)}</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{contextMenuContentPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex align="center" justify="center" gap="4">
-																		<ContextMenu.Root>
-																			<ContextMenu.Trigger>
-																				<RightClickArea
-																					variant={variant}
-																					color={color}
-																				/>
-																			</ContextMenu.Trigger>
-																			<ContextMenu.Content
-																				variant={variant}
-																				color={color}
-																			>
-																				<ExampleContextMenuContent />
-																			</ContextMenu.Content>
-																		</ContextMenu.Root>
-																		<ContextMenu.Root>
-																			<ContextMenu.Trigger>
-																				<RightClickArea
-																					variant={variant}
-																					color={color}
-																					highContrast
-																				/>
-																			</ContextMenu.Trigger>
-																			<ContextMenu.Content
+														{contextMenuContentPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex align="center" justify="center" gap="4">
+																	<ContextMenu.Root>
+																		<ContextMenu.Trigger>
+																			<RightClickArea variant={variant} color={color} />
+																		</ContextMenu.Trigger>
+																		<ContextMenu.Content variant={variant} color={color}>
+																			<ExampleContextMenuContent />
+																		</ContextMenu.Content>
+																	</ContextMenu.Root>
+																	<ContextMenu.Root>
+																		<ContextMenu.Trigger>
+																			<RightClickArea
 																				variant={variant}
 																				color={color}
 																				highContrast
-																			>
-																				<ExampleContextMenuContent />
-																			</ContextMenu.Content>
-																		</ContextMenu.Root>
-																	</Flex>
-																</td>
-															),
-														)}
+																			/>
+																		</ContextMenu.Trigger>
+																		<ContextMenu.Content
+																			variant={variant}
+																			color={color}
+																			highContrast
+																		>
+																			<ExampleContextMenuContent />
+																		</ContextMenu.Content>
+																	</ContextMenu.Root>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -1989,41 +1677,31 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{contextMenuContentPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant} style={{ textAlign: "left" }}>
-																{upperFirst(variant)}
-															</th>
-														),
-													)}
+													{contextMenuContentPropDefs.variant.values.map((variant) => (
+														<th key={variant} style={{ textAlign: "left" }}>
+															{upperFirst(variant)}
+														</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{contextMenuContentPropDefs.size.values.map((size) => (
 													<tr key={size}>
 														<td>Size {size}</td>
-														{contextMenuContentPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex>
-																		<ContextMenu.Root>
-																			<ContextMenu.Trigger>
-																				<RightClickArea
-																					size={size}
-																					variant={variant}
-																				/>
-																			</ContextMenu.Trigger>
-																			<ContextMenu.Content
-																				size={size}
-																				variant={variant}
-																			>
-																				<ExampleContextMenuContent />
-																			</ContextMenu.Content>
-																		</ContextMenu.Root>
-																	</Flex>
-																</td>
-															),
-														)}
+														{contextMenuContentPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex>
+																	<ContextMenu.Root>
+																		<ContextMenu.Trigger>
+																			<RightClickArea size={size} variant={variant} />
+																		</ContextMenu.Trigger>
+																		<ContextMenu.Content size={size} variant={variant}>
+																			<ExampleContextMenuContent />
+																		</ContextMenu.Content>
+																	</ContextMenu.Root>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -2034,9 +1712,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="data-list">
-								Data List
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="data-list">Data List</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="horizontal">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="horizontal">Horizontal</Tabs.Trigger>
@@ -2053,18 +1729,11 @@ export default function ComponentsPage() {
 														size="1"
 														color="gray"
 														mb="5"
-														align={
-															orientation === "horizontal"
-																? "center"
-																: undefined
-														}
+														align={orientation === "horizontal" ? "center" : undefined}
 													>
 														Size {size}
 													</Text>
-													<ExampleDataList
-														size={size}
-														orientation={orientation}
-													/>
+													<ExampleDataList size={size} orientation={orientation} />
 												</Box>
 											))}
 										</Flex>
@@ -2074,9 +1743,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="dialog">
-								Dialog
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="dialog">Dialog</PlaygroundSectionTitle>
 							<Flex gap="4" align="center">
 								<Dialog.Root>
 									<Dialog.Trigger>
@@ -2229,10 +1896,7 @@ export default function ComponentsPage() {
 									<Dialog.Trigger>
 										<Button size="4">Open</Button>
 									</Dialog.Trigger>
-									<Dialog.Content
-										size="4"
-										style={{ marginInline: "var(--space-5)" }}
-									>
+									<Dialog.Content size="4" style={{ marginInline: "var(--space-5)" }}>
 										<Dialog.Title size="6">Edit profile</Dialog.Title>
 										<Dialog.Description size="3" mb="5">
 											Make changes to your profile.
@@ -2279,9 +1943,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="dropdown-menu">
-								Dropdown Menu
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="dropdown-menu">Dropdown Menu</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -2299,79 +1961,63 @@ export default function ComponentsPage() {
 												</tr>
 											</thead>
 											<tbody>
-												{dropdownMenuContentPropDefs.variant.values.map(
-													(variant) => (
-														<tr key={variant}>
-															<td>{upperFirst(variant)}</td>
-															<td>
-																<DropdownMenu.Root>
-																	<DropdownMenu.Trigger>
-																		<Button variant={variant}>
-																			Options
-																			<CaretDownIcon width="16" height="16" />
-																		</Button>
-																	</DropdownMenu.Trigger>
-																	<DropdownMenu.Content variant={variant}>
-																		<ExampleDropdownMenuContent />
-																	</DropdownMenu.Content>
-																</DropdownMenu.Root>
-															</td>
-															<td>
-																<DropdownMenu.Root>
-																	<DropdownMenu.Trigger>
-																		<Button variant={variant} highContrast>
-																			Options
-																			<CaretDownIcon width="16" height="16" />
-																		</Button>
-																	</DropdownMenu.Trigger>
-																	<DropdownMenu.Content
-																		variant={variant}
-																		highContrast
-																	>
-																		<ExampleDropdownMenuContent />
-																	</DropdownMenu.Content>
-																</DropdownMenu.Root>
-															</td>
-															<td>
-																<DropdownMenu.Root>
-																	<DropdownMenu.Trigger>
-																		<Button variant={variant} color="gray">
-																			Options
-																			<CaretDownIcon width="16" height="16" />
-																		</Button>
-																	</DropdownMenu.Trigger>
-																	<DropdownMenu.Content
-																		variant={variant}
-																		color="gray"
-																	>
-																		<ExampleDropdownMenuContent />
-																	</DropdownMenu.Content>
-																</DropdownMenu.Root>
-															</td>
-															<td>
-																<DropdownMenu.Root>
-																	<DropdownMenu.Trigger>
-																		<Button
-																			variant={variant}
-																			color="gray"
-																			highContrast
-																		>
-																			Options
-																			<CaretDownIcon width="16" height="16" />
-																		</Button>
-																	</DropdownMenu.Trigger>
-																	<DropdownMenu.Content
-																		variant={variant}
-																		color="gray"
-																		highContrast
-																	>
-																		<ExampleDropdownMenuContent />
-																	</DropdownMenu.Content>
-																</DropdownMenu.Root>
-															</td>
-														</tr>
-													),
-												)}
+												{dropdownMenuContentPropDefs.variant.values.map((variant) => (
+													<tr key={variant}>
+														<td>{upperFirst(variant)}</td>
+														<td>
+															<DropdownMenu.Root>
+																<DropdownMenu.Trigger>
+																	<Button variant={variant}>
+																		Options
+																		<CaretDownIcon width="16" height="16" />
+																	</Button>
+																</DropdownMenu.Trigger>
+																<DropdownMenu.Content variant={variant}>
+																	<ExampleDropdownMenuContent />
+																</DropdownMenu.Content>
+															</DropdownMenu.Root>
+														</td>
+														<td>
+															<DropdownMenu.Root>
+																<DropdownMenu.Trigger>
+																	<Button variant={variant} highContrast>
+																		Options
+																		<CaretDownIcon width="16" height="16" />
+																	</Button>
+																</DropdownMenu.Trigger>
+																<DropdownMenu.Content variant={variant} highContrast>
+																	<ExampleDropdownMenuContent />
+																</DropdownMenu.Content>
+															</DropdownMenu.Root>
+														</td>
+														<td>
+															<DropdownMenu.Root>
+																<DropdownMenu.Trigger>
+																	<Button variant={variant} color="gray">
+																		Options
+																		<CaretDownIcon width="16" height="16" />
+																	</Button>
+																</DropdownMenu.Trigger>
+																<DropdownMenu.Content variant={variant} color="gray">
+																	<ExampleDropdownMenuContent />
+																</DropdownMenu.Content>
+															</DropdownMenu.Root>
+														</td>
+														<td>
+															<DropdownMenu.Root>
+																<DropdownMenu.Trigger>
+																	<Button variant={variant} color="gray" highContrast>
+																		Options
+																		<CaretDownIcon width="16" height="16" />
+																	</Button>
+																</DropdownMenu.Trigger>
+																<DropdownMenu.Content variant={variant} color="gray" highContrast>
+																	<ExampleDropdownMenuContent />
+																</DropdownMenu.Content>
+															</DropdownMenu.Root>
+														</td>
+													</tr>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -2383,64 +2029,47 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{dropdownMenuContentPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant}>{upperFirst(variant)}</th>
-														),
-													)}
+													{dropdownMenuContentPropDefs.variant.values.map((variant) => (
+														<th key={variant}>{upperFirst(variant)}</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{dropdownMenuContentPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex align="center" justify="center" gap="4">
-																		<DropdownMenu.Root>
-																			<DropdownMenu.Trigger>
-																				<Button variant={variant} color={color}>
-																					Options
-																					<CaretDownIcon
-																						width="16"
-																						height="16"
-																					/>
-																				</Button>
-																			</DropdownMenu.Trigger>
-																			<DropdownMenu.Content
-																				variant={variant}
-																				color={color}
-																			>
-																				<ExampleDropdownMenuContent />
-																			</DropdownMenu.Content>
-																		</DropdownMenu.Root>
-																		<DropdownMenu.Root>
-																			<DropdownMenu.Trigger>
-																				<Button
-																					variant={variant}
-																					color={color}
-																					highContrast
-																				>
-																					Options
-																					<CaretDownIcon
-																						width="16"
-																						height="16"
-																					/>
-																				</Button>
-																			</DropdownMenu.Trigger>
-																			<DropdownMenu.Content
-																				variant={variant}
-																				color={color}
-																				highContrast
-																			>
-																				<ExampleDropdownMenuContent />
-																			</DropdownMenu.Content>
-																		</DropdownMenu.Root>
-																	</Flex>
-																</td>
-															),
-														)}
+														{dropdownMenuContentPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex align="center" justify="center" gap="4">
+																	<DropdownMenu.Root>
+																		<DropdownMenu.Trigger>
+																			<Button variant={variant} color={color}>
+																				Options
+																				<CaretDownIcon width="16" height="16" />
+																			</Button>
+																		</DropdownMenu.Trigger>
+																		<DropdownMenu.Content variant={variant} color={color}>
+																			<ExampleDropdownMenuContent />
+																		</DropdownMenu.Content>
+																	</DropdownMenu.Root>
+																	<DropdownMenu.Root>
+																		<DropdownMenu.Trigger>
+																			<Button variant={variant} color={color} highContrast>
+																				Options
+																				<CaretDownIcon width="16" height="16" />
+																			</Button>
+																		</DropdownMenu.Trigger>
+																		<DropdownMenu.Content
+																			variant={variant}
+																			color={color}
+																			highContrast
+																		>
+																			<ExampleDropdownMenuContent />
+																		</DropdownMenu.Content>
+																	</DropdownMenu.Root>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -2454,43 +2083,34 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{dropdownMenuContentPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant} style={{ textAlign: "left" }}>
-																{upperFirst(variant)}
-															</th>
-														),
-													)}
+													{dropdownMenuContentPropDefs.variant.values.map((variant) => (
+														<th key={variant} style={{ textAlign: "left" }}>
+															{upperFirst(variant)}
+														</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{dropdownMenuContentPropDefs.size.values.map((size) => (
 													<tr key={size}>
 														<td>Size {size}</td>
-														{dropdownMenuContentPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex>
-																		<DropdownMenu.Root>
-																			<DropdownMenu.Trigger>
-																				<Button size={size} variant={variant}>
-																					Options
-																					<CaretDownIcon
-																						{...buttonSizeToIconSize(size)}
-																					/>
-																				</Button>
-																			</DropdownMenu.Trigger>
-																			<DropdownMenu.Content
-																				size={size}
-																				variant={variant}
-																			>
-																				<ExampleDropdownMenuContent />
-																			</DropdownMenu.Content>
-																		</DropdownMenu.Root>
-																	</Flex>
-																</td>
-															),
-														)}
+														{dropdownMenuContentPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex>
+																	<DropdownMenu.Root>
+																		<DropdownMenu.Trigger>
+																			<Button size={size} variant={variant}>
+																				Options
+																				<CaretDownIcon {...buttonSizeToIconSize(size)} />
+																			</Button>
+																		</DropdownMenu.Trigger>
+																		<DropdownMenu.Content size={size} variant={variant}>
+																			<ExampleDropdownMenuContent />
+																		</DropdownMenu.Content>
+																	</DropdownMenu.Root>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -2503,20 +2123,17 @@ export default function ComponentsPage() {
 						<PlaygroundSection>
 							<PlaygroundSectionTitle id="em">Em</PlaygroundSectionTitle>
 							<Box style={{ width: "calc(580px * var(--scaling))" }}>
-								Versions of the <Em>Lorem ipsum</Em> text have been used in
-								typesetting at least since the 1960s, when it was popularized by
-								advertisements for Letraset transfer sheets. It is typically a
-								corrupted version of <Em>De finibus bonorum et malorum</Em>, a
-								1st-century BC text by the Roman statesman and philosopher
-								Cicero, with words altered, added, and removed to make it
+								Versions of the <Em>Lorem ipsum</Em> text have been used in typesetting at least
+								since the 1960s, when it was popularized by advertisements for Letraset transfer
+								sheets. It is typically a corrupted version of{" "}
+								<Em>De finibus bonorum et malorum</Em>, a 1st-century BC text by the Roman statesman
+								and philosopher Cicero, with words altered, added, and removed to make it
 								nonsensical and improper Latin.
 							</Box>
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="heading">
-								Heading
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="heading">Heading</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="specimen">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
@@ -2527,64 +2144,52 @@ export default function ComponentsPage() {
 								<Tabs.Content value="specimen">
 									<Box mt="6" style={{ width: "calc(585px * var(--scaling))" }}>
 										<Heading size="9">
-											The principles of the typographic craft are difficult to
-											master
+											The principles of the typographic craft are difficult to master
 										</Heading>
 									</Box>
 
 									<Grid columns="auto auto" mt="6" gap="6">
-										<Box
-											pr="4"
-											style={{ width: "calc(340px * var(--scaling))" }}
-										>
+										<Box pr="4" style={{ width: "calc(340px * var(--scaling))" }}>
 											<Heading size="5" mb="2">
-												The principles of the typographic craft are difficult to
-												master
+												The principles of the typographic craft are difficult to master
 											</Heading>
 											<Text as="p" size="3">
-												The goal of typography is to relate font size, line
-												height, and line width in a proportional way that
-												maximizes beauty and makes reading easier and more
-												pleasant.
+												The goal of typography is to relate font size, line height, and line width
+												in a proportional way that maximizes beauty and makes reading easier and
+												more pleasant.
 											</Text>
 										</Box>
 
 										<Box style={{ width: "calc(330px * var(--scaling))" }}>
 											<Heading size="4" mb="2">
-												The principles of the typographic craft are difficult to
-												master
+												The principles of the typographic craft are difficult to master
 											</Heading>
 											<Text as="p" size="3">
-												The goal of typography is to relate font size, line
-												height, and line width in a proportional way that
-												maximizes beauty and makes reading easier and more
-												pleasant.
+												The goal of typography is to relate font size, line height, and line width
+												in a proportional way that maximizes beauty and makes reading easier and
+												more pleasant.
 											</Text>
 										</Box>
 
 										<Box style={{ width: "calc(290px * var(--scaling))" }}>
 											<Heading size="3" mb="1">
-												The principles of the typographic craft are difficult to
-												master
+												The principles of the typographic craft are difficult to master
 											</Heading>
 											<Text as="p" size="2">
-												The goal of typography is to relate font size, line
-												height, and line width in a proportional way that
-												maximizes beauty and makes reading easier and more
-												pleasant.
+												The goal of typography is to relate font size, line height, and line width
+												in a proportional way that maximizes beauty and makes reading easier and
+												more pleasant.
 											</Text>
 										</Box>
 
 										<Box style={{ width: "calc(260px * var(--scaling))" }}>
 											<Heading size="2" mb="1">
-												The principles of the typographic craft are difficult to
-												master
+												The principles of the typographic craft are difficult to master
 											</Heading>
 											<Text as="p" size="1">
-												The goal of typography is to relate font size, line
-												height, and line width in a proportional way that
-												maximizes beauty and makes reading easier and more
-												pleasant.
+												The goal of typography is to relate font size, line height, and line width
+												in a proportional way that maximizes beauty and makes reading easier and
+												more pleasant.
 											</Text>
 										</Box>
 									</Grid>
@@ -2592,10 +2197,7 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-colors">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
@@ -2617,10 +2219,7 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-sizes">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{headingPropDefs.size.values.map((size) => (
 													<tr key={size}>
@@ -2641,16 +2240,10 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-weights">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{headingPropDefs.weight.values.map((weight) => (
-													<tr
-														key={weight}
-														style={{ verticalAlign: "baseline" }}
-													>
+													<tr key={weight} style={{ verticalAlign: "baseline" }}>
 														<td>{upperFirst(weight)}</td>
 														<td style={{ textAlign: "left" }}>
 															<Heading weight={weight}>
@@ -2667,18 +2260,14 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="hover-card">
-								Hover Card
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="hover-card">Hover Card</PlaygroundSectionTitle>
 							<Flex direction="column" gap="4">
 								{hoverCardContentPropDefs.size.values.map((size) => (
 									<Text key={size} size={size}>
 										Technology revolutionized{" "}
 										<HoverCard.Root>
 											<HoverCard.Trigger>
-												<Link href="https://en.wikipedia.org/wiki/Typography">
-													typography
-												</Link>
+												<Link href="https://en.wikipedia.org/wiki/Typography">typography</Link>
 											</HoverCard.Trigger>
 
 											<HoverCard.Content size={size} side="top">
@@ -2686,14 +2275,9 @@ export default function ComponentsPage() {
 													<Inset side="left" pr="current">
 														<InsetImage style={{ width: 120 }} />
 													</Inset>
-													<Text
-														as="p"
-														size={size}
-														style={{ maxWidth: 150 + 50 * Number(size) }}
-													>
-														<Strong>Typography</Strong> is the art and technique
-														of arranging type to make written language legible,
-														readable and appealing when displayed.
+													<Text as="p" size={size} style={{ maxWidth: 150 + 50 * Number(size) }}>
+														<Strong>Typography</Strong> is the art and technique of arranging type
+														to make written language legible, readable and appealing when displayed.
 													</Text>
 												</Flex>
 											</HoverCard.Content>
@@ -2705,9 +2289,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="icon-button">
-								Icon Button
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="icon-button">Icon Button</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -2746,11 +2328,7 @@ export default function ComponentsPage() {
 															</IconButton>
 														</td>
 														<td>
-															<IconButton
-																variant={variant}
-																color="gray"
-																highContrast
-															>
+															<IconButton variant={variant} color="gray" highContrast>
 																<StarIcon width="16" height="16" />
 															</IconButton>
 														</td>
@@ -2786,24 +2364,18 @@ export default function ComponentsPage() {
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{iconButtonPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex align="center" justify="center" gap="4">
-																		<IconButton variant={variant} color={color}>
-																			<StarIcon width="16" height="16" />
-																		</IconButton>
-																		<IconButton
-																			variant={variant}
-																			color={color}
-																			highContrast
-																		>
-																			<StarIcon width="16" height="16" />
-																		</IconButton>
-																	</Flex>
-																</td>
-															),
-														)}
+														{iconButtonPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex align="center" justify="center" gap="4">
+																	<IconButton variant={variant} color={color}>
+																		<StarIcon width="16" height="16" />
+																	</IconButton>
+																	<IconButton variant={variant} color={color} highContrast>
+																		<StarIcon width="16" height="16" />
+																	</IconButton>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -2819,48 +2391,33 @@ export default function ComponentsPage() {
 													<th />
 													{iconButtonPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
 											</thead>
 											<tbody>
-												{iconButtonPropDefs.variant.values.map(
-													(variant, index) => (
-														<React.Fragment key={variant}>
-															{index > 0 && (
-																<tr>
-																	<td>&nbsp;</td>
-																</tr>
-															)}
-															{iconButtonPropDefs.size.values.map((size) => (
-																<tr key={size}>
-																	<td>Size {size}</td>
-																	{iconButtonPropDefs.radius.values.map(
-																		(radius) => (
-																			<td
-																				key={radius}
-																				style={{ textAlign: "left" }}
-																			>
-																				<IconButton
-																					size={size}
-																					variant={variant}
-																					radius={radius}
-																				>
-																					<StarIcon
-																						{...buttonSizeToIconSize(size)}
-																					/>
-																				</IconButton>
-																			</td>
-																		),
-																	)}
-																</tr>
-															))}
-														</React.Fragment>
-													),
-												)}
+												{iconButtonPropDefs.variant.values.map((variant, index) => (
+													<React.Fragment key={variant}>
+														{index > 0 && (
+															<tr>
+																<td>&nbsp;</td>
+															</tr>
+														)}
+														{iconButtonPropDefs.size.values.map((size) => (
+															<tr key={size}>
+																<td>Size {size}</td>
+																{iconButtonPropDefs.radius.values.map((radius) => (
+																	<td key={radius} style={{ textAlign: "left" }}>
+																		<IconButton size={size} variant={variant} radius={radius}>
+																			<StarIcon {...buttonSizeToIconSize(size)} />
+																		</IconButton>
+																	</td>
+																))}
+															</tr>
+														))}
+													</React.Fragment>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -2878,9 +2435,8 @@ export default function ComponentsPage() {
 												<InsetImage />
 											</Inset>
 											<Text as="p" size="3" style={{ width: 240 }}>
-												<Strong>Typography</Strong> is the art and technique of
-												arranging type to make written language legible,
-												readable and appealing when displayed.
+												<Strong>Typography</Strong> is the art and technique of arranging type to
+												make written language legible, readable and appealing when displayed.
 											</Text>
 										</Flex>
 									</Card>
@@ -2888,9 +2444,8 @@ export default function ComponentsPage() {
 									<Card size="2">
 										<Flex>
 											<Text as="p" size="3" style={{ width: 240 }}>
-												<Strong>Typography</Strong> is the art and technique of
-												arranging type to make written language legible,
-												readable and appealing when displayed.
+												<Strong>Typography</Strong> is the art and technique of arranging type to
+												make written language legible, readable and appealing when displayed.
 											</Text>
 											<Inset clip="padding-box" side="right" pl="current">
 												<InsetImage />
@@ -2905,17 +2460,15 @@ export default function ComponentsPage() {
 											<InsetImage style={{ width: "100%", height: 160 }} />
 										</Inset>
 										<Text as="p" size="3" style={{ width: 240 }}>
-											<Strong>Typography</Strong> is the art and technique of
-											arranging type to make written language legible, readable
-											and appealing when displayed.
+											<Strong>Typography</Strong> is the art and technique of arranging type to make
+											written language legible, readable and appealing when displayed.
 										</Text>
 									</Card>
 
 									<Card size="2" style={{ width: 300 }}>
 										<Text as="p" size="3" style={{ width: 240 }}>
-											<Strong>Typography</Strong> is the art and technique of
-											arranging type to make written language legible, readable
-											and appealing when displayed.
+											<Strong>Typography</Strong> is the art and technique of arranging type to make
+											written language legible, readable and appealing when displayed.
 										</Text>
 										<Inset clip="padding-box" side="bottom" pt="current">
 											<InsetImage style={{ width: "100%", height: 160 }} />
@@ -2936,20 +2489,20 @@ export default function ComponentsPage() {
 								<Tabs.Content value="specimen">
 									<Flex direction="column" gap="4" mt="6">
 										<Text as="p" size="2">
-											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or
-											press <Kbd>⌘ D</Kbd> to toggle dark mode.
+											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd> to
+											toggle dark mode.
 										</Text>
 										<Text as="p" size="3">
-											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or
-											press <Kbd>⌘ D</Kbd> to toggle dark mode.
+											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd> to
+											toggle dark mode.
 										</Text>
 										<Text as="p" size="4">
-											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or
-											press <Kbd>⌘ D</Kbd> to toggle dark mode.
+											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd> to
+											toggle dark mode.
 										</Text>
 										<Text as="p" size="5">
-											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or
-											press <Kbd>⌘ D</Kbd> to toggle dark mode.
+											Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd> to
+											toggle dark mode.
 										</Text>
 									</Flex>
 								</Tabs.Content>
@@ -2957,11 +2510,7 @@ export default function ComponentsPage() {
 								<Tabs.Content value="all-sizes">
 									<Box mt="6">
 										<Box mt="6">
-											<Flex
-												direction="column"
-												gap="4"
-												style={{ whiteSpace: "nowrap" }}
-											>
+											<Flex direction="column" gap="4" style={{ whiteSpace: "nowrap" }}>
 												{kbdPropDefs.size.values.map((size) => (
 													<Flex align="center" key={size}>
 														<Box flexShrink="0" style={{ width: 80 }}>
@@ -3001,29 +2550,29 @@ export default function ComponentsPage() {
 
 											<Text as="p" size="4">
 												Susan Kare is an American artist and{" "}
-												<Link href="#link">graphic designer</Link>, who
-												contributed <Link href="#link">interface</Link> elements
-												and <Link href="#link">typefaces</Link> for the first{" "}
-												<Link href="#link">Apple Macintosh</Link> personal
-												computer from 1983 to 1986.
+												<Link href="#link">graphic designer</Link>, who contributed{" "}
+												<Link href="#link">interface</Link> elements and{" "}
+												<Link href="#link">typefaces</Link> for the first{" "}
+												<Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+												1986.
 											</Text>
 
 											<Text as="p" size="3">
 												Susan Kare is an American artist and{" "}
-												<Link href="#link">graphic designer</Link>, who
-												contributed <Link href="#link">interface</Link> elements
-												and <Link href="#link">typefaces</Link> for the first{" "}
-												<Link href="#link">Apple Macintosh</Link> personal
-												computer from 1983 to 1986.
+												<Link href="#link">graphic designer</Link>, who contributed{" "}
+												<Link href="#link">interface</Link> elements and{" "}
+												<Link href="#link">typefaces</Link> for the first{" "}
+												<Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+												1986.
 											</Text>
 
 											<Text as="p" size="2">
 												Susan Kare is an American artist and{" "}
-												<Link href="#link">graphic designer</Link>, who
-												contributed <Link href="#link">interface</Link> elements
-												and <Link href="#link">typefaces</Link> for the first{" "}
-												<Link href="#link">Apple Macintosh</Link> personal
-												computer from 1983 to 1986.
+												<Link href="#link">graphic designer</Link>, who contributed{" "}
+												<Link href="#link">interface</Link> elements and{" "}
+												<Link href="#link">typefaces</Link> for the first{" "}
+												<Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+												1986.
 											</Text>
 										</Flex>
 
@@ -3034,29 +2583,29 @@ export default function ComponentsPage() {
 
 											<Text as="p" size="4" color="gray">
 												Susan Kare is an American artist and{" "}
-												<Link href="#link">graphic designer</Link>, who
-												contributed <Link href="#link">interface</Link> elements
-												and <Link href="#link">typefaces</Link> for the first{" "}
-												<Link href="#link">Apple Macintosh</Link> personal
-												computer from 1983 to 1986.
+												<Link href="#link">graphic designer</Link>, who contributed{" "}
+												<Link href="#link">interface</Link> elements and{" "}
+												<Link href="#link">typefaces</Link> for the first{" "}
+												<Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+												1986.
 											</Text>
 
 											<Text as="p" size="3" color="gray">
 												Susan Kare is an American artist and{" "}
-												<Link href="#link">graphic designer</Link>, who
-												contributed <Link href="#link">interface</Link> elements
-												and <Link href="#link">typefaces</Link> for the first{" "}
-												<Link href="#link">Apple Macintosh</Link> personal
-												computer from 1983 to 1986.
+												<Link href="#link">graphic designer</Link>, who contributed{" "}
+												<Link href="#link">interface</Link> elements and{" "}
+												<Link href="#link">typefaces</Link> for the first{" "}
+												<Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+												1986.
 											</Text>
 
 											<Text as="p" size="2" color="gray">
 												Susan Kare is an American artist and{" "}
-												<Link href="#link">graphic designer</Link>, who
-												contributed <Link href="#link">interface</Link> elements
-												and <Link href="#link">typefaces</Link> for the first{" "}
-												<Link href="#link">Apple Macintosh</Link> personal
-												computer from 1983 to 1986.
+												<Link href="#link">graphic designer</Link>, who contributed{" "}
+												<Link href="#link">interface</Link> elements and{" "}
+												<Link href="#link">typefaces</Link> for the first{" "}
+												<Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+												1986.
 											</Text>
 										</Flex>
 									</Grid>
@@ -3064,10 +2613,7 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-colors">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
@@ -3110,10 +2656,7 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-weights">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{linkPropDefs.weight.values.map((weight) => (
 													<tr key={weight}>
@@ -3133,9 +2676,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="popover">
-								Popover
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="popover">Popover</PlaygroundSectionTitle>
 							<Flex align="center" gap="4">
 								<Popover.Root>
 									<Popover.Trigger>
@@ -3152,11 +2693,7 @@ export default function ComponentsPage() {
 												fallback="A"
 											/>
 											<Box flexGrow="1">
-												<TextArea
-													size="1"
-													placeholder="Write a comment…"
-													style={{ height: 80 }}
-												/>
+												<TextArea size="1" placeholder="Write a comment…" style={{ height: 80 }} />
 
 												<Flex gap="3" mt="3" justify="between">
 													<Flex align="center" gap="2" asChild>
@@ -3192,10 +2729,7 @@ export default function ComponentsPage() {
 												fallback="A"
 											/>
 											<Box flexGrow="1">
-												<TextArea
-													placeholder="Write a comment…"
-													style={{ height: 100 }}
-												/>
+												<TextArea placeholder="Write a comment…" style={{ height: 100 }} />
 												<Flex gap="3" mt="3" justify="between">
 													<Flex align="center" gap="2" asChild>
 														<Text as="label" size="2">
@@ -3230,11 +2764,7 @@ export default function ComponentsPage() {
 												fallback="A"
 											/>
 											<Box flexGrow="1">
-												<TextArea
-													size="3"
-													placeholder="Write a comment…"
-													style={{ height: 120 }}
-												/>
+												<TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
 												<Flex gap="3" mt="4" justify="between">
 													<Flex align="center" gap="2" asChild>
 														<Text as="label" size="2">
@@ -3269,11 +2799,7 @@ export default function ComponentsPage() {
 												fallback="A"
 											/>
 											<Box flexGrow="1">
-												<TextArea
-													size="3"
-													placeholder="Write a comment…"
-													style={{ height: 120 }}
-												/>
+												<TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
 												<Flex gap="3" mt="4" justify="between">
 													<Flex align="center" gap="2" asChild>
 														<Text as="label" size="1">
@@ -3296,9 +2822,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="progress">
-								Progress
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="progress">Progress</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -3316,45 +2840,43 @@ export default function ComponentsPage() {
 												</tr>
 											</thead>
 											<tbody>
-												{progressPropDefs.variant.values.map(
-													(variant, index) => (
-														<tr key={variant}>
-															<td>{upperFirst(variant)}</td>
-															<td>
-																<Progress
-																	value={33 + 17 * index}
-																	variant={variant}
-																	style={{ width: 160 }}
-																/>
-															</td>
-															<td>
-																<Progress
-																	value={33 + 17 * index}
-																	variant={variant}
-																	highContrast
-																	style={{ width: 160 }}
-																/>
-															</td>
-															<td>
-																<Progress
-																	value={33 + 17 * index}
-																	variant={variant}
-																	color="gray"
-																	style={{ width: 160 }}
-																/>
-															</td>
-															<td>
-																<Progress
-																	value={33 + 17 * index}
-																	variant={variant}
-																	color="gray"
-																	highContrast
-																	style={{ width: 160 }}
-																/>
-															</td>
-														</tr>
-													),
-												)}
+												{progressPropDefs.variant.values.map((variant, index) => (
+													<tr key={variant}>
+														<td>{upperFirst(variant)}</td>
+														<td>
+															<Progress
+																value={33 + 17 * index}
+																variant={variant}
+																style={{ width: 160 }}
+															/>
+														</td>
+														<td>
+															<Progress
+																value={33 + 17 * index}
+																variant={variant}
+																highContrast
+																style={{ width: 160 }}
+															/>
+														</td>
+														<td>
+															<Progress
+																value={33 + 17 * index}
+																variant={variant}
+																color="gray"
+																style={{ width: 160 }}
+															/>
+														</td>
+														<td>
+															<Progress
+																value={33 + 17 * index}
+																variant={variant}
+																color="gray"
+																highContrast
+																style={{ width: 160 }}
+															/>
+														</td>
+													</tr>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -3413,54 +2935,39 @@ export default function ComponentsPage() {
 													<th />
 													{progressPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
 											</thead>
 											<tbody>
-												{progressPropDefs.variant.values.map(
-													(variant, index) => (
-														<React.Fragment key={variant}>
-															{index > 0 && (
-																<tr>
-																	<td>&nbsp;</td>
-																</tr>
-															)}
-															{progressPropDefs.size.values.map(
-																(size, sizeIndex) => (
-																	<tr key={size}>
-																		<td>Size {size}</td>
-																		{progressPropDefs.radius.values.map(
-																			(radius) => (
-																				<td
-																					key={radius}
-																					style={{ textAlign: "left" }}
-																				>
-																					<Flex
-																						align="center"
-																						justify="start"
-																						gap="4"
-																					>
-																						<Progress
-																							value={33 + 17 * sizeIndex}
-																							size={size}
-																							variant={variant}
-																							radius={radius}
-																							style={{ width: 160 }}
-																						/>
-																					</Flex>
-																				</td>
-																			),
-																		)}
-																	</tr>
-																),
-															)}
-														</React.Fragment>
-													),
-												)}
+												{progressPropDefs.variant.values.map((variant, index) => (
+													<React.Fragment key={variant}>
+														{index > 0 && (
+															<tr>
+																<td>&nbsp;</td>
+															</tr>
+														)}
+														{progressPropDefs.size.values.map((size, sizeIndex) => (
+															<tr key={size}>
+																<td>Size {size}</td>
+																{progressPropDefs.radius.values.map((radius) => (
+																	<td key={radius} style={{ textAlign: "left" }}>
+																		<Flex align="center" justify="start" gap="4">
+																			<Progress
+																				value={33 + 17 * sizeIndex}
+																				size={size}
+																				variant={variant}
+																				radius={radius}
+																				style={{ width: 160 }}
+																			/>
+																		</Flex>
+																	</td>
+																))}
+															</tr>
+														))}
+													</React.Fragment>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -3475,11 +2982,10 @@ export default function ComponentsPage() {
 									A man who would letterspace lower case would steal sheep
 									<span style={{ marginRight: "-0.2em" }}>,</span>
 								</Quote>{" "}
-								Frederic Goudy liked to say. The reason for not letterspacing
-								lower case is that it hampers legibility. But there are some
-								lowercase alphabets to which this principle doesn’t apply.
-								Moderate letterspacing can make a face such as lowercase Univers
-								bold condensed more legible rather than less
+								Frederic Goudy liked to say. The reason for not letterspacing lower case is that it
+								hampers legibility. But there are some lowercase alphabets to which this principle
+								doesn’t apply. Moderate letterspacing can make a face such as lowercase Univers bold
+								condensed more legible rather than less
 							</Box>
 						</PlaygroundSection>
 
@@ -3519,12 +3025,7 @@ export default function ComponentsPage() {
 																	value="2"
 																	defaultChecked
 																/>
-																<Radio
-																	highContrast
-																	variant={variant}
-																	value=""
-																	defaultChecked
-																/>
+																<Radio highContrast variant={variant} value="" defaultChecked />
 															</Flex>
 														</td>
 														<td>
@@ -3554,12 +3055,7 @@ export default function ComponentsPage() {
 														<td>
 															<Flex align="center" justify="center" gap="2">
 																<Radio disabled variant={variant} value="" />
-																<Radio
-																	disabled
-																	variant={variant}
-																	value=""
-																	defaultChecked
-																/>
+																<Radio disabled variant={variant} value="" defaultChecked />
 															</Flex>
 														</td>
 													</tr>
@@ -3623,40 +3119,36 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{radioGroupRootPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant} style={{ textAlign: "left" }}>
-																{upperFirst(variant)}
-															</th>
-														),
-													)}
+													{radioGroupRootPropDefs.variant.values.map((variant) => (
+														<th key={variant} style={{ textAlign: "left" }}>
+															{upperFirst(variant)}
+														</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{radioGroupRootPropDefs.size.values.map((size) => (
 													<tr key={size}>
 														<td>Size {size}</td>
-														{radioGroupRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant} style={{ textAlign: "left" }}>
-																	<Flex align="center" justify="start" gap="2">
-																		<Radio
-																			name={`radio-size-${size}-${variant}`}
-																			size={size}
-																			variant={variant}
-																			value="1"
-																		/>
-																		<Radio
-																			name={`radio-size-${size}-${variant}`}
-																			size={size}
-																			variant={variant}
-																			value="2"
-																			defaultChecked
-																		/>
-																	</Flex>
-																</td>
-															),
-														)}
+														{radioGroupRootPropDefs.variant.values.map((variant) => (
+															<td key={variant} style={{ textAlign: "left" }}>
+																<Flex align="center" justify="start" gap="2">
+																	<Radio
+																		name={`radio-size-${size}-${variant}`}
+																		size={size}
+																		variant={variant}
+																		value="1"
+																	/>
+																	<Radio
+																		name={`radio-size-${size}-${variant}`}
+																		size={size}
+																		variant={variant}
+																		value="2"
+																		defaultChecked
+																	/>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -3667,27 +3159,19 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="radio-group">
-								Radio Group
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="radio-group">Radio Group</PlaygroundSectionTitle>
 							<Flex align="start" direction="column" gap="5">
 								{radioGroupRootPropDefs.size.values.map((size) => (
 									<RadioGroup.Root defaultValue="1" size={size} key={size}>
-										<RadioGroup.Item value="1">
-											Agree to Terms and Conditions
-										</RadioGroup.Item>
-										<RadioGroup.Item value="2">
-											Disagree with Terms and Conditions
-										</RadioGroup.Item>
+										<RadioGroup.Item value="1">Agree to Terms and Conditions</RadioGroup.Item>
+										<RadioGroup.Item value="2">Disagree with Terms and Conditions</RadioGroup.Item>
 									</RadioGroup.Root>
 								))}
 							</Flex>
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="radio-cards">
-								Radio Cards
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="radio-cards">Radio Cards</PlaygroundSectionTitle>
 
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
@@ -3706,47 +3190,23 @@ export default function ComponentsPage() {
 												</tr>
 											</thead>
 											<tbody>
-												{radioCardsRootPropDefs.variant.values.map(
-													(variant) => (
-														<tr key={variant}>
-															<td>{upperFirst(variant)}</td>
-															<td>
-																<Flex
-																	direction="column"
-																	width="280px"
-																	gap="4"
-																	mx="2"
-																	mb="4"
-																>
-																	<ExampleRadioCards variant={variant} />
-																	<ExampleRadioCards
-																		variant={variant}
-																		highContrast
-																	/>
-																</Flex>
-															</td>
-															<td>
-																<Flex
-																	direction="column"
-																	width="280px"
-																	gap="4"
-																	mx="2"
-																	mb="4"
-																>
-																	<ExampleRadioCards
-																		color="gray"
-																		variant={variant}
-																	/>
-																	<ExampleRadioCards
-																		color="gray"
-																		variant={variant}
-																		highContrast
-																	/>
-																</Flex>
-															</td>
-														</tr>
-													),
-												)}
+												{radioCardsRootPropDefs.variant.values.map((variant) => (
+													<tr key={variant}>
+														<td>{upperFirst(variant)}</td>
+														<td>
+															<Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+																<ExampleRadioCards variant={variant} />
+																<ExampleRadioCards variant={variant} highContrast />
+															</Flex>
+														</td>
+														<td>
+															<Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+																<ExampleRadioCards color="gray" variant={variant} />
+																<ExampleRadioCards color="gray" variant={variant} highContrast />
+															</Flex>
+														</td>
+													</tr>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -3758,43 +3218,31 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{radioCardsRootPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant}>{upperFirst(variant)}</th>
-														),
-													)}
+													{radioCardsRootPropDefs.variant.values.map((variant) => (
+														<th key={variant}>{upperFirst(variant)}</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{radioCardsRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Flex
-																		align="center"
-																		justify="center"
-																		gap="5"
-																		mx="2"
-																	>
-																		<Box width="280px">
-																			<ExampleRadioCards
-																				color={color}
-																				variant={variant}
-																			/>
-																		</Box>
-																		<Box width="280px">
-																			<ExampleRadioCards
-																				color={color}
-																				variant={variant}
-																				highContrast
-																			/>
-																		</Box>
-																	</Flex>
-																</td>
-															),
-														)}
+														{radioCardsRootPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Flex align="center" justify="center" gap="5" mx="2">
+																	<Box width="280px">
+																		<ExampleRadioCards color={color} variant={variant} />
+																	</Box>
+																	<Box width="280px">
+																		<ExampleRadioCards
+																			color={color}
+																			variant={variant}
+																			highContrast
+																		/>
+																	</Box>
+																</Flex>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -3808,35 +3256,24 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{radioCardsRootPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant} style={{ textAlign: "left" }}>
-																{upperFirst(variant)}
-															</th>
-														),
-													)}
+													{radioCardsRootPropDefs.variant.values.map((variant) => (
+														<th key={variant} style={{ textAlign: "left" }}>
+															{upperFirst(variant)}
+														</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{radioCardsRootPropDefs.size.values.map((size) => (
 													<tr key={size}>
 														<td>Size {size}</td>
-														{radioCardsRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant} style={{ textAlign: "left" }}>
-																	<Box
-																		width={`${160 + +size * 60}px`}
-																		mr="5"
-																		my="1"
-																	>
-																		<ExampleRadioCards
-																			variant={variant}
-																			size={size}
-																		/>
-																	</Box>
-																</td>
-															),
-														)}
+														{radioCardsRootPropDefs.variant.values.map((variant) => (
+															<td key={variant} style={{ textAlign: "left" }}>
+																<Box width={`${160 + +size * 60}px`} mr="5" my="1">
+																	<ExampleRadioCards variant={variant} size={size} />
+																</Box>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -3847,9 +3284,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="scroll-area">
-								Scroll Area
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="scroll-area">Scroll Area</PlaygroundSectionTitle>
 							<Flex align="start" direction="column">
 								<Card size="2">
 									<Inset>
@@ -3861,12 +3296,9 @@ export default function ComponentsPage() {
 													width: 520,
 													height: 180,
 													"--scrollarea-scrollbar-margin-top": "var(--space-3)",
-													"--scrollarea-scrollbar-margin-bottom":
-														"var(--space-3)",
-													"--scrollarea-scrollbar-margin-left":
-														"var(--space-3)",
-													"--scrollarea-scrollbar-margin-right":
-														"var(--space-3)",
+													"--scrollarea-scrollbar-margin-bottom": "var(--space-3)",
+													"--scrollarea-scrollbar-margin-left": "var(--space-3)",
+													"--scrollarea-scrollbar-margin-right": "var(--space-3)",
 												} as React.CSSProperties
 											}
 										>
@@ -3874,31 +3306,27 @@ export default function ComponentsPage() {
 												<Box pr="5">
 													<Flex direction="column" gap="4">
 														<Text as="p" size="2">
-															Three fundamental aspects of typography are
-															legibility, readability, and aesthetics. Although
-															in a non-technical sense “legible” and “readable”
-															are often used synonymously, typographically they
-															are separate but related concepts.
+															Three fundamental aspects of typography are legibility, readability,
+															and aesthetics. Although in a non-technical sense “legible” and
+															“readable” are often used synonymously, typographically they are
+															separate but related concepts.
 														</Text>
 
 														<Text as="p" size="2">
-															Legibility describes how easily individual
-															characters can be distinguished from one another.
-															It is described by Walter Tracy as “the quality of
-															being decipherable and recognisable”. For
-															instance, if a “b” and an “h”, or a “3” and an
-															“8”, are difficult to distinguish at small sizes,
-															this is a problem of legibility.
+															Legibility describes how easily individual characters can be
+															distinguished from one another. It is described by Walter Tracy as
+															“the quality of being decipherable and recognisable”. For instance, if
+															a “b” and an “h”, or a “3” and an “8”, are difficult to distinguish at
+															small sizes, this is a problem of legibility.
 														</Text>
 
 														<Text as="p" size="2">
-															Typographers are concerned with legibility insofar
-															as it is their job to select the correct font to
-															use. Brush Script is an example of a font
-															containing many characters that might be difficult
-															to distinguish. The selection of cases influences
-															the legibility of typography because using only
-															uppercase letters (all-caps) reduces legibility.
+															Typographers are concerned with legibility insofar as it is their job
+															to select the correct font to use. Brush Script is an example of a
+															font containing many characters that might be difficult to
+															distinguish. The selection of cases influences the legibility of
+															typography because using only uppercase letters (all-caps) reduces
+															legibility.
 														</Text>
 													</Flex>
 												</Box>
@@ -3910,9 +3338,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="select">
-								Select
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="select">Select</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -3939,9 +3365,7 @@ export default function ComponentsPage() {
 															<Select.Root defaultValue="apple">
 																<Select.Trigger variant={variant} />
 																<Select.Content
-																	variant={selectTriggerVariantToSelectContentVariant(
-																		variant,
-																	)}
+																	variant={selectTriggerVariantToSelectContentVariant(variant)}
 																>
 																	<ExampleSelectContent />
 																</Select.Content>
@@ -3949,14 +3373,9 @@ export default function ComponentsPage() {
 														</td>
 														<td>
 															<Select.Root defaultValue="apple">
-																<Select.Trigger
-																	variant={variant}
-																	color="gray"
-																/>
+																<Select.Trigger variant={variant} color="gray" />
 																<Select.Content
-																	variant={selectTriggerVariantToSelectContentVariant(
-																		variant,
-																	)}
+																	variant={selectTriggerVariantToSelectContentVariant(variant)}
 																	color="gray"
 																	highContrast
 																>
@@ -3966,14 +3385,9 @@ export default function ComponentsPage() {
 														</td>
 														<td>
 															<Select.Root>
-																<Select.Trigger
-																	variant={variant}
-																	placeholder="Choose a fruit…"
-																/>
+																<Select.Trigger variant={variant} placeholder="Choose a fruit…" />
 																<Select.Content
-																	variant={selectTriggerVariantToSelectContentVariant(
-																		variant,
-																	)}
+																	variant={selectTriggerVariantToSelectContentVariant(variant)}
 																>
 																	<ExampleSelectContent />
 																</Select.Content>
@@ -3983,9 +3397,7 @@ export default function ComponentsPage() {
 															<Select.Root defaultValue="apple" disabled>
 																<Select.Trigger variant={variant} />
 																<Select.Content
-																	variant={selectTriggerVariantToSelectContentVariant(
-																		variant,
-																	)}
+																	variant={selectTriggerVariantToSelectContentVariant(variant)}
 																>
 																	<ExampleSelectContent />
 																</Select.Content>
@@ -4004,37 +3416,28 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{selectTriggerPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant}>{upperFirst(variant)}</th>
-														),
-													)}
+													{selectTriggerPropDefs.variant.values.map((variant) => (
+														<th key={variant}>{upperFirst(variant)}</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{selectTriggerPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<Select.Root defaultValue="apple">
-																		<Select.Trigger
-																			variant={variant}
-																			color={color}
-																		/>
-																		<Select.Content
-																			variant={selectTriggerVariantToSelectContentVariant(
-																				variant,
-																			)}
-																			color={color}
-																		>
-																			<ExampleSelectContent />
-																		</Select.Content>
-																	</Select.Root>
-																</td>
-															),
-														)}
+														{selectTriggerPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<Select.Root defaultValue="apple">
+																	<Select.Trigger variant={variant} color={color} />
+																	<Select.Content
+																		variant={selectTriggerVariantToSelectContentVariant(variant)}
+																		color={color}
+																	>
+																		<ExampleSelectContent />
+																	</Select.Content>
+																</Select.Root>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -4050,55 +3453,40 @@ export default function ComponentsPage() {
 													<th />
 													{selectTriggerPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
 											</thead>
 											<tbody>
-												{selectTriggerPropDefs.variant.values.map(
-													(variant, index) => (
-														<React.Fragment key={variant}>
-															{index > 0 && (
-																<tr>
-																	<td>&nbsp;</td>
-																</tr>
-															)}
-															{selectRootPropDefs.size.values.map((size) => (
-																<tr key={size}>
-																	<td>Size {size}</td>
-																	{selectTriggerPropDefs.radius.values.map(
-																		(radius) => (
-																			<td
-																				key={radius}
-																				style={{ textAlign: "left" }}
+												{selectTriggerPropDefs.variant.values.map((variant, index) => (
+													<React.Fragment key={variant}>
+														{index > 0 && (
+															<tr>
+																<td>&nbsp;</td>
+															</tr>
+														)}
+														{selectRootPropDefs.size.values.map((size) => (
+															<tr key={size}>
+																<td>Size {size}</td>
+																{selectTriggerPropDefs.radius.values.map((radius) => (
+																	<td key={radius} style={{ textAlign: "left" }}>
+																		<Select.Root size={size} defaultValue="apple">
+																			<Select.Trigger variant={variant} radius={radius} />
+																			<Select.Content
+																				variant={selectTriggerVariantToSelectContentVariant(
+																					variant,
+																				)}
 																			>
-																				<Select.Root
-																					size={size}
-																					defaultValue="apple"
-																				>
-																					<Select.Trigger
-																						variant={variant}
-																						radius={radius}
-																					/>
-																					<Select.Content
-																						variant={selectTriggerVariantToSelectContentVariant(
-																							variant,
-																						)}
-																					>
-																						<ExampleSelectContent />
-																					</Select.Content>
-																				</Select.Root>
-																			</td>
-																		),
-																	)}
-																</tr>
-															))}
-														</React.Fragment>
-													),
-												)}
+																				<ExampleSelectContent />
+																			</Select.Content>
+																		</Select.Root>
+																	</td>
+																))}
+															</tr>
+														))}
+													</React.Fragment>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -4107,9 +3495,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="separator">
-								Separator
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="separator">Separator</PlaygroundSectionTitle>
 							<Flex style={{ whiteSpace: "nowrap" }}>
 								<Text size="2">
 									Tools for building high-quality, accessible UI.
@@ -4137,67 +3523,50 @@ export default function ComponentsPage() {
 									<thead>
 										<tr>
 											<th />
-											{segmentedControlRootPropDefs.radius.values.map(
-												(radius) => (
-													<th key={radius} style={{ textAlign: "left" }}>
-														{radius === "none"
-															? "No radius"
-															: upperFirst(radius)}
-													</th>
-												),
-											)}
+											{segmentedControlRootPropDefs.radius.values.map((radius) => (
+												<th key={radius} style={{ textAlign: "left" }}>
+													{radius === "none" ? "No radius" : upperFirst(radius)}
+												</th>
+											))}
 										</tr>
 									</thead>
 									<tbody>
-										{segmentedControlRootPropDefs.variant.values.map(
-											(variant, index) => (
-												<React.Fragment key={variant}>
-													{index > 0 && (
-														<tr>
-															<td>&nbsp;</td>
-														</tr>
-													)}
-													{selectRootPropDefs.size.values.map((size) => (
-														<tr key={size}>
-															<td>Size {size}</td>
-															{segmentedControlRootPropDefs.radius.values.map(
-																(radius) => (
-																	<td
-																		key={radius}
-																		style={{ textAlign: "left" }}
+										{segmentedControlRootPropDefs.variant.values.map((variant, index) => (
+											<React.Fragment key={variant}>
+												{index > 0 && (
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+												)}
+												{selectRootPropDefs.size.values.map((size) => (
+													<tr key={size}>
+														<td>Size {size}</td>
+														{segmentedControlRootPropDefs.radius.values.map((radius) => (
+															<td key={radius} style={{ textAlign: "left" }}>
+																<Flex pr="4">
+																	<SegmentedControl.Root
+																		defaultValue="1"
+																		variant={variant}
+																		size={size}
+																		radius={radius}
 																	>
-																		<Flex pr="4">
-																			<SegmentedControl.Root
-																				defaultValue="1"
-																				variant={variant}
-																				size={size}
-																				radius={radius}
-																			>
-																				<SegmentedControl.Item value="1">
-																					Inbox
-																				</SegmentedControl.Item>
-																				<SegmentedControl.Item value="2">
-																					Sent
-																				</SegmentedControl.Item>
-																			</SegmentedControl.Root>
-																		</Flex>
-																	</td>
-																),
-															)}
-														</tr>
-													))}
-												</React.Fragment>
-											),
-										)}
+																		<SegmentedControl.Item value="1">Inbox</SegmentedControl.Item>
+																		<SegmentedControl.Item value="2">Sent</SegmentedControl.Item>
+																	</SegmentedControl.Root>
+																</Flex>
+															</td>
+														))}
+													</tr>
+												))}
+											</React.Fragment>
+										))}
 									</tbody>
 								</table>
 							</Box>
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="skeleton">
-								Skeleton
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="skeleton">Skeleton</PlaygroundSectionTitle>
 
 							<Grid gap="5" columns="360px 360px">
 								{[false, true].map((isLoading, i) => (
@@ -4210,13 +3579,7 @@ export default function ComponentsPage() {
 
 										<Box mb="5">
 											<Flex direction="column">
-												<Text
-													as="label"
-													size="2"
-													weight="medium"
-													mb="2"
-													htmlFor="email"
-												>
+												<Text as="label" size="2" weight="medium" mb="2" htmlFor="email">
 													<Skeleton loading={isLoading}>Email address</Skeleton>
 												</Text>
 												<Skeleton loading={isLoading}>
@@ -4231,12 +3594,7 @@ export default function ComponentsPage() {
 										</Box>
 
 										<Box mb="5" position="relative">
-											<Box
-												position="absolute"
-												top="0"
-												right="0"
-												style={{ marginTop: -2 }}
-											>
+											<Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
 												{isLoading ? (
 													<Text size="2">
 														<Skeleton loading>Forgot password?</Skeleton>
@@ -4249,13 +3607,7 @@ export default function ComponentsPage() {
 											</Box>
 
 											<Flex direction="column">
-												<Text
-													as="label"
-													size="2"
-													weight="medium"
-													mb="2"
-													htmlFor="password"
-												>
+												<Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
 													<Skeleton loading={isLoading}>Password</Skeleton>
 												</Text>
 												<Skeleton loading={isLoading}>
@@ -4287,9 +3639,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="slider">
-								Slider
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="slider">Slider</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -4312,10 +3662,7 @@ export default function ComponentsPage() {
 													<tr key={variant}>
 														<td>{upperFirst(variant)}</td>
 														<td>
-															<Slider
-																defaultValue={[33 + 17 * index]}
-																variant={variant}
-															/>
+															<Slider defaultValue={[33 + 17 * index]} variant={variant} />
 														</td>
 														<td>
 															<Slider
@@ -4340,11 +3687,7 @@ export default function ComponentsPage() {
 															/>
 														</td>
 														<td>
-															<Slider
-																defaultValue={[33 + 17 * index]}
-																variant={variant}
-																disabled
-															/>
+															<Slider defaultValue={[33 + 17 * index]} variant={variant} disabled />
 														</td>
 													</tr>
 												))}
@@ -4404,9 +3747,7 @@ export default function ComponentsPage() {
 													<th />
 													{sliderPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
@@ -4419,34 +3760,23 @@ export default function ComponentsPage() {
 																<td>&nbsp;</td>
 															</tr>
 														)}
-														{sliderPropDefs.size.values.map(
-															(size, sizeIndex) => (
-																<tr key={size}>
-																	<td>Size {size}</td>
-																	{sliderPropDefs.radius.values.map(
-																		(radius) => (
-																			<td
-																				key={radius}
-																				style={{ textAlign: "left" }}
-																			>
-																				<Flex
-																					align="center"
-																					justify="start"
-																					gap="4"
-																				>
-																					<Slider
-																						defaultValue={[33 + 17 * sizeIndex]}
-																						size={size}
-																						variant={variant}
-																						radius={radius}
-																					/>
-																				</Flex>
-																			</td>
-																		),
-																	)}
-																</tr>
-															),
-														)}
+														{sliderPropDefs.size.values.map((size, sizeIndex) => (
+															<tr key={size}>
+																<td>Size {size}</td>
+																{sliderPropDefs.radius.values.map((radius) => (
+																	<td key={radius} style={{ textAlign: "left" }}>
+																		<Flex align="center" justify="start" gap="4">
+																			<Slider
+																				defaultValue={[33 + 17 * sizeIndex]}
+																				size={size}
+																				variant={variant}
+																				radius={radius}
+																			/>
+																		</Flex>
+																	</td>
+																))}
+															</tr>
+														))}
 													</React.Fragment>
 												))}
 											</tbody>
@@ -4457,9 +3787,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="spinner">
-								Spinner
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="spinner">Spinner</PlaygroundSectionTitle>
 							<Flex align="center" gap="4">
 								<Spinner size="1" />
 								<Spinner size="2" />
@@ -4468,20 +3796,15 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="strong">
-								Strong
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="strong">Strong</PlaygroundSectionTitle>
 
 							<Text as="p" size="3">
-								The most important thing to remember is,{" "}
-								<Strong>stay positive</Strong>.
+								The most important thing to remember is, <Strong>stay positive</Strong>.
 							</Text>
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="switch">
-								Switch
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="switch">Switch</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -4511,21 +3834,13 @@ export default function ComponentsPage() {
 														</td>
 														<td>
 															<Flex align="center" justify="center" gap="4">
-																<Switch
-																	variant={variant}
-																	highContrast
-																	defaultChecked
-																/>
+																<Switch variant={variant} highContrast defaultChecked />
 															</Flex>
 														</td>
 														<td>
 															<Flex align="center" justify="center" gap="4">
 																<Switch variant={variant} color="gray" />
-																<Switch
-																	variant={variant}
-																	color="gray"
-																	defaultChecked
-																/>
+																<Switch variant={variant} color="gray" defaultChecked />
 															</Flex>
 														</td>
 														<td>
@@ -4541,11 +3856,7 @@ export default function ComponentsPage() {
 														<td>
 															<Flex align="center" justify="center" gap="4">
 																<Switch variant={variant} disabled />
-																<Switch
-																	variant={variant}
-																	disabled
-																	defaultChecked
-																/>
+																<Switch variant={variant} disabled defaultChecked />
 															</Flex>
 														</td>
 													</tr>
@@ -4574,11 +3885,7 @@ export default function ComponentsPage() {
 															<td key={variant}>
 																<Flex align="center" justify="center" gap="4">
 																	<Switch variant={variant} color={color} />
-																	<Switch
-																		variant={variant}
-																		color={color}
-																		defaultChecked
-																	/>
+																	<Switch variant={variant} color={color} defaultChecked />
 																	<Switch
 																		variant={variant}
 																		color={color}
@@ -4603,9 +3910,7 @@ export default function ComponentsPage() {
 													<th />
 													{switchPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
@@ -4622,15 +3927,8 @@ export default function ComponentsPage() {
 															<tr key={size}>
 																<td>Size {size}</td>
 																{switchPropDefs.radius.values.map((radius) => (
-																	<td
-																		key={radius}
-																		style={{ textAlign: "left" }}
-																	>
-																		<Flex
-																			align="center"
-																			justify="start"
-																			gap="4"
-																		>
+																	<td key={radius} style={{ textAlign: "left" }}>
+																		<Flex align="center" justify="start" gap="4">
 																			<Switch
 																				size={size}
 																				variant={variant}
@@ -4668,22 +3966,13 @@ export default function ComponentsPage() {
 											position="absolute"
 											inset="0"
 										>
-											<ThemesPanelBackgroundImage
-												id="1"
-												width="1000px"
-												height="1000px"
-											/>
+											<ThemesPanelBackgroundImage id="1" width="1000px" height="1000px" />
 										</Flex>
 
-										<Table.Root
-											variant="surface"
-											size={{ initial: "1", sm: "2" }}
-										>
+										<Table.Root variant="surface" size={{ initial: "1", sm: "2" }}>
 											<Table.Header>
 												<Table.Row>
-													<Table.ColumnHeaderCell>
-														Full name
-													</Table.ColumnHeaderCell>
+													<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
 													<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
 													<Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
 												</Table.Row>
@@ -4691,25 +3980,19 @@ export default function ComponentsPage() {
 
 											<Table.Body>
 												<Table.Row>
-													<Table.RowHeaderCell>
-														Danilo Sousa
-													</Table.RowHeaderCell>
+													<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
 													<Table.Cell>danilo@example.com</Table.Cell>
 													<Table.Cell>Developer</Table.Cell>
 												</Table.Row>
 
 												<Table.Row>
-													<Table.RowHeaderCell>
-														Zahra Ambessa
-													</Table.RowHeaderCell>
+													<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
 													<Table.Cell>zahra@example.com</Table.Cell>
 													<Table.Cell>Admin</Table.Cell>
 												</Table.Row>
 
 												<Table.Row>
-													<Table.RowHeaderCell>
-														Jasper Eriksson
-													</Table.RowHeaderCell>
+													<Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
 													<Table.Cell>jasper@example.com</Table.Cell>
 													<Table.Cell>Developer</Table.Cell>
 												</Table.Row>
@@ -4750,39 +4033,27 @@ export default function ComponentsPage() {
 														<Table.Root variant={variant} size={size}>
 															<Table.Header>
 																<Table.Row>
-																	<Table.ColumnHeaderCell>
-																		Full name
-																	</Table.ColumnHeaderCell>
-																	<Table.ColumnHeaderCell>
-																		Email
-																	</Table.ColumnHeaderCell>
-																	<Table.ColumnHeaderCell>
-																		Group
-																	</Table.ColumnHeaderCell>
+																	<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+																	<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+																	<Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
 																</Table.Row>
 															</Table.Header>
 
 															<Table.Body>
 																<Table.Row>
-																	<Table.RowHeaderCell>
-																		Danilo Sousa
-																	</Table.RowHeaderCell>
+																	<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
 																	<Table.Cell>danilo@example.com</Table.Cell>
 																	<Table.Cell>Developer</Table.Cell>
 																</Table.Row>
 
 																<Table.Row>
-																	<Table.RowHeaderCell>
-																		Zahra Ambessa
-																	</Table.RowHeaderCell>
+																	<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
 																	<Table.Cell>zahra@example.com</Table.Cell>
 																	<Table.Cell>Admin</Table.Cell>
 																</Table.Row>
 
 																<Table.Row>
-																	<Table.RowHeaderCell>
-																		Jasper Eriksson
-																	</Table.RowHeaderCell>
+																	<Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
 																	<Table.Cell>jasper@example.com</Table.Cell>
 																	<Table.Cell>Developer</Table.Cell>
 																</Table.Row>
@@ -4866,9 +4137,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="tab-nav">
-								Tab Nav
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="tab-nav">Tab Nav</PlaygroundSectionTitle>
 
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
@@ -4948,53 +4217,45 @@ export default function ComponentsPage() {
 								<Tabs.Content value="specimen">
 									<Box mt="6" style={{ width: "calc(760px * var(--scaling))" }}>
 										<Text as="p" size="5">
-											The goal of typography is to relate font size, line
-											height, and line width in a proportional way that
-											maximizes beauty and makes reading easier and more
-											pleasant. The question is: What proportion(s) will give us
-											the best results? The golden ratio is often observed in
-											nature where beauty and utility intersect; perhaps we can
-											use this “divine” proportion to enhance these attributes
-											in our typography.
+											The goal of typography is to relate font size, line height, and line width in
+											a proportional way that maximizes beauty and makes reading easier and more
+											pleasant. The question is: What proportion(s) will give us the best results?
+											The golden ratio is often observed in nature where beauty and utility
+											intersect; perhaps we can use this “divine” proportion to enhance these
+											attributes in our typography.
 										</Text>
 									</Box>
 
 									<Box mt="6" style={{ width: "calc(700px * var(--scaling))" }}>
 										<Text as="p" size="4">
-											The goal of typography is to relate font size, line
-											height, and line width in a proportional way that
-											maximizes beauty and makes reading easier and more
-											pleasant. The question is: What proportion(s) will give us
-											the best results? The golden ratio is often observed in
-											nature where beauty and utility intersect; perhaps we can
-											use this “divine” proportion to enhance these attributes
-											in our typography.
+											The goal of typography is to relate font size, line height, and line width in
+											a proportional way that maximizes beauty and makes reading easier and more
+											pleasant. The question is: What proportion(s) will give us the best results?
+											The golden ratio is often observed in nature where beauty and utility
+											intersect; perhaps we can use this “divine” proportion to enhance these
+											attributes in our typography.
 										</Text>
 									</Box>
 
 									<Box mt="6" style={{ width: "calc(640px * var(--scaling))" }}>
 										<Text as="p" size="3">
-											The goal of typography is to relate font size, line
-											height, and line width in a proportional way that
-											maximizes beauty and makes reading easier and more
-											pleasant. The question is: What proportion(s) will give us
-											the best results? The golden ratio is often observed in
-											nature where beauty and utility intersect; perhaps we can
-											use this “divine” proportion to enhance these attributes
-											in our typography.
+											The goal of typography is to relate font size, line height, and line width in
+											a proportional way that maximizes beauty and makes reading easier and more
+											pleasant. The question is: What proportion(s) will give us the best results?
+											The golden ratio is often observed in nature where beauty and utility
+											intersect; perhaps we can use this “divine” proportion to enhance these
+											attributes in our typography.
 										</Text>
 									</Box>
 
 									<Box mt="6" style={{ width: "calc(572px * var(--scaling))" }}>
 										<Text as="p" size="2">
-											The goal of typography is to relate font size, line
-											height, and line width in a proportional way that
-											maximizes beauty and makes reading easier and more
-											pleasant. The question is: What proportion(s) will give us
-											the best results? The golden ratio is often observed in
-											nature where beauty and utility intersect; perhaps we can
-											use this “divine” proportion to enhance these attributes
-											in our typography.
+											The goal of typography is to relate font size, line height, and line width in
+											a proportional way that maximizes beauty and makes reading easier and more
+											pleasant. The question is: What proportion(s) will give us the best results?
+											The golden ratio is often observed in nature where beauty and utility
+											intersect; perhaps we can use this “divine” proportion to enhance these
+											attributes in our typography.
 										</Text>
 									</Box>
 
@@ -5010,8 +4271,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="2" as="div">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 
@@ -5020,8 +4280,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="2" as="div">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 
@@ -5030,8 +4289,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="1" as="div">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 
@@ -5040,8 +4298,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="1" as="div">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 									</Grid>
@@ -5058,8 +4315,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="2" as="div" color="gray">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 
@@ -5068,8 +4324,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="2" as="div" color="gray">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 
@@ -5078,8 +4333,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="1" as="div" color="gray">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 
@@ -5088,8 +4342,7 @@ export default function ComponentsPage() {
 												Quick Look
 											</Text>
 											<Text size="1" as="div" color="gray">
-												Extensions from the installed software may add new
-												features to this app.
+												Extensions from the installed software may add new features to this app.
 											</Text>
 										</Box>
 									</Grid>
@@ -5102,12 +4355,7 @@ export default function ComponentsPage() {
 										style={{ whiteSpace: "nowrap" }}
 									>
 										<Flex direction="column" align="center" gap="1">
-											<Button
-												variant="surface"
-												color="gray"
-												highContrast
-												size="1"
-											>
+											<Button variant="surface" color="gray" highContrast size="1">
 												Quick Look
 											</Button>
 											<Text size="1" color="gray">
@@ -5116,12 +4364,7 @@ export default function ComponentsPage() {
 										</Flex>
 
 										<Flex direction="column" align="center" gap="1">
-											<Button
-												variant="surface"
-												color="gray"
-												highContrast
-												size="2"
-											>
+											<Button variant="surface" color="gray" highContrast size="2">
 												Quick Look
 											</Button>
 											<Text size="1" color="gray">
@@ -5130,12 +4373,7 @@ export default function ComponentsPage() {
 										</Flex>
 
 										<Flex direction="column" align="center" gap="1">
-											<Button
-												variant="surface"
-												color="gray"
-												highContrast
-												size="2"
-											>
+											<Button variant="surface" color="gray" highContrast size="2">
 												Quick Look
 											</Button>
 											<Text size="2" color="gray">
@@ -5144,12 +4382,7 @@ export default function ComponentsPage() {
 										</Flex>
 
 										<Flex direction="column" align="center" gap="1">
-											<Button
-												variant="surface"
-												color="gray"
-												highContrast
-												size="3"
-											>
+											<Button variant="surface" color="gray" highContrast size="3">
 												Quick Look
 											</Button>
 											<Text size="2" color="gray">
@@ -5161,10 +4394,7 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-colors">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color} style={{ verticalAlign: "baseline" }}>
@@ -5186,11 +4416,7 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-sizes">
 									<Box mt="6">
-										<Flex
-											direction="column"
-											gap="4"
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<Flex direction="column" gap="4" style={{ whiteSpace: "nowrap" }}>
 											{textPropDefs.size.values.map((size) => (
 												<Flex align="center" key={size}>
 													<Box flexShrink="0" style={{ width: 80 }}>
@@ -5198,9 +4424,7 @@ export default function ComponentsPage() {
 															Size {size}
 														</Text>
 													</Box>
-													<Text size={size}>
-														The quick brown fox jumped over the lazy dog
-													</Text>
+													<Text size={size}>The quick brown fox jumped over the lazy dog</Text>
 												</Flex>
 											))}
 										</Flex>
@@ -5209,16 +4433,10 @@ export default function ComponentsPage() {
 
 								<Tabs.Content value="all-weights">
 									<Box mt="6">
-										<table
-											className={styles.PlaygroundTable}
-											style={{ whiteSpace: "nowrap" }}
-										>
+										<table className={styles.PlaygroundTable} style={{ whiteSpace: "nowrap" }}>
 											<tbody>
 												{textPropDefs.weight.values.map((weight) => (
-													<tr
-														key={weight}
-														style={{ verticalAlign: "baseline" }}
-													>
+													<tr key={weight} style={{ verticalAlign: "baseline" }}>
 														<td>{upperFirst(weight)}</td>
 														<td style={{ textAlign: "left" }}>
 															<Text weight={weight}>
@@ -5235,9 +4453,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="text-area">
-								Text Area
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="text-area">Text Area</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -5258,16 +4474,10 @@ export default function ComponentsPage() {
 											</thead>
 											<tbody>
 												{textAreaPropDefs.variant.values.map((variant) => (
-													<tr
-														key={variant}
-														style={{ verticalAlign: "baseline" }}
-													>
+													<tr key={variant} style={{ verticalAlign: "baseline" }}>
 														<td>{upperFirst(variant)}</td>
 														<td>
-															<TextArea
-																variant={variant}
-																placeholder="Reply to comment"
-															/>
+															<TextArea variant={variant} placeholder="Reply to comment" />
 														</td>
 														<td>
 															<TextArea
@@ -5367,9 +4577,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="text-field">
-								Text Field
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="text-field">Text Field</PlaygroundSectionTitle>
 							<Tabs.Root defaultValue="theme-colors">
 								<Tabs.List size="2">
 									<Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -5393,39 +4601,24 @@ export default function ComponentsPage() {
 													<tr key={variant}>
 														<td>{upperFirst(variant)}</td>
 														<td>
-															<TextField.Root
-																variant={variant}
-																placeholder="Search"
-															>
+															<TextField.Root variant={variant} placeholder="Search">
 																<TextField.Slot>
 																	<MagnifyingGlassIcon width="16" height="16" />
 																</TextField.Slot>
 																<TextField.Slot>
-																	<IconButton
-																		variant="ghost"
-																		color="gray"
-																		size="1"
-																	>
+																	<IconButton variant="ghost" color="gray" size="1">
 																		<InfoCircledIcon />
 																	</IconButton>
 																</TextField.Slot>
 															</TextField.Root>
 														</td>
 														<td>
-															<TextField.Root
-																variant={variant}
-																color="gray"
-																placeholder="Search"
-															>
+															<TextField.Root variant={variant} color="gray" placeholder="Search">
 																<TextField.Slot>
 																	<MagnifyingGlassIcon width="16" height="16" />
 																</TextField.Slot>
 																<TextField.Slot>
-																	<IconButton
-																		variant="ghost"
-																		color="gray"
-																		size="1"
-																	>
+																	<IconButton variant="ghost" color="gray" size="1">
 																		<InfoCircledIcon />
 																	</IconButton>
 																</TextField.Slot>
@@ -5442,12 +4635,7 @@ export default function ComponentsPage() {
 																	<MagnifyingGlassIcon width="16" height="16" />
 																</TextField.Slot>
 																<TextField.Slot>
-																	<IconButton
-																		variant="ghost"
-																		color="gray"
-																		size="1"
-																		disabled
-																	>
+																	<IconButton variant="ghost" color="gray" size="1" disabled>
 																		<InfoCircledIcon />
 																	</IconButton>
 																</TextField.Slot>
@@ -5464,11 +4652,7 @@ export default function ComponentsPage() {
 																	<MagnifyingGlassIcon width="16" height="16" />
 																</TextField.Slot>
 																<TextField.Slot>
-																	<IconButton
-																		variant="ghost"
-																		color="gray"
-																		size="1"
-																	>
+																	<IconButton variant="ghost" color="gray" size="1">
 																		<InfoCircledIcon />
 																	</IconButton>
 																</TextField.Slot>
@@ -5487,44 +4671,33 @@ export default function ComponentsPage() {
 											<thead>
 												<tr>
 													<th />
-													{textFieldRootPropDefs.variant.values.map(
-														(variant) => (
-															<th key={variant}>{upperFirst(variant)}</th>
-														),
-													)}
+													{textFieldRootPropDefs.variant.values.map((variant) => (
+														<th key={variant}>{upperFirst(variant)}</th>
+													))}
 												</tr>
 											</thead>
 											<tbody>
 												{accentColors.map((color) => (
 													<tr key={color}>
 														<td>{upperFirst(color)}</td>
-														{textFieldRootPropDefs.variant.values.map(
-															(variant) => (
-																<td key={variant}>
-																	<TextField.Root
-																		color={color}
-																		variant={variant}
-																		placeholder="Search"
-																	>
-																		<TextField.Slot>
-																			<MagnifyingGlassIcon
-																				width="16"
-																				height="16"
-																			/>
-																		</TextField.Slot>
-																		<TextField.Slot>
-																			<IconButton
-																				variant="ghost"
-																				color="gray"
-																				size="1"
-																			>
-																				<InfoCircledIcon />
-																			</IconButton>
-																		</TextField.Slot>
-																	</TextField.Root>
-																</td>
-															),
-														)}
+														{textFieldRootPropDefs.variant.values.map((variant) => (
+															<td key={variant}>
+																<TextField.Root
+																	color={color}
+																	variant={variant}
+																	placeholder="Search"
+																>
+																	<TextField.Slot>
+																		<MagnifyingGlassIcon width="16" height="16" />
+																	</TextField.Slot>
+																	<TextField.Slot>
+																		<IconButton variant="ghost" color="gray" size="1">
+																			<InfoCircledIcon />
+																		</IconButton>
+																	</TextField.Slot>
+																</TextField.Root>
+															</td>
+														))}
 													</tr>
 												))}
 											</tbody>
@@ -5540,111 +4713,84 @@ export default function ComponentsPage() {
 													<th />
 													{textFieldRootPropDefs.radius.values.map((radius) => (
 														<th key={radius} style={{ textAlign: "left" }}>
-															{radius === "none"
-																? "No radius"
-																: upperFirst(radius)}
+															{radius === "none" ? "No radius" : upperFirst(radius)}
 														</th>
 													))}
 												</tr>
 											</thead>
 											<tbody>
-												{textFieldRootPropDefs.variant.values.map(
-													(variant, index) => (
-														<React.Fragment key={variant}>
-															{index > 0 && (
-																<tr>
-																	<td>&nbsp;</td>
-																</tr>
-															)}
+												{textFieldRootPropDefs.variant.values.map((variant, index) => (
+													<React.Fragment key={variant}>
+														{index > 0 && (
 															<tr>
-																<td>Size 1</td>
-																{textFieldRootPropDefs.radius.values.map(
-																	(radius) => (
-																		<td key={radius}>
-																			<TextField.Root
-																				size="1"
-																				variant={variant}
-																				radius={radius}
-																				style={{ width: 140 }}
-																				placeholder="Search"
-																			>
-																				<TextField.Slot>
-																					<MagnifyingGlassIcon
-																						width="14"
-																						height="14"
-																					/>
-																				</TextField.Slot>
-																			</TextField.Root>
-																		</td>
-																	),
-																)}
+																<td>&nbsp;</td>
 															</tr>
-															<tr>
-																<td>Size 2</td>
-																{textFieldRootPropDefs.radius.values.map(
-																	(radius) => (
-																		<td key={radius}>
-																			<TextField.Root
-																				size="2"
-																				variant={variant}
-																				radius={radius}
-																				style={{ width: 160 }}
-																				placeholder="Search"
-																			>
-																				<TextField.Slot>
-																					<MagnifyingGlassIcon
-																						width="16"
-																						height="16"
-																					/>
-																				</TextField.Slot>
-																				<TextField.Slot>
-																					<IconButton
-																						variant="ghost"
-																						color="gray"
-																						size="1"
-																					>
-																						<InfoCircledIcon />
-																					</IconButton>
-																				</TextField.Slot>
-																			</TextField.Root>
-																		</td>
-																	),
-																)}
-															</tr>
-															<tr>
-																<td>Size 3</td>
-																{textFieldRootPropDefs.radius.values.map(
-																	(radius) => (
-																		<td key={radius}>
-																			<TextField.Root
-																				size="3"
-																				variant={variant}
-																				radius={radius}
-																				placeholder="Search"
-																			>
-																				<TextField.Slot>
-																					<MagnifyingGlassIcon
-																						width="18"
-																						height="18"
-																					/>
-																				</TextField.Slot>
-																				<TextField.Slot>
-																					<IconButton
-																						variant="ghost"
-																						color="gray"
-																						size="2"
-																					>
-																						<InfoCircledIcon />
-																					</IconButton>
-																				</TextField.Slot>
-																			</TextField.Root>
-																		</td>
-																	),
-																)}
-															</tr>
-														</React.Fragment>
-													),
-												)}
+														)}
+														<tr>
+															<td>Size 1</td>
+															{textFieldRootPropDefs.radius.values.map((radius) => (
+																<td key={radius}>
+																	<TextField.Root
+																		size="1"
+																		variant={variant}
+																		radius={radius}
+																		style={{ width: 140 }}
+																		placeholder="Search"
+																	>
+																		<TextField.Slot>
+																			<MagnifyingGlassIcon width="14" height="14" />
+																		</TextField.Slot>
+																	</TextField.Root>
+																</td>
+															))}
+														</tr>
+														<tr>
+															<td>Size 2</td>
+															{textFieldRootPropDefs.radius.values.map((radius) => (
+																<td key={radius}>
+																	<TextField.Root
+																		size="2"
+																		variant={variant}
+																		radius={radius}
+																		style={{ width: 160 }}
+																		placeholder="Search"
+																	>
+																		<TextField.Slot>
+																			<MagnifyingGlassIcon width="16" height="16" />
+																		</TextField.Slot>
+																		<TextField.Slot>
+																			<IconButton variant="ghost" color="gray" size="1">
+																				<InfoCircledIcon />
+																			</IconButton>
+																		</TextField.Slot>
+																	</TextField.Root>
+																</td>
+															))}
+														</tr>
+														<tr>
+															<td>Size 3</td>
+															{textFieldRootPropDefs.radius.values.map((radius) => (
+																<td key={radius}>
+																	<TextField.Root
+																		size="3"
+																		variant={variant}
+																		radius={radius}
+																		placeholder="Search"
+																	>
+																		<TextField.Slot>
+																			<MagnifyingGlassIcon width="18" height="18" />
+																		</TextField.Slot>
+																		<TextField.Slot>
+																			<IconButton variant="ghost" color="gray" size="2">
+																				<InfoCircledIcon />
+																			</IconButton>
+																		</TextField.Slot>
+																	</TextField.Root>
+																</td>
+															))}
+														</tr>
+													</React.Fragment>
+												))}
 											</tbody>
 										</table>
 									</Box>
@@ -5653,9 +4799,7 @@ export default function ComponentsPage() {
 						</PlaygroundSection>
 
 						<PlaygroundSection>
-							<PlaygroundSectionTitle id="tooltip">
-								Tooltip
-							</PlaygroundSectionTitle>
+							<PlaygroundSectionTitle id="tooltip">Tooltip</PlaygroundSectionTitle>
 							<Flex mt="6">
 								<Tooltip content="The quick brown fox">
 									<Flex
@@ -5781,9 +4925,7 @@ function ExampleContextMenuContent() {
 	);
 }
 
-function ExampleCheckboxCards(
-	props: React.ComponentPropsWithoutRef<typeof CheckboxCards.Root>,
-) {
+function ExampleCheckboxCards(props: React.ComponentPropsWithoutRef<typeof CheckboxCards.Root>) {
 	return (
 		<CheckboxCards.Root columns="2" defaultValue={["1"]} {...props}>
 			<CheckboxCards.Item value="1">Next.js</CheckboxCards.Item>
@@ -5792,9 +4934,7 @@ function ExampleCheckboxCards(
 	);
 }
 
-function ExampleRadioCards(
-	props: React.ComponentPropsWithoutRef<typeof RadioCards.Root>,
-) {
+function ExampleRadioCards(props: React.ComponentPropsWithoutRef<typeof RadioCards.Root>) {
 	return (
 		<RadioCards.Root columns="2" defaultValue="1" {...props}>
 			<RadioCards.Item value="1">
@@ -5850,18 +4990,10 @@ function ExampleDataList({
 }: React.ComponentPropsWithoutRef<typeof DataList.Root>) {
 	return (
 		<DataList.Root orientation={orientation} size={size} {...props}>
-			<DataList.Item
-				align={orientation === "horizontal" ? "center" : undefined}
-			>
+			<DataList.Item align={orientation === "horizontal" ? "center" : undefined}>
 				<DataList.Label minWidth="88px">Status</DataList.Label>
 				<DataList.Value>
-					<Badge
-						color="jade"
-						variant="soft"
-						radius="full"
-						mx="-2px"
-						size={+size > 2 ? "2" : "1"}
-					>
+					<Badge color="jade" variant="soft" radius="full" mx="-2px" size={+size > 2 ? "2" : "1"}>
 						Active
 					</Badge>
 				</DataList.Value>
@@ -5873,12 +5005,7 @@ function ExampleDataList({
 			<DataList.Item>
 				<DataList.Label minWidth="88px">Email</DataList.Label>
 				<DataList.Value>
-					<Link
-						color="gray"
-						highContrast
-						underline="hover"
-						href="mailto:vlad@workos.com"
-					>
+					<Link color="gray" highContrast underline="hover" href="mailto:vlad@workos.com">
 						vlad@workos.com
 					</Link>
 				</DataList.Value>
@@ -5913,20 +5040,14 @@ const aspectRatioImage = (
 	/>
 );
 
-function buttonSizeToIconSize(
-	buttonSize: (typeof buttonPropDefs.size.values)[number],
-) {
-	if (buttonSize === "1" || buttonSize === "2")
-		return { width: 16, height: 16 };
+function buttonSizeToIconSize(buttonSize: (typeof buttonPropDefs.size.values)[number]) {
+	if (buttonSize === "1" || buttonSize === "2") return { width: 16, height: 16 };
 	if (buttonSize === "3") return { width: 18, height: 18 };
 	if (buttonSize === "4") return { width: 20, height: 20 };
 }
 
-function calloutSizeToIconSize(
-	calloutSize: (typeof calloutRootPropDefs.size.values)[number],
-) {
-	if (calloutSize === "1" || calloutSize === "2")
-		return { width: 16, height: 16 };
+function calloutSizeToIconSize(calloutSize: (typeof calloutRootPropDefs.size.values)[number]) {
+	if (calloutSize === "1" || calloutSize === "2") return { width: 16, height: 16 };
 	if (calloutSize === "3") return { width: 20, height: 20 };
 }
 
@@ -5991,10 +5112,7 @@ interface PlaygroundSectionTitleProps {
 	id: string;
 }
 
-const PlaygroundSectionTitle = ({
-	children,
-	id,
-}: PlaygroundSectionTitleProps) => (
+const PlaygroundSectionTitle = ({ children, id }: PlaygroundSectionTitleProps) => (
 	<Flex align="baseline" gap="4" mt="2">
 		<Heading id={id}>
 			<Link color="gray" underline="hover" highContrast href={`#${id}`}>

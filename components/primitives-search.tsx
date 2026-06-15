@@ -2,26 +2,22 @@
 import * as React from "react";
 import MiniSearch, { type SearchResult } from "minisearch";
 import { createAutocomplete } from "@algolia/autocomplete-core";
-import {
-	parseAlgoliaHitSnippet,
-	SnippetedHit,
-} from "@algolia/autocomplete-preset-algolia";
+import { parseAlgoliaHitSnippet, SnippetedHit } from "@algolia/autocomplete-preset-algolia";
 import { ExclamationTriangleIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { Box, Tooltip, Text, Flex, Slot } from "@radix-ui/themes";
 import { VisuallyHidden } from "radix-ui";
 import styles from "./primitives-search.module.css";
 import { Context } from "radix-ui/internal";
 
-const [PrimitivesSearchProvider, usePrimitivesSearchContext] =
-	Context.createContext<{
-		autocomplete: InternalAutocompleteApi<
-			SearchItem,
-			React.BaseSyntheticEvent<object, any, any>,
-			React.MouseEvent<Element, MouseEvent>,
-			React.KeyboardEvent<Element>
-		>;
-		searchState: AutocompleteState;
-	}>("PrimitivesSearch");
+const [PrimitivesSearchProvider, usePrimitivesSearchContext] = Context.createContext<{
+	autocomplete: InternalAutocompleteApi<
+		SearchItem,
+		React.BaseSyntheticEvent<object, any, any>,
+		React.MouseEvent<Element, MouseEvent>,
+		React.KeyboardEvent<Element>
+	>;
+	searchState: AutocompleteState;
+}>("PrimitivesSearch");
 
 import type {
 	AutocompleteState as InternalAutocompleteState,
@@ -126,11 +122,7 @@ function stripPunctuation(token: string): string {
 	return token.replace(/[^\p{L}\p{N}]/gu, "");
 }
 
-function isTokenMatch(
-	token: string,
-	queryTokens: string[],
-	matchedTerms: string[],
-): boolean {
+function isTokenMatch(token: string, queryTokens: string[], matchedTerms: string[]): boolean {
 	const lower = token.toLowerCase();
 	if (!lower) return false;
 	return (
@@ -143,11 +135,7 @@ function isTokenMatch(
  * Wraps matched words in the same markers Algolia used, so the existing
  * `parseAlgoliaHitSnippet` render path keeps working unchanged.
  */
-function highlightText(
-	text: string,
-	queryTokens: string[],
-	matchedTerms: string[],
-): string {
+function highlightText(text: string, queryTokens: string[], matchedTerms: string[]): string {
 	return text
 		.split(/(\s+)/)
 		.map((part) => {
@@ -197,10 +185,7 @@ function toSearchItem(
 	matchedTerms: string[],
 	snippetLength: number,
 ): SearchItem {
-	const hierarchySnippet: Record<
-		string,
-		{ value: string; matchLevel: "none" }
-	> = {};
+	const hierarchySnippet: Record<string, { value: string; matchLevel: "none" }> = {};
 	if (record.hierarchy) {
 		for (const level of SUPPORTED_LEVELS) {
 			const value = record.hierarchy[level];
@@ -219,12 +204,7 @@ function toSearchItem(
 			content: {
 				value:
 					record.content != null
-						? snippetText(
-								record.content,
-								queryTokens,
-								matchedTerms,
-								snippetLength,
-							)
+						? snippetText(record.content, queryTokens, matchedTerms, snippetLength)
 						: "",
 				matchLevel: "none",
 			},
@@ -250,9 +230,7 @@ function titleMatchTier(
 	if (title.startsWith(normalizedQuery)) return 3; // title prefix ("accord")
 	if (normalizedQuery.startsWith(title)) return 2; // "accordion item"
 	const titleWords = title.split(/\s+/);
-	const wordPrefix = titleWords.some((word) =>
-		queryTokens.some((token) => word.startsWith(token)),
-	);
+	const wordPrefix = titleWords.some((word) => queryTokens.some((token) => word.startsWith(token)));
 	return wordPrefix ? 1 : 0; // e.g. "menu" → "Dropdown Menu"
 }
 
@@ -331,11 +309,7 @@ function PrimitivesSearchRoot({
 								{
 									record,
 									terms: result.terms,
-									titleTier: titleMatchTier(
-										record,
-										normalizedQuery,
-										queryTokens,
-									),
+									titleTier: titleMatchTier(record, normalizedQuery, queryTokens),
 									score: result.score,
 								},
 							];
@@ -343,12 +317,7 @@ function PrimitivesSearchRoot({
 						.sort((a, b) => b.titleTier - a.titleTier || b.score - a.score)
 						.slice(0, hitsPerPage)
 						.map((entry) => ({
-							item: toSearchItem(
-								entry.record,
-								queryTokens,
-								entry.terms,
-								snippetLength,
-							),
+							item: toSearchItem(entry.record, queryTokens, entry.terms, snippetLength),
 							titleTier: entry.titleTier,
 							score: entry.score,
 						}));
@@ -366,8 +335,7 @@ function PrimitivesSearchRoot({
 					// section order for ties.
 					return [...groups.entries()]
 						.sort(([lvlA, a], [lvlB, b]) => {
-							const byBestHit =
-								b[0].titleTier - a[0].titleTier || b[0].score - a[0].score;
+							const byBestHit = b[0].titleTier - a[0].titleTier || b[0].score - a[0].score;
 							if (byBestHit !== 0) return byBestHit;
 							return SOURCES_ORDER.indexOf(lvlA) - SOURCES_ORDER.indexOf(lvlB);
 						})
@@ -391,10 +359,7 @@ function PrimitivesSearchRoot({
 	}, [setIsOpen]);
 
 	return (
-		<PrimitivesSearchProvider
-			autocomplete={autocomplete}
-			searchState={searchState}
-		>
+		<PrimitivesSearchProvider autocomplete={autocomplete} searchState={searchState}>
 			<Box {...autocomplete.getRootProps({})} position="relative">
 				{children}
 			</Box>
@@ -413,17 +378,14 @@ function PrimitivesSearchResultsPanel({
 	onSearchShow,
 	onSearchHide,
 }: PrimitivesSearchResultsPanelProps) {
-	const { autocomplete, searchState } =
-		usePrimitivesSearchContext("PrimitivesSearch");
+	const { autocomplete, searchState } = usePrimitivesSearchContext("PrimitivesSearch");
 	const [showPanel, setShowPanel] = React.useState(false);
 
 	React.useEffect(() => {
 		if (searchState.query.trim() === "") {
 			setShowPanel(false);
 		} else {
-			setShowPanel((current) =>
-				searchState.status !== "idle" ? current : true,
-			);
+			setShowPanel((current) => (searchState.status !== "idle" ? current : true));
 		}
 	}, [searchState]);
 
@@ -445,20 +407,12 @@ function PrimitivesSearchResultsPanel({
 }
 
 function PrimitivesSearchResults() {
-	const { autocomplete, searchState } =
-		usePrimitivesSearchContext("PrimitivesSearch");
-	return (
-		<SearchResults searchState={searchState} autocomplete={autocomplete} />
-	);
+	const { autocomplete, searchState } = usePrimitivesSearchContext("PrimitivesSearch");
+	return <SearchResults searchState={searchState} autocomplete={autocomplete} />;
 }
 
-function PrimitivesSearchClearButton({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
-	const { autocomplete, searchState } =
-		usePrimitivesSearchContext("PrimitivesSearch");
+function PrimitivesSearchClearButton({ children }: { children: React.ReactNode }) {
+	const { autocomplete, searchState } = usePrimitivesSearchContext("PrimitivesSearch");
 
 	if (!searchState.query) {
 		return null;
@@ -469,10 +423,7 @@ function PrimitivesSearchClearButton({
 			<Slot
 				onClick={(event) => {
 					autocomplete.setQuery("");
-					event.currentTarget
-						.closest('[role="combobox"]')
-						?.querySelector("input")
-						?.focus();
+					event.currentTarget.closest('[role="combobox"]')?.querySelector("input")?.focus();
 				}}
 			>
 				{children}
@@ -490,9 +441,7 @@ function PrimitivesSearchInput({ children }: { children: React.ReactNode }) {
 	return (
 		<Box>
 			<Flex asChild position="relative" align="center">
-				<form
-					{...autocomplete.getFormProps({ inputElement: inputRef.current })}
-				>
+				<form {...autocomplete.getFormProps({ inputElement: inputRef.current })}>
 					<Slot
 						{...inputProps}
 						className={styles.PrimitivesSearchInput}
@@ -529,9 +478,7 @@ type SearchResultsProps = {
 
 const SearchResults = React.memo(
 	function SearchResults({ searchState, autocomplete }: SearchResultsProps) {
-		const hasResults = searchState.collections.some(
-			(collection) => collection.items.length > 0,
-		);
+		const hasResults = searchState.collections.some((collection) => collection.items.length > 0);
 
 		if (searchState.status === "error") {
 			return (
@@ -548,8 +495,7 @@ const SearchResults = React.memo(
 						>
 							<ExclamationTriangleIcon />
 						</Box>
-						<Mark>Unable to fetch results.</Mark> You might want to check your
-						network connection.
+						<Mark>Unable to fetch results.</Mark> You might want to check your network connection.
 					</ItemTitle>
 				</Box>
 			);
@@ -618,10 +564,7 @@ const SearchResults = React.memo(
 		// avoid UI flashes:
 		//  - Empty → Results
 		//  - NoResults → NoResults with another query
-		return (
-			nextProps.searchState.status === "loading" ||
-			nextProps.searchState.status === "stalled"
-		);
+		return nextProps.searchState.status === "loading" || nextProps.searchState.status === "stalled";
 	},
 );
 
@@ -638,12 +581,7 @@ function hasHierarchy(item: SearchItem): item is SearchItem & {
 function ItemLink({ item }: { item: SearchItem }) {
 	const useFallbackTitle = item.type !== "content" && !hasHierarchy(item);
 	return (
-		<Box
-			asChild
-			display="block"
-			p="3"
-			style={{ textDecoration: "none", color: "inherit" }}
-		>
+		<Box asChild display="block" p="3" style={{ textDecoration: "none", color: "inherit" }}>
 			<a href={item.url}>
 				<ItemTitle mb="1" mt="-1">
 					{useFallbackTitle ? (
@@ -651,9 +589,7 @@ function ItemLink({ item }: { item: SearchItem }) {
 					) : (
 						<Highlight
 							hit={item}
-							attribute={
-								item.type === "content" ? "content" : ["hierarchy", item.type]
-							}
+							attribute={item.type === "content" ? "content" : ["hierarchy", item.type]}
 						/>
 					)}
 				</ItemTitle>
@@ -665,22 +601,13 @@ function ItemLink({ item }: { item: SearchItem }) {
 	);
 }
 
-type ItemTitleProps = Omit<
-	Extract<React.ComponentPropsWithoutRef<typeof Text>, { as: "p" }>,
-	"as"
->;
+type ItemTitleProps = Omit<Extract<React.ComponentPropsWithoutRef<typeof Text>, { as: "p" }>, "as">;
 
 function ItemTitle(props: ItemTitleProps) {
 	return <Text as="p" color="blue" size="3" truncate {...props} />;
 }
 
-function ItemBreadcrumb({
-	item,
-	levels,
-}: {
-	item: SearchItem;
-	levels: typeof SUPPORTED_LEVELS;
-}) {
+function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUPPORTED_LEVELS }) {
 	if (!hasHierarchy(item)) {
 		return (
 			<Text size="2" color="gray" as="p">
@@ -689,8 +616,7 @@ function ItemBreadcrumb({
 		);
 	}
 
-	const itemLevelIndex =
-		item.type === "content" ? levels.length - 1 : levels.indexOf(item.type);
+	const itemLevelIndex = item.type === "content" ? levels.length - 1 : levels.indexOf(item.type);
 	const breadcrumbLevels = levels.slice(0, itemLevelIndex);
 
 	return (
@@ -702,11 +628,7 @@ function ItemBreadcrumb({
 				return (
 					<React.Fragment key={index}>
 						{index > 0 && (
-							<Box
-								as="span"
-								display="inline"
-								style={{ color: "var(--gray-a11)" }}
-							>
+							<Box as="span" display="inline" style={{ color: "var(--gray-a11)" }}>
 								<CaretRightIcon style={{ display: "inline-block" }} />
 								<VisuallyHidden.Root>, </VisuallyHidden.Root>
 							</Box>
@@ -728,9 +650,8 @@ function Highlight<THit extends SnippetedHit<unknown>>({
 }) {
 	return (
 		<>
-			{parseAlgoliaHitSnippet<THit>({ hit, attribute }).map(
-				({ value, isHighlighted }, index) =>
-					isHighlighted ? <Mark key={index}>{value}</Mark> : value,
+			{parseAlgoliaHitSnippet<THit>({ hit, attribute }).map(({ value, isHighlighted }, index) =>
+				isHighlighted ? <Mark key={index}>{value}</Mark> : value,
 			)}
 		</>
 	);

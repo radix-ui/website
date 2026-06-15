@@ -3,10 +3,6 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
-	"packageManager": "pnpm@10.2.0",
-	"engines": {
-		"node": "24.x"
-	},
 	"scripts": {
 		"dev": "pnpm build:search && next dev",
 		"build": "pnpm build:search && next build",
@@ -84,10 +80,14 @@
 		"@types/tinycolor2": "^1.4.6",
 		"@types/unist": "^3.0.3",
 		"autoprefixer": "^10.5.0",
-		"oxfmt": "^0.54.0",
-		"oxlint": "^1.69.0",
+		"oxfmt": "^0.55.0",
+		"oxlint": "^1.70.0",
 		"sucrase": "3.35.1",
 		"tsx": "^4.22.4",
 		"typescript": "^5.5.4"
-	}
+	},
+	"engines": {
+		"node": "24.x"
+	},
+	"packageManager": "pnpm@10.2.0"
 }

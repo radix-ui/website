@@ -21,9 +21,7 @@ ColorThemeContext.displayName = "ColorThemeContext";
 export function useColorThemeContext() {
 	const context = React.use(ColorThemeContext);
 	if (!context) {
-		throw new Error(
-			"useColorThemeContext must be used within a ColorThemeProvider",
-		);
+		throw new Error("useColorThemeContext must be used within a ColorThemeProvider");
 	}
 	return context;
 }

@@ -14,8 +14,7 @@ export const MarketingCaption = ({
 			color: "transparent",
 			WebkitBackgroundClip: "text",
 			filter: "saturate(0.5)",
-			backgroundImage:
-				"linear-gradient(to bottom left, var(--blue-11), var(--blue-12))",
+			backgroundImage: "linear-gradient(to bottom left, var(--blue-11), var(--blue-12))",
 			...style,
 		}}
 		{...props}

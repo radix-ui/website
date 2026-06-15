@@ -178,9 +178,7 @@
 
 	.ThemesHeroLayoutShowcaseInnerScaled {
 		display: table;
-		padding: calc(
-			var(--themes-hero-padding) / var(--themes-hero-showcase-scale)
-		);
+		padding: calc(var(--themes-hero-padding) / var(--themes-hero-showcase-scale));
 		padding-top: var(--space-8);
 		transform-origin: top left;
 	}
@@ -213,9 +211,7 @@
 
 	.ThemesHeroLayoutShowcase {
 		/* Set static width as actual content is positioned absolutely */
-		width: calc(
-			var(--themes-hero-showcase-base-width) * var(--themes-hero-showcase-scale)
-		);
+		width: calc(var(--themes-hero-showcase-base-width) * var(--themes-hero-showcase-scale));
 
 		/* Push self away from the right edge when there's space */
 		margin-right: auto;
@@ -269,10 +265,7 @@
     * Put the controls in the bottom left on large displays,
     * nudging them away from the corner the larger the viewport is.
     */
-		--large-display-offset: min(
-			calc((100vh - 800px) * 0.025),
-			calc((100vw - 1280px) * 0.025)
-		);
+		--large-display-offset: min(calc((100vh - 800px) * 0.025), calc((100vw - 1280px) * 0.025));
 		bottom: calc(var(--space-5) + var(--large-display-offset));
 		left: calc(var(--space-7) + var(--large-display-offset));
 	}

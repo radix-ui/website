@@ -1,19 +1,7 @@
 "use client";
 import * as React from "react";
-import {
-	Text,
-	Box,
-	Flex,
-	Heading,
-	Separator,
-	Link,
-	Select,
-} from "@radix-ui/themes";
-import {
-	ArrowTopRightIcon,
-	CheckIcon,
-	FileTextIcon,
-} from "@radix-ui/react-icons";
+import { Text, Box, Flex, Heading, Separator, Link, Select } from "@radix-ui/themes";
+import { ArrowTopRightIcon, CheckIcon, FileTextIcon } from "@radix-ui/react-icons";
 import { usePathname } from "next/navigation";
 import { VisuallyHidden } from "radix-ui";
 import { FrontmatterContext } from "./mdx-components";
@@ -25,10 +13,7 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 	const publishedName = frontmatter.publishedName || frontmatter.name;
 
 	return (
-		<Flex
-			direction={{ initial: "column", sm: "row" }}
-			mt={{ initial: "4", sm: "7" }}
-		>
+		<Flex direction={{ initial: "column", sm: "row" }} mt={{ initial: "4", sm: "7" }}>
 			<Box mb="5" flexGrow={{ sm: "1" }} mr={{ sm: "5" }}>
 				<Heading as="h2" size="4" mb="4">
 					Features
@@ -103,22 +88,13 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 						</Text>
 					)}
 
-					<Box
-						asChild
-						display={{ /* initial: 'none', sm: 'block' */ initial: "block" }}
-					>
+					<Box asChild display={{ /* initial: 'none', sm: 'block' */ initial: "block" }}>
 						<Separator size="2" my="5" />
 					</Box>
 
 					<Flex direction="column" gap="2" style={{ whiteSpace: "nowrap" }}>
 						<Box>
-							<Flex
-								asChild
-								display="inline-flex"
-								align="center"
-								position="relative"
-								gap="1"
-							>
+							<Flex asChild display="inline-flex" align="center" position="relative" gap="1">
 								<Link
 									size="2"
 									href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${publishedName}/src`}
@@ -131,13 +107,7 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 						</Box>
 
 						<Box>
-							<Flex
-								asChild
-								display="inline-flex"
-								align="center"
-								position="relative"
-								gap="1"
-							>
+							<Flex asChild display="inline-flex" align="center" position="relative" gap="1">
 								<Link
 									size="2"
 									href="https://github.com/radix-ui/primitives/issues/new/choose"
@@ -151,13 +121,7 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 
 						{frontmatter.aria && (
 							<Box>
-								<Flex
-									asChild
-									display="inline-flex"
-									align="center"
-									position="relative"
-									gap="1"
-								>
+								<Flex asChild display="inline-flex" align="center" position="relative" gap="1">
 									<Link size="2" href={frontmatter.aria} target="_blank">
 										ARIA design pattern
 										<ArrowTopRightIcon style={{ color: "var(--gray-9)" }} />
@@ -167,13 +131,7 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 						)}
 
 						<Box>
-							<Flex
-								asChild
-								display="inline-flex"
-								align="center"
-								position="relative"
-								gap="1"
-							>
+							<Flex asChild display="inline-flex" align="center" position="relative" gap="1">
 								<Link size="2" href={`${pathname}.md`}>
 									View as Markdown
 								</Link>

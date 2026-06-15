@@ -114,26 +114,21 @@
 
 	/* Keep the overlay mounted until the children have animated */
 	.PrimitivesSearchDesktopDialogOverlay[data-state="closed"] {
-		animation: PrimitivesSearchDesktopDialogOverlayNoop 250ms
-			cubic-bezier(0.16, 1, 0.3, 1);
+		animation: PrimitivesSearchDesktopDialogOverlayNoop 250ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.PrimitivesSearchDesktopDialogOverlay[data-state="open"]::after {
-		animation: PrimitivesSearchDesktopDialogOverlayShow 400ms
-			cubic-bezier(0.16, 1, 0.3, 1);
+		animation: PrimitivesSearchDesktopDialogOverlayShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 	.PrimitivesSearchDesktopDialogOverlay[data-state="closed"]::after {
-		animation: PrimitivesSearchDesktopDialogOverlayHide 250ms
-			cubic-bezier(0.16, 1, 0.3, 1);
+		animation: PrimitivesSearchDesktopDialogOverlayHide 250ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.PrimitivesSearchDesktopDialogContent[data-state="open"] {
-		animation: PrimitivesSearchDesktopDialogContentShow 200ms
-			cubic-bezier(0.16, 1, 0.3, 1);
+		animation: PrimitivesSearchDesktopDialogContentShow 200ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 	.PrimitivesSearchDesktopDialogContent[data-state="closed"] {
-		animation: PrimitivesSearchDesktopDialogContentHide 150ms
-			cubic-bezier(0.16, 1, 0.3, 1);
+		animation: PrimitivesSearchDesktopDialogContentHide 150ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 }
 
@@ -189,9 +184,7 @@
 .PrimitivesSearchDesktopPanelInner {
 	padding: var(--space-3);
 	max-width: 580px;
-	max-height: calc(
-		100vh - 2 * (var(--header-height) + var(--space-4)) - var(--space-8)
-	);
+	max-height: calc(100vh - 2 * (var(--header-height) + var(--space-4)) - var(--space-8));
 }
 
 :global(:where(.dark, .dark-theme)) .PrimitivesSearchDesktopPanel {

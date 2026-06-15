@@ -54,29 +54,21 @@ export function ThemesSpacingTable() {
 				</Table.Header>
 
 				<Table.Body>
-					{[
-						"4px",
-						"8px",
-						"12px",
-						"16px",
-						"24px",
-						"32px",
-						"40px",
-						"48px",
-						"64px",
-					].map((value, i) => {
-						const step = i + 1;
-						return (
-							<Table.Row key={value}>
-								<Table.RowHeaderCell>{step}</Table.RowHeaderCell>
-								<Table.Cell>
-									<Code color="gray" size="2">
-										{value}
-									</Code>
-								</Table.Cell>
-							</Table.Row>
-						);
-					})}
+					{["4px", "8px", "12px", "16px", "24px", "32px", "40px", "48px", "64px"].map(
+						(value, i) => {
+							const step = i + 1;
+							return (
+								<Table.Row key={value}>
+									<Table.RowHeaderCell>{step}</Table.RowHeaderCell>
+									<Table.Cell>
+										<Code color="gray" size="2">
+											{value}
+										</Code>
+									</Table.Cell>
+								</Table.Row>
+							);
+						},
+					)}
 				</Table.Body>
 			</Table.Root>
 		</Box>

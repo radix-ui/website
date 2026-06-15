@@ -5,11 +5,7 @@ type RightClickZoneProps = React.ComponentPropsWithoutRef<typeof Grid> & {
 	title: string;
 };
 
-export const RightClickZone = ({
-	title,
-	style,
-	...props
-}: RightClickZoneProps) => (
+export const RightClickZone = ({ title, style, ...props }: RightClickZoneProps) => (
 	<Grid
 		{...props}
 		style={{
