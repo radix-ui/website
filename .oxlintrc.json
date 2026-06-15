@@ -10,6 +10,19 @@
 		"correctness": "off"
 	},
 	"rules": {
+		"no-unused-vars": [
+			"warn",
+			{
+				"vars": "all",
+				"args": "all",
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_",
+				"caughtErrors": "all",
+				"caughtErrorsIgnorePattern": "^_",
+				"ignoreRestSiblings": true
+			}
+		],
+
 		"react/display-name": "error",
 		"react/jsx-key": "error",
 		"react/jsx-no-comment-textnodes": "error",

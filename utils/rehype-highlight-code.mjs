@@ -7,12 +7,12 @@ import refractor from "refractor";
 import highlightLine from "./rehype-highlight-line.mjs";
 import highlightWord from "./rehype-highlight-word.mjs";
 
-export default function rehypeHighlightCode(options = {}) {
+export default function rehypeHighlightCode(_options = {}) {
 	return (tree) => {
 		visit(tree, "element", visitor);
 	};
 
-	function visitor(node, index, parent) {
+	function visitor(node, _index, parent) {
 		if (
 			!parent ||
 			parent.tagName !== "pre" ||

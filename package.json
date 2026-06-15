@@ -10,6 +10,7 @@
 		"format": "oxfmt --write .",
 		"format:check": "oxfmt --check",
 		"lint": "oxlint",
+		"lint:fix": "oxlint --fix",
 		"typecheck": "tsc --noEmit",
 		"build:search": "tsx scripts/build-search-index.ts"
 	},

@@ -76,12 +76,6 @@ const scaleToSvg = (
 // pulling the first scale and getting the keys from it
 const colorKeys = Object.keys(Object.values(Colors)[0]);
 
-const getBgColorForDarkCell = (name: string) => {
-	const baseScale = name.replace("DarkA", "Dark");
-	const scale = (Colors as any)[baseScale];
-	return Object.values(scale)[0];
-};
-
 export const ColorScaleGroup = ({ children }: { children: any }) => {
 	return (
 		<>
@@ -172,32 +166,32 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 						<DropdownMenu.Content className="radix-themes-custom-fonts" align="end" size="1">
 							<DropdownMenu.Group>
 								<DropdownMenu.Item
-									onSelect={(e) => navigator.clipboard.writeText(scaleToHSLObject(name, scale))}
+									onSelect={() => navigator.clipboard.writeText(scaleToHSLObject(name, scale))}
 								>
 									Copy as Object (HSL)
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) => navigator.clipboard.writeText(scaleToHexObject(name, scale))}
+									onSelect={() => navigator.clipboard.writeText(scaleToHexObject(name, scale))}
 								>
 									Copy as Object (Hex)
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) => navigator.clipboard.writeText(scaleToCSS(name, scale))}
+									onSelect={() => navigator.clipboard.writeText(scaleToCSS(name, scale))}
 								>
 									Copy as CSS
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) => navigator.clipboard.writeText(scaleToLESS(scale))}
+									onSelect={() => navigator.clipboard.writeText(scaleToLESS(scale))}
 								>
 									Copy as LESS
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) => navigator.clipboard.writeText(scaleToSASS(scale))}
+									onSelect={() => navigator.clipboard.writeText(scaleToSASS(scale))}
 								>
 									Copy as Sass
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									onSelect={(e) => navigator.clipboard.writeText(scaleToSvg(scale))}
+									onSelect={() => navigator.clipboard.writeText(scaleToSvg(scale))}
 								>
 									Copy as SVG
 								</DropdownMenu.Item>

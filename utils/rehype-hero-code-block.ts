@@ -65,7 +65,7 @@ function fileExists(path: string) {
 	try {
 		fs.accessSync(path);
 		return true;
-	} catch (e) {
+	} catch {
 		return false;
 	}
 }

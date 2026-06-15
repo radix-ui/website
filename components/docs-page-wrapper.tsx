@@ -1,4 +1,4 @@
-import { Box, Section } from "@radix-ui/themes";
+import { Section } from "@radix-ui/themes";
 import styles from "./docs-page-wrapper.module.css";
 
 export const DocsPageWrapper = ({

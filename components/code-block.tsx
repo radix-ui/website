@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as themes from "@radix-ui/themes";
 import * as icons from "@radix-ui/react-icons";
-import { Box, Flex, IconButton, ScrollArea, Theme } from "@radix-ui/themes";
+import { Box, IconButton, ScrollArea, Theme } from "@radix-ui/themes";
 import { CheckIcon, CopyIcon } from "@radix-ui/react-icons";
 import { classNames } from "@utils/classNames";
 import styles from "./code-block.module.css";

@@ -126,39 +126,6 @@ const person30: Person = {
 	name: "Matias Hanski",
 };
 
-const allPeople = [
-	person01,
-	person02,
-	person03,
-	person04,
-	person05,
-	person06,
-	person07,
-	person08,
-	person09,
-	person10,
-	person11,
-	person12,
-	person13,
-	person14,
-	person15,
-	person16,
-	person17,
-	person18,
-	person19,
-	person20,
-	person21,
-	person22,
-	person23,
-	person24,
-	person25,
-	person26,
-	person27,
-	person28,
-	person29,
-	person30,
-];
-
 // neutral
 const neutralPeople = [person15, person03, person05, person01, person09, person16, person24];
 

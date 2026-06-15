@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { Text, Box, Flex, Heading, Separator, Link, Select } from "@radix-ui/themes";
-import { ArrowTopRightIcon, CheckIcon, FileTextIcon } from "@radix-ui/react-icons";
+import { Text, Box, Flex, Heading, Separator, Link } from "@radix-ui/themes";
+import { ArrowTopRightIcon, CheckIcon } from "@radix-ui/react-icons";
 import { usePathname } from "next/navigation";
 import { VisuallyHidden } from "radix-ui";
 import { FrontmatterContext } from "./mdx-components";

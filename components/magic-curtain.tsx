@@ -7,7 +7,6 @@ import { NavigationMenu } from "radix-ui";
 import debounce from "lodash.debounce";
 
 type Visibility = "hidden" | "animating-out" | "visible";
-type ForceReducedMotion = "always" | "if-hi-res" | "never";
 
 interface MagicCurtainItem {
 	visibility: Visibility;
@@ -406,7 +405,7 @@ const MagicCurtainMirrorControls = () => {
 
 	return (
 		<div ref={ref} className={styles.MagicCurtainControlsRoot}>
-			{context.items.map((item, index) => (
+			{context.items.map((_, index) => (
 				<div key={index} className={styles.MagicCurtainControlsItem}>
 					<div
 						data-focused={context.focusedControl === index.toString()}

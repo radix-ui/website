@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Dialog as DialogPrimitive, Label } from "radix-ui";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { Flex, TextField, Grid, Text, IconButton, Box } from "@radix-ui/themes";
+import { Flex, TextField, Text, IconButton, Box } from "@radix-ui/themes";
 import { PrimitivesHeroButton } from "./primitives-hero-button";
 
 export function PrimitivesHeroDialog() {

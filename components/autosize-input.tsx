@@ -2,7 +2,6 @@
 // Fork of https://github.com/JedWatson/react-input-autosize
 // Copyright (c) 2018 Jed Watson, MIT License
 import * as React from "react";
-import { useComposedRefs } from "radix-ui/internal";
 
 const SIZER_STYLE: React.CSSProperties = {
 	position: "absolute",
@@ -94,7 +93,7 @@ export class AutosizeInput extends React.Component<
 		this.copyInputStyles();
 		this.updateInputWidth();
 	}
-	componentDidUpdate(prevProps: AutosizeInputProps, prevState: AutosizeInputState) {
+	componentDidUpdate(_prevProps: AutosizeInputProps, prevState: AutosizeInputState) {
 		if (prevState.inputWidth !== this.state.inputWidth) {
 			if (typeof this.props.onAutosize === "function") {
 				this.props.onAutosize(this.state.inputWidth);
@@ -185,12 +184,6 @@ export class AutosizeInput extends React.Component<
 		const wrapperStyle = { ...this.props.style };
 		if (!wrapperStyle.display) wrapperStyle.display = "inline-block";
 
-		const inputStyle = {
-			boxSizing: "content-box",
-			width: `${this.state.inputWidth}px`,
-			...this.props.inputStyle,
-		};
-
 		const { ...inputProps } = this.props;
 		cleanInputProps(inputProps);
 		inputProps.className = this.props.inputClassName;
@@ -212,18 +205,6 @@ export class AutosizeInput extends React.Component<
 	}
 }
 
-function isFunction(value: any): value is (...args: any[]) => any {
-	return typeof value === "function";
-}
-
-function isUsableNumber(value: unknown): value is number {
-	return (
-		typeof value === "number" &&
-		// false for NaN, Infinity, -Infinity
-		Number.isFinite(value)
-	);
-}
-
 function cleanInputProps<T extends Record<string, any>>(inputProps: T): T {
 	INPUT_PROPS_BLACKLIST.forEach((field) => delete inputProps[field]);
 	return inputProps;
@@ -236,137 +217,4 @@ function copyStyles(styles: CSSStyleDeclaration, node: HTMLElement | SVGElement)
 	node.style.fontStyle = styles.fontStyle;
 	node.style.letterSpacing = styles.letterSpacing;
 	node.style.textTransform = styles.textTransform;
-}
-
-// TODO
-function NewAutosizeInput({
-	id,
-	inputRef: inputRefProp,
-	onAutosize,
-	initialWidth,
-	placeholder,
-	value,
-	placeholderIsMinWidth,
-	type,
-	extraWidth: extraWidthProp,
-	minWidth,
-	className,
-	style,
-	defaultValue,
-	inputStyle,
-	inputClassName,
-	...props
-}: AutosizeInputProps) {
-	const uniqueId = React.useId();
-	const inputId = id ?? uniqueId;
-	const placeHolderSizerRef = React.useRef<HTMLDivElement | null>(null);
-	const sizerRef = React.useRef<HTMLDivElement | null>(null);
-	const inputOwnRef = React.useRef<HTMLInputElement | null>(null);
-	const inputRef = useComposedRefs(inputOwnRef, inputRefProp);
-
-	const extraWidth =
-		extraWidthProp !== undefined
-			? isUsableNumber(extraWidthProp)
-				? extraWidthProp
-				: 0
-			: type === "number"
-				? 16 // defaults to 16 to allow for the stepper UI
-				: 0;
-
-	const [inputWidth, setInputWidth] = React.useState(() =>
-		initialWidth && initialWidth >= 0 && Number.isFinite(initialWidth) ? initialWidth : -1,
-	);
-
-	const hasValue = !!value;
-
-	// copyInputStyles
-	React.useEffect(() => {
-		if (!inputOwnRef.current) {
-			return;
-		}
-		const { current: inputElement } = inputOwnRef;
-		const { current: sizerElement } = sizerRef;
-		const { current: placeHolderSizerElement } = placeHolderSizerRef;
-		const ownerWindow = inputElement.ownerDocument.defaultView ?? window;
-		const inputStyles = ownerWindow.getComputedStyle(inputElement);
-		if (sizerElement) {
-			copyStyles(inputStyles, sizerElement);
-		}
-		if (placeHolderSizerElement) {
-			copyStyles(inputStyles, placeHolderSizerElement);
-		}
-	}, []);
-
-	const onAutoSideRef = React.useRef(onAutosize);
-	React.useEffect(() => {
-		onAutoSideRef.current = onAutosize;
-	}, [onAutosize]);
-
-	const inputWidthRef = React.useRef(inputWidth);
-	React.useEffect(() => {
-		const prevInputWidth = inputWidthRef.current;
-		inputWidthRef.current = inputWidth;
-		if (prevInputWidth !== inputWidth && isFunction(onAutoSideRef.current)) {
-			onAutoSideRef.current(inputWidth!);
-		}
-		updateInputWidth();
-
-		function updateInputWidth() {
-			const { current: sizer } = sizerRef;
-			let { current: placeHolderSizer } = placeHolderSizerRef;
-			if (!sizer) {
-				return;
-			}
-
-			let newInputWidth: number;
-			if (placeholder && (!hasValue || (hasValue && placeholderIsMinWidth))) {
-				let placeholderWidth = placeHolderSizer ? placeHolderSizer.scrollWidth : 0;
-				newInputWidth = Math.max(sizer.scrollWidth, placeholderWidth) + 2;
-			} else {
-				newInputWidth = sizer.scrollWidth + 2;
-			}
-
-			newInputWidth += extraWidth;
-			if (newInputWidth < (minWidth || 0)) {
-				newInputWidth = minWidth || 0;
-			}
-
-			setInputWidth(newInputWidth);
-		}
-	}, [inputWidth, minWidth, extraWidth, placeholder, hasValue, placeholderIsMinWidth]);
-
-	const sizerValue = [defaultValue, value, ""].reduce((previousValue, currentValue) => {
-		if (previousValue !== null && previousValue !== undefined) {
-			return previousValue;
-		}
-		return currentValue;
-	});
-
-	const inputProps = {
-		defaultValue,
-		value,
-		className: inputClassName,
-		id: inputId,
-		type,
-		style: {
-			boxSizing: "content-box",
-			width: inputWidth === -1 ? undefined : `${inputWidth}px`,
-			...inputStyle,
-		},
-		...props,
-	} satisfies React.ComponentPropsWithoutRef<"input">;
-
-	return (
-		<div className={className} style={{ display: "inline-block", ...style }}>
-			<input {...inputProps} ref={inputRef} />
-			<div ref={sizerRef} style={SIZER_STYLE}>
-				{sizerValue}
-			</div>
-			{placeholder ? (
-				<div ref={placeHolderSizerRef} style={SIZER_STYLE}>
-					{placeholder}
-				</div>
-			) : null}
-		</div>
-	);
 }

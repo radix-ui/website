@@ -6,7 +6,7 @@ export async function copy(text: string) {
 	}
 	try {
 		await navigator.clipboard.writeText(text);
-	} catch (error) {
+	} catch {
 		console.error("Copying text is only allowed in a secure context");
 	}
 }

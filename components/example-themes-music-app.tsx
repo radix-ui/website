@@ -302,7 +302,7 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
 						</Flex>
 
 						<Flex direction="column" gap="4">
-							{songsHistory.map((song, i) => (
+							{songsHistory.map((song) => (
 								<Flex align="center" gap="3" key={song.name}>
 									<Box asChild width="48px" height="48px">
 										<img

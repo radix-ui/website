@@ -19,7 +19,7 @@ export async function getPackageData(
 	// sometimes we get an empty response body
 	try {
 		return (await bundlephobiaResponse.json()) as any;
-	} catch (e) {
+	} catch {
 		return { gzip: undefined, version: undefined };
 	}
 }
