@@ -331,7 +331,7 @@ export default defineConfig({
 		"index.jsx": makeIndexEntry(componentName),
 		[`${kebabCase(componentName)}.jsx`]: sources["index.jsx"],
 		"global.css": `@import "tailwindcss";
-@config "./tailwind-config.js";
+@config "./tailwind.config.js";
 @source "./${kebabCase(componentName)}.jsx";
 
 body {
