@@ -101,6 +101,19 @@ Contains all the parts of a context menu.
 			),
 		},
 		{
+			name: "open",
+			type: "boolean",
+			description: (
+				<span>
+					The controlled open state of the context menu. Must be used in
+					conjunction with <Code>onOpenChange</Code>. This is intended for
+					reading the open state and closing the menu programmatically—we
+					discourage opening the menu programmatically, since opening it depends
+					on user interaction to position the menu.
+				</span>
+			),
+		},
+		{
 			name: "onOpenChange",
 			type: "(open: boolean) => void",
 			typeSimple: "function",
@@ -1061,6 +1074,18 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
 			type: "number",
 			default: "0",
 			description: <span>The distance in pixels from the trigger.</span>,
+		},
+		{
+			name: "align",
+			type: '"start" | "end"',
+			typeSimple: "enum",
+			default: '"start"',
+			description: (
+				<span>
+					The direction the submenu appears from its anchor item. May change
+					when collisions occur.
+				</span>
+			),
 		},
 		{
 			name: "alignOffset",

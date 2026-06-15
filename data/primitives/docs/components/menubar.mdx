@@ -1179,6 +1179,18 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
 			description: <span>The distance in pixels from the trigger.</span>,
 		},
 		{
+			name: "align",
+			type: '"start" | "end"',
+			typeSimple: "enum",
+			default: '"start"',
+			description: (
+				<span>
+					The direction the submenu appears from its anchor item. May change
+					when collisions occur.
+				</span>
+			),
+		},
+		{
 			name: "alignOffset",
 			type: "number",
 			default: "0",

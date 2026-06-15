@@ -7,6 +7,130 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## June 6, 2026
+
+This release introduces new composition APIs, a controlled Context Menu, and a number of bug fixes and performance improvements across primitives.
+
+### Context Menu
+
+Added support for a controlled `open` prop on [`ContextMenu.Root`](../components/context-menu#root). This is intended for reading the open state and closing the menu programmatically. We discourage opening the menu programmatically, since opening it depends on user interaction to position the menu correctly.
+
+```tsx
+function ControlledContextMenu() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<ContextMenu.Root open={open} onOpenChange={setOpen}>
+			<ContextMenu.Trigger>Open</ContextMenu.Trigger>
+			<ContextMenu.Content>
+				<button type="button" onClick={() => setOpen(false)}>
+					Close me
+				</button>
+				<ContextMenu.Item>Item 1</ContextMenu.Item>
+				<ContextMenu.Item>Item 2</ContextMenu.Item>
+			</ContextMenu.Content>
+		</ContextMenu.Root>
+	);
+}
+```
+
+We also fixed a bug where submenus remained expanded after re-opening on long-press touch events.
+
+### New unstable composition parts
+
+Several form-control primitives now expose their previously internal composition, so you can directly access and recompose the visually hidden inputs they render for form submission. Each component continues to render these parts by default, and the new parts are exported with the `unstable_` prefix.
+
+- **Radio Group** — `unstable_ItemProvider`, `unstable_ItemTrigger`, and `unstable_ItemBubbleInput`
+- **Select** — `unstable_Provider` and `unstable_BubbleInput`
+- **Slider** — `unstable_ThumbProvider`, `unstable_ThumbTrigger`, and `unstable_BubbleInput`
+- **Switch** — `unstable_Provider`, `unstable_Trigger`, and `unstable_BubbleInput`
+
+```tsx
+import { Switch } from "radix-ui";
+
+function ExampleSwitch() {
+	return (
+		<Switch.unstable_Provider>
+			<Switch.unstable_Trigger>
+				<Switch.Thumb />
+			</Switch.unstable_Trigger>
+			{/* the hidden input is now exposed and can be omitted if not needed */}
+			<Switch.unstable_BubbleInput />
+		</Switch.unstable_Provider>
+	);
+}
+```
+
+### Select
+
+- Added support for presence-based exit animations.
+- Fixed the bubble hidden input so that it submits an empty string when no value is selected.
+- Fixed Select closing unexpectedly after touch-scrolling its content when rendered inside an open shadow DOM.
+- Fixed `Select.Value` logging invalid prop errors when used with both `asChild` and a placeholder.
+
+### Slider
+
+- Added `focusVisible` support for non-keyboard interactions with slider thumbs, for progressively enabling styles using `:focus-visible` alongside programmatic focus management.
+- Fixed a bug where very small `step` values made the thumbs unresponsive.
+- Fixed focus bugs for sliders in a scrollable context.
+
+### Slot
+
+- Added support for nested `Slottable` items via a render prop. This allows a slotted element to be wrapped while still merging Slot props and refs onto it.
+- Fixed an infinite re-render loop in React 19 caused by `Slot` creating a new ref callback on every render.
+- Improved error messages for invalid slot children.
+
+### Dialog
+
+- Fixed a bug where iOS text selection and editing on HTML inputs within dialogs were broken.
+- Fixed a bug causing disabled pointer events in closed dialogs.
+
+### One-Time Password Field
+
+- Fixed pasting in environments that do not support the legacy `"Text"` clipboard format by reading the pasted value as `"text/plain"`.
+- Fixed issues with focus management in React 19.2+.
+- Ensured that pasted values exceeding the field length are truncated.
+
+### Tooltip
+
+- Fixed a runtime error when an event target is a non-Node entity.
+- Fixed a bug so that `skipDelayDuration={0}` works as expected. Previously, the open delay could still be skipped when moving between triggers.
+
+### Other updates
+
+- Added an `align` prop to the `SubContent` part of [Dropdown Menu](../components/dropdown-menu#subcontent), [Context Menu](../components/context-menu#subcontent), and [Menubar](../components/menubar#subcontent) to control the direction the submenu appears from its anchor item.
+- Added an `announcerContainer` prop to [`Toast.Provider`](../components/toast#provider) so you can specify a container for toast announcements.
+- Exposed `data-side` and `data-align` attributes on the Popper anchor element.
+- Added an `align` prop to `Menu.SubContent`.
+- Fixed a missing `data-state` attribute for Scroll Area scrollbars.
+- Fixed a "Maximum update depth exceeded" bug for pages with a large number of popper instances, as well as a similar bug in `Presence` under React 19.
+- Now uses React's built-in `useSyncExternalStore` (React 18+) instead of the CJS-only shim, which previously crashed ESM-only browser bundles when importing some components.
+- Fixed triggers referencing non-existent elements via `aria-controls` when their content is removed from the DOM <PRLink id={3243} />.
+- Improved focus-guard performance when opening overlays by caching the shared guard pair and only writing to the DOM when their edge position changes.
+- Added missing `use client` directives to modules causing errors in RSC.
+
+## August 13, 2025
+
+### One-Time Password Field
+
+- Fixed a bug so that all input elements are disabled when the `Root` component is disabled.
+- Fixed a bug with iOS Chrome autocomplete <PRLink id={3641} />.
+
+### Other updates
+
+- Fixed a Popper bug causing infinite render loops.
+- Ensured the `animationend` event is handled correctly when the keyframe has escapable characters <PRLink id={2763} />.
+- Fixed how Slot components interact with lazy React components in React 19. In the case of a lazy component instance, the resulting promise is now consumed to render the desired component.
+- Fixed several Toast accessibility issues, including removing `aria-hidden` from focusable elements, removing `role=status` from the list item element, and removing a redundant default `aria-atomic`.
+- Added `displayName` to internal context objects for improved debugging.
+
+## May 20, 2025
+
+- Dependency maintenance release with no user-facing API changes.
+
+## May 6, 2025
+
+- Dependency maintenance release with no user-facing API changes.
+
 ## May 5, 2025
 
 This release introduces a brand new primitive in preview: [`PasswordToggleField`](../components/password-toggle-field).

@@ -85,6 +85,19 @@ The provider that wraps your toasts and toast viewport. It usually wraps the app
 			description:
 				"The distance in pixels that the swipe gesture must travel before a close is triggered.",
 		},
+		{
+			name: "announcerContainer",
+			type: "Element | DocumentFragment",
+			typeSimple: "Element",
+			default: "document.body",
+			description: (
+				<span>
+					An optional container where the toast announcements should be
+					appended. This is useful when working with focus traps or modal
+					dialogs that make other elements inert.
+				</span>
+			),
+		},
 	]}
 />
 
