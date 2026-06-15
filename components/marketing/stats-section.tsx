@@ -39,7 +39,7 @@ export const StatsSection = () => {
 									fontSize:
 										"max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
 									fontFamily:
-										'var(--font-adobe-text-pro, "Adobe Text Pro"), serif',
+										'var(--font-adobe-text-pro), serif',
 									fontVariant: "proportional-nums",
 									lineHeight: 0.85,
 									letterSpacing: "-0.05em",
@@ -75,7 +75,7 @@ export const StatsSection = () => {
 									fontSize:
 										"max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
 									fontFamily:
-										'var(--font-adobe-text-pro, "Adobe Text Pro"), serif',
+										'var(--font-adobe-text-pro), serif',
 									fontVariant: "proportional-nums",
 									lineHeight: 0.85,
 									letterSpacing: "-0.05em",
@@ -111,7 +111,7 @@ export const StatsSection = () => {
 									fontSize:
 										"max(58px, min(80px, calc(50px + (100vw - 520px) * 0.15)))",
 									fontFamily:
-										'var(--font-adobe-text-pro, "Adobe Text Pro"), serif',
+										'var(--font-adobe-text-pro), serif',
 									fontVariant: "proportional-nums",
 									lineHeight: 0.85,
 									letterSpacing: "-0.05em",
