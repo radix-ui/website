@@ -19,7 +19,7 @@ const ToastDemo = () => {
 					setOpen(false);
 					window.clearTimeout(timerRef.current);
 					timerRef.current = window.setTimeout(() => {
-						eventDateRef.current = oneWeekAway();
+						eventDateRef.current = oneWeekAway(new Date());
 						setOpen(true);
 					}, 100);
 				}}
@@ -30,11 +30,18 @@ const ToastDemo = () => {
 			<Toast.Root className={styles.Root} open={open} onOpenChange={setOpen}>
 				<Toast.Title className={styles.Title}>Scheduled: Catch up</Toast.Title>
 				<Toast.Description asChild>
-					<time className={styles.Description} dateTime={eventDateRef.current.toISOString()}>
+					<time
+						className={styles.Description}
+						dateTime={eventDateRef.current.toISOString()}
+					>
 						{prettyDate(eventDateRef.current)}
 					</time>
 				</Toast.Description>
-				<Toast.Action className={styles.Action} asChild altText="Goto schedule to undo">
+				<Toast.Action
+					className={styles.Action}
+					asChild
+					altText="Goto schedule to undo"
+				>
 					<button className={`${styles.Button} small green`}>Undo</button>
 				</Toast.Action>
 			</Toast.Root>
@@ -44,7 +51,7 @@ const ToastDemo = () => {
 };
 
 function oneWeekAway(date) {
-	const now = new Date();
+	const now = new Date(date);
 	const inOneWeek = now.setDate(now.getDate() + 7);
 	return new Date(inOneWeek);
 }

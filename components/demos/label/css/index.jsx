@@ -15,7 +15,12 @@ const LabelDemo = () => (
 		<Label.Root className="LabelRoot" htmlFor="firstName">
 			First name
 		</Label.Root>
-		<input className="Input" type="text" id="firstName" defaultValue="Pedro Duarte" />
+		<input
+			className="Input"
+			type="text"
+			id="firstName"
+			defaultValue="Pedro Duarte"
+		/>
 	</div>
 );
 

@@ -1,13 +1,19 @@
 import * as React from "react";
 import { Menubar } from "radix-ui";
-import { CheckIcon, ChevronRightIcon, DotFilledIcon } from "@radix-ui/react-icons";
+import {
+	CheckIcon,
+	ChevronRightIcon,
+	DotFilledIcon,
+} from "@radix-ui/react-icons";
 import styles from "./styles.module.css";
 
 const RADIO_ITEMS = ["Andy", "Benoît", "Luis"];
 const CHECK_ITEMS = ["Always Show Bookmarks Bar", "Always Show Full URLs"];
 
 const MenubarDemo = () => {
-	const [checkedSelection, setCheckedSelection] = React.useState([CHECK_ITEMS[1]]);
+	const [checkedSelection, setCheckedSelection] = React.useState([
+		CHECK_ITEMS[1],
+	]);
 	const [radioSelection, setRadioSelection] = React.useState(RADIO_ITEMS[2]);
 
 	return (
@@ -15,7 +21,12 @@ const MenubarDemo = () => {
 			<Menubar.Menu>
 				<Menubar.Trigger className={styles.Trigger}>File</Menubar.Trigger>
 				<Menubar.Portal>
-					<Menubar.Content className={styles.Content} align="start" sideOffset={5} alignOffset={-3}>
+					<Menubar.Content
+						className={styles.Content}
+						align="start"
+						sideOffset={5}
+						alignOffset={-3}
+					>
 						<Menubar.Item className={styles.Item}>
 							New Tab <div className={styles.RightSlot}>⌘ T</div>
 						</Menubar.Item>
@@ -34,8 +45,13 @@ const MenubarDemo = () => {
 								</div>
 							</Menubar.SubTrigger>
 							<Menubar.Portal>
-								<Menubar.SubContent className={styles.SubContent} alignOffset={-5}>
-									<Menubar.Item className={styles.Item}>Email Link</Menubar.Item>
+								<Menubar.SubContent
+									className={styles.SubContent}
+									alignOffset={-5}
+								>
+									<Menubar.Item className={styles.Item}>
+										Email Link
+									</Menubar.Item>
 									<Menubar.Item className={styles.Item}>Messages</Menubar.Item>
 									<Menubar.Item className={styles.Item}>Notes</Menubar.Item>
 								</Menubar.SubContent>
@@ -52,7 +68,12 @@ const MenubarDemo = () => {
 			<Menubar.Menu>
 				<Menubar.Trigger className={styles.Trigger}>Edit</Menubar.Trigger>
 				<Menubar.Portal>
-					<Menubar.Content className={styles.Content} align="start" sideOffset={5} alignOffset={-3}>
+					<Menubar.Content
+						className={styles.Content}
+						align="start"
+						sideOffset={5}
+						alignOffset={-3}
+					>
 						<Menubar.Item className={styles.Item}>
 							Undo <div className={styles.RightSlot}>⌘ Z</div>
 						</Menubar.Item>
@@ -69,12 +90,19 @@ const MenubarDemo = () => {
 							</Menubar.SubTrigger>
 
 							<Menubar.Portal>
-								<Menubar.SubContent className={styles.SubContent} alignOffset={-5}>
-									<Menubar.Item className={styles.Item}>Search the web…</Menubar.Item>
+								<Menubar.SubContent
+									className={styles.SubContent}
+									alignOffset={-5}
+								>
+									<Menubar.Item className={styles.Item}>
+										Search the web…
+									</Menubar.Item>
 									<Menubar.Separator className={styles.Separator} />
 									<Menubar.Item className={styles.Item}>Find…</Menubar.Item>
 									<Menubar.Item className={styles.Item}>Find Next</Menubar.Item>
-									<Menubar.Item className={styles.Item}>Find Previous</Menubar.Item>
+									<Menubar.Item className={styles.Item}>
+										Find Previous
+									</Menubar.Item>
 								</Menubar.SubContent>
 							</Menubar.Portal>
 						</Menubar.Sub>
@@ -122,9 +150,13 @@ const MenubarDemo = () => {
 							Force Reload <div className={styles.RightSlot}>⇧ ⌘ R</div>
 						</Menubar.Item>
 						<Menubar.Separator className={styles.Separator} />
-						<Menubar.Item className={`${styles.Item} inset`}>Toggle Fullscreen</Menubar.Item>
+						<Menubar.Item className={`${styles.Item} inset`}>
+							Toggle Fullscreen
+						</Menubar.Item>
 						<Menubar.Separator className={styles.Separator} />
-						<Menubar.Item className={`${styles.Item} inset`}>Hide Sidebar</Menubar.Item>
+						<Menubar.Item className={`${styles.Item} inset`}>
+							Hide Sidebar
+						</Menubar.Item>
 					</Menubar.Content>
 				</Menubar.Portal>
 			</Menubar.Menu>
@@ -138,9 +170,16 @@ const MenubarDemo = () => {
 						sideOffset={5}
 						alignOffset={-14}
 					>
-						<Menubar.RadioGroup value={radioSelection} onValueChange={setRadioSelection}>
+						<Menubar.RadioGroup
+							value={radioSelection}
+							onValueChange={setRadioSelection}
+						>
 							{RADIO_ITEMS.map((item) => (
-								<Menubar.RadioItem className={`${styles.RadioItem} inset`} key={item} value={item}>
+								<Menubar.RadioItem
+									className={`${styles.RadioItem} inset`}
+									key={item}
+									value={item}
+								>
 									<Menubar.ItemIndicator className={styles.ItemIndicator}>
 										<DotFilledIcon />
 									</Menubar.ItemIndicator>
@@ -148,9 +187,13 @@ const MenubarDemo = () => {
 								</Menubar.RadioItem>
 							))}
 							<Menubar.Separator className={styles.Separator} />
-							<Menubar.Item className={`${styles.Item} inset`}>Edit…</Menubar.Item>
+							<Menubar.Item className={`${styles.Item} inset`}>
+								Edit…
+							</Menubar.Item>
 							<Menubar.Separator className={styles.Separator} />
-							<Menubar.Item className={`${styles.Item} inset`}>Add Profile…</Menubar.Item>
+							<Menubar.Item className={`${styles.Item} inset`}>
+								Add Profile…
+							</Menubar.Item>
 						</Menubar.RadioGroup>
 					</Menubar.Content>
 				</Menubar.Portal>

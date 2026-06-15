@@ -48,10 +48,16 @@ const DropdownMenuDemo = () => {
 								<DropdownMenu.Item className="DropdownMenuItem">
 									Save Page As… <div className="RightSlot">⌘+S</div>
 								</DropdownMenu.Item>
-								<DropdownMenu.Item className="DropdownMenuItem">Create Shortcut…</DropdownMenu.Item>
-								<DropdownMenu.Item className="DropdownMenuItem">Name Window…</DropdownMenu.Item>
+								<DropdownMenu.Item className="DropdownMenuItem">
+									Create Shortcut…
+								</DropdownMenu.Item>
+								<DropdownMenu.Item className="DropdownMenuItem">
+									Name Window…
+								</DropdownMenu.Item>
 								<DropdownMenu.Separator className="DropdownMenu.Separator" />
-								<DropdownMenu.Item className="DropdownMenuItem">Developer Tools</DropdownMenu.Item>
+								<DropdownMenu.Item className="DropdownMenuItem">
+									Developer Tools
+								</DropdownMenu.Item>
 							</DropdownMenu.SubContent>
 						</DropdownMenu.Portal>
 					</DropdownMenu.Sub>
@@ -81,15 +87,23 @@ const DropdownMenuDemo = () => {
 
 					<DropdownMenu.Separator className="DropdownMenuSeparator" />
 
-					<DropdownMenu.Label className="DropdownMenuLabel">People</DropdownMenu.Label>
+					<DropdownMenu.Label className="DropdownMenuLabel">
+						People
+					</DropdownMenu.Label>
 					<DropdownMenu.RadioGroup value={person} onValueChange={setPerson}>
-						<DropdownMenu.RadioItem className="DropdownMenuRadioItem" value="pedro">
+						<DropdownMenu.RadioItem
+							className="DropdownMenuRadioItem"
+							value="pedro"
+						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 								<DotFilledIcon />
 							</DropdownMenu.ItemIndicator>
 							Pedro Duarte
 						</DropdownMenu.RadioItem>
-						<DropdownMenu.RadioItem className="DropdownMenuRadioItem" value="colm">
+						<DropdownMenu.RadioItem
+							className="DropdownMenuRadioItem"
+							value="colm"
+						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 								<DotFilledIcon />
 							</DropdownMenu.ItemIndicator>

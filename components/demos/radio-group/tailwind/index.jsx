@@ -16,7 +16,10 @@ const RadioGroupDemo = () => (
 				>
 					<RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-[11px] after:rounded-full after:bg-violet11" />
 				</RadioGroup.Item>
-				<label className="pl-[15px] text-[15px] leading-none text-white" htmlFor="r1">
+				<label
+					className="pl-[15px] text-[15px] leading-none text-white"
+					htmlFor="r1"
+				>
 					Default
 				</label>
 			</div>
@@ -28,7 +31,10 @@ const RadioGroupDemo = () => (
 				>
 					<RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-[11px] after:rounded-full after:bg-violet11" />
 				</RadioGroup.Item>
-				<label className="pl-[15px] text-[15px] leading-none text-white" htmlFor="r2">
+				<label
+					className="pl-[15px] text-[15px] leading-none text-white"
+					htmlFor="r2"
+				>
 					Comfortable
 				</label>
 			</div>
@@ -40,7 +46,10 @@ const RadioGroupDemo = () => (
 				>
 					<RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-[11px] after:rounded-full after:bg-violet11" />
 				</RadioGroup.Item>
-				<label className="pl-[15px] text-[15px] leading-none text-white" htmlFor="r3">
+				<label
+					className="pl-[15px] text-[15px] leading-none text-white"
+					htmlFor="r3"
+				>
 					Compact
 				</label>
 			</div>

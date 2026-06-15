@@ -18,9 +18,14 @@ const PopoverDemo = () => (
 				sideOffset={5}
 			>
 				<div className="flex flex-col gap-2.5">
-					<p className="mb-2.5 text-[15px] font-medium leading-[19px] text-mauve12">Dimensions</p>
+					<p className="mb-2.5 text-[15px] font-medium leading-[19px] text-mauve12">
+						Dimensions
+					</p>
 					<fieldset className="flex items-center gap-5">
-						<label className="w-[75px] text-[13px] text-violet11" htmlFor="width">
+						<label
+							className="w-[75px] text-[13px] text-violet11"
+							htmlFor="width"
+						>
 							Width
 						</label>
 						<input
@@ -30,7 +35,10 @@ const PopoverDemo = () => (
 						/>
 					</fieldset>
 					<fieldset className="flex items-center gap-5">
-						<label className="w-[75px] text-[13px] text-violet11" htmlFor="maxWidth">
+						<label
+							className="w-[75px] text-[13px] text-violet11"
+							htmlFor="maxWidth"
+						>
 							Max. width
 						</label>
 						<input
@@ -40,7 +48,10 @@ const PopoverDemo = () => (
 						/>
 					</fieldset>
 					<fieldset className="flex items-center gap-5">
-						<label className="w-[75px] text-[13px] text-violet11" htmlFor="height">
+						<label
+							className="w-[75px] text-[13px] text-violet11"
+							htmlFor="height"
+						>
 							Height
 						</label>
 						<input
@@ -50,7 +61,10 @@ const PopoverDemo = () => (
 						/>
 					</fieldset>
 					<fieldset className="flex items-center gap-5">
-						<label className="w-[75px] text-[13px] text-violet11" htmlFor="maxHeight">
+						<label
+							className="w-[75px] text-[13px] text-violet11"
+							htmlFor="maxHeight"
+						>
 							Max. height
 						</label>
 						<input

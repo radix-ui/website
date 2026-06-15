@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Select } from "radix-ui";
 import classnames from "classnames";
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import {
+	CheckIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
+} from "@radix-ui/react-icons";
 
 const SelectDemo = () => (
 	<Select.Root>

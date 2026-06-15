@@ -14,7 +14,7 @@
 	],
 	"overrides": [
 		{
-			"files": ["**/*.mdx"],
+			"files": ["**/*.mdx", "**/components/demos/**/*"],
 			"options": {
 				"printWidth": 80
 			}

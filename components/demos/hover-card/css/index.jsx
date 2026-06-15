@@ -32,15 +32,17 @@ const HoverCardDemo = () => (
 							<div className="Text faded">@radix_ui</div>
 						</div>
 						<div className="Text">
-							Components, icons, colors, and templates for building high-quality, accessible UI.
-							Free and open-source.
+							Components, icons, colors, and templates for building
+							high-quality, accessible UI. Free and open-source.
 						</div>
 						<div style={{ display: "flex", gap: 15 }}>
 							<div style={{ display: "flex", gap: 5 }}>
-								<div className="Text bold">0</div> <div className="Text faded">Following</div>
+								<div className="Text bold">0</div>{" "}
+								<div className="Text faded">Following</div>
 							</div>
 							<div style={{ display: "flex", gap: 5 }}>
-								<div className="Text bold">2,900</div> <div className="Text faded">Followers</div>
+								<div className="Text bold">2,900</div>{" "}
+								<div className="Text faded">Followers</div>
 							</div>
 						</div>
 					</div>

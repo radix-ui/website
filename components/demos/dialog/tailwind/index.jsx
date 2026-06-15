@@ -19,7 +19,10 @@ const DialogDemo = () => (
 					Make changes to your profile here. Click save when you&apos;re done.
 				</Dialog.Description>
 				<fieldset className="mb-[15px] flex items-center gap-5">
-					<label className="w-[90px] text-right text-[15px] text-violet11" htmlFor="name">
+					<label
+						className="w-[90px] text-right text-[15px] text-violet11"
+						htmlFor="name"
+					>
 						Name
 					</label>
 					<input
@@ -29,7 +32,10 @@ const DialogDemo = () => (
 					/>
 				</fieldset>
 				<fieldset className="mb-[15px] flex items-center gap-5">
-					<label className="w-[90px] text-right text-[15px] text-violet11" htmlFor="username">
+					<label
+						className="w-[90px] text-right text-[15px] text-violet11"
+						htmlFor="username"
+					>
 						Username
 					</label>
 					<input

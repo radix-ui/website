@@ -4,7 +4,11 @@ import styles from "./styles.module.css";
 
 const RadioGroupDemo = () => (
 	<form>
-		<RadioGroup.Root className={styles.Root} defaultValue="default" aria-label="View density">
+		<RadioGroup.Root
+			className={styles.Root}
+			defaultValue="default"
+			aria-label="View density"
+		>
 			<div style={{ display: "flex", alignItems: "center" }}>
 				<RadioGroup.Item className={styles.Item} value="default" id="r1">
 					<RadioGroup.Indicator className={styles.Indicator} />

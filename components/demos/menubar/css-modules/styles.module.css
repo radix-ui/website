@@ -75,7 +75,11 @@
 .SubTrigger[data-highlighted],
 .CheckboxItem[data-highlighted],
 .RadioItem[data-highlighted] {
-	background-image: linear-gradient(135deg, var(--violet-9) 0%, var(--violet-10) 100%);
+	background-image: linear-gradient(
+		135deg,
+		var(--violet-9) 0%,
+		var(--violet-10) 100%
+	);
 	color: var(--violet-1);
 }
 

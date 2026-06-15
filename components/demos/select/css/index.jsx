@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Select } from "radix-ui";
 import classnames from "classnames";
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import {
+	CheckIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
+} from "@radix-ui/react-icons";
 import "./styles.css";
 
 const SelectDemo = () => (
@@ -63,7 +67,11 @@ const SelectItem = React.forwardRef(function SelectItem(
 	forwardedRef,
 ) {
 	return (
-		<Select.Item className={classnames("SelectItem", className)} {...props} ref={forwardedRef}>
+		<Select.Item
+			className={classnames("SelectItem", className)}
+			{...props}
+			ref={forwardedRef}
+		>
 			<Select.ItemText>{children}</Select.ItemText>
 			<Select.ItemIndicator className="SelectItemIndicator">
 				<CheckIcon />

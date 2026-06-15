@@ -48,10 +48,16 @@ const DropdownMenuDemo = () => {
 								<DropdownMenu.Item className={styles.Item}>
 									Save Page As… <div className={styles.RightSlot}>⌘+S</div>
 								</DropdownMenu.Item>
-								<DropdownMenu.Item className={styles.Item}>Create Shortcut…</DropdownMenu.Item>
-								<DropdownMenu.Item className={styles.Item}>Name Window…</DropdownMenu.Item>
+								<DropdownMenu.Item className={styles.Item}>
+									Create Shortcut…
+								</DropdownMenu.Item>
+								<DropdownMenu.Item className={styles.Item}>
+									Name Window…
+								</DropdownMenu.Item>
 								<DropdownMenu.Separator className={styles.Separator} />
-								<DropdownMenu.Item className={styles.Item}>Developer Tools</DropdownMenu.Item>
+								<DropdownMenu.Item className={styles.Item}>
+									Developer Tools
+								</DropdownMenu.Item>
 							</DropdownMenu.SubContent>
 						</DropdownMenu.Portal>
 					</DropdownMenu.Sub>
@@ -81,7 +87,9 @@ const DropdownMenuDemo = () => {
 
 					<DropdownMenu.Separator className={styles.Separator} />
 
-					<DropdownMenu.Label className={styles.Label}>People</DropdownMenu.Label>
+					<DropdownMenu.Label className={styles.Label}>
+						People
+					</DropdownMenu.Label>
 					<DropdownMenu.RadioGroup value={person} onValueChange={setPerson}>
 						<DropdownMenu.RadioItem className={styles.RadioItem} value="pedro">
 							<DropdownMenu.ItemIndicator className={styles.ItemIndicator}>

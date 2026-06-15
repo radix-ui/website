@@ -10,10 +10,12 @@ const AlertDialogDemo = () => (
 		<AlertDialog.Portal>
 			<AlertDialog.Overlay className="AlertDialogOverlay" />
 			<AlertDialog.Content className="AlertDialogContent">
-				<AlertDialog.Title className="AlertDialogTitle">Are you absolutely sure?</AlertDialog.Title>
+				<AlertDialog.Title className="AlertDialogTitle">
+					Are you absolutely sure?
+				</AlertDialog.Title>
 				<AlertDialog.Description className="AlertDialogDescription">
-					This action cannot be undone. This will permanently delete your account and remove your
-					data from our servers.
+					This action cannot be undone. This will permanently delete your
+					account and remove your data from our servers.
 				</AlertDialog.Description>
 				<div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
 					<AlertDialog.Cancel asChild>

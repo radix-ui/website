@@ -5,11 +5,19 @@ const FormDemo = () => (
 	<Form.Root className="w-[260px]">
 		<Form.Field className="mb-2.5 grid" name="email">
 			<div className="flex items-baseline justify-between">
-				<Form.Label className="text-[15px] font-medium leading-[35px] text-white">Email</Form.Label>
-				<Form.Message className="text-[13px] text-white opacity-80" match="valueMissing">
+				<Form.Label className="text-[15px] font-medium leading-[35px] text-white">
+					Email
+				</Form.Label>
+				<Form.Message
+					className="text-[13px] text-white opacity-80"
+					match="valueMissing"
+				>
 					Please enter your email
 				</Form.Message>
-				<Form.Message className="text-[13px] text-white opacity-80" match="typeMismatch">
+				<Form.Message
+					className="text-[13px] text-white opacity-80"
+					match="typeMismatch"
+				>
 					Please provide a valid email
 				</Form.Message>
 			</div>
@@ -26,7 +34,10 @@ const FormDemo = () => (
 				<Form.Label className="text-[15px] font-medium leading-[35px] text-white">
 					Question
 				</Form.Label>
-				<Form.Message className="text-[13px] text-white opacity-80" match="valueMissing">
+				<Form.Message
+					className="text-[13px] text-white opacity-80"
+					match="valueMissing"
+				>
 					Please enter a question
 				</Form.Message>
 			</div>

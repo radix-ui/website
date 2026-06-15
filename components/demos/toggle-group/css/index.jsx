@@ -1,6 +1,10 @@
 import * as React from "react";
 import { ToggleGroup } from "radix-ui";
-import { TextAlignLeftIcon, TextAlignCenterIcon, TextAlignRightIcon } from "@radix-ui/react-icons";
+import {
+	TextAlignLeftIcon,
+	TextAlignCenterIcon,
+	TextAlignRightIcon,
+} from "@radix-ui/react-icons";
 import "./styles.css";
 
 const ToggleGroupDemo = () => (
@@ -10,13 +14,25 @@ const ToggleGroupDemo = () => (
 		defaultValue="center"
 		aria-label="Text alignment"
 	>
-		<ToggleGroup.Item className="ToggleGroupItem" value="left" aria-label="Left aligned">
+		<ToggleGroup.Item
+			className="ToggleGroupItem"
+			value="left"
+			aria-label="Left aligned"
+		>
 			<TextAlignLeftIcon />
 		</ToggleGroup.Item>
-		<ToggleGroup.Item className="ToggleGroupItem" value="center" aria-label="Center aligned">
+		<ToggleGroup.Item
+			className="ToggleGroupItem"
+			value="center"
+			aria-label="Center aligned"
+		>
 			<TextAlignCenterIcon />
 		</ToggleGroup.Item>
-		<ToggleGroup.Item className="ToggleGroupItem" value="right" aria-label="Right aligned">
+		<ToggleGroup.Item
+			className="ToggleGroupItem"
+			value="right"
+			aria-label="Right aligned"
+		>
 			<TextAlignRightIcon />
 		</ToggleGroup.Item>
 	</ToggleGroup.Root>

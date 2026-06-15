@@ -3,7 +3,10 @@ import { Label } from "radix-ui";
 
 const LabelDemo = () => (
 	<div className="flex flex-wrap items-center gap-[15px] px-5">
-		<Label.Root className="text-[15px] font-medium leading-[35px] text-white" htmlFor="firstName">
+		<Label.Root
+			className="text-[15px] font-medium leading-[35px] text-white"
+			htmlFor="firstName"
+		>
 			First name
 		</Label.Root>
 		<input

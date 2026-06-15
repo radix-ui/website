@@ -1,6 +1,10 @@
 import * as React from "react";
 import { ContextMenu } from "radix-ui";
-import { DotFilledIcon, CheckIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import {
+	DotFilledIcon,
+	CheckIcon,
+	ChevronRightIcon,
+} from "@radix-ui/react-icons";
 import styles from "./styles.module.css";
 
 const ContextMenuDemo = () => {
@@ -10,9 +14,15 @@ const ContextMenuDemo = () => {
 
 	return (
 		<ContextMenu.Root>
-			<ContextMenu.Trigger className={styles.Trigger}>Right-click here.</ContextMenu.Trigger>
+			<ContextMenu.Trigger className={styles.Trigger}>
+				Right-click here.
+			</ContextMenu.Trigger>
 			<ContextMenu.Portal>
-				<ContextMenu.Content className={styles.Content} sideOffset={5} align="end">
+				<ContextMenu.Content
+					className={styles.Content}
+					sideOffset={5}
+					align="end"
+				>
 					<ContextMenu.Item className={styles.Item}>
 						Back <div className={styles.RightSlot}>⌘+[</div>
 					</ContextMenu.Item>
@@ -30,14 +40,24 @@ const ContextMenuDemo = () => {
 							</div>
 						</ContextMenu.SubTrigger>
 						<ContextMenu.Portal>
-							<ContextMenu.SubContent className={styles.SubContent} sideOffset={2} alignOffset={-5}>
+							<ContextMenu.SubContent
+								className={styles.SubContent}
+								sideOffset={2}
+								alignOffset={-5}
+							>
 								<ContextMenu.Item className={styles.Item}>
 									Save Page As… <div className={styles.RightSlot}>⌘+S</div>
 								</ContextMenu.Item>
-								<ContextMenu.Item className={styles.Item}>Create Shortcut…</ContextMenu.Item>
-								<ContextMenu.Item className={styles.Item}>Name Window…</ContextMenu.Item>
+								<ContextMenu.Item className={styles.Item}>
+									Create Shortcut…
+								</ContextMenu.Item>
+								<ContextMenu.Item className={styles.Item}>
+									Name Window…
+								</ContextMenu.Item>
 								<ContextMenu.Separator className={styles.Separator} />
-								<ContextMenu.Item className={styles.Item}>Developer Tools</ContextMenu.Item>
+								<ContextMenu.Item className={styles.Item}>
+									Developer Tools
+								</ContextMenu.Item>
 							</ContextMenu.SubContent>
 						</ContextMenu.Portal>
 					</ContextMenu.Sub>

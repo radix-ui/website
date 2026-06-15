@@ -15,8 +15,8 @@ const AlertDialogDemo = () => (
 					Are you absolutely sure?
 				</AlertDialog.Title>
 				<AlertDialog.Description className="mb-5 mt-[15px] text-[15px] leading-normal text-mauve11">
-					This action cannot be undone. This will permanently delete your account and remove your
-					data from our servers.
+					This action cannot be undone. This will permanently delete your
+					account and remove your data from our servers.
 				</AlertDialog.Description>
 				<div className="flex justify-end gap-[25px]">
 					<AlertDialog.Cancel asChild>
