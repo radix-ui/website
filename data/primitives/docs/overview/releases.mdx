@@ -7,6 +7,12 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## June 30, 2026
+
+- Cleared the close timer when unmounting `Toast` components to prevent memory leaks and errors in test environments. <PRLink id={3794} />
+- Fixed infinite re-render loop in React 19 caused by unstable composed ref callback references. <PRLink id={3967} /> <PRLink id={3968} />
+- Removed global `React.CSSProperties` augmentation from emitted declaration files. <PRLink id={3983} />
+
 ## June 6, 2026
 
 This release introduces new composition APIs, a controlled Context Menu, and a number of bug fixes and performance improvements across primitives.
