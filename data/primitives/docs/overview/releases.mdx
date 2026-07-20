@@ -7,6 +7,50 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## July 20, 2026
+
+### Dialog
+
+- Fixed broken ARIA references in Dialogs where title or description elements are not rendered. <PRLink id={4031} />
+
+### Slider
+
+- Fixed a bug where `onValueCommit` was not called when a slider thumb was dragged across another thumb. <PRLink id={3832} />
+
+### Toast
+
+- Fixed `Toast` removing non-focused toasts when pressing `Escape`. <PRLink id={4005} />
+
+### Tooltip
+
+- Fixed a bug where `Tooltip.Content` children were mounted to the DOM twice. <PRLink id={4029} />
+
+### Other updates
+
+- Fixed overriding inline animation style in `Popper.Content`. <PRLink id={4046} />
+- Improved tree-shaking so bundlers can drop unused components. Component parts are now marked `/* @__PURE__ */` and use named render functions instead of `Component.displayName = ...` assignments, which previously prevented dead-code elimination with some bundlers. <PRLink id={4038} />
+- Widened the `virtualRef` prop type to allow `RefObject<Measurable | null>` in popover components. <PRLink id={4034} />
+- Fixed dev-only checks with conditional exports so dev warnings are dropped from production builds. <PRLink id={4039} />
+- Added per-primitive subpath entry points so each primitive can be imported directly, eg. `import { Accordion } from "radix-ui/accordion"` or `import * as Accordion from "radix-ui/accordion"`. This mirrors the namespaced exports available from the root `radix-ui` entry point. <PRLink id={4020} />
+- Fixed a bug where updating a `Checkbox`, `Switch`, or `RadioGroup` value programmatically (eg. a "select all" control) while inside a `<form>` would dispatch a `click` event from the hidden bubble input that propagated to ancestor `onClick` handlers. <PRLink id={4028} />
+
+## July 6, 2026
+
+### Other updates
+
+- Added CSS custom properties for Navigation Menu item indicators' translate values.
+- Fixed a bug in Dismissable Layer causing background nested popovers to close all layers on outside click. <PRLink id={3987} />
+- Fixed runtime errors for `Form.Message`, `Form.Control`, `Form.Label`, and `Form.ValidityState` when they are rendered outside of `Form.Field` components. <PRLink id={3992} />
+- Fixed a bug in form control components to ensure their values are updated when their associated form is reset. This affects `RadioGroup`, `Slider`, `Select`, and `Switch`. <PRLink id={3958} />
+- Fixed menu items, tab triggers, toolbar links, and select items intercepting `Space`/`Enter` keys that originate from focusable descendants. <PRLink id={3999} />
+- Fixed a bug where calling an event handler without an argument would throw, preventing successive event handlers from being called. This affected all components that accept event handlers with internal implementations. <PRLink id={4001} />
+- Fixed a bug in Context Menu to ensure that the menu properly re-anchors to the latest pointer position when re-triggered in its open state. <PRLink id={4003} />
+- Fixed stale `onEscapeKeyDown`/`onDismiss` handlers on React 19.2. <PRLink id={4015} />
+- Fixed items in a Roving Focus Group not being auto-focused on mount within a Focus Scope component. <PRLink id={4002} />
+- Fixed a regression in Dismissable Layer originating from a [bug in React's `useEffectEvent`](https://github.com/react/react/pull/34831). <PRLink id={4015} />
+- Fixed `--radix-scroll-area-corner-width` and `--radix-scroll-area-corner-height` not resetting to `0` when a corner is removed. Previously these values would stick around and leave a permanent gap on the remaining scrollbar. <PRLink id={4009} />
+- Fixed a bug in Slider where stepping with the keyboard would skip a valid value when the current value is off the step grid. Stepping now snaps to the next step-aligned value in the direction of travel, matching native `<input type="range">` behavior. <PRLink id={4006} />
+
 ## June 30, 2026
 
 - Cleared the close timer when unmounting `Toast` components to prevent memory leaks and errors in test environments. <PRLink id={3794} />
