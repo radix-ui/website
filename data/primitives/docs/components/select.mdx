@@ -282,6 +282,17 @@ When used, portals the content part into the `body`.
 <PropsTable
 	data={[
 		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries. If used on this
+					part, it will be inherited by <Code>Select.Content</Code>.
+				</span>
+			),
+		},
+		{
 			name: "container",
 			type: "HTMLElement",
 			default: "document.body",
@@ -310,6 +321,17 @@ The component that pops out when the select is open.
 					Read our <a href="../guides/composition">Composition</a> guide for
 					more details.
 				</>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries. It inherits from{" "}
+					<Code>Select.Portal</Code>.
+				</span>
 			),
 		},
 		{
@@ -1165,6 +1187,32 @@ export default () => (
 	background: rgba(0, 0, 0, 0.3);
 	border-radius: 3px;
 }
+```
+
+### Decoupling the hidden input
+
+By default, `Select.Root` renders a visually hidden `select` for form submission. To recompose, move, or exclude that element, you can build the select from its lower-level parts instead.
+
+> **Important:** These parts are unstable and prefixed with `unstable_`, so their API may change in a future release.
+
+- `Select.unstable_Provider` provides the select state and accepts the form-related and state props (`name`, `value`, `defaultValue`, `onValueChange`, etc.).
+- `Select.unstable_BubbleInput` is the visually hidden `select` that `Select.Root` renders by default. Omit it when you don't need form submission.
+
+```jsx
+import { Select } from "radix-ui";
+
+export default () => (
+	<Select.unstable_Provider name="fruit">
+		<Select.Trigger>
+			<Select.Value placeholder="Pick an option" />
+			<Select.Icon />
+		</Select.Trigger>
+		<Select.Portal>
+			<Select.Content>{/* Your content */}</Select.Content>
+		</Select.Portal>
+		<Select.unstable_BubbleInput />
+	</Select.unstable_Provider>
+);
 ```
 
 ## Accessibility

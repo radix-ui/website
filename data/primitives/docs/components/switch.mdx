@@ -171,6 +171,32 @@ The thumb that is used to visually indicate whether the switch is on or off.
 	]}
 />
 
+## Examples
+
+### Decoupling the hidden input
+
+By default, `Switch.Root` renders a visually hidden `input` for form submission. To recompose, move, or exclude that input, you can build the switch from its lower-level parts instead.
+
+> **Important:** These parts are unstable and prefixed with `unstable_`, so their API may change in a future release.
+
+- `Switch.unstable_Provider` provides the switch state and accepts the form-related props (`name`, `value`, `checked`, `defaultChecked`, `required`, `disabled`, `onCheckedChange`).
+- `Switch.unstable_Trigger` is the interactive button that wraps `Switch.Thumb`.
+- `Switch.unstable_BubbleInput` is the visually hidden input that `Switch.Root` renders by default. Omit it when you don't need form submission.
+
+```jsx
+import { Switch } from "radix-ui";
+
+export default () => (
+	<Switch.unstable_Provider name="airplane-mode">
+		<Switch.unstable_Trigger>
+			<Switch.Thumb />
+		</Switch.unstable_Trigger>
+		{/* The hidden input can be omitted if you don't need form submission */}
+		<Switch.unstable_BubbleInput />
+	</Switch.unstable_Provider>
+);
+```
+
 ## Accessibility
 
 Adheres to the [`switch` role requirements](https://www.w3.org/WAI/ARIA/apg/patterns/switch).

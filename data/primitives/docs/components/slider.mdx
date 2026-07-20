@@ -434,6 +434,38 @@ export default () => (
 );
 ```
 
+### Decoupling the hidden input
+
+By default, `Slider.Thumb` renders a visually hidden `input` for form submission. To recompose, move, or exclude that input, you can build each thumb from its lower-level parts instead.
+
+> **Important:** These parts are unstable and prefixed with `unstable_`, so their API may change in a future release.
+
+- `Slider.unstable_ThumbProvider` provides the thumb state and accepts an optional `name` for the submitted value.
+- `Slider.unstable_ThumbTrigger` is the draggable thumb element.
+- `Slider.unstable_BubbleInput` is the visually hidden input that `Slider.Thumb` renders by default. Omit it when you don't need form submission.
+
+```jsx
+import { Slider } from "radix-ui";
+
+export default () => (
+	<Slider.Root defaultValue={[25, 75]}>
+		<Slider.Track>
+			<Slider.Range />
+		</Slider.Track>
+
+		<Slider.unstable_ThumbProvider name="price[min]">
+			<Slider.unstable_ThumbTrigger />
+			<Slider.unstable_BubbleInput />
+		</Slider.unstable_ThumbProvider>
+
+		<Slider.unstable_ThumbProvider name="price[max]">
+			<Slider.unstable_ThumbTrigger />
+			<Slider.unstable_BubbleInput />
+		</Slider.unstable_ThumbProvider>
+	</Slider.Root>
+);
+```
+
 ## Accessibility
 
 Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb).

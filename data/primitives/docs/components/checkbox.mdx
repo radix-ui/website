@@ -219,6 +219,29 @@ export default () => {
 };
 ```
 
+### Decoupling the hidden input
+
+By default, `Checkbox.Root` renders a visually hidden `input` for form submission. To recompose, move, or exclude that input, you can build the checkbox from its lower-level parts instead.
+
+> **Important:** These parts are unstable and prefixed with `unstable_`, so their API may change in a future release.
+
+- `Checkbox.unstable_Provider` provides the checkbox state and accepts the form-related props (`name`, `value`, `checked`, `defaultChecked`, `required`, `disabled`, `onCheckedChange`).
+- `Checkbox.unstable_Trigger` is the interactive button that wraps `Checkbox.Indicator`.
+- `Checkbox.unstable_BubbleInput` is the visually hidden input that `Checkbox.Root` renders by default. Omit it when you don't need form submission.
+
+```jsx
+import { Checkbox } from "radix-ui";
+
+export default () => (
+	<Checkbox.unstable_Provider name="terms">
+		<Checkbox.unstable_Trigger>
+			<Checkbox.Indicator />
+		</Checkbox.unstable_Trigger>
+		<Checkbox.unstable_BubbleInput />
+	</Checkbox.unstable_Provider>
+);
+```
+
 ## Accessibility
 
 Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox).

@@ -270,6 +270,35 @@ Renders when the radio item is in a checked state. You can style this element di
 	]}
 />
 
+## Examples
+
+### Decoupling the hidden input
+
+By default, `RadioGroup.Item` renders a visually hidden `input` for form submission. To recompose, move, or exclude that input, you can build each item from its lower-level parts instead.
+
+> **Important:** These parts are unstable and prefixed with `unstable_`, so their API may change in a future release.
+
+- `RadioGroup.unstable_ItemProvider` provides the item state and accepts the item's `value` and `disabled` props.
+- `RadioGroup.unstable_ItemTrigger` is the interactive element that wraps `RadioGroup.Indicator`.
+- `RadioGroup.unstable_ItemBubbleInput` is the visually hidden input that `RadioGroup.Item` renders by default. Omit it when you don't need form submission.
+
+```jsx
+import { RadioGroup } from "radix-ui";
+
+export default () => (
+	<RadioGroup.Root>
+		{["one", "two", "three"].map((value) => (
+			<RadioGroup.unstable_ItemProvider key={value} value={value}>
+				<RadioGroup.unstable_ItemTrigger>
+					<RadioGroup.Indicator />
+				</RadioGroup.unstable_ItemTrigger>
+				<RadioGroup.unstable_ItemBubbleInput />
+			</RadioGroup.unstable_ItemProvider>
+		))}
+	</RadioGroup.Root>
+);
+```
+
 ## Accessibility
 
 Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio) and uses [roving tabindex](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio) to manage focus movement among radio items.

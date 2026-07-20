@@ -60,6 +60,27 @@ function Button({ asChild, children, leftElement, rightElement, ...props }) {
 }
 ```
 
+### Wrapping the slotted element
+
+Pass the child to `Slottable` via the `child` prop and provide a render function to wrap the slotted element in additional markup, while `Slot` still merges its props and refs onto the child.
+
+```jsx
+// your-button.jsx
+import * as React from "react";
+import { Slot } from "radix-ui";
+
+function Button({ asChild, children, ...props }) {
+	const Comp = asChild ? Slot.Root : "button";
+	return (
+		<Comp {...props}>
+			<Slot.Slottable child={children}>
+				{(child) => <span className="ButtonInner">{child}</span>}
+			</Slot.Slottable>
+		</Comp>
+	);
+}
+```
+
 ### Usage
 
 ```jsx
@@ -92,5 +113,22 @@ export default () => (
 	>
 		<button onClick={(event) => event.preventDefault()} />
 	</Slot.Root>
+);
+```
+
+### Typed slots
+
+`Slot.createSlot` returns a `Slot` component scoped to the name you pass, which is used in its error messages. It accepts type arguments to specify the element the slot renders and the props it accepts, so consumers get accurate types. `Slot.SlotProps` accepts the same type arguments.
+
+```tsx
+import * as React from "react";
+import { Slot } from "radix-ui";
+
+type ButtonProps = React.ComponentPropsWithoutRef<"button"> & {
+	variant?: "solid" | "ghost";
+};
+
+const ButtonSlot = Slot.createSlot<HTMLButtonElement, ButtonProps>(
+	"Button.Slot",
 );
 ```

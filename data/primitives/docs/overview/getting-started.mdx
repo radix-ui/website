@@ -46,6 +46,12 @@ const PopoverDemo = () => (
 export default PopoverDemo;
 ```
 
+Each primitive is also available from its own entrypoint. Importing from the subpath can help some bundlers tree-shake more effectively:
+
+```jsx
+import * as Popover from "radix-ui/popover";
+```
+
 ### 3. Add your styles
 
 Add styles where desired.
