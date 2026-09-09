@@ -41,3 +41,6 @@ tsconfig.tsbuildinfo
 .idea
 
 next-env.d.ts
+
+# cloudflare
+.wrangler

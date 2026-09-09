@@ -4,27 +4,6 @@ export const PALETTE_COOKIE = "colors-custom-palette";
 
 export const PALETTE_MAX_AGE_SECONDS = 60 * 60 * 2;
 
-// The resolved appearance ("light"/"dark") is mirrored to a cookie so the
-// server can render the correct theme's input values on the first paint. It's
-// a non-sensitive UI hint, so we keep it around long enough that returning
-// visitors don't flash.
-export const APPEARANCE_COOKIE = "colors-custom-appearance";
-export const APPEARANCE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
-
-export type Appearance = "light" | "dark";
-
-export function parseAppearanceCookie(value: string | undefined): Appearance | undefined {
-	return value === "light" || value === "dark" ? value : undefined;
-}
-
-export function writeAppearanceCookie(appearance: Appearance): void {
-	if (typeof document === "undefined") {
-		return;
-	}
-	const secure = location.protocol === "https:" ? "; Secure" : "";
-	document.cookie = `${APPEARANCE_COOKIE}=${appearance}; path=/colors/custom; max-age=${APPEARANCE_MAX_AGE_SECONDS}; SameSite=Lax${secure}`;
-}
-
 export interface Palette {
 	lightAccent: string;
 	lightGray: string;
@@ -45,7 +24,7 @@ export const defaultPalette: Palette = {
 
 // Only accept strings that parse as a real color. This both repairs corrupt
 // cookies and prevents a hand-crafted cookie from injecting arbitrary text
-// into the server-rendered <style> (the value is later interpolated into CSS).
+// into the rendered <style> (the value is later interpolated into CSS).
 function sanitizeColor(value: unknown, fallback: string): string {
 	if (typeof value !== "string") {
 		return fallback;
@@ -67,8 +46,8 @@ function safeDecode(value: string): string | null {
 }
 
 function parseJson(value: string): unknown {
-	// Next decodes percent-encoding for us, but fall back to manual decoding in
-	// case the value arrives still-encoded.
+	// The cookie is written percent-encoded; also accept an already-decoded
+	// value in case it arrives that way.
 	for (const candidate of [value, safeDecode(value)]) {
 		if (candidate === null) {
 			continue;
@@ -99,6 +78,17 @@ export function parsePaletteCookie(value: string | undefined): Palette {
 		darkGray: sanitizeColor(record.darkGray, defaultPalette.darkGray),
 		darkBg: sanitizeColor(record.darkBg, defaultPalette.darkBg),
 	};
+}
+
+// The page is statically exported, so the saved palette is restored in the
+// browser (see color-theme-provider.tsx) rather than by a server render.
+export function readPaletteCookie(): Palette {
+	if (typeof document === "undefined") {
+		return defaultPalette;
+	}
+	const prefix = `${PALETTE_COOKIE}=`;
+	const entry = document.cookie.split("; ").find((cookie) => cookie.startsWith(prefix));
+	return parsePaletteCookie(entry?.slice(prefix.length));
 }
 
 export function writePaletteCookie(palette: Palette): void {

@@ -26,7 +26,8 @@ export const metadata: Metadata = {
 	title: "Blog – Radix UI",
 	description,
 	openGraph: {
-		images: ["https://radix-ui.com/social/themes.png"],
+		// Resolved against `metadataBase`.
+		images: ["/social/themes.png"],
 	},
 };
 

@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import NextLink from "next/link";
 import { ColorsHeader } from "@components/colors-header";
 import { ColorsMobileMenu } from "@components/colors-mobile-menu";
@@ -19,13 +18,6 @@ import {
 	Swatch,
 	ThemeSwitcher,
 } from "./page.client";
-import {
-	APPEARANCE_COOKIE,
-	PALETTE_COOKIE,
-	parseAppearanceCookie,
-	parsePaletteCookie,
-} from "./palette-cookie";
-import { applyPaletteParams } from "./palette-url";
 import { baseMetadata } from "@utils/metadata";
 import type { Metadata } from "next";
 
@@ -35,22 +27,11 @@ export const metadata: Metadata = {
 	description: "An open-source color system for designing beautiful, accessible websites and apps.",
 };
 
-export default async function CustomColorsPage({
-	searchParams,
-}: {
-	searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
-	const cookieStore = await cookies();
-	// The URL is the source of truth for sharing. Any palette params layer on top
-	// of the cookie-restored palette, so a shared link reproduces exactly what
-	// the sharer saw regardless of the visitor's own saved palette.
-	const initialPalette = applyPaletteParams(
-		parsePaletteCookie(cookieStore.get(PALETTE_COOKIE)?.value),
-		await searchParams,
-	);
-	const initialAppearance = parseAppearanceCookie(cookieStore.get(APPEARANCE_COOKIE)?.value);
+// Statically exported: the saved (cookie) and shared (URL) palette are restored
+// on the client by ColorThemeProvider.
+export default function CustomColorsPage() {
 	return (
-		<ColorThemeProvider initialPalette={initialPalette} initialAppearance={initialAppearance}>
+		<ColorThemeProvider>
 			<ColorStyles />
 			<RootTheme className="radix-themes-custom-fonts">
 				<Favicon />
@@ -83,11 +64,7 @@ export default async function CustomColorsPage({
 								Create a custom palette
 							</Heading>
 
-							<ThemeSwitcher
-								initialAppearance={initialAppearance}
-								style={{ backgroundColor: "transparent" }}
-								mt="5"
-							/>
+							<ThemeSwitcher style={{ backgroundColor: "transparent" }} mt="5" />
 						</Flex>
 
 						<Box mb="9">

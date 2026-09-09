@@ -72,7 +72,6 @@ import { getPeopleForColor } from "@utils/people";
 import { ToggleGroup } from "radix-ui";
 import styles from "./page.module.css";
 import { useIsHydrated } from "@utils/use-is-hydrated";
-import { Appearance } from "./palette-cookie";
 
 export function ColorStyles() {
 	const { lightModeResult, darkModeResult } = useColorThemeContext();
@@ -123,25 +122,19 @@ export function BackgroundColorField({ id }: { id: string }) {
 	return <ColorField id={id} value={bgValue} onValueChange={setBgValue} />;
 }
 
-export function ThemeSwitcher({
-	initialAppearance,
-	...props
-}: Omit<
-	React.ComponentPropsWithoutRef<typeof SegmentedControl.Root>,
-	"value" | "onValueChange" | "children"
-> & {
-	initialAppearance?: Appearance;
-}) {
+export function ThemeSwitcher(
+	props: Omit<
+		React.ComponentPropsWithoutRef<typeof SegmentedControl.Root>,
+		"value" | "onValueChange" | "children"
+	>,
+) {
 	const { resolvedTheme, setTheme } = useTheme();
 	const isHydrated = useIsHydrated();
 	if (!isHydrated) {
+		// The resolved theme is only known on the client; render the control
+		// inert until hydration so the markup matches the static HTML.
 		return (
-			<SegmentedControl.Root
-				disabled={!initialAppearance}
-				value={initialAppearance}
-				onValueChange={() => void 0}
-				{...props}
-			>
+			<SegmentedControl.Root disabled onValueChange={() => void 0} {...props}>
 				<SegmentedControl.Item value="light">
 					<Flex as="span" align="center" gap="2" ml="-1">
 						<SunIcon />
