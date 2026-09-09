@@ -1,0 +1,35 @@
+// Cloudflare Workers config for www.radix-ui.com (WorkOS Marketing Sites account).
+// The site is a Next.js static export served as static assets. The small script
+// in worker/index.ts only runs for docs and blog paths, to answer
+// `Accept: text/markdown` with the pre-rendered `.md` twin of a page; every
+// other request is served straight from `out/`. `wrangler deploy` /
+// `wrangler dev` run the build below first; Workers Builds deploys on push to
+// `main`. Build variables and cutover steps are documented in README.md.
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "radix-website",
+	// WorkOS Marketing Sites
+	"account_id": "08869e0deaff3e46c74d84ac8450ac04",
+	"compatibility_date": "2026-09-01",
+	"main": "./worker/index.ts",
+	"build": {
+		"command": "pnpm build",
+	},
+	"assets": {
+		"directory": "./out",
+		"binding": "ASSETS",
+		// Serve out/404.html (Next's not-found page) with a 404 status.
+		"not_found_handling": "404-page",
+		// /foo serves foo.html (200); /foo/ redirects to /foo. Matches Next's
+		// `trailingSlash: false`, i.e. the Vercel behavior.
+		"html_handling": "drop-trailing-slash",
+		// Same paths as the former proxy.ts matcher. Everything else never
+		// invokes the script.
+		"run_worker_first": ["/primitives/docs/*", "/themes/docs/*", "/colors/docs/*", "/blog/*"],
+	},
+	"observability": {
+		"enabled": true,
+	},
+	"workers_dev": true,
+	"preview_urls": true,
+}

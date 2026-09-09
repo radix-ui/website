@@ -1,3 +1,5 @@
+import { isProductionSite } from "./metadata";
+
 export const GTAG_TRACKING_ID = "G-ZTHXHJWP08";
 export const GTAG_URL = `https://www.googletagmanager.com/gtag/js?id=${GTAG_TRACKING_ID}`;
 
@@ -6,8 +8,10 @@ type WindowWithAnalytics = Window &
 		gtag: any;
 	};
 
+// Analytics only report from production builds; previews and `next dev` stay
+// silent (see SITE_ENV in next.config.js).
 export function renderGtagSnippet() {
-	if (process.env.NODE_ENV === "production") {
+	if (isProductionSite) {
 		return `
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -18,7 +22,7 @@ export function renderGtagSnippet() {
 }
 
 export function handleUrlChange(url: string) {
-	if (process.env.NODE_ENV === "production") {
+	if (isProductionSite) {
 		(window as WindowWithAnalytics).gtag("config", GTAG_TRACKING_ID, {
 			page_location: url,
 			page_title: document.title,

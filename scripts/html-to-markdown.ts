@@ -1,5 +1,8 @@
-import type { NextRequest } from "next/server";
-import { format } from "oxfmt";
+/**
+ * Converts a rendered page (HTML) into Markdown. Extracted from the former
+ * `/api/markdown` route handler so scripts/build-markdown.ts can run the same
+ * conversion at build time over the static export.
+ */
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeRemark from "rehype-remark";
@@ -8,71 +11,7 @@ import remarkGfm from "remark-gfm";
 import { select, selectAll } from "hast-util-select";
 import type { Root, Element } from "hast";
 
-export async function GET(
-	request: NextRequest,
-	{ params }: { params: Promise<{ path: string[] }> },
-) {
-	const { path } = await params;
-	const pathSegments = getPathSegments(request, path);
-	if (pathSegments.length === 0) {
-		return Response.json({ error: "Invalid path" }, { status: 400 });
-	}
-
-	const pagePath = "/" + pathSegments.join("/");
-
-	try {
-		// Determine the base URL for fetching
-		// In development, use the request host; in production, use the configured URL
-		const protocol = request.headers.get("x-forwarded-proto") || "http";
-		const host = request.headers.get("host");
-		const baseUrl = `${protocol}://${host}`;
-
-		// Fetch the rendered HTML page
-		const htmlResponse = await fetch(`${baseUrl}${pagePath}`, {
-			headers: {
-				// Pass along cookies for any auth
-				cookie: request.headers.get("cookie") || "",
-			},
-		});
-
-		if (!htmlResponse.ok) {
-			return Response.json({ error: "Page not found" }, { status: 404 });
-		}
-
-		const html = await htmlResponse.text();
-		const markdown = await convertHtmlToMarkdown(html);
-		const { code: formattedMarkdown } = await format("file.md", markdown);
-
-		return new Response(formattedMarkdown, {
-			status: 200,
-			headers: {
-				"Content-Type": "text/markdown; charset=utf-8",
-				"X-Content-Type-Options": "nosniff",
-				// Aggressive caching: 7 days browser, 30 days CDN, serve stale for 90 days while revalidating
-				"Cache-Control": "public, max-age=604800, s-maxage=2592000, stale-while-revalidate=7776000",
-			},
-		});
-	} catch (error) {
-		console.error("Error converting to markdown:", error);
-		return Response.json({ error: "Failed to convert page to markdown" }, { status: 500 });
-	}
-}
-
-// Resolve the requested page path. When this route is reached via a `proxy.ts`
-// rewrite (Accept: text/markdown), the catch-all params are populated from the
-// rewritten URL. Fall back to parsing the request URL and stripping an optional
-// `/api/markdown` prefix to stay correct in every entry path.
-function getPathSegments(request: NextRequest, fromQuery: string[] | undefined): string[] {
-	if (Array.isArray(fromQuery) && fromQuery.length > 0) {
-		return fromQuery;
-	}
-
-	const pathOnly = request.nextUrl.pathname;
-	const stripped = pathOnly.replace(/^\/+/, "").replace(/^api\/markdown\/?/, "");
-	return stripped ? stripped.split("/").filter(Boolean) : [];
-}
-
-async function convertHtmlToMarkdown(html: string): Promise<string> {
+export async function convertHtmlToMarkdown(html: string): Promise<string> {
 	const result = await unified()
 		.use(rehypeParse)
 		.use(extractMainContent)

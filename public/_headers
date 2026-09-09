@@ -1,0 +1,16 @@
+# Cloudflare Workers static-assets headers (copied into out/ by `next build`).
+
+# Hashed build output is safe to cache forever; everything else keeps the
+# platform default (revalidate with ETag on every request).
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Pre-rendered Markdown twins of the pages (scripts/build-markdown.ts), as the
+# former /api/markdown route served them.
+/*.md
+  X-Content-Type-Options: nosniff
+
+# Keep the workers.dev hostnames (production alias and preview URLs) out of
+# search results; only the custom domain should be indexed.
+https://:host.workos-sites.workers.dev/*
+  X-Robots-Tag: noindex
