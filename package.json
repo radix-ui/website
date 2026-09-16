@@ -15,7 +15,8 @@
 		"format:check": "oxfmt --check",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"test": "node --import tsx --test worker/*.test.ts"
 	},
 	"dependencies": {
 		"@algolia/autocomplete-core": "^1.19.8",

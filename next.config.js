@@ -17,9 +17,9 @@ const isPreview =
 
 const config = {
 	// Static export served from Cloudflare Workers static assets (see
-	// wrangler.jsonc). Redirects live in public/_redirects and response headers
-	// in public/_headers; `redirects()`/`rewrites()`/`headers()` here would be
-	// ignored by the export.
+	// wrangler.jsonc). Redirects live in worker/redirects.ts and response
+	// headers in public/_headers; `redirects()`/`rewrites()`/`headers()` here
+	// would be ignored by the export.
 	output: "export",
 
 	env: {

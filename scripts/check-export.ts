@@ -20,8 +20,7 @@ const REQUIRED_FILES = [
 	"index.html",
 	// Served by `not_found_handling: "404-page"`.
 	"404.html",
-	// Ported from next.config.js; the export ignores `redirects()`/`headers()`.
-	"_redirects",
+	// Ported from next.config.js `headers()`, which the export ignores.
 	"_headers",
 	// Loaded by the client-side docs search (components/primitives-search.tsx).
 	"search-index.json",
@@ -52,30 +51,12 @@ for (const relativePath of htmlFiles) {
 	}
 }
 
-// Every rule must be `source destination [status]`; a malformed line is
-// silently ignored by the platform, which would drop a redirect.
-const redirectsPath = path.join(OUT_DIR, "_redirects");
-if (fs.existsSync(redirectsPath)) {
-	const rules = fs
-		.readFileSync(redirectsPath, "utf8")
-		.split("\n")
-		.map((line) => line.trim())
-		.filter((line) => line && !line.startsWith("#"));
-	for (const rule of rules) {
-		const parts = rule.split(/\s+/);
-		const status = parts[2];
-		if (
-			parts.length < 2 ||
-			parts.length > 3 ||
-			!parts[0].startsWith("/") ||
-			(status !== undefined && !/^(301|302|303|307|308)$/.test(status))
-		) {
-			errors.push(`malformed _redirects rule: "${rule}"`);
-		}
-	}
-	if (rules.length === 0) {
-		errors.push("_redirects has no rules");
-	}
+// Redirects are Worker code (worker/redirects.ts), not a `_redirects` file:
+// the platform did not honor file order for overlapping dynamic rules. A
+// `_redirects` file reappearing would be evaluated by the platform *before*
+// the Worker for the paths it lists, silently taking precedence.
+if (fs.existsSync(path.join(OUT_DIR, "_redirects"))) {
+	errors.push("out/_redirects exists; redirects belong in worker/redirects.ts (see its header)");
 }
 
 if (errors.length > 0) {
