@@ -1,7 +1,8 @@
 // Cloudflare Workers config for www.radix-ui.com (WorkOS Marketing Sites account).
 // The site is a Next.js static export served as static assets. The small script
-// in worker/index.ts only runs for docs and blog paths, to answer
-// `Accept: text/markdown` with the pre-rendered `.md` twin of a page; every
+// in worker/index.ts only runs for the paths listed in `run_worker_first`: the
+// legacy redirects (worker/redirects.ts) and, for docs and blog pages,
+// answering `Accept: text/markdown` with the pre-rendered `.md` twin. Every
 // other request is served straight from `out/`. `wrangler deploy` /
 // `wrangler dev` run the build below first; Workers Builds deploys on push to
 // `main`. Build variables and cutover steps are documented in README.md.
@@ -23,9 +24,22 @@
 		// /foo serves foo.html (200); /foo/ redirects to /foo. Matches Next's
 		// `trailingSlash: false`, i.e. the Vercel behavior.
 		"html_handling": "drop-trailing-slash",
-		// Same paths as the former proxy.ts matcher. Everything else never
-		// invokes the script.
-		"run_worker_first": ["/primitives/docs/*", "/themes/docs/*", "/colors/docs/*", "/blog/*"],
+		// The legacy-redirect paths (REDIRECT_PATHS in worker/redirects.ts, checked
+		// by its test) plus the docs/blog paths that negotiate Markdown (the former
+		// proxy.ts matcher). Everything else never invokes the script.
+		"run_worker_first": [
+			"/case-studies",
+			"/case-studies/*",
+			"/colors/docs",
+			"/colors/docs/*",
+			"/docs/*",
+			"/primitives/docs",
+			"/primitives/docs/*",
+			"/themes",
+			"/themes/docs",
+			"/themes/docs/*",
+			"/blog/*",
+		],
 	},
 	"observability": {
 		"enabled": true,

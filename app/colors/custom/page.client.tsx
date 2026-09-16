@@ -132,9 +132,11 @@ export function ThemeSwitcher(
 	const isHydrated = useIsHydrated();
 	if (!isHydrated) {
 		// The resolved theme is only known on the client; render the control
-		// inert until hydration so the markup matches the static HTML.
+		// inert until hydration so the markup matches the static HTML. It stays
+		// controlled ("light", like the values shown before hydration) so it
+		// doesn't flip from uncontrolled to controlled once the theme is known.
 		return (
-			<SegmentedControl.Root disabled onValueChange={() => void 0} {...props}>
+			<SegmentedControl.Root disabled value="light" onValueChange={() => void 0} {...props}>
 				<SegmentedControl.Item value="light">
 					<Flex as="span" align="center" gap="2" ml="-1">
 						<SunIcon />
