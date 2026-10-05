@@ -1,5 +1,10 @@
 # Cloudflare Workers static-assets headers (copied into out/ by `next build`).
 
+# Vercel sent this on every response; keep it so the site does not regress
+# (two years, host only, as before).
+/*
+  Strict-Transport-Security: max-age=63072000
+
 # Hashed build output is safe to cache forever; everything else keeps the
 # platform default (revalidate with ETag on every request).
 /_next/static/*

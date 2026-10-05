@@ -134,12 +134,26 @@ exist and be proxied). This replaces the Vercel project `radix-icons` (the
 2. Connect this repository to Workers Builds with the settings above and let
    `main` deploy to `radix-website.workos-sites.workers.dev`; check a few
    pages, `/…/dialog.md`, an `Accept: text/markdown` request and a 404.
-3. Delete the interim `www`, apex and `icons` records that point at Vercel;
+3. Zone settings that rewrite or block responses (the zone defaults are
+   tuned for generic sites, not for docs that tools fetch): turn **Email
+   Address Obfuscation** off (Security → Settings), otherwise Cloudflare
+   rewrites the `mailto:` examples in the Data List docs and playground and
+   React reports a hydration mismatch; turn **Browser Integrity Check** off,
+   otherwise some HTTP libraries (for example Python's `urllib`) get a 403
+   when fetching the `.md` twins; set AI crawler blocking to **Do not
+   block** (Security → Bots) so the docs stay reachable for assistants.
+4. Delete the interim `www`, apex and `icons` records that point at Vercel;
    add `www.radix-ui.com` as the Worker's custom domain (Settings → Domains &
    Routes) and create the two Redirect Rules above with their placeholder
    records.
-4. Delete the Vercel projects `radix-website` and `radix-icons` in the
-   `workos` team.
+5. Verify on the custom domain: a docs page, `/…/dialog.md`, an
+   `Accept: text/markdown` request, a legacy redirect, a 404,
+   `Strict-Transport-Security` present, and no `cdn-cgi/l/email-protection`
+   in `/themes/docs/components/data-list`.
+6. Delete the Vercel projects `radix-website` and `radix-icons` in the
+   `workos` team. The Vercel preview links on `/themes/docs/overview/releases`
+   are already dead; the `themes-playground-modulz.vercel.app` link in the
+   Themes 3 blog post still works and belongs to a different project.
 
 ## Authors
 
