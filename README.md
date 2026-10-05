@@ -69,7 +69,9 @@ not honor file order for overlapping splat rules, so the broader rule won.
 In the Worker the first matching rule wins, in the order written. The
 `run_worker_first` list in `wrangler.jsonc` must cover every redirect source
 (`REDIRECT_PATHS`, checked by the test). Response headers live in
-`public/_headers`. Unknown paths get Next's not-found page as `out/404.html`
+`public/_headers`; the platform's default `Content-Type` carries no charset,
+so `.md` and `.json` declare `charset=utf-8` there (HTML pages carry
+`<meta charset>`). Unknown paths get Next's not-found page as `out/404.html`
 with a 404 status.
 
 Small behavior differences from Vercel, all harmless: trailing-slash
