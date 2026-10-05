@@ -60,17 +60,9 @@ test("ignores a trailing slash on the request", () => {
 	});
 });
 
-test("matches literal segments case-insensitively, like Next's redirects() did", () => {
-	assert.deepEqual(resolveRedirect(url("/Docs/primitives")), {
-		location: "/primitives/docs/overview/introduction",
-		status: 307,
-	});
-	assert.deepEqual(resolveRedirect(url("/THEMES")), { location: "/", status: 307 });
-	// Splat values keep their case.
-	assert.deepEqual(resolveRedirect(url("/Docs/Primitives/components/Dialog")), {
-		location: "/primitives/docs/components/Dialog",
-		status: 308,
-	});
+test("is case-sensitive (run_worker_first patterns are, so this cannot be looser)", () => {
+	assert.equal(resolveRedirect(url("/Docs/primitives")), null);
+	assert.equal(resolveRedirect(url("/THEMES")), null);
 });
 
 test("leaves real pages alone", () => {

@@ -105,9 +105,9 @@ export type Redirect = { location: string; status: 307 | 308 };
 
 /**
  * Returns the redirect for a request URL, or null when no rule matches.
- * Literal segments match case-insensitively, as Next's `redirects()` did on
- * Vercel (`/Docs/primitives` redirected like `/docs/primitives`); real pages
- * stay case-sensitive because the asset lookup is.
+ * Matching is case-sensitive: `run_worker_first` patterns are, so an
+ * upper-cased legacy URL never reaches the Worker anyway (Next's redirects()
+ * on Vercel matched case-insensitively; real pages were case-sensitive).
  */
 export function resolveRedirect(url: URL): Redirect | null {
 	const pathname = url.pathname.replace(/\/+$/, "") || "/";
@@ -138,7 +138,7 @@ function match(pattern: string, pathname: string): Record<string, string> | null
 		if (value === undefined || value === "") return null;
 		if (segment.startsWith(":")) {
 			params[segment.slice(1)] = value;
-		} else if (segment.toLowerCase() !== value.toLowerCase()) {
+		} else if (segment !== value) {
 			return null;
 		}
 	}

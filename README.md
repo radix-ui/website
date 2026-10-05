@@ -76,7 +76,10 @@ with a 404 status.
 
 Small behavior differences from Vercel, all harmless: trailing-slash
 redirects (`/blog/` → `/blog`) and `.html` URLs (`/blog.html` → `/blog`) are
-answered by the platform with a 307 (Vercel: 308 and 404), and there is no
+answered by the platform with a 307 (Vercel: 308 and 404); upper-cased
+legacy URLs such as `/Docs/primitives` are a 404 instead of a redirect
+(Next matched redirect sources case-insensitively, `run_worker_first`
+patterns do not; real pages were case-sensitive before too); and there is no
 `/robots.txt` or `/sitemap.xml` on the custom domain, as before. On
 `workers.dev` hostnames Cloudflare injects a managed `robots.txt` and the
 `_headers` file adds `X-Robots-Tag: noindex`, so previews are never indexed.
