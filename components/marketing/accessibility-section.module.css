@@ -328,7 +328,7 @@
 	font-size: var(--font-size-4);
 	letter-spacing: var(--letter-spacing-4);
 	font-family: inherit;
-	font-weight: 700;
+	font-weight: var(--font-weight-bold);
 	line-height: 1;
 	height: var(--space-6);
 	padding-left: var(--space-2);
