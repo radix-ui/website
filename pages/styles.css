@@ -83,7 +83,8 @@ pre {
 		sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 	--code-font-family:
 		var(--font-soehne-mono), "Menlo", monospace, "Apple Color Emoji", "Segoe UI Emoji";
-	--font-weight-medium: 700;
+	--font-weight-medium: 500;
+	--font-weight-bold: 500;
 	--letter-spacing-1: 0.005em;
 	--letter-spacing-2: 0em;
 	--letter-spacing-3: 0em;
