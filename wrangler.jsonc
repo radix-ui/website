@@ -44,6 +44,14 @@
 	"observability": {
 		"enabled": true,
 	},
-	"workers_dev": true,
+	// Production is served on the custom domain only. The workers.dev route is
+	// off; preview builds still get their version URLs on workers.dev.
+	"routes": [
+		{
+			"pattern": "www.radix-ui.com",
+			"custom_domain": true,
+		},
+	],
+	"workers_dev": false,
 	"preview_urls": true,
 }
