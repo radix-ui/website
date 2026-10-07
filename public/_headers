@@ -1,0 +1,28 @@
+# Cloudflare Workers static-assets headers (copied into out/ by `next build`).
+
+# Vercel sent this on every response; keep it so the site does not regress
+# (two years, host only, as before).
+/*
+  Strict-Transport-Security: max-age=63072000
+
+# Hashed build output is safe to cache forever; everything else keeps the
+# platform default (revalidate with ETag on every request).
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Pre-rendered Markdown twins of the pages (scripts/build-markdown.ts), as the
+# former /api/markdown route served them. The platform's default Content-Type
+# has no charset, and the twins contain non-ASCII text (dashes, quotes, arrows),
+# so declare UTF-8 explicitly as Vercel did. HTML pages carry <meta charset>.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Content-Type-Options: nosniff
+
+# Same for JSON (the search index); parity with the previous hosting.
+/*.json
+  Content-Type: application/json; charset=utf-8
+
+# Keep the workers.dev hostnames (production alias and preview URLs) out of
+# search results; only the custom domain should be indexed.
+https://:host.workos-sites.workers.dev/*
+  X-Robots-Tag: noindex

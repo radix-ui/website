@@ -5,14 +5,18 @@
 	"type": "module",
 	"scripts": {
 		"dev": "pnpm build:search && next dev",
-		"build": "pnpm build:search && next build",
-		"start": "next start",
+		"build": "pnpm build:search && next build && pnpm build:markdown && pnpm check:export",
+		"build:search": "tsx scripts/build-search-index.ts",
+		"build:markdown": "tsx scripts/build-markdown.ts",
+		"check:export": "tsx scripts/check-export.ts",
+		"preview": "NEXT_PUBLIC_SITE_ENV=preview wrangler dev",
+		"deploy": "wrangler deploy",
 		"format": "oxfmt --write .",
 		"format:check": "oxfmt --check",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
 		"typecheck": "tsc --noEmit",
-		"build:search": "tsx scripts/build-search-index.ts"
+		"test": "node --import tsx --test worker/*.test.ts"
 	},
 	"dependencies": {
 		"@algolia/autocomplete-core": "^1.19.8",
@@ -85,7 +89,8 @@
 		"oxlint": "^1.70.0",
 		"sucrase": "3.35.1",
 		"tsx": "^4.22.4",
-		"typescript": "^5.5.4"
+		"typescript": "^5.5.4",
+		"wrangler": "^4.129.1"
 	},
 	"engines": {
 		"node": "24.x"
