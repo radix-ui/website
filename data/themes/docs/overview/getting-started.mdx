@@ -79,8 +79,16 @@ Install the package from your command line.
 
 Import the global CSS file at the root of your application.
 
+From a JavaScript or TypeScript file:
+
 ```ts
 import "@radix-ui/themes/styles.css";
+```
+
+From a CSS file, use `@import` instead. A JS `import` is not valid CSS:
+
+```css
+@import "@radix-ui/themes/styles.css";
 ```
 
 ### 3. Add the Theme component
