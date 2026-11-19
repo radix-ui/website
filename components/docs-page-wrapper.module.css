@@ -1,6 +1,7 @@
 .DocsPageWrapper {
 	flex-grow: 1;
 	display: flex;
+	min-width: 0;
 	max-width: 100%;
 	justify-content: center;
 }
