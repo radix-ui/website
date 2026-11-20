@@ -66,7 +66,7 @@ export default function ColorsHome() {
 							</Text>
 						</Box>
 
-						<Flex gap="4">
+						<Flex gap="4" wrap="wrap">
 							<ColorsMarketingButton asChild size={{ initial: "3", xs: "4" }}>
 								<NextLink href="/colors/docs/overview/installation">
 									Go to docs
